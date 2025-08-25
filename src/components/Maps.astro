@@ -1,29 +1,33 @@
 ---
-
-
 ---
 
-<section class="bg-black text-white py-20 px-6">
-    <div class="max-w-7xl mx-auto">
-        <!-- Main heading -->
-        <div class="text-center mb-16">
-            <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight max-w-4xl mx-auto">
+<section class="bg-black text-white py-16 px-6 relative z-10">
+    <div class="max-w-6xl min-h-screen mx-auto">
+        <!-- Main heading with athletic typography -->
+        <div class="text-center ">
+            <h2 class="story-title text-4xl md:text-5xl lg:text-6xl font-black leading-[0.95] tracking-tight text-glow-blue-subtle max-w-5xl mx-auto">
                 From the quiet<br>
                 morning miles to the<br>
                 roar of race day
             </h2>
         </div>
         
-        <!-- Phone mockup and content -->
-        <div class="flex flex-col lg:flex-row items-center justify-center gap-12">
-            <!-- Phone mockup -->
+        <!-- Centered content layout -->
+        <div class="flex flex-col items-center justify-center text-center -mt-[40px]">
+            <!-- Phone mockup with enhanced presentation -->
             <div class="relative">
-                <img src="/hero-section-1.svg" alt="Running app interface" class="w-80 h-auto" />
+                <img 
+                    src="/hero-section-1.svg" 
+                    alt="PaceBeats running app interface showing pace tracking" 
+                    class="w-72 md:w-80 h-auto transform hover:scale-102 transition-transform duration-300" 
+                />
+                <!-- Subtle blue glow effect behind phone -->
+                <div class="absolute inset-0 bg-blue-600/8 blur-2xl rounded-full scale-110 -z-10"></div>
             </div>
             
-            <!-- Descriptive text -->
-            <div class="text-center lg:text-left max-w-md">
-                <p class="text-gray-300 text-lg leading-relaxed">
+            <!-- Descriptive text with better typography -->
+            <div class="max-w-2xl pb-8">
+                <p class="text-gray-200 text-lg md:text-xl leading-relaxed font-normal">
                     Every step tells a story, from the calm, steady rhythm of early training runs to the electric energy that surges through the crowd on race day.
                 </p>
             </div>
@@ -31,3 +35,152 @@
     </div>
 </section>
 
+<style>
+    /* Story section typography matching hero style */
+    .story-title {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-weight: 900;
+        letter-spacing: -0.02em;
+    }
+    
+    /* Blue text glowing effect - Much more subtle */
+    .text-glow-blue-subtle {
+        color: #ffffff;
+        text-shadow: 
+            0 0 5px rgba(59, 130, 246, 0.2),
+            0 0 10px rgba(59, 130, 246, 0.1),
+            1px 1px 2px rgba(0, 0, 0, 0.6);
+        animation: subtleBlueGlow 6s ease-in-out infinite alternate;
+    }
+    
+    @keyframes subtleBlueGlow {
+        from {
+            text-shadow: 
+                0 0 5px rgba(59, 130, 246, 0.2),
+                0 0 10px rgba(59, 130, 246, 0.1),
+                1px 1px 2px rgba(0, 0, 0, 0.6);
+        }
+        to {
+            text-shadow: 
+                0 0 8px rgba(59, 130, 246, 0.3),
+                0 0 15px rgba(59, 130, 246, 0.15),
+                1px 1px 2px rgba(0, 0, 0, 0.6);
+        }
+    }
+    
+    /* Responsive typography for story section */
+    @media (max-width: 1024px) {
+        .story-title {
+            font-size: 3rem;
+        }
+    }
+    
+    @media (max-width: 768px) {
+        .story-title {
+            font-size: 2.5rem;
+            line-height: 0.9;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        .story-title {
+            font-size: 2rem;
+            line-height: 0.95;
+        }
+    }
+    
+    /* Simplified phone mockup styling */
+    .story-title + div img {
+        filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.3));
+    }
+    
+    /* Subtle hover effect */
+    .hover\\:scale-102:hover {
+        transform: scale(1.02);
+    }
+    
+    /* Scroll-triggered animation */
+    @keyframes fadeInScale {
+        from {
+            opacity: 0;
+            transform: translateY(30px) scale(0.95);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+    }
+    
+    .story-section-animate {
+        animation: fadeInScale 1s ease-out forwards;
+    }
+    
+    /* Performance optimizations */
+    .story-title {
+        will-change: transform;
+        transform: translateZ(0);
+    }
+    
+    /* Accessibility improvements */
+    @media (prefers-reduced-motion: reduce) {
+        .text-glow-blue-subtle {
+            animation: none;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+        }
+        
+        img {
+            transform: none !important;
+            transition: none !important;
+        }
+        
+        .story-section-animate {
+            animation: none;
+        }
+    }
+    
+    /* High contrast mode support */
+    @media (prefers-contrast: high) {
+        .text-glow-blue-subtle {
+            text-shadow: 2px 2px 0px #000000;
+            animation: none;
+        }
+        
+        .text-gray-200 {
+            color: #ffffff;
+        }
+    }
+    
+    /* Focus styles */
+    img:focus {
+        outline: 3px solid rgba(59, 130, 246, 0.5);
+        outline-offset: 4px;
+    }
+</style>
+
+<script>
+    // Intersection Observer for scroll animations
+    if ('IntersectionObserver' in window) {
+        const storyObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('story-section-animate');
+                }
+            });
+        }, {
+            threshold: 0.2,
+            rootMargin: '0px 0px -50px 0px'
+        });
+        
+        // Observe the story section elements
+        document.addEventListener('DOMContentLoaded', () => {
+            const storyElements = document.querySelectorAll('.story-title, .story-title + div img, .max-w-2xl p');
+            storyElements.forEach(el => {
+                if (el) storyObserver.observe(el);
+            });
+        });
+    }
+    
+    // Preload the story section image
+    const storyImage = new Image();
+    storyImage.src = '/hero-section-1.svg';
+</script>

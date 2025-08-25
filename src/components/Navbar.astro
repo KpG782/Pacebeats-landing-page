@@ -1,80 +1,331 @@
 ---
-
-
 ---
-<nav class="bg-transparent text-black px-6 py-4 relative z-10">
+
+<nav class="fixed top-0 left-0 right-0 bg-black bg-opacity-20 backdrop-blur-sm text-white px-6 py-6 z-50" role="navigation" aria-label="Main navigation">
     <div class="flex items-center justify-between max-w-7xl mx-auto">
         <!-- Left Navigation - Hidden on mobile -->
         <div class="hidden lg:flex items-center space-x-8">
-            <a href="#" class="text-sm hover:text-gray-300 transition-colors">Our Feature</a>
+            <a href="#hero" class="text-sm hover:text-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1" aria-label="Go to homepage">
+                Home
+            </a>
+            
+            <!-- Features Dropdown -->
             <div class="relative group">
-                <button class="flex items-center text-sm hover:text-gray-300 transition-colors">
-                    Training Plan
-                    <svg class="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20">
+                <button 
+                    class="flex items-center text-sm hover:text-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1"
+                    aria-expanded="false"
+                    aria-haspopup="true"
+                    id="features-menu-button"
+                >
+                    Features
+                    <svg class="w-4 h-4 ml-1 transition-transform group-hover:rotate-180" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                         <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
                     </svg>
                 </button>
+                
+                <!-- Features Dropdown Menu -->
+                <div 
+                    class="absolute top-full left-0 mt-2 w-64 bg-white bg-opacity-95 backdrop-blur-sm rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 border border-gray-200"
+                    role="menu"
+                    aria-labelledby="features-menu-button"
+                >
+                    <div class="py-2">
+                        <a href="#features" class="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-100 transition-colors focus:bg-gray-100 focus:outline-none" role="menuitem">
+                            <span class="font-medium">💓 Real-Time Heart Rate</span>
+                            <p class="text-xs text-gray-600">Continuous HR monitoring</p>
+                        </a>
+                        <a href="#features" class="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-100 transition-colors focus:bg-gray-100 focus:outline-none" role="menuitem">
+                            <span class="font-medium">🏃‍♂️ Smart Pace Detection</span>
+                            <p class="text-xs text-gray-600">Intelligent pace analysis</p>
+                        </a>
+                        <a href="#watch-integration" class="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-100 transition-colors focus:bg-gray-100 focus:outline-none" role="menuitem">
+                            <span class="font-medium">⌚ Galaxy Watch Integration</span>
+                            <p class="text-xs text-gray-600">Seamless wearable sync</p>
+                        </a>
+                        <a href="#features" class="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-100 transition-colors focus:bg-gray-100 focus:outline-none" role="menuitem">
+                            <span class="font-medium">🌙 Dark Mode UI</span>
+                            <p class="text-xs text-gray-600">Optimized for outdoor use</p>
+                        </a>
+                        <a href="#features" class="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-100 transition-colors focus:bg-gray-100 focus:outline-none" role="menuitem">
+                            <span class="font-medium">🔐 Secure Authentication</span>
+                            <p class="text-xs text-gray-600">Clean architecture</p>
+                        </a>
+                    </div>
+                </div>
             </div>
-            <a href="#" class="text-sm hover:text-gray-300 transition-colors">Community</a>
-            <a href="#" class="text-sm hover:text-gray-300 transition-colors">Race</a>
+            
+            <a href="#how-it-works" class="text-sm hover:text-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1">
+                How It Works
+            </a>
+            <a href="#tech-stack" class="text-sm hover:text-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1">
+                Tech Stack
+            </a>
         </div>
-        
+
         <!-- Mobile menu button - Visible on mobile only -->
         <div class="lg:hidden">
-            <button id="mobile-menu-button" class="text-black hover:text-gray-600 transition-colors">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <button 
+                id="mobile-menu-button" 
+                class="text-white hover:text-gray-300 transition-colors p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50"
+                aria-expanded="false"
+                aria-controls="mobile-menu"
+                aria-label="Toggle navigation menu"
+            >
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                 </svg>
             </button>
         </div>
         
         <!-- Center Logo -->
-        <div class="flex items-center">
-            
-           <img src="/pacebeats-text.svg" alt="Pacebeats Text" class="h-6" />
+        <div class="flex items-center justify-center lg:absolute lg:left-1/2 lg:transform lg:-translate-x-1/2">
+            <a href="#hero" class="focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md" aria-label="PaceBeats - Go to homepage">
+                <img src="/pacebeats-text-white.svg" alt="PaceBeats" class="h-6" />
+            </a>
         </div>
         
         <!-- Right Navigation - Hidden on mobile -->
         <div class="hidden lg:flex items-center space-x-6">
-            <a href="#" class="text-sm hover:text-gray-300 transition-colors">Support</a>
-            <a href="#" class="text-sm hover:text-gray-300 transition-colors">Helps</a>
-            <button class="bg-white text-black px-6 py-2 rounded-full text-sm font-medium hover:bg-gray-200 transition-colors">
-                Sign Up
+            <a href="#support" class="text-sm hover:text-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1">
+                Support
+            </a>
+            <a href="#team" class="text-sm hover:text-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1">
+                Team
+            </a>
+            <a 
+                href="https://github.com/KpG782" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                class="flex items-center text-sm hover:text-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1"
+                aria-label="View documentation on GitHub (opens in new tab)"
+            >
+                <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clip-rule="evenodd"></path>
+                </svg>
+                Docs
+            </a>
+            <button class="bg-white text-black px-6 py-2 rounded-full text-sm font-medium hover:bg-gray-200 transition-colors shadow-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50">
+                <!-- Download App -->
+                 In Development
             </button>
         </div>
-        
-        <!-- Mobile Sign Up - Visible on mobile only -->
+
+        <!-- Mobile download button - Visible on mobile only -->
         <div class="lg:hidden">
-            <button class="bg-white text-black px-4 py-2 rounded-full text-xs font-medium hover:bg-gray-200 transition-colors">
-                Sign Up
+            <button class="bg-white text-black px-4 py-2 rounded-full text-xs font-medium hover:bg-gray-200 transition-colors shadow-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50">
+                In Development
             </button>
         </div>
     </div>
     
-    <!-- Mobile menu - Hidden by default -->
-    <div id="mobile-menu" class="lg:hidden hidden bg-white bg-opacity-95 backdrop-blur-sm rounded-lg mt-4 py-4 px-6 shadow-lg">
+    <!-- Mobile menu -->
+    <div 
+        id="mobile-menu" 
+        class="lg:hidden hidden bg-black bg-opacity-90 backdrop-blur-sm rounded-lg mt-4 py-4 px-6 shadow-lg border border-gray-700"
+        role="menu"
+        aria-hidden="true"
+    >
         <div class="flex flex-col space-y-4">
-            <a href="#" class="text-sm text-black hover:text-gray-600 transition-colors">Our Feature</a>
-            <button class="flex items-center text-sm text-black hover:text-gray-600 transition-colors justify-start">
-                Training Plan
-                <svg class="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+            <a href="#hero" class="text-sm text-white hover:text-gray-300 transition-colors mobile-nav-link focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1" role="menuitem">
+                🏠 Home
+            </a>
+            
+            <!-- Mobile Features Section -->
+            <div class="border-l-2 border-red-500 pl-3" role="group" aria-labelledby="mobile-features-heading">
+                <p id="mobile-features-heading" class="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-2">Features</p>
+                <div class="space-y-2">
+                    <a href="#features" class="block text-sm text-white hover:text-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1" role="menuitem">
+                        💓 Real-Time Heart Rate
+                    </a>
+                    <a href="#features" class="block text-sm text-white hover:text-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1" role="menuitem">
+                        🏃‍♂️ Smart Pace Detection
+                    </a>
+                    <a href="#watch-integration" class="block text-sm text-white hover:text-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1" role="menuitem">
+                        ⌚ Galaxy Watch Integration
+                    </a>
+                    <a href="#features" class="block text-sm text-white hover:text-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1" role="menuitem">
+                        🌙 Dark Mode UI
+                    </a>
+                    <a href="#features" class="block text-sm text-white hover:text-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1" role="menuitem">
+                        🔐 Secure Authentication
+                    </a>
+                </div>
+            </div>
+            
+            <a href="#how-it-works" class="text-sm text-white hover:text-gray-300 transition-colors mobile-nav-link focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1" role="menuitem">
+                🔄 How It Works
+            </a>
+            <a href="#tech-stack" class="text-sm text-white hover:text-gray-300 transition-colors mobile-nav-link focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1" role="menuitem">
+                🛠️ Tech Stack
+            </a>
+            <a href="#support" class="text-sm text-white hover:text-gray-300 transition-colors mobile-nav-link focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1" role="menuitem">
+                💬 Support
+            </a>
+            <a href="#team" class="text-sm text-white hover:text-gray-300 transition-colors mobile-nav-link focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1" role="menuitem">
+                👥 Team
+            </a>
+            
+            <hr class="border-gray-300" role="separator">
+            
+            <a 
+                href="https://github.com/KpG782/" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                class="flex items-center text-sm text-white hover:text-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1"
+                role="menuitem"
+                aria-label="View documentation on GitHub (opens in new tab)"
+            >
+                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clip-rule="evenodd"></path>
                 </svg>
-            </button>
-            <a href="#" class="text-sm text-black hover:text-gray-600 transition-colors">Community</a>
-            <a href="#" class="text-sm text-black hover:text-gray-600 transition-colors">Race</a>
-            <hr class="border-gray-300">
-            <a href="#" class="text-sm text-black hover:text-gray-600 transition-colors">Support</a>
-            <a href="#" class="text-sm text-black hover:text-gray-600 transition-colors">Helps</a>
+                📚 Documentation
+            </a>
         </div>
     </div>
 </nav>
 
+<!-- Add padding to body to account for fixed navbar -->
+<style>
+    body {
+        padding-top: 80px; /* Adjust based on navbar height */
+    }
+    
+    /* Enhanced focus styles for accessibility */
+    .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+    }
+    
+    .focus\\:not-sr-only:focus {
+        position: static;
+        width: auto;
+        height: auto;
+        padding: 0.5rem 1rem;
+        margin: 0;
+        overflow: visible;
+        clip: auto;
+        white-space: normal;
+    }
+    
+    /* Enhanced dropdown hover effect with GPU acceleration */
+    .group:hover .group-hover\\:opacity-100 {
+        opacity: 1;
+        visibility: visible;
+        transform: translateZ(0); /* GPU acceleration */
+    }
+    
+    /* Smooth transitions for mobile nav links */
+    .mobile-nav-link {
+        transition: all 0.2s ease;
+        will-change: transform, background-color;
+    }
+    
+    .mobile-nav-link:hover {
+        transform: translateX(0.25rem);
+    }
+    
+    /* Reduced motion support */
+    @media (prefers-reduced-motion: reduce) {
+        * {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+        }
+    }
+    
+    /* High contrast mode support */
+    @media (prefers-contrast: high) {
+        .bg-white { background-color: #ffffff; }
+        .text-black { color: #000000; }
+        .border-gray-200 { border-color: #000000; }
+    }
+</style>
+
 <script>
+    // Cache DOM elements for better performance
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
+    let isMenuOpen = false;
     
-    mobileMenuButton?.addEventListener('click', () => {
+    // Mobile menu toggle with accessibility
+    function toggleMobileMenu() {
+        isMenuOpen = !isMenuOpen;
         mobileMenu?.classList.toggle('hidden');
+        mobileMenuButton?.setAttribute('aria-expanded', isMenuOpen.toString());
+        mobileMenu?.setAttribute('aria-hidden', (!isMenuOpen).toString());
+        
+        // Focus management
+        if (isMenuOpen && mobileMenu) {
+            const firstMenuItem = mobileMenu.querySelector('[role="menuitem"]');
+            firstMenuItem?.focus();
+        }
+    }
+    
+    mobileMenuButton?.addEventListener('click', toggleMobileMenu);
+    
+    // Smooth scrolling with performance optimization
+    function smoothScrollTo(target) {
+        if ('scrollBehavior' in document.documentElement.style) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } else {
+            // Fallback for browsers without smooth scroll support
+            target.scrollIntoView();
+        }
+    }
+    
+    // Optimized scroll event handler
+    document.addEventListener('click', function(e) {
+        const link = e.target.closest('a[href^="#"]');
+        if (link) {
+            const href = link.getAttribute('href');
+            if (href !== '#' && href.length > 1) {
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) {
+                    // Close mobile menu if open
+                    if (isMenuOpen) {
+                        toggleMobileMenu();
+                    }
+                    
+                    // Smooth scroll to target
+                    smoothScrollTo(target);
+                }
+            }
+        }
     });
+    
+    // Close mobile menu with Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && isMenuOpen) {
+            toggleMobileMenu();
+            mobileMenuButton?.focus();
+        }
+    });
+    
+    // Close mobile menu when clicking outside (with performance optimization)
+    document.addEventListener('click', (e) => {
+        if (isMenuOpen && 
+            !mobileMenuButton?.contains(e.target) && 
+            !mobileMenu?.contains(e.target)) {
+            toggleMobileMenu();
+        }
+    });
+    
+    // Preload critical resources (performance optimization)
+    if ('requestIdleCallback' in window) {
+        requestIdleCallback(() => {
+            // Preload GitHub page
+            const link = document.createElement('link');
+            link.rel = 'dns-prefetch';
+            link.href = '//github.com';
+            document.head.appendChild(link);
+        });
+    }
 </script>

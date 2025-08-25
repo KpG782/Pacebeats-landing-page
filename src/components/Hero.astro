@@ -1,30 +1,237 @@
 ---
-
-
 ---
 
-
 <!-- Hero Section -->
-<section class="relative min-h-screen bg-cover bg-center bg-no-repeat" style="background-image: url('/hero-section.jpg');">
-    <!-- Dark overlay -->
-    <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70"></div>
+<section id="hero" class="relative min-h-screen bg-cover bg-center bg-no-repeat" style="background-image: url('/hero-section.jpg');">
+    <!-- Enhanced dark overlay with gradient -->
+    <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/80"></div>
     
     <!-- Hero content -->
     <div class="relative z-10 flex items-center justify-center min-h-screen text-center text-white px-6">
-        <div class="max-w-4xl mx-auto">
-            <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-                From Pavement<br>
-                to Podium
+        <div class="max-w-5xl mx-auto">
+            <!-- Main headline with athletic typography -->
+            <h1 class="hero-title text-5xl md:text-6xl lg:text-7xl font-black mb-8 mt-16 leading-[0.9] tracking-tight text-glow">
+                <span class="block">From Pavement</span>
+                <span class="block">to Podium</span>
             </h1>
-            <p class="text-lg md:text-xl mb-8 text-gray-200 max-w-2xl mx-auto">
+            
+            <!-- Subtitle with better spacing -->
+            <p class="text-lg md:text-xl lg:text-2xl mb-12 text-gray-100 max-w-3xl mx-auto font-medium leading-relaxed">
                 Track your runs with accuracy, train with programs built for you, and feel the energy of a 
                 community that runs as hard as you do.
             </p>
-            <button class="bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded-full font-medium transition-colors">
-                Run With Us
-            </button>
+            
+            <!-- CTA Button with enhanced styling -->
+            <div class="mb-16">
+                <button class="bg-blue-600 hover:bg-blue-700 text-white px-10 py-4 rounded-full font-bold text-lg transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-105 transform">
+                    Run With Us
+                </button>
+            </div>
 
-            <img src="/hero-phone.png" alt="Hero Image" class="mt-8 mx-auto rounded-lg shadow-lg w-36" />
+            <!-- Phone mockup with enhanced presentation -->
+            <div class="relative">
+                <img 
+                    src="/hero-phone.png" 
+                    alt="PaceBeats App Interface" 
+                    class="mx-auto rounded-2xl shadow-2xl w-40 md:w-48 lg:w-56 transform hover:scale-105 transition-transform duration-500" 
+                />
+                <!-- Subtle glow effect behind phone -->
+                <div class="absolute inset-0 bg-blue-600/20 blur-3xl rounded-full scale-150 -z-10"></div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <div class="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
+            <div class="w-1 h-3 bg-white/60 rounded-full mt-2 animate-pulse"></div>
         </div>
     </div>
 </section>
+
+<style>
+    /* Athletic typography styling */
+    .hero-title {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-weight: 900;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        letter-spacing: -0.02em;
+    }
+    
+    /* Text glowing effect */
+    .text-glow {
+        color: #ffffff;
+        text-shadow: 
+            0 0 10px rgba(59, 130, 246, 0.5),
+            0 0 20px rgba(59, 130, 246, 0.3),
+            0 0 40px rgba(59, 130, 246, 0.2),
+            2px 2px 4px rgba(0, 0, 0, 0.8);
+        animation: textGlow 3s ease-in-out infinite alternate;
+    }
+    
+    @keyframes textGlow {
+        from {
+            text-shadow: 
+                0 0 10px rgba(59, 130, 246, 0.5),
+                0 0 20px rgba(59, 130, 246, 0.3),
+                0 0 40px rgba(59, 130, 246, 0.2),
+                2px 2px 4px rgba(0, 0, 0, 0.8);
+        }
+        to {
+            text-shadow: 
+                0 0 15px rgba(59, 130, 246, 0.8),
+                0 0 30px rgba(59, 130, 246, 0.5),
+                0 0 50px rgba(59, 130, 246, 0.3),
+                2px 2px 4px rgba(0, 0, 0, 0.8);
+        }
+    }
+    
+    /* Responsive typography scaling */
+    @media (max-width: 768px) {
+        .hero-title {
+            font-size: 3rem;
+            line-height: 0.85;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        .hero-title {
+            font-size: 2.5rem;
+            line-height: 0.9;
+        }
+    }
+    
+    /* Enhanced hover effects */
+    button {
+        position: relative;
+        overflow: hidden;
+    }
+    
+    button::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        transition: left 0.5s;
+    }
+    
+    button:hover::before {
+        left: 100%;
+    }
+    
+    /* Smooth scrolling enhancement */
+    html {
+        scroll-behavior: smooth;
+    }
+    
+    /* Loading animation for hero */
+    .hero-title span {
+        display: inline-block;
+        animation: fadeInUp 1s ease-out forwards;
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    
+    .hero-title span:first-child {
+        animation-delay: 0.2s;
+    }
+    
+    .hero-title span:last-child {
+        animation-delay: 0.4s;
+    }
+    
+    @keyframes fadeInUp {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    /* Performance optimizations */
+    .hero-title,
+    button {
+        will-change: transform;
+    }
+    
+    /* Accessibility improvements */
+    @media (prefers-reduced-motion: reduce) {
+        .hero-title span {
+            animation: none;
+            opacity: 1;
+            transform: none;
+        }
+        
+        .text-glow {
+            animation: none;
+        }
+        
+        .animate-bounce,
+        .animate-pulse {
+            animation: none;
+        }
+        
+        * {
+            transition-duration: 0.01ms !important;
+        }
+    }
+    
+    /* High contrast mode support */
+    @media (prefers-contrast: high) {
+        .hero-title {
+            text-shadow: 3px 3px 0px #000000;
+        }
+        
+        .text-glow {
+            text-shadow: 3px 3px 0px #000000;
+            animation: none;
+        }
+        
+        .text-gray-100 {
+            color: #ffffff;
+        }
+    }
+    
+    /* Focus styles for accessibility */
+    button:focus-visible {
+        outline: 3px solid #ffffff;
+        outline-offset: 2px;
+    }
+</style>
+
+<script>
+    // Enhanced performance with intersection observer
+    if ('IntersectionObserver' in window) {
+        const heroObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+        
+        const heroSection = document.querySelector('#hero');
+        if (heroSection) {
+            heroObserver.observe(heroSection);
+        }
+    }
+    
+    // Parallax effect for enhanced visual appeal (optional)
+    window.addEventListener('scroll', () => {
+        if (window.innerWidth > 768) { // Only on desktop
+            const scrolled = window.pageYOffset;
+            const heroSection = document.querySelector('#hero');
+            if (heroSection && scrolled < window.innerHeight) {
+                heroSection.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        }
+    });
+    
+    // Preload hero phone image for better performance
+    const heroPhone = new Image();
+    heroPhone.src = '/hero-phone.png';
+</script>
