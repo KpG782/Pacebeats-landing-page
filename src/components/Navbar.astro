@@ -1,0 +1,80 @@
+---
+
+
+---
+<nav class="bg-transparent text-black px-6 py-4 relative z-10">
+    <div class="flex items-center justify-between max-w-7xl mx-auto">
+        <!-- Left Navigation - Hidden on mobile -->
+        <div class="hidden lg:flex items-center space-x-8">
+            <a href="#" class="text-sm hover:text-gray-300 transition-colors">Our Feature</a>
+            <div class="relative group">
+                <button class="flex items-center text-sm hover:text-gray-300 transition-colors">
+                    Training Plan
+                    <svg class="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                    </svg>
+                </button>
+            </div>
+            <a href="#" class="text-sm hover:text-gray-300 transition-colors">Community</a>
+            <a href="#" class="text-sm hover:text-gray-300 transition-colors">Race</a>
+        </div>
+        
+        <!-- Mobile menu button - Visible on mobile only -->
+        <div class="lg:hidden">
+            <button id="mobile-menu-button" class="text-black hover:text-gray-600 transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+        
+        <!-- Center Logo -->
+        <div class="flex items-center">
+            
+           <img src="/pacebeats-text.svg" alt="Pacebeats Text" class="h-6" />
+        </div>
+        
+        <!-- Right Navigation - Hidden on mobile -->
+        <div class="hidden lg:flex items-center space-x-6">
+            <a href="#" class="text-sm hover:text-gray-300 transition-colors">Support</a>
+            <a href="#" class="text-sm hover:text-gray-300 transition-colors">Helps</a>
+            <button class="bg-white text-black px-6 py-2 rounded-full text-sm font-medium hover:bg-gray-200 transition-colors">
+                Sign Up
+            </button>
+        </div>
+        
+        <!-- Mobile Sign Up - Visible on mobile only -->
+        <div class="lg:hidden">
+            <button class="bg-white text-black px-4 py-2 rounded-full text-xs font-medium hover:bg-gray-200 transition-colors">
+                Sign Up
+            </button>
+        </div>
+    </div>
+    
+    <!-- Mobile menu - Hidden by default -->
+    <div id="mobile-menu" class="lg:hidden hidden bg-white bg-opacity-95 backdrop-blur-sm rounded-lg mt-4 py-4 px-6 shadow-lg">
+        <div class="flex flex-col space-y-4">
+            <a href="#" class="text-sm text-black hover:text-gray-600 transition-colors">Our Feature</a>
+            <button class="flex items-center text-sm text-black hover:text-gray-600 transition-colors justify-start">
+                Training Plan
+                <svg class="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                </svg>
+            </button>
+            <a href="#" class="text-sm text-black hover:text-gray-600 transition-colors">Community</a>
+            <a href="#" class="text-sm text-black hover:text-gray-600 transition-colors">Race</a>
+            <hr class="border-gray-300">
+            <a href="#" class="text-sm text-black hover:text-gray-600 transition-colors">Support</a>
+            <a href="#" class="text-sm text-black hover:text-gray-600 transition-colors">Helps</a>
+        </div>
+    </div>
+</nav>
+
+<script>
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    mobileMenuButton?.addEventListener('click', () => {
+        mobileMenu?.classList.toggle('hidden');
+    });
+</script>

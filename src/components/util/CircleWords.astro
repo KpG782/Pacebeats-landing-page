@@ -1,0 +1,22 @@
+---
+export interface Props {
+  className?: string;
+  mainText?: string;
+  subText?: string;
+}
+
+const { 
+  className = "relative w-full h-full", 
+  mainText = "Track", 
+  subText = "Your Progress" 
+} = Astro.props;
+---
+
+<div class={className}>
+  <div class="absolute inset-0 flex items-center justify-center">
+    <div class="flex flex-col items-center">
+      <span class="text-2xl font-bold">{mainText}</span>
+      <span class="text-sm text-gray-500">{subText}</span>
+    </div>
+  </div>
+</div>
