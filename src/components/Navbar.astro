@@ -1,10 +1,10 @@
 ---
 ---
 
-<nav class="fixed top-0 left-0 right-0 bg-black bg-opacity-20 backdrop-blur-sm text-white px-6 py-6 z-50" role="navigation" aria-label="Main navigation">
-    <div class="flex items-center justify-between max-w-7xl mx-auto">
-        <!-- Left Navigation - Hidden on mobile -->
-        <div class="hidden lg:flex items-center space-x-8">
+<nav class="fixed top-0 left-0 w-full bg-black bg-opacity-20 backdrop-blur-sm text-white px-4 sm:px-6 py-6 sm:py-8 z-50" role="navigation" aria-label="Main navigation">
+    <div class="max-w-7xl mx-auto relative">
+        <!-- Left Navigation - Hidden on mobile and tablet -->
+        <div class="hidden lg:flex items-center space-x-8 absolute left-0 top-1/2 transform -translate-y-1/2">
             <a href="#hero" class="text-sm hover:text-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1" aria-label="Go to homepage">
                 Home
             </a>
@@ -23,35 +23,32 @@
                     </svg>
                 </button>
                 
-                <!-- Features Dropdown Menu -->
-                <div 
-                    class="absolute top-full left-0 mt-2 w-64 bg-white bg-opacity-95 backdrop-blur-sm rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 border border-gray-200"
-                    role="menu"
-                    aria-labelledby="features-menu-button"
-                >
-                    <div class="py-2">
-                        <a href="#features" class="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-100 transition-colors focus:bg-gray-100 focus:outline-none" role="menuitem">
-                            <span class="font-medium">💓 Real-Time Heart Rate</span>
-                            <p class="text-xs text-gray-600">Continuous HR monitoring</p>
-                        </a>
-                        <a href="#features" class="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-100 transition-colors focus:bg-gray-100 focus:outline-none" role="menuitem">
-                            <span class="font-medium">🏃‍♂️ Smart Pace Detection</span>
-                            <p class="text-xs text-gray-600">Intelligent pace analysis</p>
-                        </a>
-                        <a href="#watch-integration" class="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-100 transition-colors focus:bg-gray-100 focus:outline-none" role="menuitem">
-                            <span class="font-medium">⌚ Galaxy Watch Integration</span>
-                            <p class="text-xs text-gray-600">Seamless wearable sync</p>
-                        </a>
-                        <a href="#features" class="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-100 transition-colors focus:bg-gray-100 focus:outline-none" role="menuitem">
-                            <span class="font-medium">🌙 Dark Mode UI</span>
-                            <p class="text-xs text-gray-600">Optimized for outdoor use</p>
-                        </a>
-                        <a href="#features" class="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-100 transition-colors focus:bg-gray-100 focus:outline-none" role="menuitem">
-                            <span class="font-medium">🔐 Secure Authentication</span>
-                            <p class="text-xs text-gray-600">Clean architecture</p>
-                        </a>
-                    </div>
-                </div>
+               <!-- Features Dropdown Menu -->
+<div 
+    class="absolute top-full left-0 mt-2 w-64 bg-white bg-opacity-95 backdrop-blur-sm rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 border border-gray-200"
+    role="menu"
+    aria-labelledby="features-menu-button"
+>
+    <div class="py-2">
+        <a href="#features" class="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-100 transition-colors focus:bg-gray-100 focus:outline-none" role="menuitem">
+            <span class="font-medium">📊 Real-Time Pace & Analytics</span>
+            <p class="text-xs text-gray-600">Live pacing insights + post-run performance trends</p>
+        </a>
+        <a href="#features" class="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-100 transition-colors focus:bg-gray-100 focus:outline-none" role="menuitem">
+            <span class="font-medium">🏃‍♂️ Smart Pace Detection</span>
+            <p class="text-xs text-gray-600">AI-driven analysis that adapts to your running style</p>
+        </a>
+        <a href="#features" class="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-100 transition-colors focus:bg-gray-100 focus:outline-none" role="menuitem">
+            <span class="font-medium">🎵 Spotify Integration</span>
+            <p class="text-xs text-gray-600">Music playback that syncs with your running pace</p>
+        </a>
+        <a href="#watch-integration" class="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-100 transition-colors focus:bg-gray-100 focus:outline-none" role="menuitem">
+            <span class="font-medium">⌚ Pacebeats Watch Companion</span>
+            <p class="text-xs text-gray-600">Companion app for selected smartwatches</p>
+        </a>
+    </div>
+</div>
+
             </div>
             
             <a href="#how-it-works" class="text-sm hover:text-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1">
@@ -62,8 +59,8 @@
             </a>
         </div>
 
-        <!-- Mobile menu button - Visible on mobile only -->
-        <div class="lg:hidden">
+        <!-- Mobile menu button - Visible on mobile and tablet -->
+        <div class="lg:hidden absolute left-0 top-1/2 transform -translate-y-1/2">
             <button 
                 id="mobile-menu-button" 
                 class="text-white hover:text-gray-300 transition-colors p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50"
@@ -77,16 +74,22 @@
             </button>
         </div>
         
-        <!-- Center Logo -->
-        <div class="flex items-center justify-center lg:absolute lg:left-1/2 lg:transform lg:-translate-x-1/2">
-            <a href="#hero" class="focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md" aria-label="PaceBeats - Go to homepage">
-                <img src="/pacebeats-text-white.svg" alt="PaceBeats" class="h-6" />
+        <!-- Center Logo - Always centered on ALL screen sizes -->
+        <div class="flex items-center justify-center">
+            <a href="#hero" class="focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md" aria-label="Pacebeats - Go to homepage">
+                <img src="/pacebeats-text-white.svg" alt="Pacebeats" class="h-6" />
             </a>
         </div>
         
-        <!-- Right Navigation - Hidden on mobile -->
-        <div class="hidden lg:flex items-center space-x-6">
-            <a href="#support" class="text-sm hover:text-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1">
+        <!-- Right Navigation - Hidden on mobile and tablet -->
+        <div class="hidden lg:flex items-center space-x-6 absolute right-0 top-1/2 transform -translate-y-1/2">
+            <a 
+                href="https://buymeacoffee.com/Loki123" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                class="text-sm hover:text-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1"
+                aria-label="Support us on Buy Me a Coffee (opens in new tab)"
+            >
                 Support
             </a>
             <a href="#team" class="text-sm hover:text-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1">
@@ -104,24 +107,18 @@
                 </svg>
                 Docs
             </a>
-            <button class="bg-white text-black px-6 py-2 rounded-full text-sm font-medium hover:bg-gray-200 transition-colors shadow-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50">
-                <!-- Download App -->
-                 In Development
+            <button class="bg-white text-black px-4 py-2 rounded-full text-xs font-medium hover:bg-gray-200 transition-colors shadow-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50">
+                Development Mode
             </button>
         </div>
 
-        <!-- Mobile download button - Visible on mobile only -->
-        <div class="lg:hidden">
-            <button class="bg-white text-black px-4 py-2 rounded-full text-xs font-medium hover:bg-gray-200 transition-colors shadow-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50">
-                In Development
-            </button>
-        </div>
+    
     </div>
     
     <!-- Mobile menu -->
     <div 
         id="mobile-menu" 
-        class="lg:hidden hidden bg-black bg-opacity-90 backdrop-blur-sm rounded-lg mt-4 py-4 px-6 shadow-lg border border-gray-700"
+        class="lg:hidden hidden bg-black bg-opacity-90 backdrop-blur-sm rounded-lg mt-4 mx-4 py-4 px-6 shadow-lg border border-gray-700"
         role="menu"
         aria-hidden="true"
     >
@@ -135,19 +132,20 @@
                 <p id="mobile-features-heading" class="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-2">Features</p>
                 <div class="space-y-2">
                     <a href="#features" class="block text-sm text-white hover:text-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1" role="menuitem">
-                        💓 Real-Time Heart Rate
+                        <span class="font-medium">📊 Real-Time Pace & Analytics</span>
+                        <p class="text-xs text-gray-400 mt-1">Live pacing insights + post-run performance trends</p>
                     </a>
                     <a href="#features" class="block text-sm text-white hover:text-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1" role="menuitem">
-                        🏃‍♂️ Smart Pace Detection
+                        <span class="font-medium">🏃‍♂️ Smart Pace Detection</span>
+                        <p class="text-xs text-gray-400 mt-1">AI-driven analysis that adapts to your running style</p>
+                    </a>
+                    <a href="#features" class="block text-sm text-white hover:text-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1" role="menuitem">
+                        <span class="font-medium">🎵 Spotify Integration</span>
+                        <p class="text-xs text-gray-400 mt-1">Music playback that syncs with your running pace</p>
                     </a>
                     <a href="#watch-integration" class="block text-sm text-white hover:text-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1" role="menuitem">
-                        ⌚ Galaxy Watch Integration
-                    </a>
-                    <a href="#features" class="block text-sm text-white hover:text-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1" role="menuitem">
-                        🌙 Dark Mode UI
-                    </a>
-                    <a href="#features" class="block text-sm text-white hover:text-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1" role="menuitem">
-                        🔐 Secure Authentication
+                        <span class="font-medium">⌚ Pacebeats Watch Companion</span>
+                        <p class="text-xs text-gray-400 mt-1">Companion app for selected smartwatches</p>
                     </a>
                 </div>
             </div>
@@ -158,7 +156,14 @@
             <a href="#tech-stack" class="text-sm text-white hover:text-gray-300 transition-colors mobile-nav-link focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1" role="menuitem">
                 🛠️ Tech Stack
             </a>
-            <a href="#support" class="text-sm text-white hover:text-gray-300 transition-colors mobile-nav-link focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1" role="menuitem">
+            <a 
+                href="https://buymeacoffee.com/Loki123" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                class="text-sm text-white hover:text-gray-300 transition-colors mobile-nav-link focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1" 
+                role="menuitem"
+                aria-label="Support us on Buy Me a Coffee (opens in new tab)"
+            >
                 💬 Support
             </a>
             <a href="#team" class="text-sm text-white hover:text-gray-300 transition-colors mobile-nav-link focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1" role="menuitem">
@@ -182,12 +187,40 @@
             </a>
         </div>
     </div>
-</nav>
-
-<!-- Add padding to body to account for fixed navbar -->
+    
+    <!-- Add padding to body to account for fixed navbar -->
 <style>
+    /* Ensure navbar spans full viewport width */
+    nav {
+        width: 100vw;
+        min-width: 100%;
+        box-sizing: border-box;
+    }
+    
     body {
-        padding-top: 80px; /* Adjust based on navbar height */
+        padding-top: 70px;
+        margin: 0;
+        padding-left: 0;
+        padding-right: 0;
+    }
+    
+    /* Responsive body padding */
+    @media (min-width: 640px) {
+        body {
+            padding-top: 80px;
+        }
+    }
+    
+    @media (min-width: 1024px) {
+        body {
+            padding-top: 88px;
+        }
+    }
+    
+    /* Ensure no horizontal overflow */
+    html, body {
+        overflow-x: hidden;
+        width: 100%;
     }
     
     /* Enhanced focus styles for accessibility */
@@ -263,7 +296,7 @@
         
         // Focus management
         if (isMenuOpen && mobileMenu) {
-            const firstMenuItem = mobileMenu.querySelector('[role="menuitem"]');
+            const firstMenuItem = mobileMenu.querySelector('[role="menuitem"]') as HTMLElement;
             firstMenuItem?.focus();
         }
     }
@@ -271,7 +304,7 @@
     mobileMenuButton?.addEventListener('click', toggleMobileMenu);
     
     // Smooth scrolling with performance optimization
-    function smoothScrollTo(target) {
+    function smoothScrollTo(target: Element) {
         if ('scrollBehavior' in document.documentElement.style) {
             target.scrollIntoView({ behavior: 'smooth', block: 'start' });
         } else {
@@ -282,20 +315,23 @@
     
     // Optimized scroll event handler
     document.addEventListener('click', function(e) {
-        const link = e.target.closest('a[href^="#"]');
+        const target = e.target as HTMLElement;
+        if (!target) return;
+        
+        const link = target.closest('a[href^="#"]') as HTMLAnchorElement | null;
         if (link) {
             const href = link.getAttribute('href');
-            if (href !== '#' && href.length > 1) {
+            if (href && href !== '#' && href.length > 1) {
                 e.preventDefault();
-                const target = document.querySelector(href);
-                if (target) {
+                const targetElement = document.querySelector(href);
+                if (targetElement) {
                     // Close mobile menu if open
                     if (isMenuOpen) {
                         toggleMobileMenu();
                     }
                     
                     // Smooth scroll to target
-                    smoothScrollTo(target);
+                    smoothScrollTo(targetElement);
                 }
             }
         }
@@ -311,9 +347,10 @@
     
     // Close mobile menu when clicking outside (with performance optimization)
     document.addEventListener('click', (e) => {
-        if (isMenuOpen && 
-            !mobileMenuButton?.contains(e.target) && 
-            !mobileMenu?.contains(e.target)) {
+        const target = e.target as HTMLElement;
+        if (isMenuOpen && target &&
+            !mobileMenuButton?.contains(target) && 
+            !mobileMenu?.contains(target)) {
             toggleMobileMenu();
         }
     });

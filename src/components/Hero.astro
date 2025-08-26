@@ -11,13 +11,14 @@
         <div class="max-w-5xl mx-auto">
             <!-- Main headline with athletic typography -->
             <h1 class="hero-title text-5xl md:text-6xl lg:text-7xl font-black mb-8 mt-16 leading-[0.9] tracking-tight text-glow">
-                <span class="block">Your Running Era</span>
-                <span class="block">Starts Now</span>
+                <span class="block">Run to the Rhythm.</span>
+                <span class="block">Achieve your Pace.</span>
             </h1>
             
             <!-- Subtitle with better spacing -->
             <p class="text-lg md:text-xl lg:text-2xl mb-12 text-gray-100 max-w-3xl mx-auto font-medium leading-relaxed">
-                Start your fitness villain arc. Track every step, vibe with runners who get it, and turn those 'I can't run' thoughts into 'watch me glow up.'
+               Pacebeats transforms every run by syncing your steps with the perfect song.
+Feel the music adapt to your stride, push past your limits, and turn every workout into a rhythm-powered journey.
             </p>
             
             <!-- CTA Button with enhanced styling -->
@@ -30,9 +31,9 @@
             <!-- Phone mockup with enhanced presentation -->
             <div class="relative">
                 <img 
-                    src="/spotify.jpg" 
+                    src="/hero-section-1.svg" 
                     alt="PaceBeats App Interface" 
-                    class="mx-auto rounded-2xl shadow-2xl w-40 md:w-48 lg:w-56 transform hover:scale-105 transition-transform duration-500" 
+                    class="mx-auto rounded-2xl shadow-2xl w-40 md:w-48  lg:w-80 transform hover:scale-105 transition-transform duration-500" 
                 />
                 <!-- Subtle glow effect behind phone -->
                 <div class="absolute inset-0 bg-blue-600/20 blur-3xl rounded-full scale-150 -z-10"></div>
@@ -223,7 +224,7 @@
     window.addEventListener('scroll', () => {
         if (window.innerWidth > 768) { // Only on desktop
             const scrolled = window.pageYOffset;
-            const heroSection = document.querySelector('#hero');
+            const heroSection = document.querySelector('#hero') as HTMLElement;
             if (heroSection && scrolled < window.innerHeight) {
                 heroSection.style.transform = `translateY(${scrolled * 0.5}px)`;
             }

@@ -5,52 +5,72 @@
     <div class="max-w-7xl mx-auto">
         <!-- Feature cards grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <!-- Real-Time Heart Rate Monitoring (Featured) -->
-            <div class="bg-blue-900 p-8 rounded-2xl h-80 relative overflow-hidden">
-                <div class="relative z-10">
-                    <h3 class="text-xl font-bold mb-4 leading-tight text-white">
-                        Real-Time Heart Rate<br>
-                        Monitoring
-                    </h3>
-                    <p class="text-blue-100 text-sm leading-relaxed">
-                        Monitor every step with real-time GPS and pace analytics to keep you right on target. Perfect for training and race day.
-                    </p>
+            <!-- Real-Time Pace & Analytics (Featured) -->
+            <div class="bg-gradient-to-br from-red-800 to-red-900 p-6 rounded-2xl h-80 relative overflow-hidden">
+                <div class="relative z-10 h-full flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-6 leading-tight text-white font-inter tracking-tight">
+                            Precision Pace<br>
+                            Tracking
+                        </h3>
+                    </div>
+                    <div>
+                        <p class="text-red-100 text-sm leading-relaxed font-inter">
+                            Monitor every step with real-time GPS and pace analytics to keep you right on target. Perfect for training and race day.
+                        </p>
+                    </div>
                 </div>
-                <!-- Subtle gradient overlay -->
-                <div class="absolute inset-0 bg-gradient-to-br from-blue-800/50 to-blue-900/80"></div>
             </div>
             
             <!-- Smart Pace Detection -->
-            <div class="bg-gray-900 p-8 rounded-2xl h-80 border border-gray-800 hover:border-gray-700 transition-colors">
-                <h3 class="text-xl font-bold mb-4 leading-tight text-gray-200">
-                    Smart Pace<br>
-                    Detection
-                </h3>
-                <p class="text-gray-400 text-sm leading-relaxed">
-                    AI-powered pace analysis that evolves with your running style, keeping you optimized and avoiding overexertion.
-                </p>
+            <div class="bg-gray-900 p-6 rounded-2xl h-80 border border-gray-800 hover:border-gray-700 transition-colors">
+                <div class="h-full flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-6 leading-tight text-gray-300 font-inter tracking-tight">
+                            Adaptive<br>
+                            Training Plans
+                        </h3>
+                    </div>
+                    <div>
+                        <p class="text-gray-400 text-sm leading-relaxed font-inter">
+                            AI-powered programs that evolve with your progress, keeping you challenged and avoiding burnout.
+                        </p>
+                    </div>
+                </div>
             </div>
             
-            <!-- Galaxy Watch Integration -->
-            <div class="bg-gray-900 p-8 rounded-2xl h-80 border border-gray-800 hover:border-gray-700 transition-colors">
-                <h3 class="text-xl font-bold mb-4 leading-tight text-gray-200">
-                    Galaxy Watch<br>
-                    Integration
-                </h3>
-                <p class="text-gray-400 text-sm leading-relaxed">
-                    Seamless sync with Galaxy Watch for hands-free tracking. Monitor heart rate, pace, and distance directly from your wrist.
-                </p>
+            <!-- Route Discovery -->
+            <div class="bg-gray-900 p-6 rounded-2xl h-80 border border-gray-800 hover:border-gray-700 transition-colors">
+                <div class="h-full flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-6 leading-tight text-gray-300 font-inter tracking-tight">
+                            Route<br>
+                            Discovery
+                        </h3>
+                    </div>
+                    <div>
+                        <p class="text-gray-400 text-sm leading-relaxed font-inter">
+                            Explore curated urban and trail routes with difficulty ratings, so every run feels like a new adventure.
+                        </p>
+                    </div>
+                </div>
             </div>
             
-            <!-- Dark Mode UI -->
-            <div class="bg-gray-900 p-8 rounded-2xl h-80 border border-gray-800 hover:border-gray-700 transition-colors">
-                <h3 class="text-xl font-bold mb-4 leading-tight text-gray-200">
-                    Dark Mode<br>
-                    UI
-                </h3>
-                <p class="text-gray-400 text-sm leading-relaxed">
-                    Optimized dark interface for outdoor visibility and reduced eye strain during early morning or night runs.
-                </p>
+            <!-- Community Challenges -->
+            <div class="bg-gray-900 p-6 rounded-2xl h-80 border border-gray-800 hover:border-gray-700 transition-colors">
+                <div class="h-full flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-6 leading-tight text-gray-300 font-inter tracking-tight">
+                            Community<br>
+                            Challenges
+                        </h3>
+                    </div>
+                    <div>
+                        <p class="text-gray-400 text-sm leading-relaxed font-inter">
+                            Join global leaderboards, compete in themed runs, and push each other beyond limits.
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -62,7 +82,7 @@
         </div>
 
   <!-- Hero Image Section -->
-<div class="relative rounded-3xl overflow-hidden min-h-[500px] md:min-h-[600px]">
+<div class="relative rounded-3xl overflow-hidden h-[400px] sm:min-h-[500px] md:min-h-[600px] lg:min-h-[700px]">
     <img 
         src="/users.jpg" 
         alt="Athletes running" 
@@ -70,53 +90,49 @@
     />
     
     <!-- Dynamic overlay with gradient -->
-    <div class="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-black/50"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/60"></div>
 
-    <!-- Center text -->
-    <div class="absolute inset-0 flex items-center justify-center z-20">
-        <h2 class="text-4xl md:text-6xl lg:text-7xl font-black text-white text-center font-inter leading-tight">
-            Built for Every Athlete
+    <!-- Center text - Responsive typography -->
+    <div class="absolute inset-0 flex items-center justify-center z-20 px-4 sm:px-6 md:px-8">
+        <h2 class="text-2xl sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white text-center font-inter leading-tight max-w-6xl">
+            Built for Every Music Enthusiast
         </h2>
     </div>
     
-    <!-- Floating feature labels positioned dynamically -->
-    <!-- Top left area -->
-    <div class="absolute top-6 left-6 bg-white/10 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/20 z-10">
+    <!-- Floating feature labels - Compact and better positioned -->
+    <!-- Top area -->
+    <div class="absolute top-4 left-4 sm:top-6 sm:left-6 md:top-8 md:left-8 bg-black/70 backdrop-blur-sm px-2 py-1 rounded-md border border-white/30 z-10">
         <span class="text-white text-xs font-medium">Pace Tracking</span>
     </div>
     
-    <!-- Top right area -->
-    <div class="absolute top-8 right-8 bg-white/10 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/20 z-10">
+    <div class="absolute top-4 right-4 sm:top-6 sm:right-6 md:top-8 md:right-8 bg-black/70 backdrop-blur-sm px-2 py-1 rounded-md border border-white/30 z-10">
         <span class="text-white text-xs font-medium">Night Run Ready</span>
     </div>
     
-    <!-- Left side, upper middle -->
-    <div class="absolute top-1/4 left-4 bg-white/10 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/20 z-10">
+    <!-- Left side labels -->
+    <div class="absolute top-1/3 left-4 sm:left-6 md:left-8 bg-black/70 backdrop-blur-sm px-2 py-1 rounded-md border border-white/30 z-10">
         <span class="text-white text-xs font-medium">Break Your Pace</span>
     </div>
     
-    <!-- Left side, lower middle -->
-    <div class="absolute bottom-1/3 left-6 bg-white/10 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/20 z-10">
+    <div class="absolute bottom-1/3 left-4 sm:left-6 md:left-8 bg-black/70 backdrop-blur-sm px-2 py-1 rounded-md border border-white/30 z-10">
         <span class="text-white text-xs font-medium">Urban Routes</span>
     </div>
     
-    <!-- Right side, upper middle -->
-    <div class="absolute top-1/3 right-6 bg-white/10 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/20 z-10">
+    <!-- Right side labels -->
+    <div class="absolute top-1/3 right-4 sm:right-6 md:right-8 bg-black/70 backdrop-blur-sm px-2 py-1 rounded-md border border-white/30 z-10">
         <span class="text-white text-xs font-medium">Split Analysis</span>
     </div>
     
-    <!-- Right side, lower middle -->
-    <div class="absolute bottom-1/4 right-4 bg-white/10 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/20 z-10">
+    <div class="absolute bottom-1/3 right-4 sm:right-6 md:right-8 bg-black/70 backdrop-blur-sm px-2 py-1 rounded-md border border-white/30 z-10">
         <span class="text-white text-xs font-medium">Distance Analysis</span>
     </div>
     
-    <!-- Bottom left -->
-    <div class="absolute bottom-6 left-1/4 bg-white/10 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/20 z-10">
+    <!-- Bottom area - Fix mobile positioning -->
+    <div class="absolute bottom-4 left-8 sm:left-1/4 sm:bottom-6 md:bottom-8 md:left-1/4 bg-black/70 backdrop-blur-sm px-2 py-1 rounded-md border border-white/30 z-10">
         <span class="text-white text-xs font-medium">Run Wild</span>
     </div>
     
-    <!-- Bottom right -->
-    <div class="absolute bottom-8 right-1/4 bg-white/10 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/20 z-10">
+    <div class="absolute bottom-4 right-8 sm:right-1/4 sm:bottom-6 md:bottom-8 md:right-1/4 bg-black/70 backdrop-blur-sm px-2 py-1 rounded-md border border-white/30 z-10">
         <span class="text-white text-xs font-medium">Interval Boost</span>
     </div>
 </div>
@@ -127,31 +143,75 @@
 .font-inter {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
-    letter-spacing: -0.025em;
+    letter-spacing: -0.02em;
+    font-weight: 700;
 }
 
-/* Floating label animations */
-.absolute.bg-white\/10 {
-    animation: floatLabel 3s ease-in-out infinite alternate;
+/* Enhanced feature card styling to match the image */
+.bg-gray-900 {
+    background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+}
+
+.bg-gradient-to-br {
+    background: linear-gradient(135deg, #991b1b 0%, #7f1d1d 100%);
+}
+
+/* Card hover effects */
+.bg-gray-900:hover {
+    transform: translateY(-2px);
     transition: all 0.3s ease;
+    border-color: #4B5563;
 }
 
-.absolute.bg-white\/10:nth-child(odd) {
+/* Featured card styling */
+.bg-gradient-to-br.from-red-800.to-red-900 {
+    box-shadow: 0 4px 20px rgba(220, 38, 38, 0.2);
+}
+
+.absolute.bg-black\/70 {
+    animation: subtleFloat 4s ease-in-out infinite alternate;
+    transition: all 0.2s ease;
+}
+
+.absolute.bg-black\/70:nth-child(odd) {
     animation-delay: 0.5s;
 }
 
-.absolute.bg-white\/10:nth-child(even) {
-    animation-delay: 1s;
+.absolute.bg-black\/70:nth-child(even) {
+    animation-delay: 1.5s;
 }
 
-@keyframes floatLabel {
+@keyframes subtleFloat {
     from {
         transform: translateY(0px);
-        opacity: 0.8;
+        opacity: 0.85;
     }
     to {
-        transform: translateY(-5px);
+        transform: translateY(-3px);
         opacity: 1;
+    }
+}
+
+/* Compact hover effects */
+.absolute.bg-black\/70:hover {
+    background: rgba(0, 0, 0, 0.85);
+    transform: scale(1.02) translateY(-1px);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Remove old floating label styles */
+.absolute.bg-white\/10 {
+    display: none;
+}
+
+/* Responsive adjustments for compact labels */
+@media (max-width: 768px) {
+    .absolute.bg-black\/70 {
+        padding: 0.2rem 0.4rem;
+    }
+    
+    .absolute.bg-black\/70 span {
+        font-size: 0.7rem;
     }
 }
 
@@ -201,13 +261,47 @@ h2.font-inter, h3.font-inter {
     outline: 2px solid rgba(255, 255, 255, 0.8);
     outline-offset: 2px;
 }
-</style>
-    </div>
-</section>
 
-<style>
-    /* Enhanced hover effects for feature cards */
-    .bg-gray-900:hover {
+/* Enhanced mobile positioning */
+@media (max-width: 640px) {
+    .absolute.bg-black\/70 {
+        padding: 0.15rem 0.3rem;
+    }
+    
+    .absolute.bg-black\/70 span {
+        font-size: 0.65rem;
+    }
+    
+    /* Specific mobile positioning to prevent overlap */
+    .absolute.bottom-4.left-8 {
+        bottom: 0.75rem;
+        left: 0.5rem;
+    }
+    
+    .absolute.bottom-4.right-8 {
+        bottom: 0.75rem;
+        right: 0.5rem;
+    }
+    
+    /* Adjust other bottom labels */
+    .absolute.bottom-1\/3 {
+        bottom: 35%;
+    }
+}
+
+/* Tablet adjustments */
+@media (min-width: 641px) and (max-width: 768px) {
+    .absolute.bg-black\/70 {
+        padding: 0.2rem 0.4rem;
+    }
+    
+    .absolute.bg-black\/70 span {
+        font-size: 0.7rem;
+    }
+}
+
+/* Enhanced hover effects for feature cards */
+.bg-gray-900:hover {
         transform: translateY(-2px);
         transition: all 0.3s ease;
     }
@@ -259,3 +353,5 @@ h2.font-inter, h3.font-inter {
         outline-offset: 2px;
     }
 </style>
+    </div>
+</section>
