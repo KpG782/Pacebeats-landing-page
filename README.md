@@ -1,8 +1,8 @@
-# 💓 PaceBeats Landing Page — Modern Running App Showcase
+# 💓 Pacebeats Landing Page — Modern Running App Showcase
 
 <img src="https://img.shields.io/badge/Astro-Framework-orange?style=flat-square" alt="Astro Framework" /> <img src="https://img.shields.io/badge/TailwindCSS-Styling-blue?style=flat-square" alt="TailwindCSS" /> <img src="https://img.shields.io/badge/TypeScript-Language-blue?style=flat-square" alt="TypeScript" /> <img src="https://img.shields.io/badge/License-MIT-green?style=flat-square" alt="MIT License" />
 
-Welcome to the **PaceBeats Landing Page**, a modern, responsive website built with **Astro** and **TailwindCSS** that showcases our smart heart rate monitoring app for runners. This landing page features stunning visuals, smooth animations, and a clean design that converts visitors into users. 🏃‍♂️💓🎯
+Welcome to the **Pacebeats Landing Page**, a modern, responsive website built with **Astro** and **TailwindCSS** that showcases our smart heart rate monitoring app for runners. This landing page features stunning visuals, smooth animations, and a clean design that converts visitors into users. 🏃‍♂️💓🎯
 
 ---
 
