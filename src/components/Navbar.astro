@@ -1,22 +1,59 @@
 ---
 ---
 
-<!-- Skip Navigation Link for Screen Readers -->
-<a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-white text-black px-4 py-2 rounded-md z-[100] font-medium">
-    Skip to main content
-</a>
+<!-- Responsive Navbar Styles -->
+<style>
+    /* Ensure full viewport width with no gaps */
+    .navbar-full-width {
+        width: 100vw;
+        position: relative;
+        left: 50%;
+        right: 50%;
+        margin-left: -50vw;
+        margin-right: -50vw;
+    }
+    
+    /* Prevent horizontal scroll */
+    body {
+        overflow-x: hidden;
+    }
+    
+    /* Mobile optimizations */
+    @media (max-width: 640px) {
+        .navbar-container {
+            padding-left: 0.5rem;
+            padding-right: 0.5rem;
+        }
+    }
+    
+    /* Tablet optimizations */
+    @media (min-width: 641px) and (max-width: 1279px) {
+        .navbar-container {
+            padding-left: 0.75rem;
+            padding-right: 0.75rem;
+        }
+    }
+    
+    /* Desktop optimizations */
+    @media (min-width: 1280px) {
+        .navbar-container {
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+    }
+</style>
 
 <header role="banner">
-    <nav class="fixed top-0 left-0 w-full bg-black bg-opacity-20 backdrop-blur-sm text-white px-4 sm:px-6 py-6 sm:py-8 z-50" 
+    <nav class="navbar-full-width fixed top-0 left-0 right-0 bg-black bg-opacity-20 backdrop-blur-sm text-white px-2 sm:px-3 md:px-4 py-3 sm:py-4 md:py-6 z-50" 
          role="navigation" 
          aria-label="Main navigation"
          itemscope 
          itemtype="https://schema.org/SiteNavigationElement">
-        <div class="max-w-7xl mx-auto relative">
+        <div class="container mx-auto relative px-0 max-w-none w-full">
             <!-- Left Navigation - Hidden on mobile and tablet -->
-            <div class="hidden lg:flex items-center space-x-8 absolute left-0 top-1/2 transform -translate-y-1/2">
+            <div class="hidden xl:flex items-center space-x-6 2xl:space-x-8 absolute left-4 top-1/2 transform -translate-y-1/2 w-auto max-w-[35%] overflow-hidden">
                 <a href="#hero" 
-                   class="text-sm hover:text-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1" 
+                   class="text-sm hover:text-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1 whitespace-nowrap" 
                    aria-label="Navigate to homepage hero section"
                    itemprop="url">
                     <span itemprop="name">Home</span>
@@ -25,7 +62,7 @@
                 <!-- Features Dropdown -->
                 <div class="relative group" role="menubar">
                     <button 
-                        class="flex items-center text-sm hover:text-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1"
+                        class="flex items-center text-sm hover:text-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1 whitespace-nowrap"
                         aria-expanded="false"
                         aria-haspopup="true"
                         aria-label="Features menu - Press enter or space to open"
@@ -45,7 +82,7 @@
                     
                     <!-- Features Dropdown Menu -->
                     <div 
-                        class="absolute top-full left-0 mt-2 w-64 bg-white bg-opacity-95 backdrop-blur-sm rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 border border-gray-200"
+                        class="absolute top-full left-0 mt-2 w-64 lg:w-72 bg-white bg-opacity-95 backdrop-blur-sm rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 border border-gray-200 z-50"
                         role="menu"
                         aria-labelledby="features-menu-button"
                         aria-hidden="true"
@@ -92,13 +129,13 @@
                 </div>
                 
                 <a href="#how-it-works" 
-                   class="text-sm hover:text-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1"
+                   class="text-sm hover:text-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1 whitespace-nowrap"
                    aria-label="Learn how Pacebeats works"
                    itemprop="url">
                     <span itemprop="name">How It Works</span>
                 </a>
                 <a href="#tech-stack" 
-                   class="text-sm hover:text-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1"
+                   class="text-sm hover:text-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1 whitespace-nowrap"
                    aria-label="View Pacebeats technology stack"
                    itemprop="url">
                     <span itemprop="name">Tech Stack</span>
@@ -106,24 +143,24 @@
             </div>
 
             <!-- Mobile menu button - Visible on mobile and tablet -->
-            <div class="lg:hidden absolute left-0 top-1/2 transform -translate-y-1/2">
+            <div class="xl:hidden absolute left-4 top-1/2 transform -translate-y-1/2 z-10">
                 <button 
                     id="mobile-menu-button" 
-                    class="text-white hover:text-gray-300 transition-colors p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50"
+                    class="text-white hover:text-gray-300 transition-colors p-1.5 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50"
                     aria-expanded="false"
                     aria-controls="mobile-menu"
                     aria-label="Open navigation menu"
                     type="button"
                 >
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                     </svg>
                     <span class="sr-only">Toggle navigation menu</span>
                 </button>
             </div>
             
-            <!-- Center Logo - Always centered on ALL screen sizes -->
-            <div class="flex items-center justify-center" 
+            <!-- Center Logo - Always centered with minimal spacing -->
+            <div class="flex items-center justify-center mx-6 sm:mx-8 xl:mx-0 min-h-[32px]" 
                  itemscope 
                  itemtype="https://schema.org/Organization">
                 <a href="#hero" 
@@ -132,7 +169,7 @@
                    itemprop="url">
                     <img src="/pacebeats-text-white.svg" 
                          alt="Pacebeats - Running companion app that syncs every stride with the perfect beat" 
-                         class="h-6"
+                         class="h-4 sm:h-5 md:h-6"
                          itemprop="logo"
                          width="120"
                          height="28"
@@ -144,19 +181,19 @@
             </div>
             
             <!-- Right Navigation - Hidden on mobile and tablet -->
-            <div class="hidden lg:flex items-center space-x-6 absolute right-0 top-1/2 transform -translate-y-1/2">
+            <div class="hidden xl:flex items-center space-x-3 2xl:space-x-4 absolute right-4 top-1/2 transform -translate-y-1/2 w-auto max-w-[35%] overflow-hidden">
                 <a 
                     href="https://buymeacoffee.com/Loki123" 
                     target="_blank" 
                     rel="noopener noreferrer nofollow"
-                    class="text-sm hover:text-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1"
+                    class="text-sm hover:text-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1 whitespace-nowrap"
                     aria-label="Support Pacebeats development on Buy Me a Coffee - Opens in new tab"
                     itemprop="url"
                 >
                     <span itemprop="name">Support</span>
                 </a>
                 <a href="#team" 
-                   class="text-sm hover:text-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1"
+                   class="text-sm hover:text-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1 whitespace-nowrap"
                    aria-label="Meet the Pacebeats team"
                    itemprop="url">
                     <span itemprop="name">Team</span>
@@ -165,7 +202,7 @@
                     href="https://github.com/KpG782" 
                     target="_blank" 
                     rel="noopener noreferrer nofollow" 
-                    class="flex items-center text-sm hover:text-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1"
+                    class="flex items-center text-sm hover:text-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1 whitespace-nowrap"
                     aria-label="View Pacebeats documentation on GitHub - Opens in new tab"
                     itemprop="url"
                 >
@@ -174,23 +211,26 @@
                     </svg>
                     <span itemprop="name">Docs</span>
                 </a>
-                <button class="bg-white text-black px-4 py-2 rounded-full text-xs font-medium hover:bg-gray-200 transition-colors shadow-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50"
+                <!-- Development Mode Button - Responsive sizing -->
+                <button class="bg-white text-black px-2 py-1 rounded-full text-xs font-medium hover:bg-gray-200 transition-colors shadow-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 whitespace-nowrap"
                         type="button"
                         aria-label="Currently in development mode">
-                    <span aria-hidden="true">🚧</span> Development Mode
+                    <span aria-hidden="true" class="hidden sm:inline">🚧</span> 
+                    <span class="hidden 2xl:inline">Development Mode</span>
+                    <span class="2xl:hidden">Dev</span>
                 </button>
             </div>
         </div>
         
-        <!-- Mobile menu -->
+        <!-- Mobile menu - Improved responsive design -->
         <div 
             id="mobile-menu" 
-            class="lg:hidden hidden bg-black bg-opacity-90 backdrop-blur-sm rounded-lg mt-4 mx-4 py-4 px-6 shadow-lg border border-gray-700"
+            class="xl:hidden hidden bg-black bg-opacity-90 backdrop-blur-sm rounded-lg mt-2 mx-4 py-3 px-4 shadow-lg border border-gray-700"
             role="menu"
             aria-hidden="true"
             aria-labelledby="mobile-menu-button"
         >
-            <div class="flex flex-col space-y-4">
+            <div class="flex flex-col space-y-2 sm:space-y-3">
                 <a href="#hero" 
                    class="text-sm text-white hover:text-gray-300 transition-colors mobile-nav-link focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1" 
                    role="menuitem"
@@ -200,16 +240,16 @@
                 </a>
                 
                 <!-- Mobile Features Section -->
-                <div class="border-l-2 border-red-500 pl-3" role="group" aria-labelledby="mobile-features-heading">
-                    <h3 id="mobile-features-heading" class="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-2">Features</h3>
-                    <div class="space-y-2" role="list">
+                <div class="border-l-2 border-red-500 pl-2" role="group" aria-labelledby="mobile-features-heading">
+                    <h3 id="mobile-features-heading" class="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-1">Features</h3>
+                    <div class="space-y-1" role="list">
                         <a href="#features" 
                            class="block text-sm text-white hover:text-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1" 
                            role="menuitem"
                            aria-label="Real-Time Pace & Analytics feature"
                            itemprop="url">
                             <span class="font-medium" itemprop="name">📊 Real-Time Pace & Analytics</span>
-                            <p class="text-xs text-gray-400 mt-1">Live pacing insights + post-run performance trends</p>
+                            <p class="text-xs text-gray-400 mt-0.5">Live pacing insights + post-run performance trends</p>
                         </a>
                         <a href="#features" 
                            class="block text-sm text-white hover:text-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1" 
@@ -217,7 +257,7 @@
                            aria-label="Smart Pace Detection feature"
                            itemprop="url">
                             <span class="font-medium" itemprop="name">🏃‍♂️ Smart Pace Detection</span>
-                            <p class="text-xs text-gray-400 mt-1">AI-driven analysis that adapts to your running style</p>
+                            <p class="text-xs text-gray-400 mt-0.5">AI-driven analysis that adapts to your running style</p>
                         </a>
                         <a href="#features" 
                            class="block text-sm text-white hover:text-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1" 
@@ -225,7 +265,7 @@
                            aria-label="Spotify Integration feature"
                            itemprop="url">
                             <span class="font-medium" itemprop="name">🎵 Spotify Integration</span>
-                            <p class="text-xs text-gray-400 mt-1">Music playback that syncs with your running pace</p>
+                            <p class="text-xs text-gray-400 mt-0.5">Music playback that syncs with your running pace</p>
                         </a>
                         <a href="#watch-integration" 
                            class="block text-sm text-white hover:text-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1" 
@@ -233,7 +273,7 @@
                            aria-label="Pacebeats Watch Companion feature"
                            itemprop="url">
                             <span class="font-medium" itemprop="name">⌚ Pacebeats Watch Companion</span>
-                            <p class="text-xs text-gray-400 mt-1">Companion app for selected smartwatches</p>
+                            <p class="text-xs text-gray-400 mt-0.5">Companion app for selected smartwatches</p>
                         </a>
                     </div>
                 </div>
@@ -287,6 +327,13 @@
                     </svg>
                     <span aria-hidden="true">📚</span> <span itemprop="name">Documentation</span>
                 </a>
+                
+                <!-- Mobile Development Mode Indicator -->
+                <div class="bg-white bg-opacity-10 border border-gray-600 rounded-lg px-2 py-1.5 text-center">
+                    <span class="text-xs text-black">
+                        <span aria-hidden="true">🚧</span> Development Mode
+                    </span>
+                </div>
             </div>
         </div>
     </nav>
@@ -487,6 +534,26 @@
             !mobileMenuButton?.contains(target) && 
             !mobileMenu?.contains(target)) {
             toggleMobileMenu();
+        }
+        
+        // Close features dropdown when clicking outside
+        if (isFeaturesOpen && target &&
+            !featuresButton?.contains(target) && 
+            !featuresMenu?.contains(target)) {
+            toggleFeaturesMenu(false);
+        }
+    });
+    
+    // Handle window resize for responsive behavior
+    window.addEventListener('resize', () => {
+        // Close mobile menu on resize to desktop
+        if (window.innerWidth >= 1280 && isMenuOpen) { // xl breakpoint
+            toggleMobileMenu();
+        }
+        
+        // Close features dropdown on mobile/tablet resize
+        if (window.innerWidth < 1280 && isFeaturesOpen) { // below xl breakpoint
+            toggleFeaturesMenu(false);
         }
     });
     
