@@ -1,210 +1,455 @@
 ---
 ---
 
-<section id="how-it-works" class="bg-black text-white py-20 px-6">
+<section 
+    id="how-it-works" 
+    class="bg-black text-white py-20 px-6"
+    aria-labelledby="how-heading"
+    itemscope 
+    itemtype="https://schema.org/HowTo"
+>
     <div class="max-w-7xl mx-auto">
-        <!-- Section Header -->
-        <div class="text-center mb-16">
-            <h2 class="text-4xl md:text-5xl lg:text-6xl font-black text-white font-inter leading-tight mb-4">
+        <!-- Section Header with enhanced SEO -->
+        <header class="text-center mb-16">
+            <h2 
+                id="how-heading" 
+                class="text-4xl md:text-5xl lg:text-6xl font-black text-white font-inter leading-tight mb-4"
+                itemprop="name"
+            >
                 How It Works
             </h2>
-            <p class="text-gray-300 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
-                From setup to your first run - see how Pacebeats transforms your Galaxy Watch into the ultimate running companion.
+            <p 
+                class="text-gray-300 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed"
+                itemprop="description"
+            >
+                From setup to your first run - see how Pacebeats transforms your running experience into the ultimate music-synchronized workout companion.
             </p>
-        </div>
+            <div class="sr-only">
+                <p>Complete step-by-step guide to using Pacebeats running app with music synchronization, pace tracking, and community features</p>
+            </div>
+        </header>
 
-        <!-- Workflow Steps -->
-        <div class="relative">
+        <!-- Workflow Steps with enhanced accessibility -->
+        <div class="relative" role="region" aria-label="Step-by-step workflow">
             <!-- Connection Line -->
-            <div class="hidden lg:block absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-500 via-purple-500 to-green-500 transform -translate-y-1/2"></div>
+            <div 
+                class="hidden lg:block absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-500 via-purple-500 to-green-500 transform -translate-y-1/2" 
+                aria-hidden="true"
+            ></div>
             
             <!-- Steps Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+            <ol class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8" role="list">
                 
                 <!-- Step 1: Set Target Pace & Playlist -->
-                <div class="relative group">
-                    <div class="bg-gray-900 p-6 rounded-2xl border border-gray-800 hover:border-blue-500 transition-all duration-300 text-center h-84 flex flex-col">
+                <li 
+                    class="relative group step-card"
+                    itemprop="supply"
+                    itemscope 
+                    itemtype="https://schema.org/HowToStep"
+                    data-step="1"
+                >
+                    <article 
+                        class="bg-gray-900 p-6 rounded-2xl border border-gray-800 hover:border-blue-500 transition-all duration-300 text-center h-98 flex flex-col"
+                        tabindex="0"
+                        role="article"
+                        aria-labelledby="step-1-title"
+                        aria-describedby="step-1-desc"
+                    >
                         <!-- Step Number -->
                         <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full mx-auto mb-4 flex items-center justify-center text-white font-bold text-lg flex-shrink-0">
-                            1
+                            <span aria-label="Step 1">1</span>
                         </div>
                         
                         <!-- Icon -->
-                        <div class="w-16 h-16 bg-gray-800 rounded-xl mx-auto mb-4 flex items-center justify-center flex-shrink-0">
-                            <svg class="w-8 h-8 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <div class="w-16 h-16 bg-gray-800 rounded-xl mx-auto mb-4 flex items-center justify-center flex-shrink-0" aria-hidden="true">
+                            <svg class="w-8 h-8 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" focusable="false">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"></path>
                             </svg>
                         </div>
                         
                         <!-- Title -->
-                        <h3 class="text-lg font-bold text-white mb-3 font-inter flex-shrink-0">Pace & Playlist</h3>
+                        <h3 
+                            id="step-1-title" 
+                            class="text-lg font-bold text-white mb-3 font-inter flex-shrink-0"
+                            itemprop="name"
+                        >
+                            Pace & Playlist
+                        </h3>
                         
                         <!-- Description -->
-                        <p class="text-gray-400 text-sm leading-relaxed mb-4 flex-grow">
-                               Pick your pace and playlist. Pacebeats syncs music to your run.
+                        <p 
+                            id="step-1-desc" 
+                            class="text-gray-400 text-sm leading-relaxed mb-4 flex-grow"
+                            itemprop="text"
+                        >
+                            Pick your target pace and select your playlist. Pacebeats intelligently syncs music tempo to your running rhythm.
                         </p>
                         
                         <!-- Status Badge -->
                         <div class="flex-shrink-0">
-                            <span class="bg-blue-900 text-blue-200 px-3 py-1 rounded-full text-xs">In Development</span>
+                            <span 
+                                class="bg-blue-900 text-blue-200 px-3 py-1 rounded-full text-xs"
+                                role="status"
+                                aria-label="Development status: In Development"
+                            >
+                                In Development
+                            </span>
                         </div>
-                    </div>
-                </div>
+                    </article>
+                </li>
 
                 <!-- Step 2: Start Running & Auto-Sync -->
-                <div class="relative group">
-                    <div class="bg-gray-900 p-6 rounded-2xl border border-gray-800 hover:border-purple-500 transition-all duration-300 text-center h-84 flex flex-col">
+                <li 
+                    class="relative group step-card"
+                    itemprop="supply"
+                    itemscope 
+                    itemtype="https://schema.org/HowToStep"
+                    data-step="2"
+                >
+                    <article 
+                        class="bg-gray-900 p-6 rounded-2xl border border-gray-800 hover:border-purple-500 transition-all duration-300 text-center h-98 flex flex-col"
+                        tabindex="0"
+                        role="article"
+                        aria-labelledby="step-2-title"
+                        aria-describedby="step-2-desc"
+                    >
                         <!-- Step Number -->
                         <div class="w-12 h-12 bg-gradient-to-r from-purple-500 to-purple-600 rounded-full mx-auto mb-4 flex items-center justify-center text-white font-bold text-lg flex-shrink-0">
-                            2
+                            <span aria-label="Step 2">2</span>
                         </div>
                         
                         <!-- Icon -->
-                        <div class="w-16 h-16 bg-gray-800 rounded-xl mx-auto mb-4 flex items-center justify-center flex-shrink-0">
-                            <svg class="w-8 h-8 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <div class="w-16 h-16 bg-gray-800 rounded-xl mx-auto mb-4 flex items-center justify-center flex-shrink-0" aria-hidden="true">
+                            <svg class="w-8 h-8 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" focusable="false">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                             </svg>
                         </div>
                         
                         <!-- Title -->
-                        <h3 class="text-lg font-bold text-white mb-3 font-inter flex-shrink-0">Run & Sync</h3>
+                        <h3 
+                            id="step-2-title" 
+                            class="text-lg font-bold text-white mb-3 font-inter flex-shrink-0"
+                            itemprop="name"
+                        >
+                            Run & Sync
+                        </h3>
                         
                         <!-- Description -->
-                        <p class="text-gray-400 text-sm leading-relaxed mb-4 flex-grow">
-                            Run and let Pacebeats auto-match songs to your rhythm.
+                        <p 
+                            id="step-2-desc" 
+                            class="text-gray-400 text-sm leading-relaxed mb-4 flex-grow"
+                            itemprop="text"
+                        >
+                            Start your run and let Pacebeats automatically match song tempo to your running cadence in real-time.
                         </p>
                         
                         <!-- Status Badge -->
                         <div class="flex-shrink-0">
-                            <span class="bg-purple-900 text-purple-200 px-3 py-1 rounded-full text-xs">In Development</span>
+                            <span 
+                                class="bg-purple-900 text-purple-200 px-3 py-1 rounded-full text-xs"
+                                role="status"
+                                aria-label="Development status: In Development"
+                            >
+                                In Development
+                            </span>
                         </div>
-                    </div>
-                </div>
+                    </article>
+                </li>
 
                 <!-- Step 3: Smart Music Recommendations -->
-                <div class="relative group">
-                    <div class="bg-gray-900 p-6 rounded-2xl border border-gray-800 hover:border-green-500 transition-all duration-300 text-center h-84 flex flex-col">
+                <li 
+                    class="relative group step-card"
+                    itemprop="supply"
+                    itemscope 
+                    itemtype="https://schema.org/HowToStep"
+                    data-step="3"
+                >
+                    <article 
+                        class="bg-gray-900 p-6 rounded-2xl border border-gray-800 hover:border-green-500 transition-all duration-300 text-center h-98 flex flex-col"
+                        tabindex="0"
+                        role="article"
+                        aria-labelledby="step-3-title"
+                        aria-describedby="step-3-desc"
+                    >
                         <!-- Step Number -->
                         <div class="w-12 h-12 bg-gradient-to-r from-green-500 to-green-600 rounded-full mx-auto mb-4 flex items-center justify-center text-white font-bold text-lg flex-shrink-0">
-                            3
+                            <span aria-label="Step 3">3</span>
                         </div>
                         
                         <!-- Icon -->
-                        <div class="w-16 h-16 bg-gray-800 rounded-xl mx-auto mb-4 flex items-center justify-center flex-shrink-0">
-                            <svg class="w-8 h-8 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <div class="w-16 h-16 bg-gray-800 rounded-xl mx-auto mb-4 flex items-center justify-center flex-shrink-0" aria-hidden="true">
+                            <svg class="w-8 h-8 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" focusable="false">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
                             </svg>
                         </div>
                         
                         <!-- Title -->
-                        <h3 class="text-lg font-bold text-white mb-3 font-inter flex-shrink-0">Smart Picks</h3>
+                        <h3 
+                            id="step-3-title" 
+                            class="text-lg font-bold text-white mb-3 font-inter flex-shrink-0"
+                            itemprop="name"
+                        >
+                            Smart Picks
+                        </h3>
                         
                         <!-- Description -->
-                        <p class="text-gray-400 text-sm leading-relaxed mb-4 flex-grow">
-                             Get smart song picks based on pace. Like or skip to refine.
+                        <p 
+                            id="step-3-desc" 
+                            class="text-gray-400 text-sm leading-relaxed mb-4 flex-grow"
+                            itemprop="text"
+                        >
+                            Receive intelligent song recommendations based on your pace preferences. Like or skip tracks to refine the algorithm.
                         </p>
                         
                         <!-- Status Badge -->
                         <div class="flex-shrink-0">
-                            <span class="bg-green-900 text-green-200 px-3 py-1 rounded-full text-xs">Coming Soon</span>
+                            <span 
+                                class="bg-green-900 text-green-200 px-3 py-1 rounded-full text-xs"
+                                role="status"
+                                aria-label="Development status: Coming Soon"
+                            >
+                                Coming Soon
+                            </span>
                         </div>
-                    </div>
-                </div>
+                    </article>
+                </li>
 
                 <!-- Step 4: Analytics Dashboard -->
-                <div class="relative group">
-                    <div class="bg-gray-900 p-6 rounded-2xl border border-gray-800 hover:border-orange-500 transition-all duration-300 text-center h-84 flex flex-col">
+                <li 
+                    class="relative group step-card"
+                    itemprop="supply"
+                    itemscope 
+                    itemtype="https://schema.org/HowToStep"
+                    data-step="4"
+                >
+                    <article 
+                        class="bg-gray-900 p-6 rounded-2xl border border-gray-800 hover:border-orange-500 transition-all duration-300 text-center h-98 flex flex-col"
+                        tabindex="0"
+                        role="article"
+                        aria-labelledby="step-4-title"
+                        aria-describedby="step-4-desc"
+                    >
                         <!-- Step Number -->
                         <div class="w-12 h-12 bg-gradient-to-r from-orange-500 to-orange-600 rounded-full mx-auto mb-4 flex items-center justify-center text-white font-bold text-lg flex-shrink-0">
-                            4
+                            <span aria-label="Step 4">4</span>
                         </div>
                         
                         <!-- Icon -->
-                        <div class="w-16 h-16 bg-gray-800 rounded-xl mx-auto mb-4 flex items-center justify-center flex-shrink-0">
-                            <svg class="w-8 h-8 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <div class="w-16 h-16 bg-gray-800 rounded-xl mx-auto mb-4 flex items-center justify-center flex-shrink-0" aria-hidden="true">
+                            <svg class="w-8 h-8 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" focusable="false">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
                             </svg>
                         </div>
                         
                         <!-- Title -->
-                        <h3 class="text-lg font-bold text-white mb-3 font-inter flex-shrink-0">View Analytics</h3>
+                        <h3 
+                            id="step-4-title" 
+                            class="text-lg font-bold text-white mb-3 font-inter flex-shrink-0"
+                            itemprop="name"
+                        >
+                            View Analytics
+                        </h3>
                         
                         <!-- Description -->
-                        <p class="text-gray-400 text-sm leading-relaxed mb-4 flex-grow">
-                            Performance insights with historical tracking and progress visualization.
+                        <p 
+                            id="step-4-desc" 
+                            class="text-gray-400 text-sm leading-relaxed mb-4 flex-grow"
+                            itemprop="text"
+                        >
+                            Access comprehensive performance insights with historical tracking and detailed progress visualization.
                         </p>
                         
                         <!-- Status Badge -->
                         <div class="flex-shrink-0">
-                            <span class="bg-orange-900 text-orange-200 px-3 py-1 rounded-full text-xs">Coming Soon</span>
+                            <span 
+                                class="bg-orange-900 text-orange-200 px-3 py-1 rounded-full text-xs"
+                                role="status"
+                                aria-label="Development status: Coming Soon"
+                            >
+                                Coming Soon
+                            </span>
                         </div>
-                    </div>
-                </div>
+                    </article>
+                </li>
 
                 <!-- Step 5: Share & Connect -->
-                <div class="relative group">
-                    <div class="bg-gray-900 p-6 rounded-2xl border border-gray-800 hover:border-cyan-500 transition-all duration-300 text-center h-84 flex flex-col">
+                <li 
+                    class="relative group step-card"
+                    itemprop="supply"
+                    itemscope 
+                    itemtype="https://schema.org/HowToStep"
+                    data-step="5"
+                >
+                    <article 
+                        class="bg-gray-900 p-6 rounded-2xl border border-gray-800 hover:border-cyan-500 transition-all duration-300 text-center h-98 flex flex-col"
+                        tabindex="0"
+                        role="article"
+                        aria-labelledby="step-5-title"
+                        aria-describedby="step-5-desc"
+                    >
                         <!-- Step Number -->
                         <div class="w-12 h-12 bg-gradient-to-r from-cyan-500 to-cyan-600 rounded-full mx-auto mb-4 flex items-center justify-center text-white font-bold text-lg flex-shrink-0">
-                            5
+                            <span aria-label="Step 5">5</span>
                         </div>
                         
                         <!-- Icon -->
-                        <div class="w-16 h-16 bg-gray-800 rounded-xl mx-auto mb-4 flex items-center justify-center flex-shrink-0">
-                            <svg class="w-8 h-8 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <div class="w-16 h-16 bg-gray-800 rounded-xl mx-auto mb-4 flex items-center justify-center flex-shrink-0" aria-hidden="true">
+                            <svg class="w-8 h-8 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" focusable="false">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
                             </svg>
                         </div>
                         
                         <!-- Title -->
-                        <h3 class="text-lg font-bold text-white mb-3 font-inter flex-shrink-0">Connect & Share</h3>
+                        <h3 
+                            id="step-5-title" 
+                            class="text-lg font-bold text-white mb-3 font-inter flex-shrink-0"
+                            itemprop="name"
+                        >
+                            Connect & Share
+                        </h3>
                         
                         <!-- Description -->
-                        <p class="text-gray-400 text-sm leading-relaxed mb-4 flex-grow">
-                            Join the running community, share achievements, and motivate each other.
+                        <p 
+                            id="step-5-desc" 
+                            class="text-gray-400 text-sm leading-relaxed mb-4 flex-grow"
+                            itemprop="text"
+                        >
+                            Join the running community, share achievements, participate in challenges, and motivate each other.
                         </p>
                         
                         <!-- Status Badge -->
                         <div class="flex-shrink-0">
-                            <span class="bg-cyan-900 text-cyan-200 px-3 py-1 rounded-full text-xs">Planned</span>
+                            <span 
+                                class="bg-cyan-900 text-cyan-200 px-3 py-1 rounded-full text-xs"
+                                role="status"
+                                aria-label="Development status: Planned"
+                            >
+                                Planned
+                            </span>
                         </div>
-                    </div>
-                </div>
-            </div>
+                    </article>
+                </li>
+            </ol>
         </div>
 
         <!-- Development Status Notice -->
-        <div class="mt-16 text-center">
+        <section class="mt-16 text-center" role="region" aria-label="Development status information">
             <div class="bg-gray-900 p-8 rounded-2xl border border-gray-800 max-w-4xl mx-auto">
-                <div class="flex items-center justify-center mb-4">
-                    <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center mr-4">
-                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <header class="flex items-center justify-center mb-4">
+                    <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center mr-4" aria-hidden="true">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" focusable="false">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
                         </svg>
                     </div>
                     <h3 class="text-2xl font-bold text-white font-inter">Currently in Development</h3>
-                </div>
+                </header>
                 <p class="text-gray-300 text-lg leading-relaxed mb-6">
-                    Pacebeats is being actively developed by our passionate team. Each feature is being crafted with precision to deliver the best running experience for Filipino runners.
+                    Pacebeats is being actively developed by our passionate team. Each feature is being crafted with precision to deliver the best running experience.
                 </p>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
-                    <div class="bg-gray-800 p-4 rounded-lg">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center" role="list" aria-label="Development phases">
+                    <div class="bg-gray-800 p-4 rounded-lg" role="listitem">
                         <h4 class="text-blue-400 font-semibold mb-2">Phase 1</h4>
                         <p class="text-gray-400 text-sm">Core tracking & watch connectivity</p>
                     </div>
-                    <div class="bg-gray-800 p-4 rounded-lg">
+                    <div class="bg-gray-800 p-4 rounded-lg" role="listitem">
                         <h4 class="text-purple-400 font-semibold mb-2">Phase 2</h4>
                         <p class="text-gray-400 text-sm">Advanced analytics & insights</p>
                     </div>
-                    <div class="bg-gray-800 p-4 rounded-lg">
+                    <div class="bg-gray-800 p-4 rounded-lg" role="listitem">
                         <h4 class="text-green-400 font-semibold mb-2">Phase 3</h4>
                         <p class="text-gray-400 text-sm">Community features & challenges</p>
                     </div>
                 </div>
             </div>
+        </section>
+
+        <!-- Hidden content for SEO -->
+        <div class="sr-only">
+            <h3>Complete Pacebeats Workflow</h3>
+            <p>Learn how to use Pacebeats running app step by step, from initial setup to community engagement</p>
+            <meta itemprop="totalTime" content="PT10M" />
+            <meta itemprop="prepTime" content="PT2M" />
+            <meta itemprop="performTime" content="PT8M" />
+            <span>Estimated time: 10 minutes</span>
+            <span>Setup time: 2 minutes</span>
+            <span>Usage time: 8 minutes</span>
         </div>
     </div>
 </section>
+
+<!-- JSON-LD Structured Data for How-To Guide -->
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to Use Pacebeats Running App",
+    "description": "Complete step-by-step guide to using Pacebeats for music-synchronized running with pace tracking and community features",
+    "totalTime": "PT10M",
+    "prepTime": "PT2M", 
+    "performTime": "PT8M",
+    "estimatedCost": {
+        "@type": "MonetaryAmount",
+        "currency": "USD",
+        "value": "0"
+    },
+    "supply": [
+        {
+            "@type": "HowToSupply",
+            "name": "Smartphone with Pacebeats app"
+        },
+        {
+            "@type": "HowToSupply", 
+            "name": "Running shoes and attire"
+        },
+        {
+            "@type": "HowToSupply",
+            "name": "Spotify account (optional)"
+        }
+    ],
+    "step": [
+        {
+            "@type": "HowToStep",
+            "position": 1,
+            "name": "Set Target Pace & Playlist",
+            "text": "Pick your target pace and select your playlist. Pacebeats intelligently syncs music tempo to your running rhythm.",
+            "url": "https://www.pacebeats.top/#how-it-works"
+        },
+        {
+            "@type": "HowToStep",
+            "position": 2,
+            "name": "Start Running & Auto-Sync", 
+            "text": "Start your run and let Pacebeats automatically match song tempo to your running cadence in real-time.",
+            "url": "https://www.pacebeats.top/#how-it-works"
+        },
+        {
+            "@type": "HowToStep",
+            "position": 3,
+            "name": "Smart Music Recommendations",
+            "text": "Receive intelligent song recommendations based on your pace preferences. Like or skip tracks to refine the algorithm.",
+            "url": "https://www.pacebeats.top/#how-it-works"
+        },
+        {
+            "@type": "HowToStep",
+            "position": 4,
+            "name": "View Analytics Dashboard",
+            "text": "Access comprehensive performance insights with historical tracking and detailed progress visualization.",
+            "url": "https://www.pacebeats.top/#how-it-works"
+        },
+        {
+            "@type": "HowToStep",
+            "position": 5,
+            "name": "Connect & Share with Community",
+            "text": "Join the running community, share achievements, participate in challenges, and motivate each other.",
+            "url": "https://www.pacebeats.top/#how-it-works"
+        }
+    ],
+    "about": {
+        "@type": "SoftwareApplication",
+        "name": "Pacebeats",
+        "applicationCategory": "HealthApplication"
+    }
+}
+</script>
 
 <style>
     /* Inter font consistency */
@@ -302,4 +547,177 @@
         outline: 2px solid #3B82F6;
         outline-offset: 2px;
     }
+    
+    /* Enhanced staggered animation for step cards */
+    .step-card {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+        transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        will-change: transform, opacity;
+    }
+
+    .step-card.animate-in {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+    /* Progressive delays for staggered effect */
+    .step-card[data-step="1"] {
+        transition-delay: 0ms;
+    }
+
+    .step-card[data-step="2"] {
+        transition-delay: 150ms;
+    }
+
+    .step-card[data-step="3"] {
+        transition-delay: 300ms;
+    }
+
+    .step-card[data-step="4"] {
+        transition-delay: 450ms;
+    }
+
+    .step-card[data-step="5"] {
+        transition-delay: 600ms;
+    }
+
+    /* Enhanced accessibility styles */
+    .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+    }
+
+    /* Enhanced focus styles */
+    article:focus-visible {
+        outline: 3px solid rgba(59, 130, 246, 0.8);
+        outline-offset: 4px;
+        transform: translateY(-4px) scale(1.02);
+    }
+
+    /* High contrast mode support */
+    @media (prefers-contrast: high) {
+        .step-card article {
+            border: 2px solid #ffffff;
+        }
+        
+        .text-gray-300,
+        .text-gray-400 {
+            color: #ffffff;
+        }
+        
+        [role="status"] {
+            border: 1px solid #ffffff;
+        }
+    }
+
+    /* Reduced motion support */
+    @media (prefers-reduced-motion: reduce) {
+        .step-card {
+            transition: none;
+            opacity: 1;
+            transform: none;
+        }
+        
+        .group:hover .bg-gray-900,
+        .group:hover .w-12.h-12,
+        .group:hover .w-16.h-16 {
+            transform: none;
+        }
+        
+        .bg-gradient-to-r {
+            animation: none;
+        }
+        
+        .bg-blue-900 {
+            animation: none;
+        }
+    }
 </style>
+
+<script>
+    // Enhanced intersection observer for staggered step animations
+    if ('IntersectionObserver' in window) {
+        const howObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    const step = entry.target.getAttribute('data-step');
+                    const delay = parseInt(step || '1') * 150;
+                    
+                    setTimeout(() => {
+                        entry.target.classList.add('animate-in');
+                        
+                        // Announce to screen readers for the first step
+                        if (step === '1') {
+                            const announcement = document.createElement('div');
+                            announcement.setAttribute('aria-live', 'polite');
+                            announcement.className = 'sr-only';
+                            announcement.textContent = 'How it works section has loaded with 5 steps';
+                            document.body.appendChild(announcement);
+                            
+                            setTimeout(() => {
+                                if (document.body.contains(announcement)) {
+                                    document.body.removeChild(announcement);
+                                }
+                            }, 2000);
+                        }
+                    }, delay);
+                }
+            });
+        }, {
+            threshold: 0.2,
+            rootMargin: '50px'
+        });
+        
+        // Observe all step cards
+        document.querySelectorAll('.step-card').forEach(card => {
+            howObserver.observe(card);
+        });
+    }
+    
+    // Enhanced keyboard navigation for step cards
+    document.querySelectorAll('[role="article"]').forEach(article => {
+        const handleKeydown = (e: KeyboardEvent) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                
+                // Get step information
+                const stepTitle = article.querySelector('h3')?.textContent;
+                const stepDesc = article.querySelector('p')?.textContent;
+                
+                // Announce step details to screen readers
+                const announcement = document.createElement('div');
+                announcement.setAttribute('aria-live', 'assertive');
+                announcement.className = 'sr-only';
+                announcement.textContent = `Selected: ${stepTitle}. ${stepDesc}`;
+                document.body.appendChild(announcement);
+                
+                setTimeout(() => {
+                    if (document.body.contains(announcement)) {
+                        document.body.removeChild(announcement);
+                    }
+                }, 3000);
+            }
+        };
+        
+        (article as HTMLElement).addEventListener('keydown', handleKeydown);
+    });
+    
+    // Performance optimization: Preload next section
+    if ('requestIdleCallback' in window) {
+        requestIdleCallback(() => {
+            const preloadImages = ['/tech-stack-preview.jpg'];
+            preloadImages.forEach(src => {
+                const img = new Image();
+                img.src = src;
+            });
+        });
+    }
+</script>

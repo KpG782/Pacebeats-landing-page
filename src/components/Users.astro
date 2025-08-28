@@ -1,85 +1,232 @@
 ---
 ---
 
-<section class="bg-black text-white py-20 px-6 overflow-hidden relative">
+<section 
+    class="bg-black text-white py-20 px-6 overflow-hidden relative"
+    id="users"
+    aria-labelledby="users-heading"
+    itemscope 
+    itemtype="https://schema.org/SoftwareApplication"
+>
     <!-- Geometric background pattern -->
-    <div class="absolute inset-0 opacity-10">
+    <div class="absolute inset-0 opacity-10" aria-hidden="true">
         <div class="absolute inset-0" style="background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.03) 10px, rgba(255,255,255,0.03) 11px), repeating-linear-gradient(-45deg, transparent, transparent 10px, rgba(255,255,255,0.03) 10px, rgba(255,255,255,0.03) 11px);"></div>
     </div>
     
     <div class="max-w-7xl mx-auto text-center relative z-10">
-        <!-- Main heading -->
-        <div class="mb-16">
-            <h2 class="text-4xl md:text-5xl lg:text-6xl font-black text-white font-inter leading-tight">
-                Run Smarter. Track Progress.<br>
-                Grow Together.
+        <!-- Main heading with enhanced SEO structure -->
+        <header class="mb-16">
+            <h2 
+                id="users-heading" 
+                class="text-4xl md:text-5xl lg:text-6xl font-black text-white font-inter leading-tight"
+                itemprop="name"
+            >
+                <span class="block">Run Smarter. Track Progress.</span>
+                <span class="block">Grow Together.</span>
             </h2>
-        </div>
+            <p class="sr-only">
+                Discover how Pacebeats helps runners track progress, set goals, and connect with a community of like-minded athletes through innovative features and social challenges.
+            </p>
+        </header>
         
-        <!-- Phone mockups arrangement -->
-        <div class="relative flex justify-center items-center mb-16">
+        <!-- Phone mockups arrangement with enhanced accessibility -->
+        <figure 
+            class="relative flex justify-center items-center mb-16" 
+            role="img" 
+            aria-labelledby="mockups-caption"
+            itemscope 
+            itemtype="https://schema.org/ImageGallery"
+        >
+            <figcaption id="mockups-caption" class="sr-only">
+                Gallery of Pacebeats mobile app interfaces showcasing community features, user profiles, running statistics, training progress, and social challenges
+            </figcaption>
+
             <!-- Left phone group -->
-            <div class="hidden lg:block absolute left-0 top-8 transform -rotate-3">
+            <div class="hidden lg:block absolute left-0 top-8 transform -rotate-3 phone-mockup" data-delay="0">
                 <img 
                     src="/users-2.png" 
-                    alt="Community runner profile - David Chen" 
+                    alt="Community runner profile showing David Chen with running statistics, achievements, and recent activity feed in Pacebeats app"
                     class="w-64 h-auto opacity-70 shadow-2xl"
+                    loading="lazy"
+                    decoding="async"
+                    width="256"
+                    height="512"
+                    tabindex="0"
+                    role="img"
+                    aria-describedby="phone-1-desc"
+                    itemprop="associatedMedia"
+                    itemscope 
+                    itemtype="https://schema.org/ImageObject"
                 />
+                <span id="phone-1-desc" class="sr-only">Community runner profile interface displaying user achievements and social features</span>
             </div>
             
             <!-- Left-center phone -->
-            <div class="hidden md:block absolute left-1/4 top-16 transform -rotate-1">
+            <div class="hidden md:block absolute left-1/4 top-16 transform -rotate-1 phone-mockup" data-delay="200">
                 <img 
                     src="/users-5.png" 
-                    alt="Running stats and achievements" 
+                    alt="Running statistics dashboard showing detailed analytics, pace trends, distance goals, and performance metrics in Pacebeats"
                     class="w-72 h-auto opacity-80 shadow-2xl"
+                    loading="lazy"
+                    decoding="async"
+                    width="288"
+                    height="576"
+                    tabindex="0"
+                    role="img"
+                    aria-describedby="phone-2-desc"
+                    itemprop="associatedMedia"
+                    itemscope 
+                    itemtype="https://schema.org/ImageObject"
                 />
+                <span id="phone-2-desc" class="sr-only">Detailed running statistics and analytics dashboard with performance tracking</span>
             </div>
             
             <!-- Center phone (main focus) -->
-            <div class="relative z-20">
+            <div class="relative z-20 phone-mockup" data-delay="400">
                 <img 
                     src="/users-1.png" 
-                    alt="PaceBeats main interface showing community runs" 
+                    alt="Pacebeats main community interface showing active runners, live challenges, group runs, and social feed with real-time updates"
                     class="w-80 md:w-96 h-auto shadow-2xl"
+                    loading="lazy"
+                    decoding="async"
+                    width="384"
+                    height="768"
+                    tabindex="0"
+                    role="img"
+                    aria-describedby="phone-3-desc"
+                    itemprop="primaryImageOfPage"
+                    itemscope 
+                    itemtype="https://schema.org/ImageObject"
                 />
+                <span id="phone-3-desc" class="sr-only">Main community dashboard featuring active runners, challenges, and social interactions</span>
             </div>
             
             <!-- Right-center phone -->
-            <div class="hidden md:block absolute right-1/4 top-12 transform rotate-1">
+            <div class="hidden md:block absolute right-1/4 top-12 transform rotate-1 phone-mockup" data-delay="600">
                 <img 
                     src="/users-4.png" 
-                    alt="Training progress and goals" 
+                    alt="Training progress interface displaying personalized goals, workout plans, achievement milestones, and progress tracking in Pacebeats"
                     class="w-72 h-auto opacity-80 shadow-2xl"
+                    loading="lazy"
+                    decoding="async"
+                    width="288"
+                    height="576"
+                    tabindex="0"
+                    role="img"
+                    aria-describedby="phone-4-desc"
+                    itemprop="associatedMedia"
+                    itemscope 
+                    itemtype="https://schema.org/ImageObject"
                 />
+                <span id="phone-4-desc" class="sr-only">Training progress and goal-setting interface with personalized workout plans</span>
             </div>
             
             <!-- Right phone group -->
-            <div class="hidden lg:block absolute right-0 top-4 transform rotate-2">
+            <div class="hidden lg:block absolute right-0 top-4 transform rotate-2 phone-mockup" data-delay="800">
                 <img 
                     src="/users-3.png" 
-                    alt="Community challenges and leaderboard" 
+                    alt="Community challenges and leaderboard showing competitive rankings, team events, and social competitions in Pacebeats app"
                     class="w-64 h-auto opacity-70 shadow-2xl"
+                    loading="lazy"
+                    decoding="async"
+                    width="256"
+                    height="512"
+                    tabindex="0"
+                    role="img"
+                    aria-describedby="phone-5-desc"
+                    itemprop="associatedMedia"
+                    itemscope 
+                    itemtype="https://schema.org/ImageObject"
                 />
+                <span id="phone-5-desc" class="sr-only">Community challenges and competitive leaderboard interface</span>
             </div>
             
             <!-- Floating elements for visual interest -->
-            <div class="absolute top-0 left-1/3 w-2 h-2 bg-blue-500 rounded-full opacity-60 animate-pulse"></div>
-            <div class="absolute bottom-0 right-1/3 w-3 h-3 bg-red-500 rounded-full opacity-40 animate-pulse" style="animation-delay: 1s;"></div>
-            <div class="absolute top-1/2 left-0 w-1 h-1 bg-white rounded-full opacity-50 animate-pulse" style="animation-delay: 2s;"></div>
-        </div>
+            <div class="absolute top-0 left-1/3 w-2 h-2 bg-blue-500 rounded-full opacity-60 animate-pulse" aria-hidden="true"></div>
+            <div class="absolute bottom-0 right-1/3 w-3 h-3 bg-red-500 rounded-full opacity-40 animate-pulse" style="animation-delay: 1s;" aria-hidden="true"></div>
+            <div class="absolute top-1/2 left-0 w-1 h-1 bg-white rounded-full opacity-50 animate-pulse" style="animation-delay: 2s;" aria-hidden="true"></div>
+        </figure>
         
-        <!-- Descriptive text -->
-        <div class="max-w-4xl mx-auto">
-            <p class="text-gray-300 text-lg md:text-xl leading-relaxed font-inter">
-                Pacebeats isn’t just about running, it’s about evolving.
-Track your real-time stats, set personal milestones, and unlock achievements as you go.
-Join challenges, climb leaderboards, and connect with a crew that pushes you further.
-Every step, every beat, every victory—shared and celebrated.
+        <!-- Descriptive content with semantic markup -->
+        <div class="max-w-4xl mx-auto" role="region" aria-label="Application benefits">
+            <p 
+                class="text-gray-300 text-lg md:text-xl leading-relaxed font-inter"
+                itemprop="description"
+            >
+                Pacebeats isn't just about running, it's about evolving.
+                Track your real-time stats, set personal milestones, and unlock achievements as you go.
+                Join challenges, climb leaderboards, and connect with a crew that pushes you further.
+                Every step, every beat, every victory—shared and celebrated.
             </p>
+            
+            <!-- Hidden content for SEO -->
+            <div class="sr-only">
+                <h3>Key User Benefits</h3>
+                <ul itemprop="featureList">
+                    <li>Real-time running statistics and performance tracking</li>
+                    <li>Social community features and runner profiles</li>
+                    <li>Competitive challenges and leaderboards</li>
+                    <li>Personalized training goals and progress monitoring</li>
+                    <li>Achievement system and milestone celebrations</li>
+                    <li>Group runs and team-based competitions</li>
+                </ul>
+                
+                <div itemprop="applicationSubCategory">Community Running App</div>
+                <div itemprop="interactionType">Social Fitness Tracking</div>
+            </div>
         </div>
     </div>
 </section>
+
+<!-- JSON-LD Structured Data for User Features -->
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Pacebeats Community Features",
+    "description": "Social running app featuring community challenges, progress tracking, and user profiles for runners",
+    "applicationSubCategory": "Community Running App",
+    "featureList": [
+        "Real-time running statistics and performance tracking",
+        "Social community features and runner profiles", 
+        "Competitive challenges and leaderboards",
+        "Personalized training goals and progress monitoring",
+        "Achievement system and milestone celebrations",
+        "Group runs and team-based competitions"
+    ],
+    "screenshot": [
+        {
+            "@type": "ImageObject",
+            "url": "https://www.pacebeats.top/users-1.png",
+            "description": "Main community dashboard featuring active runners and challenges"
+        },
+        {
+            "@type": "ImageObject", 
+            "url": "https://www.pacebeats.top/users-2.png",
+            "description": "Community runner profile with statistics and achievements"
+        },
+        {
+            "@type": "ImageObject",
+            "url": "https://www.pacebeats.top/users-3.png", 
+            "description": "Community challenges and competitive leaderboard"
+        },
+        {
+            "@type": "ImageObject",
+            "url": "https://www.pacebeats.top/users-4.png",
+            "description": "Training progress and personalized goals interface"
+        },
+        {
+            "@type": "ImageObject",
+            "url": "https://www.pacebeats.top/users-5.png",
+            "description": "Detailed running analytics and performance metrics"
+        }
+    ],
+    "audience": {
+        "@type": "Audience",
+        "audienceType": "Running enthusiasts and fitness community members"
+    }
+}
+</script>
 
 <style>
     /* Inter font family for consistency */
@@ -175,4 +322,187 @@ Every step, every beat, every victory—shared and celebrated.
         outline: 3px solid rgba(59, 130, 246, 0.5);
         outline-offset: 4px;
     }
+    
+    /* Enhanced staggered animation for phone mockups */
+    .phone-mockup {
+        opacity: 0;
+        transform: translateY(30px) scale(0.9);
+        transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        will-change: transform, opacity;
+    }
+
+    .phone-mockup.animate-in {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+    /* Progressive delays for staggered effect */
+    .phone-mockup[data-delay="0"] {
+        transition-delay: 0ms;
+    }
+
+    .phone-mockup[data-delay="200"] {
+        transition-delay: 200ms;
+    }
+
+    .phone-mockup[data-delay="400"] {
+        transition-delay: 400ms;
+    }
+
+    .phone-mockup[data-delay="600"] {
+        transition-delay: 600ms;
+    }
+
+    .phone-mockup[data-delay="800"] {
+        transition-delay: 800ms;
+    }
+
+    /* Enhanced accessibility styles */
+    .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+    }
+
+    /* Enhanced focus styles for keyboard navigation */
+    img:focus {
+        outline: 3px solid rgba(59, 130, 246, 0.8);
+        outline-offset: 4px;
+        transform: scale(1.05) !important;
+        z-index: 40;
+    }
+
+    /* High contrast mode support */
+    @media (prefers-contrast: high) {
+        h2.font-inter {
+            text-shadow: 3px 3px 0px #000000;
+            color: #ffffff;
+        }
+        
+        .text-gray-300 {
+            color: #ffffff;
+        }
+        
+        img:focus {
+            outline: 3px solid #ffffff;
+            outline-offset: 4px;
+        }
+    }
+
+    /* Reduced motion support */
+    @media (prefers-reduced-motion: reduce) {
+        .phone-mockup {
+            transition: none;
+            opacity: 1;
+            transform: none;
+        }
+        
+        .relative img,
+        .absolute img {
+            transition: none;
+        }
+        
+        .animate-pulse {
+            animation: none;
+        }
+        
+        .relative img:hover,
+        .absolute img:hover {
+            transform: none !important;
+        }
+    }
 </style>
+
+<script>
+    // Enhanced intersection observer for staggered phone animations
+    if ('IntersectionObserver' in window) {
+        const usersObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    const delay = parseInt(entry.target.getAttribute('data-delay') || '0');
+                    
+                    setTimeout(() => {
+                        entry.target.classList.add('animate-in');
+                        
+                        // Announce to screen readers for the main phone
+                        if (delay === 400) {
+                            const announcement = document.createElement('div');
+                            announcement.setAttribute('aria-live', 'polite');
+                            announcement.className = 'sr-only';
+                            announcement.textContent = 'Pacebeats community features section has loaded';
+                            document.body.appendChild(announcement);
+                            
+                            setTimeout(() => {
+                                if (document.body.contains(announcement)) {
+                                    document.body.removeChild(announcement);
+                                }
+                            }, 2000);
+                        }
+                    }, delay);
+                }
+            });
+        }, {
+            threshold: 0.2,
+            rootMargin: '50px'
+        });
+        
+        // Observe all phone mockups
+        document.querySelectorAll('.phone-mockup').forEach(phone => {
+            usersObserver.observe(phone);
+        });
+    }
+    
+    // Enhanced keyboard navigation for phone images
+    document.querySelectorAll('img[tabindex="0"]').forEach(img => {
+        const handleKeydown = (e: KeyboardEvent) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                
+                // Announce image details to screen readers
+                const altText = (img as HTMLImageElement).getAttribute('alt');
+                const announcement = document.createElement('div');
+                announcement.setAttribute('aria-live', 'assertive');
+                announcement.className = 'sr-only';
+                announcement.textContent = `Viewing: ${altText}`;
+                document.body.appendChild(announcement);
+                
+                // Focus the image
+                (img as HTMLElement).focus();
+                
+                setTimeout(() => {
+                    if (document.body.contains(announcement)) {
+                        document.body.removeChild(announcement);
+                    }
+                }, 2000);
+            }
+        };
+        
+        (img as HTMLElement).addEventListener('keydown', handleKeydown);
+    });
+    
+    // Performance optimization: Preload images
+    if ('requestIdleCallback' in window) {
+        requestIdleCallback(() => {
+            const imageUrls = ['/users-1.png', '/users-2.png', '/users-3.png', '/users-4.png', '/users-5.png'];
+            imageUrls.forEach(url => {
+                const img = new Image();
+                img.src = url;
+            });
+        });
+    }
+    
+    // Enhanced error handling for images
+    document.querySelectorAll('img').forEach(img => {
+        img.addEventListener('error', () => {
+            console.warn('Image failed to load:', img.src);
+            // Provide fallback or hide broken image
+            img.style.display = 'none';
+        });
+    });
+</script>

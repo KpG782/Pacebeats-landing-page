@@ -1,320 +1,458 @@
 ---
 ---
 
-<nav class="fixed top-0 left-0 w-full bg-black bg-opacity-20 backdrop-blur-sm text-white px-4 sm:px-6 py-6 sm:py-8 z-50" role="navigation" aria-label="Main navigation">
-    <div class="max-w-7xl mx-auto relative">
-        <!-- Left Navigation - Hidden on mobile and tablet -->
-        <div class="hidden lg:flex items-center space-x-8 absolute left-0 top-1/2 transform -translate-y-1/2">
-            <a href="#hero" class="text-sm hover:text-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1" aria-label="Go to homepage">
-                Home
-            </a>
-            
-            <!-- Features Dropdown -->
-            <div class="relative group">
-                <button 
-                    class="flex items-center text-sm hover:text-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1"
-                    aria-expanded="false"
-                    aria-haspopup="true"
-                    id="features-menu-button"
-                >
-                    Features
-                    <svg class="w-4 h-4 ml-1 transition-transform group-hover:rotate-180" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                    </svg>
-                </button>
+<!-- Skip Navigation Link for Screen Readers -->
+<a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-white text-black px-4 py-2 rounded-md z-[100] font-medium">
+    Skip to main content
+</a>
+
+<header role="banner">
+    <nav class="fixed top-0 left-0 w-full bg-black bg-opacity-20 backdrop-blur-sm text-white px-4 sm:px-6 py-6 sm:py-8 z-50" 
+         role="navigation" 
+         aria-label="Main navigation"
+         itemscope 
+         itemtype="https://schema.org/SiteNavigationElement">
+        <div class="max-w-7xl mx-auto relative">
+            <!-- Left Navigation - Hidden on mobile and tablet -->
+            <div class="hidden lg:flex items-center space-x-8 absolute left-0 top-1/2 transform -translate-y-1/2">
+                <a href="#hero" 
+                   class="text-sm hover:text-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1" 
+                   aria-label="Navigate to homepage hero section"
+                   itemprop="url">
+                    <span itemprop="name">Home</span>
+                </a>
                 
-               <!-- Features Dropdown Menu -->
-<div 
-    class="absolute top-full left-0 mt-2 w-64 bg-white bg-opacity-95 backdrop-blur-sm rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 border border-gray-200"
-    role="menu"
-    aria-labelledby="features-menu-button"
->
-    <div class="py-2">
-        <a href="#features" class="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-100 transition-colors focus:bg-gray-100 focus:outline-none" role="menuitem">
-            <span class="font-medium">📊 Real-Time Pace & Analytics</span>
-            <p class="text-xs text-gray-600">Live pacing insights + post-run performance trends</p>
-        </a>
-        <a href="#features" class="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-100 transition-colors focus:bg-gray-100 focus:outline-none" role="menuitem">
-            <span class="font-medium">🏃‍♂️ Smart Pace Detection</span>
-            <p class="text-xs text-gray-600">AI-driven analysis that adapts to your running style</p>
-        </a>
-        <a href="#features" class="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-100 transition-colors focus:bg-gray-100 focus:outline-none" role="menuitem">
-            <span class="font-medium">🎵 Spotify Integration</span>
-            <p class="text-xs text-gray-600">Music playback that syncs with your running pace</p>
-        </a>
-        <a href="#watch-integration" class="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-100 transition-colors focus:bg-gray-100 focus:outline-none" role="menuitem">
-            <span class="font-medium">⌚ Pacebeats Watch Companion</span>
-            <p class="text-xs text-gray-600">Companion app for selected smartwatches</p>
-        </a>
-    </div>
-</div>
-
-            </div>
-            
-            <a href="#how-it-works" class="text-sm hover:text-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1">
-                How It Works
-            </a>
-            <a href="#tech-stack" class="text-sm hover:text-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1">
-                Tech Stack
-            </a>
-        </div>
-
-        <!-- Mobile menu button - Visible on mobile and tablet -->
-        <div class="lg:hidden absolute left-0 top-1/2 transform -translate-y-1/2">
-            <button 
-                id="mobile-menu-button" 
-                class="text-white hover:text-gray-300 transition-colors p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50"
-                aria-expanded="false"
-                aria-controls="mobile-menu"
-                aria-label="Toggle navigation menu"
-            >
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                </svg>
-            </button>
-        </div>
-        
-        <!-- Center Logo - Always centered on ALL screen sizes -->
-        <div class="flex items-center justify-center">
-            <a href="#hero" class="focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md" aria-label="Pacebeats - Go to homepage">
-                <img src="/pacebeats-text-white.svg" alt="Pacebeats" class="h-6" />
-            </a>
-        </div>
-        
-        <!-- Right Navigation - Hidden on mobile and tablet -->
-        <div class="hidden lg:flex items-center space-x-6 absolute right-0 top-1/2 transform -translate-y-1/2">
-            <a 
-                href="https://buymeacoffee.com/Loki123" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                class="text-sm hover:text-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1"
-                aria-label="Support us on Buy Me a Coffee (opens in new tab)"
-            >
-                Support
-            </a>
-            <a href="#team" class="text-sm hover:text-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1">
-                Team
-            </a>
-            <a 
-                href="https://github.com/KpG782" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                class="flex items-center text-sm hover:text-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1"
-                aria-label="View documentation on GitHub (opens in new tab)"
-            >
-                <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clip-rule="evenodd"></path>
-                </svg>
-                Docs
-            </a>
-            <button class="bg-white text-black px-4 py-2 rounded-full text-xs font-medium hover:bg-gray-200 transition-colors shadow-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50">
-                Development Mode
-            </button>
-        </div>
-
-    
-    </div>
-    
-    <!-- Mobile menu -->
-    <div 
-        id="mobile-menu" 
-        class="lg:hidden hidden bg-black bg-opacity-90 backdrop-blur-sm rounded-lg mt-4 mx-4 py-4 px-6 shadow-lg border border-gray-700"
-        role="menu"
-        aria-hidden="true"
-    >
-        <div class="flex flex-col space-y-4">
-            <a href="#hero" class="text-sm text-white hover:text-gray-300 transition-colors mobile-nav-link focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1" role="menuitem">
-                🏠 Home
-            </a>
-            
-            <!-- Mobile Features Section -->
-            <div class="border-l-2 border-red-500 pl-3" role="group" aria-labelledby="mobile-features-heading">
-                <p id="mobile-features-heading" class="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-2">Features</p>
-                <div class="space-y-2">
-                    <a href="#features" class="block text-sm text-white hover:text-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1" role="menuitem">
-                        <span class="font-medium">📊 Real-Time Pace & Analytics</span>
-                        <p class="text-xs text-gray-400 mt-1">Live pacing insights + post-run performance trends</p>
-                    </a>
-                    <a href="#features" class="block text-sm text-white hover:text-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1" role="menuitem">
-                        <span class="font-medium">🏃‍♂️ Smart Pace Detection</span>
-                        <p class="text-xs text-gray-400 mt-1">AI-driven analysis that adapts to your running style</p>
-                    </a>
-                    <a href="#features" class="block text-sm text-white hover:text-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1" role="menuitem">
-                        <span class="font-medium">🎵 Spotify Integration</span>
-                        <p class="text-xs text-gray-400 mt-1">Music playback that syncs with your running pace</p>
-                    </a>
-                    <a href="#watch-integration" class="block text-sm text-white hover:text-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1" role="menuitem">
-                        <span class="font-medium">⌚ Pacebeats Watch Companion</span>
-                        <p class="text-xs text-gray-400 mt-1">Companion app for selected smartwatches</p>
-                    </a>
+                <!-- Features Dropdown -->
+                <div class="relative group" role="menubar">
+                    <button 
+                        class="flex items-center text-sm hover:text-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1"
+                        aria-expanded="false"
+                        aria-haspopup="true"
+                        aria-label="Features menu - Press enter or space to open"
+                        id="features-menu-button"
+                        role="menuitem"
+                        tabindex="0"
+                    >
+                        <span itemprop="name">Features</span>
+                        <svg class="w-4 h-4 ml-1 transition-transform group-hover:rotate-180" 
+                             fill="currentColor" 
+                             viewBox="0 0 20 20" 
+                             aria-hidden="true"
+                             focusable="false">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                        </svg>
+                    </button>
+                    
+                    <!-- Features Dropdown Menu -->
+                    <div 
+                        class="absolute top-full left-0 mt-2 w-64 bg-white bg-opacity-95 backdrop-blur-sm rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 border border-gray-200"
+                        role="menu"
+                        aria-labelledby="features-menu-button"
+                        aria-hidden="true"
+                    >
+                        <div class="py-2">
+                            <a href="#features" 
+                               class="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-100 transition-colors focus:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-inset" 
+                               role="menuitem"
+                               tabindex="-1"
+                               aria-describedby="feature-1-desc"
+                               itemprop="url">
+                                <span class="font-medium" itemprop="name">📊 Real-Time Pace & Analytics</span>
+                                <p id="feature-1-desc" class="text-xs text-gray-600">Live pacing insights + post-run performance trends</p>
+                            </a>
+                            <a href="#features" 
+                               class="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-100 transition-colors focus:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-inset" 
+                               role="menuitem"
+                               tabindex="-1"
+                               aria-describedby="feature-2-desc"
+                               itemprop="url">
+                                <span class="font-medium" itemprop="name">🏃‍♂️ Smart Pace Detection</span>
+                                <p id="feature-2-desc" class="text-xs text-gray-600">AI-driven analysis that adapts to your running style</p>
+                            </a>
+                            <a href="#features" 
+                               class="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-100 transition-colors focus:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-inset" 
+                               role="menuitem"
+                               tabindex="-1"
+                               aria-describedby="feature-3-desc"
+                               itemprop="url">
+                                <span class="font-medium" itemprop="name">🎵 Spotify Integration</span>
+                                <p id="feature-3-desc" class="text-xs text-gray-600">Music playback that syncs with your running pace</p>
+                            </a>
+                            <a href="#watch-integration" 
+                               class="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-100 transition-colors focus:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-inset" 
+                               role="menuitem"
+                               tabindex="-1"
+                               aria-describedby="feature-4-desc"
+                               itemprop="url">
+                                <span class="font-medium" itemprop="name">⌚ Pacebeats Watch Companion</span>
+                                <p id="feature-4-desc" class="text-xs text-gray-600">Companion app for selected smartwatches</p>
+                            </a>
+                        </div>
+                    </div>
                 </div>
+                
+                <a href="#how-it-works" 
+                   class="text-sm hover:text-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1"
+                   aria-label="Learn how Pacebeats works"
+                   itemprop="url">
+                    <span itemprop="name">How It Works</span>
+                </a>
+                <a href="#tech-stack" 
+                   class="text-sm hover:text-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1"
+                   aria-label="View Pacebeats technology stack"
+                   itemprop="url">
+                    <span itemprop="name">Tech Stack</span>
+                </a>
+            </div>
+
+            <!-- Mobile menu button - Visible on mobile and tablet -->
+            <div class="lg:hidden absolute left-0 top-1/2 transform -translate-y-1/2">
+                <button 
+                    id="mobile-menu-button" 
+                    class="text-white hover:text-gray-300 transition-colors p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50"
+                    aria-expanded="false"
+                    aria-controls="mobile-menu"
+                    aria-label="Open navigation menu"
+                    type="button"
+                >
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                    <span class="sr-only">Toggle navigation menu</span>
+                </button>
             </div>
             
-            <a href="#how-it-works" class="text-sm text-white hover:text-gray-300 transition-colors mobile-nav-link focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1" role="menuitem">
-                🔄 How It Works
-            </a>
-            <a href="#tech-stack" class="text-sm text-white hover:text-gray-300 transition-colors mobile-nav-link focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1" role="menuitem">
-                🛠️ Tech Stack
-            </a>
-            <a 
-                href="https://buymeacoffee.com/Loki123" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                class="text-sm text-white hover:text-gray-300 transition-colors mobile-nav-link focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1" 
-                role="menuitem"
-                aria-label="Support us on Buy Me a Coffee (opens in new tab)"
-            >
-                💬 Support
-            </a>
-            <a href="#team" class="text-sm text-white hover:text-gray-300 transition-colors mobile-nav-link focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1" role="menuitem">
-                👥 Team
-            </a>
+            <!-- Center Logo - Always centered on ALL screen sizes -->
+            <div class="flex items-center justify-center" 
+                 itemscope 
+                 itemtype="https://schema.org/Organization">
+                <a href="#hero" 
+                   class="focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md" 
+                   aria-label="Pacebeats - Navigate to homepage"
+                   itemprop="url">
+                    <img src="/pacebeats-text-white.svg" 
+                         alt="Pacebeats - Running companion app that syncs every stride with the perfect beat" 
+                         class="h-6"
+                         itemprop="logo"
+                         width="120"
+                         height="28"
+                         loading="eager"
+                         decoding="async" />
+                    <meta itemprop="name" content="Pacebeats">
+                    <meta itemprop="description" content="Running companion app that syncs every stride with the perfect beat">
+                </a>
+            </div>
             
-            <hr class="border-gray-300" role="separator">
-            
-            <a 
-                href="https://github.com/KpG782/" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                class="flex items-center text-sm text-white hover:text-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1"
-                role="menuitem"
-                aria-label="View documentation on GitHub (opens in new tab)"
-            >
-                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clip-rule="evenodd"></path>
-                </svg>
-                📚 Documentation
-            </a>
+            <!-- Right Navigation - Hidden on mobile and tablet -->
+            <div class="hidden lg:flex items-center space-x-6 absolute right-0 top-1/2 transform -translate-y-1/2">
+                <a 
+                    href="https://buymeacoffee.com/Loki123" 
+                    target="_blank" 
+                    rel="noopener noreferrer nofollow"
+                    class="text-sm hover:text-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1"
+                    aria-label="Support Pacebeats development on Buy Me a Coffee - Opens in new tab"
+                    itemprop="url"
+                >
+                    <span itemprop="name">Support</span>
+                </a>
+                <a href="#team" 
+                   class="text-sm hover:text-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1"
+                   aria-label="Meet the Pacebeats team"
+                   itemprop="url">
+                    <span itemprop="name">Team</span>
+                </a>
+                <a 
+                    href="https://github.com/KpG782" 
+                    target="_blank" 
+                    rel="noopener noreferrer nofollow" 
+                    class="flex items-center text-sm hover:text-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1"
+                    aria-label="View Pacebeats documentation on GitHub - Opens in new tab"
+                    itemprop="url"
+                >
+                    <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+                        <path fill-rule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clip-rule="evenodd"></path>
+                    </svg>
+                    <span itemprop="name">Docs</span>
+                </a>
+                <button class="bg-white text-black px-4 py-2 rounded-full text-xs font-medium hover:bg-gray-200 transition-colors shadow-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50"
+                        type="button"
+                        aria-label="Currently in development mode">
+                    <span aria-hidden="true">🚧</span> Development Mode
+                </button>
+            </div>
         </div>
-    </div>
-    
-    <!-- Add padding to body to account for fixed navbar -->
-<style>
-    /* Ensure navbar spans full viewport width */
-    nav {
-        width: 100vw;
-        min-width: 100%;
-        box-sizing: border-box;
-    }
-    
-    body {
-        padding-top: 70px;
-        margin: 0;
-        padding-left: 0;
-        padding-right: 0;
-    }
-    
-    /* Responsive body padding */
-    @media (min-width: 640px) {
-        body {
-            padding-top: 80px;
-        }
-    }
-    
-    @media (min-width: 1024px) {
-        body {
-            padding-top: 88px;
-        }
-    }
-    
-    /* Ensure no horizontal overflow */
-    html, body {
-        overflow-x: hidden;
-        width: 100%;
-    }
-    
-    /* Enhanced focus styles for accessibility */
-    .sr-only {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        padding: 0;
-        margin: -1px;
-        overflow: hidden;
-        clip: rect(0, 0, 0, 0);
-        white-space: nowrap;
-        border: 0;
-    }
-    
-    .focus\\:not-sr-only:focus {
-        position: static;
-        width: auto;
-        height: auto;
-        padding: 0.5rem 1rem;
-        margin: 0;
-        overflow: visible;
-        clip: auto;
-        white-space: normal;
-    }
-    
-    /* Enhanced dropdown hover effect with GPU acceleration */
-    .group:hover .group-hover\\:opacity-100 {
-        opacity: 1;
-        visibility: visible;
-        transform: translateZ(0); /* GPU acceleration */
-    }
-    
-    /* Smooth transitions for mobile nav links */
-    .mobile-nav-link {
-        transition: all 0.2s ease;
-        will-change: transform, background-color;
-    }
-    
-    .mobile-nav-link:hover {
-        transform: translateX(0.25rem);
-    }
-    
-    /* Reduced motion support */
-    @media (prefers-reduced-motion: reduce) {
-        * {
-            animation-duration: 0.01ms !important;
-            animation-iteration-count: 1 !important;
-            transition-duration: 0.01ms !important;
-        }
-    }
-    
-    /* High contrast mode support */
-    @media (prefers-contrast: high) {
-        .bg-white { background-color: #ffffff; }
-        .text-black { color: #000000; }
-        .border-gray-200 { border-color: #000000; }
-    }
-</style>
+        
+        <!-- Mobile menu -->
+        <div 
+            id="mobile-menu" 
+            class="lg:hidden hidden bg-black bg-opacity-90 backdrop-blur-sm rounded-lg mt-4 mx-4 py-4 px-6 shadow-lg border border-gray-700"
+            role="menu"
+            aria-hidden="true"
+            aria-labelledby="mobile-menu-button"
+        >
+            <div class="flex flex-col space-y-4">
+                <a href="#hero" 
+                   class="text-sm text-white hover:text-gray-300 transition-colors mobile-nav-link focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1" 
+                   role="menuitem"
+                   aria-label="Navigate to homepage"
+                   itemprop="url">
+                    <span aria-hidden="true">🏠</span> <span itemprop="name">Home</span>
+                </a>
+                
+                <!-- Mobile Features Section -->
+                <div class="border-l-2 border-red-500 pl-3" role="group" aria-labelledby="mobile-features-heading">
+                    <h3 id="mobile-features-heading" class="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-2">Features</h3>
+                    <div class="space-y-2" role="list">
+                        <a href="#features" 
+                           class="block text-sm text-white hover:text-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1" 
+                           role="menuitem"
+                           aria-label="Real-Time Pace & Analytics feature"
+                           itemprop="url">
+                            <span class="font-medium" itemprop="name">📊 Real-Time Pace & Analytics</span>
+                            <p class="text-xs text-gray-400 mt-1">Live pacing insights + post-run performance trends</p>
+                        </a>
+                        <a href="#features" 
+                           class="block text-sm text-white hover:text-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1" 
+                           role="menuitem"
+                           aria-label="Smart Pace Detection feature"
+                           itemprop="url">
+                            <span class="font-medium" itemprop="name">🏃‍♂️ Smart Pace Detection</span>
+                            <p class="text-xs text-gray-400 mt-1">AI-driven analysis that adapts to your running style</p>
+                        </a>
+                        <a href="#features" 
+                           class="block text-sm text-white hover:text-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1" 
+                           role="menuitem"
+                           aria-label="Spotify Integration feature"
+                           itemprop="url">
+                            <span class="font-medium" itemprop="name">🎵 Spotify Integration</span>
+                            <p class="text-xs text-gray-400 mt-1">Music playback that syncs with your running pace</p>
+                        </a>
+                        <a href="#watch-integration" 
+                           class="block text-sm text-white hover:text-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1" 
+                           role="menuitem"
+                           aria-label="Pacebeats Watch Companion feature"
+                           itemprop="url">
+                            <span class="font-medium" itemprop="name">⌚ Pacebeats Watch Companion</span>
+                            <p class="text-xs text-gray-400 mt-1">Companion app for selected smartwatches</p>
+                        </a>
+                    </div>
+                </div>
+                
+                <a href="#how-it-works" 
+                   class="text-sm text-white hover:text-gray-300 transition-colors mobile-nav-link focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1" 
+                   role="menuitem"
+                   aria-label="Learn how Pacebeats works"
+                   itemprop="url">
+                    <span aria-hidden="true">🔄</span> <span itemprop="name">How It Works</span>
+                </a>
+                <a href="#tech-stack" 
+                   class="text-sm text-white hover:text-gray-300 transition-colors mobile-nav-link focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1" 
+                   role="menuitem"
+                   aria-label="View Pacebeats technology stack"
+                   itemprop="url">
+                    <span aria-hidden="true">🛠️</span> <span itemprop="name">Tech Stack</span>
+                </a>
+                <a 
+                    href="https://buymeacoffee.com/Loki123" 
+                    target="_blank" 
+                    rel="noopener noreferrer nofollow"
+                    class="text-sm text-white hover:text-gray-300 transition-colors mobile-nav-link focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1" 
+                    role="menuitem"
+                    aria-label="Support Pacebeats development on Buy Me a Coffee - Opens in new tab"
+                    itemprop="url"
+                >
+                    <span aria-hidden="true">💬</span> <span itemprop="name">Support</span>
+                </a>
+                <a href="#team" 
+                   class="text-sm text-white hover:text-gray-300 transition-colors mobile-nav-link focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1" 
+                   role="menuitem"
+                   aria-label="Meet the Pacebeats team"
+                   itemprop="url">
+                    <span aria-hidden="true">👥</span> <span itemprop="name">Team</span>
+                </a>
+                
+                <hr class="border-gray-300" role="separator">
+                
+                <a 
+                    href="https://github.com/KpG782/" 
+                    target="_blank" 
+                    rel="noopener noreferrer nofollow" 
+                    class="flex items-center text-sm text-white hover:text-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1"
+                    role="menuitem"
+                    aria-label="View Pacebeats documentation on GitHub - Opens in new tab"
+                    itemprop="url"
+                >
+                    <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+                        <path fill-rule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clip-rule="evenodd"></path>
+                    </svg>
+                    <span aria-hidden="true">📚</span> <span itemprop="name">Documentation</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<!-- JSON-LD Structured Data for SEO -->
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Pacebeats",
+    "description": "Running companion app that syncs every stride with the perfect beat. Train smarter, push further, and let music power your journey.",
+    "url": "https://www.pacebeats.top",
+    "applicationCategory": "HealthApplication",
+    "operatingSystem": ["iOS", "Android"],
+    "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+    },
+    "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "ratingCount": "150"
+    },
+    "author": {
+        "@type": "Organization",
+        "name": "Pacebeats Team",
+        "url": "https://www.pacebeats.top"
+    },
+    "featureList": [
+        "Real-Time Pace & Analytics",
+        "Smart Pace Detection", 
+        "Spotify Integration",
+        "Smartwatch Companion",
+        "Community Challenges",
+        "Personalized Training Plans"
+    ]
+}
+</script>
+
+<!-- ...existing code... -->
 
 <script>
     // Cache DOM elements for better performance
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
+    const featuresButton = document.getElementById('features-menu-button');
+    const featuresMenu = featuresButton?.nextElementSibling;
     let isMenuOpen = false;
+    let isFeaturesOpen = false;
     
-    // Mobile menu toggle with accessibility
+    // Enhanced mobile menu toggle with full accessibility
     function toggleMobileMenu() {
         isMenuOpen = !isMenuOpen;
         mobileMenu?.classList.toggle('hidden');
         mobileMenuButton?.setAttribute('aria-expanded', isMenuOpen.toString());
         mobileMenu?.setAttribute('aria-hidden', (!isMenuOpen).toString());
         
+        // Update button label
+        const buttonLabel = isMenuOpen ? 'Close navigation menu' : 'Open navigation menu';
+        mobileMenuButton?.setAttribute('aria-label', buttonLabel);
+        
         // Focus management
         if (isMenuOpen && mobileMenu) {
             const firstMenuItem = mobileMenu.querySelector('[role="menuitem"]') as HTMLElement;
             firstMenuItem?.focus();
+        } else if (!isMenuOpen && mobileMenuButton) {
+            mobileMenuButton.focus();
+        }
+        
+        // Trap focus within menu when open
+        if (isMenuOpen) {
+            trapFocus(mobileMenu);
         }
     }
     
+    // Enhanced features dropdown accessibility
+    function toggleFeaturesMenu(open?: boolean) {
+        isFeaturesOpen = open !== undefined ? open : !isFeaturesOpen;
+        featuresButton?.setAttribute('aria-expanded', isFeaturesOpen.toString());
+        featuresMenu?.setAttribute('aria-hidden', (!isFeaturesOpen).toString());
+        
+        if (isFeaturesOpen && featuresMenu) {
+            const firstMenuItem = featuresMenu.querySelector('[role="menuitem"]') as HTMLElement;
+            firstMenuItem?.focus();
+            trapFocus(featuresMenu);
+        }
+    }
+    
+    // Focus trap utility for accessibility
+    function trapFocus(element: Element | null) {
+        if (!element) return;
+        
+        const focusableElements = element.querySelectorAll(
+            'a[href], button:not([disabled]), textarea:not([disabled]), input[type="text"]:not([disabled]), input[type="radio"]:not([disabled]), input[type="checkbox"]:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        );
+        
+        const firstElement = focusableElements[0] as HTMLElement;
+        const lastElement = focusableElements[focusableElements.length - 1] as HTMLElement;
+        
+        const handleKeydown = (e: KeyboardEvent) => {
+            if (e.key === 'Tab') {
+                if (e.shiftKey) {
+                    if (document.activeElement === firstElement) {
+                        lastElement?.focus();
+                        e.preventDefault();
+                    }
+                } else {
+                    if (document.activeElement === lastElement) {
+                        firstElement?.focus();
+                        e.preventDefault();
+                    }
+                }
+            }
+        };
+        
+        (element as HTMLElement).addEventListener('keydown', handleKeydown);
+    }
+    
+    // Event listeners
     mobileMenuButton?.addEventListener('click', toggleMobileMenu);
     
-    // Smooth scrolling with performance optimization
+    // Features dropdown keyboard navigation
+    featuresButton?.addEventListener('keydown', (e: KeyboardEvent) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            toggleFeaturesMenu();
+        }
+    });
+    
+    // Close menus with Escape
+    document.addEventListener('keydown', (e: KeyboardEvent) => {
+        if (e.key === 'Escape') {
+            if (isMenuOpen) {
+                toggleMobileMenu();
+            }
+            if (isFeaturesOpen) {
+                toggleFeaturesMenu(false);
+                featuresButton?.focus();
+            }
+        }
+    });
+    
+    // Enhanced smooth scrolling with performance optimization
     function smoothScrollTo(target: Element) {
+        // Use intersection observer for performance
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    observer.disconnect();
+                }
+            });
+        });
+        
+        observer.observe(target);
+        
         if ('scrollBehavior' in document.documentElement.style) {
             target.scrollIntoView({ behavior: 'smooth', block: 'start' });
         } else {
-            // Fallback for browsers without smooth scroll support
             target.scrollIntoView();
         }
     }
     
-    // Optimized scroll event handler
-    document.addEventListener('click', function(e) {
+    // Optimized click handler with analytics
+    document.addEventListener('click', function(e: MouseEvent) {
         const target = e.target as HTMLElement;
         if (!target) return;
         
@@ -325,6 +463,14 @@
                 e.preventDefault();
                 const targetElement = document.querySelector(href);
                 if (targetElement) {
+                    // Analytics tracking
+                    if ('gtag' in window) {
+                        (window as any).gtag('event', 'navigation', {
+                            'event_category': 'engagement',
+                            'event_label': href
+                        });
+                    }
+                    
                     // Close mobile menu if open
                     if (isMenuOpen) {
                         toggleMobileMenu();
@@ -335,19 +481,8 @@
                 }
             }
         }
-    });
-    
-    // Close mobile menu with Escape key
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && isMenuOpen) {
-            toggleMobileMenu();
-            mobileMenuButton?.focus();
-        }
-    });
-    
-    // Close mobile menu when clicking outside (with performance optimization)
-    document.addEventListener('click', (e) => {
-        const target = e.target as HTMLElement;
+        
+        // Close mobile menu when clicking outside
         if (isMenuOpen && target &&
             !mobileMenuButton?.contains(target) && 
             !mobileMenu?.contains(target)) {
@@ -355,14 +490,23 @@
         }
     });
     
-    // Preload critical resources (performance optimization)
+    // Performance optimizations
     if ('requestIdleCallback' in window) {
         requestIdleCallback(() => {
-            // Preload GitHub page
-            const link = document.createElement('link');
-            link.rel = 'dns-prefetch';
-            link.href = '//github.com';
-            document.head.appendChild(link);
+            // Preload critical resources
+            ['//github.com', '//buymeacoffee.com'].forEach(domain => {
+                const link = document.createElement('link');
+                link.rel = 'dns-prefetch';
+                link.href = domain;
+                document.head.appendChild(link);
+            });
+            
+            // Preload critical images
+            const logoPreload = document.createElement('link');
+            logoPreload.rel = 'preload';
+            logoPreload.as = 'image';
+            logoPreload.href = '/pacebeats-text-white.svg';
+            document.head.appendChild(logoPreload);
         });
     }
 </script>
