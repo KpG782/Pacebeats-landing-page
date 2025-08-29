@@ -2,10 +2,10 @@
 ---
 
 <!-- Hero Section with enhanced SEO and accessibility -->
-<main id="main-content" role="main" >
+<main id="main-content" role="main">
     <section 
         id="hero" 
-        class="relative min-h-screen bg-cover bg-center bg-no-repeat" 
+        class="relative min-h-screen bg-cover bg-center bg-no-repeat pt-16" 
         style="background-image: url('/hero-section.jpg');"
         aria-labelledby="hero-heading"
         itemscope 
@@ -15,13 +15,13 @@
         <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/80" aria-hidden="true"></div>
         
         <!-- Hero content -->
-        <div class="relative z-10 flex items-center justify-center min-h-screen text-center text-white px-6">
-            <div class="max-w-5xl mx-auto">
+        <div class="relative z-10 flex items-center justify-center min-h-screen text-center text-white px-4 sm:px-6 lg:px-8">
+            <div class="w-full max-w-4xl mx-auto">
                 <!-- Main headline with enhanced SEO structure -->
                 <header>
                     <h1 
                         id="hero-heading"
-                        class="hero-title text-5xl md:text-6xl lg:text-7xl font-black mb-8 mt-16 leading-[0.9] tracking-tight text-glow"
+                        class="hero-title text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-4 sm:mb-6 md:mb-8 mt-4 sm:mt-8 md:mt-16 leading-tight tracking-tight text-glow"
                         itemprop="name"
                     >
                         <span class="block" aria-label="Run to the Rhythm">Run to the Rhythm.</span>
@@ -31,7 +31,7 @@
                 
                 <!-- Subtitle with semantic markup -->
                 <p 
-                    class="text-lg md:text-xl lg:text-2xl mb-12 text-gray-100 max-w-3xl mx-auto font-medium leading-relaxed"
+                    class="text-base sm:text-lg md:text-xl lg:text-2xl mb-6 sm:mb-8 md:mb-12 text-gray-100 max-w-2xl mx-auto font-medium leading-relaxed px-2"
                     itemprop="description"
                 >
                     Pacebeats transforms every run by syncing your steps with the perfect song.
@@ -39,9 +39,9 @@
                 </p>
                 
                 <!-- Enhanced CTA Button with accessibility -->
-                <div class="mb-16" role="region" aria-label="Call to action">
+                <div class="mb-8 sm:mb-12 md:mb-16 px-4 flex justify-center" role="region" aria-label="Call to action">
                     <button 
-                        class="bg-blue-600 hover:bg-blue-700 text-white px-10 py-4 rounded-full font-bold text-lg transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-105 transform"
+                        class="bg-blue-600 hover:bg-blue-700 text-white px-6 sm:px-10 py-3 sm:py-4 rounded-full font-bold text-base sm:text-lg transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-105 transform max-w-xs"
                         type="button"
                         aria-label="Get started with Pacebeats - Download the app"
                         onclick="scrollToSection('features')"
@@ -53,11 +53,11 @@
                 </div>
 
                 <!-- Phone mockup with comprehensive accessibility -->
-                <figure class="relative" role="img" aria-labelledby="app-preview-caption">
+                <figure class="relative flex justify-center px-4" role="img" aria-labelledby="app-preview-caption">
                     <img 
                         src="/hero-section-1.svg" 
                         alt="Pacebeats mobile app interface showing real-time pace tracking, music synchronization, and running analytics dashboard"
-                        class="mx-auto rounded-2xl shadow-2xl w-40 md:w-48 lg:w-80 transform hover:scale-105 transition-transform duration-500"
+                        class="rounded-2xl shadow-2xl w-32 sm:w-40 md:w-48 lg:w-80 max-w-full h-auto transform hover:scale-105 transition-transform duration-500"
                         loading="eager"
                         decoding="async"
                         width="320"
@@ -93,7 +93,7 @@
         
         <!-- Enhanced scroll indicator with accessibility -->
         <div 
-            class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce"
+            class="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce"
             role="button"
             tabindex="0"
             aria-label="Scroll down to see more content"
@@ -250,6 +250,70 @@
         .hero-title {
             font-size: 2.5rem;
             line-height: 0.9;
+        }
+    }
+    
+    /* Additional responsive fixes for the hero section */
+    #hero {
+        max-width: 100vw;
+        overflow-x: hidden;
+    }
+    
+    /* Ensure proper spacing with fixed navbar */
+    @media (min-width: 768px) {
+        #hero {
+            padding-top: 4rem; /* Account for fixed navbar */
+        }
+    }
+    
+    /* Mobile adjustments */
+    @media (max-width: 767px) {
+        #hero {
+            padding-top: 4rem; /* Account for mobile navbar */
+        }
+        
+        .hero-title {
+            font-size: 2.25rem !important;
+            line-height: 1.1;
+            margin-bottom: 1rem !important; /* Reduced spacing */
+        }
+        
+        .text-base {
+            font-size: 0.95rem;
+        }
+    }
+    
+    /* Very small screens */
+    @media (max-width: 480px) {
+        .hero-title {
+            font-size: 1.875rem !important;
+            margin-bottom: 0.75rem !important; /* Further reduced spacing */
+        }
+        
+        .text-base {
+            font-size: 0.875rem;
+            margin-bottom: 1.5rem !important; /* Reduced spacing */
+        }
+    }
+    
+    /* Landscape mobile fix */
+    @media (max-height: 600px) and (orientation: landscape) {
+        #hero {
+            min-height: 100vh;
+            padding-top: 3rem;
+        }
+        
+        .hero-title {
+            font-size: 1.75rem !important;
+            margin-bottom: 1rem;
+        }
+        
+        .mb-8, .mb-12 {
+            margin-bottom: 1rem;
+        }
+        
+        .mb-12.sm\:mb-16, .mb-16 {
+            margin-bottom: 1.5rem;
         }
     }
     

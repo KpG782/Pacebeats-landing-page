@@ -49,7 +49,7 @@
                         <img 
                             src="ken.jpg" 
                             alt="Ken Patrick Garcia - Project Leader and Android Developer"
-                            class="rounded-full w-full h-full object-cover"
+                            class="rounded-full w-full h-full object-cover block mx-auto"
                             loading="lazy"
                             decoding="async"
                             width="96"
@@ -123,7 +123,7 @@
                 <div class="text-center">
                     <!-- Avatar placeholder -->
                     <div class="w-24 h-24 bg-gradient-to-r from-purple-500 to-purple-600 rounded-full mx-auto mb-6 flex items-center justify-center" aria-hidden="true">
-                        <span class="text-2xl font-bold text-white" aria-label="Timothy Forte initials">TF</span>
+                        <span class="text-2xl font-bold text-white block mx-auto" aria-label="Timothy Forte initials">TF</span>
                     </div>
                     
                     <!-- Name and primary role -->
@@ -191,7 +191,7 @@
                 <div class="text-center">
                     <!-- Avatar placeholder -->
                     <div class="w-24 h-24 bg-gradient-to-r from-green-500 to-green-600 rounded-full mx-auto mb-6 flex items-center justify-center" aria-hidden="true">
-                        <span class="text-2xl font-bold text-white" aria-label="Brian Papa initials">BP</span>
+                        <span class="text-2xl font-bold text-white block mx-auto" aria-label="Brian Papa initials">BP</span>
                     </div>
                     
                     <!-- Name and primary role -->
@@ -259,7 +259,7 @@
                 <div class="text-center">
                     <!-- Avatar placeholder -->
                     <div class="w-24 h-24 bg-gradient-to-r from-orange-500 to-orange-600 rounded-full mx-auto mb-6 flex items-center justify-center" aria-hidden="true">
-                        <span class="text-2xl font-bold text-white" aria-label="Lanz Corpuz initials">LC</span>
+                        <span class="text-2xl font-bold text-white block mx-auto" aria-label="Lanz Corpuz initials">LC</span>
                     </div>
                     
                     <!-- Name and primary role -->
@@ -450,6 +450,49 @@
         transition-delay: 450ms;
     }
 
+    /* Ensure all images and content are centered */
+    .team-card img {
+        margin: 0 auto !important;
+        display: block !important;
+        text-align: center;
+    }
+    
+    .team-card .w-24.h-24 {
+        margin: 0 auto 1.5rem auto !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+    
+    .team-card .text-center {
+        text-align: center !important;
+    }
+    
+    .team-card span {
+        display: block !important;
+        margin: 0 auto !important;
+        text-align: center !important;
+    }
+    
+    /* Mobile centering enforcement */
+    @media (max-width: 768px) {
+        .team-card img,
+        .team-card .w-24.h-24,
+        .team-card span {
+            margin-left: auto !important;
+            margin-right: auto !important;
+            display: block !important;
+            text-align: center !important;
+        }
+        
+        .team-card .text-center {
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            justify-content: center !important;
+        }
+    }
+    
     /* Enhanced accessibility styles */
     .sr-only {
         position: absolute;
