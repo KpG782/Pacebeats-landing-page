@@ -1,4 +1,5 @@
 ---
+import HeroClient from './client/HeroClient';
 ---
 
 <!-- Hero Section with enhanced SEO and accessibility -->
@@ -16,94 +17,25 @@
         
         <!-- Hero content -->
         <div class="relative z-10 flex items-center justify-center min-h-screen text-center text-white px-4 sm:px-6 lg:px-8">
-            <div class="w-full max-w-4xl mx-auto">
-                <!-- Main headline with enhanced SEO structure -->
-                <header>
-                    <h1 
-                        id="hero-heading"
-                        class="hero-title text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-4 sm:mb-6 md:mb-8 mt-4 sm:mt-8 md:mt-16 leading-tight tracking-tight text-glow"
-                        itemprop="name"
-                    >
-                        <span class="block" aria-label="Run to the Rhythm">Run to the Rhythm.</span>
-                        <span class="block" aria-label="Achieve your Pace">Achieve your Pace.</span>
-                    </h1>
-                </header>
-                
-                <!-- Subtitle with semantic markup -->
-                <p 
-                    class="text-base sm:text-lg md:text-xl lg:text-2xl mb-6 sm:mb-8 md:mb-12 text-gray-100 max-w-2xl mx-auto font-medium leading-relaxed px-2"
-                    itemprop="description"
-                >
-                    Pacebeats transforms every run by syncing your steps with the perfect song.
-                    Feel the music adapt to your stride, push past your limits, and turn every workout into a rhythm-powered journey.
-                </p>
-                
-                <!-- Enhanced CTA Button with accessibility -->
-                <div class="mb-8 sm:mb-12 md:mb-16 px-4 flex justify-center" role="region" aria-label="Call to action">
-                    <button 
-                        class="bg-blue-600 hover:bg-blue-700 text-white px-6 sm:px-10 py-3 sm:py-4 rounded-full font-bold text-base sm:text-lg transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-105 transform max-w-xs"
-                        type="button"
-                        aria-label="Get started with Pacebeats - Download the app"
-                        onclick="scrollToSection('features')"
-                    >
-                        <span aria-hidden="true">🚀</span>
-                        Let's Get Moving
-                        <span class="sr-only">- Scroll to features section</span>
-                    </button>
-                </div>
-
-                <!-- Phone mockup with comprehensive accessibility -->
-                <figure class="relative flex justify-center px-4" role="img" aria-labelledby="app-preview-caption">
-                    <img 
-                        src="/hero-section-1.svg" 
-                        alt="Pacebeats mobile app interface showing real-time pace tracking, music synchronization, and running analytics dashboard"
-                        class="rounded-2xl shadow-2xl w-32 sm:w-40 md:w-48 lg:w-80 max-w-full h-auto transform hover:scale-105 transition-transform duration-500"
-                        loading="eager"
-                        decoding="async"
-                        width="320"
-                        height="640"
-                        itemprop="screenshot"
-                    />
-                    <figcaption id="app-preview-caption" class="sr-only">
-                        Preview of the Pacebeats mobile application interface displaying running metrics and music controls
-                    </figcaption>
-                    <!-- Subtle glow effect behind phone -->
-                    <div class="absolute inset-0 bg-blue-600/20 blur-3xl rounded-full scale-150 -z-10" aria-hidden="true"></div>
-                </figure>
-
-                <!-- Hidden content for SEO and screen readers -->
-                <div class="sr-only">
-                    <h2>Key Features of Pacebeats Running App</h2>
-                    <ul>
-                        <li itemprop="featureList">Real-time pace tracking and analytics</li>
-                        <li itemprop="featureList">Smart music synchronization with running cadence</li>
-                        <li itemprop="featureList">Spotify integration for seamless music experience</li>
-                        <li itemprop="featureList">Smartwatch companion app support</li>
-                        <li itemprop="featureList">Community challenges and social features</li>
-                        <li itemprop="featureList">Personalized training plans and goals</li>
-                    </ul>
-                    
-                    <div itemprop="applicationCategory">Health & Fitness</div>
-                    <div itemprop="operatingSystem">iOS, Android</div>
-                    <meta itemprop="offers" content="Free with premium features available">
-                    <meta itemprop="url" content="https://www.pacebeats.top">
-                </div>
-            </div>
+            <HeroClient client:load />
         </div>
-        
-        <!-- Enhanced scroll indicator with accessibility -->
-        <div 
-            class="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce"
-            role="button"
-            tabindex="0"
-            aria-label="Scroll down to see more content"
-            onclick="scrollToSection('features')"
-            onkeydown="handleScrollIndicatorKeydown(event)"
-        >
-            <div class="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center cursor-pointer">
-                <div class="w-1 h-3 bg-white/60 rounded-full mt-2 animate-pulse"></div>
-            </div>
-            <span class="sr-only">Click or press Enter to scroll to the next section</span>
+
+        <!-- Hidden content for SEO and screen readers -->
+        <div class="sr-only">
+            <h2>Key Features of Pacebeats Running App</h2>
+            <ul>
+                <li itemprop="featureList">Real-time pace tracking and analytics</li>
+                <li itemprop="featureList">Smart music synchronization with running cadence</li>
+                <li itemprop="featureList">Spotify integration for seamless music experience</li>
+                <li itemprop="featureList">Smartwatch companion app support</li>
+                <li itemprop="featureList">Community challenges and social features</li>
+                <li itemprop="featureList">Personalized training plans and goals</li>
+            </ul>
+            
+            <div itemprop="applicationCategory">Health & Fitness</div>
+            <div itemprop="operatingSystem">iOS, Android</div>
+            <meta itemprop="offers" content="Free with premium features available">
+            <meta itemprop="url" content="https://www.pacebeats.top">
         </div>
     </section>
 </main>
