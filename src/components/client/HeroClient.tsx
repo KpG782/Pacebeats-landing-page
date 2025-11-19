@@ -77,7 +77,7 @@ export default function HeroClient() {
           </motion.button>
         </motion.div>
 
-        {/* Phone mockup */}
+        {/* App Screenshot */}
         <motion.figure 
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
@@ -89,7 +89,7 @@ export default function HeroClient() {
           <motion.img 
             whileHover={{ scale: 1.05, rotate: 2 }}
             transition={{ duration: 0.3 }}
-            src="/hero-section-1.svg" 
+            src="/hero-screen-1.svg" 
             alt="Pacebeats mobile app interface showing real-time pace tracking, music synchronization, and running analytics dashboard"
             className="rounded-2xl shadow-2xl w-32 sm:w-40 md:w-48 lg:w-80 max-w-full h-auto"
             loading="eager"

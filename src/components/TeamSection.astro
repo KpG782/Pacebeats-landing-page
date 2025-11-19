@@ -3,23 +3,28 @@
 
 <section 
     id="team" 
-    class="bg-black text-white py-20 px-6"
+    class="bg-gradient-to-b from-black via-gray-950 to-black text-white py-24 px-6 relative overflow-hidden"
     aria-labelledby="team-heading"
     itemscope 
     itemtype="https://schema.org/Organization"
 >
-    <div class="max-w-7xl mx-auto">
+
+
+    <div class="max-w-7xl mx-auto relative z-10">
         <!-- Section Header with enhanced SEO -->
-        <header class="text-center mb-16">
+        <header class="text-center mb-20">
+            <div class="inline-block mb-4">
+                <span class="text-blue-400 font-semibold text-sm uppercase tracking-wider">Our Team</span>
+            </div>
             <h2 
                 id="team-heading" 
-                class="text-4xl md:text-5xl lg:text-6xl font-black text-white font-inter leading-tight mb-4"
+                class="text-5xl md:text-6xl lg:text-7xl font-black font-inter leading-tight mb-6 bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent"
                 itemprop="name"
             >
                 Meet the Team
             </h2>
             <p 
-                class="text-gray-300 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed"
+                class="text-gray-400 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed"
                 itemprop="description"
             >
                 The passionate developers and designers behind Pacebeats, dedicated to revolutionizing how runners track and achieve their goals.
@@ -30,10 +35,10 @@
         </header>
 
         <!-- Team Grid with enhanced accessibility -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8" role="list" aria-label="Team members">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6" role="list" aria-label="Team members">
             <!-- Ken Patrick Garcia -->
             <article 
-                class="bg-gray-900 p-8 rounded-2xl border border-gray-800 hover:border-blue-600 transition-all duration-300 group team-card"
+                class="relative bg-gradient-to-br from-gray-900/80 to-gray-950/80 backdrop-blur-xl p-6 rounded-2xl border-2 border-gray-800/50 hover:border-blue-500/50 transition-all duration-500 group team-card hover:shadow-2xl hover:shadow-blue-500/20"
                 role="listitem"
                 tabindex="0"
                 aria-labelledby="ken-name"
@@ -43,66 +48,65 @@
                 itemscope 
                 itemtype="https://schema.org/Person"
             >
-                <div class="text-center">
+                <div class="flex items-center gap-6 relative z-10">
                     <!-- Avatar -->
-                    <div class="w-24 h-24 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full mx-auto mb-6 flex items-center justify-center overflow-hidden">
-                        <img 
-                            src="ken.jpg" 
-                            alt="Ken Patrick Garcia - Project Leader and Android Developer"
-                            class="rounded-full w-full h-full object-cover block mx-auto"
-                            loading="lazy"
-                            decoding="async"
-                            width="96"
-                            height="96"
-                            itemprop="image"
-                        />
+                    <div class="flex-shrink-0">
+                        <div class="w-24 h-24 bg-gradient-to-r from-blue-500 to-cyan-600 rounded-full flex items-center justify-center overflow-hidden ring-2 ring-blue-500/30 transition-all">
+                            <img 
+                                src="ken.jpg" 
+                                alt="Ken Patrick Garcia - Project Leader and Android Developer"
+                                class="rounded-full w-full h-full object-cover"
+                                loading="lazy"
+                                decoding="async"
+                                width="96"
+                                height="96"
+                                itemprop="image"
+                            />
+                        </div>
                     </div>
                     
-                    <!-- Name and primary role -->
-                    <h3 
-                        id="ken-name" 
-                        class="text-xl font-bold text-white mb-2 font-inter"
-                        itemprop="name"
-                    >
-                        Ken Patrick Garcia
-                    </h3>
-                    <p 
-                        class="text-blue-400 font-semibold mb-4"
-                        itemprop="jobTitle"
-                    >
-                        Project Leader
-                    </p>
-                    
-                    <!-- Role description -->
-                    <p 
-                        id="ken-desc" 
-                        class="text-gray-400 text-sm leading-relaxed mb-4"
-                        itemprop="description"
-                    >
-                        Android Developer & Project Coordinator. Leads the development of PaceBeats' core Android functionality and Samsung Health integration.
-                    </p>
-                    
-                    <!-- Skills/Technologies -->
-                    <div class="flex flex-wrap gap-2 justify-center" role="list" aria-label="Ken's skills">
-                        <span class="bg-gray-800 text-gray-300 px-3 py-1 rounded-full text-xs" role="listitem">Kotlin</span>
-                        <span class="bg-gray-800 text-gray-300 px-3 py-1 rounded-full text-xs" role="listitem">Android</span>
-                        <span class="bg-gray-800 text-gray-300 px-3 py-1 rounded-full text-xs" role="listitem">Leadership</span>
+                    <!-- Info -->
+                    <div class="flex-1 min-w-0">
+                        <div class="flex items-center gap-2 mb-2">
+                            <h3 
+                                id="ken-name" 
+                                class="text-xl font-bold text-white font-inter group-hover:text-blue-300 transition-colors"
+                                itemprop="name"
+                            >
+                                Ken Patrick Garcia
+                            </h3>
+                            <span class="inline-flex items-center bg-blue-500/10 border border-blue-500/30 rounded-full px-3 py-1 text-blue-400 font-semibold text-xs uppercase tracking-wider">Project Leader</span>
+                        </div>
+                        
+                        <p 
+                            id="ken-desc" 
+                            class="text-gray-400 text-sm leading-relaxed mb-3"
+                            itemprop="description"
+                        >
+                            Android Developer & Project Coordinator. Leads the development of PaceBeats' core Android functionality and Samsung Health integration.
+                        </p>
+                        
+                        <div class="flex flex-wrap gap-2" role="list" aria-label="Ken's skills">
+                            <span class="bg-blue-500/10 border border-blue-500/30 text-blue-300 px-2.5 py-1 rounded-lg text-xs font-medium" role="listitem">Kotlin</span>
+                            <span class="bg-blue-500/10 border border-blue-500/30 text-blue-300 px-2.5 py-1 rounded-lg text-xs font-medium" role="listitem">Android</span>
+                            <span class="bg-blue-500/10 border border-blue-500/30 text-blue-300 px-2.5 py-1 rounded-lg text-xs font-medium" role="listitem">Leadership</span>
+                        </div>
                     </div>
                     
-                    <!-- LinkedIn link -->
-                    <div class="mt-4">
+                    <!-- LinkedIn -->
+                    <div class="flex-shrink-0">
                         <a 
                             href="https://www.linkedin.com/in/ken-patrick-garcia-ba5430285/"
                             target="_blank"
                             rel="noopener noreferrer"
-                            class="inline-flex items-center text-blue-400 hover:text-blue-300 transition-colors text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded-md px-2 py-1"
+                            class="inline-flex items-center gap-2 bg-blue-500/10 hover:bg-blue-500/20 border border-blue-500/30 hover:border-blue-500/50 text-blue-400 hover:text-blue-300 px-4 py-2.5 rounded-xl transition-all text-sm font-medium"
                             aria-label="View Ken Patrick Garcia's LinkedIn profile - Opens in new tab"
                             itemprop="sameAs"
                         >
-                            <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                                 <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
                             </svg>
-                            LinkedIn Profile
+                            <span>LinkedIn</span>
                         </a>
                     </div>
                 </div>
@@ -110,7 +114,7 @@
 
             <!-- Timothy Forte -->
             <article 
-                class="bg-gray-900 p-8 rounded-2xl border border-gray-800 hover:border-blue-600 transition-all duration-300 group team-card"
+                class="relative bg-gradient-to-br from-gray-900/80 to-gray-950/80 backdrop-blur-xl p-6 rounded-2xl border-2 border-gray-800/50 hover:border-purple-500/50 transition-all duration-500 group team-card hover:shadow-2xl hover:shadow-purple-500/20"
                 role="listitem"
                 tabindex="0"
                 aria-labelledby="timothy-name"
@@ -120,57 +124,56 @@
                 itemscope 
                 itemtype="https://schema.org/Person"
             >
-                <div class="text-center">
+                <div class="flex items-center gap-6 relative z-10">
                     <!-- Avatar placeholder -->
-                    <div class="w-24 h-24 bg-gradient-to-r from-purple-500 to-purple-600 rounded-full mx-auto mb-6 flex items-center justify-center" aria-hidden="true">
-                        <span class="text-2xl font-bold text-white block mx-auto" aria-label="Timothy Forte initials">TF</span>
+                    <div class="flex-shrink-0">
+                        <div class="w-24 h-24 bg-gradient-to-r from-purple-500 to-pink-600 rounded-full flex items-center justify-center ring-2 ring-purple-500/30 transition-all" aria-hidden="true">
+                            <span class="text-3xl font-bold text-white">TF</span>
+                        </div>
                     </div>
                     
-                    <!-- Name and primary role -->
-                    <h3 
-                        id="timothy-name" 
-                        class="text-xl font-bold text-white mb-2 font-inter"
-                        itemprop="name"
-                    >
-                        Timothy Forte
-                    </h3>
-                    <p 
-                        class="text-purple-400 font-semibold mb-4"
-                        itemprop="jobTitle"
-                    >
-                        UI/UX Designer
-                    </p>
-                    
-                    <!-- Role description -->
-                    <p 
-                        id="timothy-desc" 
-                        class="text-gray-400 text-sm leading-relaxed mb-4"
-                        itemprop="description"
-                    >
-                        Frontend Developer & Design Lead. Crafts PaceBeats' intuitive user interface and ensures optimal user experience across all platforms.
-                    </p>
-                    
-                    <!-- Skills/Technologies -->
-                    <div class="flex flex-wrap gap-2 justify-center" role="list" aria-label="Timothy's skills">
-                        <span class="bg-gray-800 text-gray-300 px-3 py-1 rounded-full text-xs" role="listitem">UI/UX</span>
-                        <span class="bg-gray-800 text-gray-300 px-3 py-1 rounded-full text-xs" role="listitem">Frontend</span>
-                        <span class="bg-gray-800 text-gray-300 px-3 py-1 rounded-full text-xs" role="listitem">Design</span>
+                    <!-- Info -->
+                    <div class="flex-1 min-w-0">
+                        <div class="flex items-center gap-2 mb-2">
+                            <h3 
+                                id="timothy-name" 
+                                class="text-xl font-bold text-white font-inter group-hover:text-purple-300 transition-colors"
+                                itemprop="name"
+                            >
+                                Timothy Forte
+                            </h3>
+                            <span class="inline-flex items-center bg-purple-500/10 border border-purple-500/30 rounded-full px-3 py-1 text-purple-400 font-semibold text-xs uppercase tracking-wider">UI/UX Designer</span>
+                        </div>
+                        
+                        <p 
+                            id="timothy-desc" 
+                            class="text-gray-400 text-sm leading-relaxed mb-3"
+                            itemprop="description"
+                        >
+                            Frontend Developer & Design Lead. Crafts PaceBeats' intuitive user interface and ensures optimal user experience across all platforms.
+                        </p>
+                        
+                        <div class="flex flex-wrap gap-2" role="list" aria-label="Timothy's skills">
+                            <span class="bg-purple-500/10 border border-purple-500/30 text-purple-300 px-2.5 py-1 rounded-lg text-xs font-medium" role="listitem">UI/UX</span>
+                            <span class="bg-purple-500/10 border border-purple-500/30 text-purple-300 px-2.5 py-1 rounded-lg text-xs font-medium" role="listitem">Frontend</span>
+                            <span class="bg-purple-500/10 border border-purple-500/30 text-purple-300 px-2.5 py-1 rounded-lg text-xs font-medium" role="listitem">Design</span>
+                        </div>
                     </div>
                     
-                    <!-- LinkedIn link -->
-                    <div class="mt-4">
+                    <!-- LinkedIn -->
+                    <div class="flex-shrink-0">
                         <a 
                             href="https://www.linkedin.com/in/timothy-forte-3a0512168/"
                             target="_blank"
                             rel="noopener noreferrer"
-                            class="inline-flex items-center text-blue-400 hover:text-blue-300 transition-colors text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded-md px-2 py-1"
+                            class="inline-flex items-center gap-2 bg-purple-500/10 hover:bg-purple-500/20 border border-purple-500/30 hover:border-purple-500/50 text-purple-400 hover:text-purple-300 px-4 py-2.5 rounded-xl transition-all text-sm font-medium"
                             aria-label="View Timothy Forte's LinkedIn profile - Opens in new tab"
                             itemprop="sameAs"
                         >
-                            <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                                 <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
                             </svg>
-                            LinkedIn Profile
+                            <span>LinkedIn</span>
                         </a>
                     </div>
                 </div>
@@ -178,7 +181,7 @@
 
             <!-- Brian Ashley Papa -->
             <article 
-                class="bg-gray-900 p-8 rounded-2xl border border-gray-800 hover:border-blue-600 transition-all duration-300 group team-card"
+                class="relative bg-gradient-to-br from-gray-900/80 to-gray-950/80 backdrop-blur-xl p-6 rounded-2xl border-2 border-gray-800/50 hover:border-green-500/50 transition-all duration-500 group team-card hover:shadow-2xl hover:shadow-green-500/20"
                 role="listitem"
                 tabindex="0"
                 aria-labelledby="brian-name"
@@ -188,57 +191,56 @@
                 itemscope 
                 itemtype="https://schema.org/Person"
             >
-                <div class="text-center">
+                <div class="flex items-center gap-6 relative z-10">
                     <!-- Avatar placeholder -->
-                    <div class="w-24 h-24 bg-gradient-to-r from-green-500 to-green-600 rounded-full mx-auto mb-6 flex items-center justify-center" aria-hidden="true">
-                        <span class="text-2xl font-bold text-white block mx-auto" aria-label="Brian Papa initials">BP</span>
+                    <div class="flex-shrink-0">
+                        <div class="w-24 h-24 bg-gradient-to-r from-green-500 to-emerald-600 rounded-full flex items-center justify-center ring-2 ring-green-500/30 transition-all" aria-hidden="true">
+                            <span class="text-3xl font-bold text-white">BP</span>
+                        </div>
                     </div>
                     
-                    <!-- Name and primary role -->
-                    <h3 
-                        id="brian-name" 
-                        class="text-xl font-bold text-white mb-2 font-inter"
-                        itemprop="name"
-                    >
-                        Brian Ashley Papa
-                    </h3>
-                    <p 
-                        class="text-green-400 font-semibold mb-4"
-                        itemprop="jobTitle"
-                    >
-                        Backend Developer
-                    </p>
-                    
-                    <!-- Role description -->
-                    <p 
-                        id="brian-desc" 
-                        class="text-gray-400 text-sm leading-relaxed mb-4"
-                        itemprop="description"
-                    >
-                        Samsung Health Integration Specialist. Develops robust backend systems and ensures seamless connectivity with Samsung's health ecosystem.
-                    </p>
-                    
-                    <!-- Skills/Technologies -->
-                    <div class="flex flex-wrap gap-2 justify-center" role="list" aria-label="Brian's skills">
-                        <span class="bg-gray-800 text-gray-300 px-3 py-1 rounded-full text-xs" role="listitem">Backend</span>
-                        <span class="bg-gray-800 text-gray-300 px-3 py-1 rounded-full text-xs" role="listitem">Samsung Health</span>
-                        <span class="bg-gray-800 text-gray-300 px-3 py-1 rounded-full text-xs" role="listitem">Integration</span>
+                    <!-- Info -->
+                    <div class="flex-1 min-w-0">
+                        <div class="flex items-center gap-2 mb-2">
+                            <h3 
+                                id="brian-name" 
+                                class="text-xl font-bold text-white font-inter group-hover:text-green-300 transition-colors"
+                                itemprop="name"
+                            >
+                                Brian Ashley Papa
+                            </h3>
+                            <span class="inline-flex items-center bg-green-500/10 border border-green-500/30 rounded-full px-3 py-1 text-green-400 font-semibold text-xs uppercase tracking-wider">Backend Developer</span>
+                        </div>
+                        
+                        <p 
+                            id="brian-desc" 
+                            class="text-gray-400 text-sm leading-relaxed mb-3"
+                            itemprop="description"
+                        >
+                            Samsung Health Integration Specialist. Develops robust backend systems and ensures seamless connectivity with Samsung's health ecosystem.
+                        </p>
+                        
+                        <div class="flex flex-wrap gap-2" role="list" aria-label="Brian's skills">
+                            <span class="bg-green-500/10 border border-green-500/30 text-green-300 px-2.5 py-1 rounded-lg text-xs font-medium" role="listitem">Backend</span>
+                            <span class="bg-green-500/10 border border-green-500/30 text-green-300 px-2.5 py-1 rounded-lg text-xs font-medium" role="listitem">Samsung Health</span>
+                            <span class="bg-green-500/10 border border-green-500/30 text-green-300 px-2.5 py-1 rounded-lg text-xs font-medium" role="listitem">Integration</span>
+                        </div>
                     </div>
                     
-                    <!-- LinkedIn link -->
-                    <div class="mt-4">
+                    <!-- LinkedIn -->
+                    <div class="flex-shrink-0">
                         <a 
                             href="https://www.linkedin.com/in/ken-patrick-garcia-ba5430285/"
                             target="_blank"
                             rel="noopener noreferrer"
-                            class="inline-flex items-center text-blue-400 hover:text-blue-300 transition-colors text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded-md px-2 py-1"
+                            class="inline-flex items-center gap-2 bg-green-500/10 hover:bg-green-500/20 border border-green-500/30 hover:border-green-500/50 text-green-400 hover:text-green-300 px-4 py-2.5 rounded-xl transition-all text-sm font-medium"
                             aria-label="View Brian Ashley Papa's LinkedIn profile - Opens in new tab"
                             itemprop="sameAs"
                         >
-                            <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                                 <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
                             </svg>
-                            LinkedIn Profile
+                            <span>LinkedIn</span>
                         </a>
                     </div>
                 </div>
@@ -246,7 +248,7 @@
 
             <!-- Lanz Corpuz -->
             <article 
-                class="bg-gray-900 p-8 rounded-2xl border border-gray-800 hover:border-blue-600 transition-all duration-300 group team-card"
+                class="relative bg-gradient-to-br from-gray-900/80 to-gray-950/80 backdrop-blur-xl p-6 rounded-2xl border-2 border-gray-800/50 hover:border-orange-500/50 transition-all duration-500 group team-card hover:shadow-2xl hover:shadow-orange-500/20"
                 role="listitem"
                 tabindex="0"
                 aria-labelledby="lanz-name"
@@ -256,57 +258,56 @@
                 itemscope 
                 itemtype="https://schema.org/Person"
             >
-                <div class="text-center">
+                <div class="flex items-center gap-6 relative z-10">
                     <!-- Avatar placeholder -->
-                    <div class="w-24 h-24 bg-gradient-to-r from-orange-500 to-orange-600 rounded-full mx-auto mb-6 flex items-center justify-center" aria-hidden="true">
-                        <span class="text-2xl font-bold text-white block mx-auto" aria-label="Lanz Corpuz initials">LC</span>
+                    <div class="flex-shrink-0">
+                        <div class="w-24 h-24 bg-gradient-to-r from-orange-500 to-amber-600 rounded-full flex items-center justify-center ring-2 ring-orange-500/30 transition-all" aria-hidden="true">
+                            <span class="text-3xl font-bold text-white">LC</span>
+                        </div>
                     </div>
                     
-                    <!-- Name and primary role -->
-                    <h3 
-                        id="lanz-name" 
-                        class="text-xl font-bold text-white mb-2 font-inter"
-                        itemprop="name"
-                    >
-                        Lanz Corpuz
-                    </h3>
-                    <p 
-                        class="text-orange-400 font-semibold mb-4"
-                        itemprop="jobTitle"
-                    >
-                        Mobile Developer
-                    </p>
-                    
-                    <!-- Role description -->
-                    <p 
-                        id="lanz-desc" 
-                        class="text-gray-400 text-sm leading-relaxed mb-4"
-                        itemprop="description"
-                    >
-                        Quality Assurance & Frontend Mobile Developer. Ensures Pacebeats delivers a flawless experience through rigorous testing and mobile optimization.
-                    </p>
-                    
-                    <!-- Skills/Technologies -->
-                    <div class="flex flex-wrap gap-2 justify-center" role="list" aria-label="Lanz's skills">
-                        <span class="bg-gray-800 text-gray-300 px-3 py-1 rounded-full text-xs" role="listitem">Mobile Dev</span>
-                        <span class="bg-gray-800 text-gray-300 px-3 py-1 rounded-full text-xs" role="listitem">QA</span>
-                        <span class="bg-gray-800 text-gray-300 px-3 py-1 rounded-full text-xs" role="listitem">Testing</span>
+                    <!-- Info -->
+                    <div class="flex-1 min-w-0">
+                        <div class="flex items-center gap-2 mb-2">
+                            <h3 
+                                id="lanz-name" 
+                                class="text-xl font-bold text-white font-inter group-hover:text-orange-300 transition-colors"
+                                itemprop="name"
+                            >
+                                Lanz Corpuz
+                            </h3>
+                            <span class="inline-flex items-center bg-orange-500/10 border border-orange-500/30 rounded-full px-3 py-1 text-orange-400 font-semibold text-xs uppercase tracking-wider">Mobile Developer</span>
+                        </div>
+                        
+                        <p 
+                            id="lanz-desc" 
+                            class="text-gray-400 text-sm leading-relaxed mb-3"
+                            itemprop="description"
+                        >
+                            Quality Assurance & Frontend Mobile Developer. Ensures Pacebeats delivers a flawless experience through rigorous testing and mobile optimization.
+                        </p>
+                        
+                        <div class="flex flex-wrap gap-2" role="list" aria-label="Lanz's skills">
+                            <span class="bg-orange-500/10 border border-orange-500/30 text-orange-300 px-2.5 py-1 rounded-lg text-xs font-medium" role="listitem">Mobile Dev</span>
+                            <span class="bg-orange-500/10 border border-orange-500/30 text-orange-300 px-2.5 py-1 rounded-lg text-xs font-medium" role="listitem">QA</span>
+                            <span class="bg-orange-500/10 border border-orange-500/30 text-orange-300 px-2.5 py-1 rounded-lg text-xs font-medium" role="listitem">Testing</span>
+                        </div>
                     </div>
                     
-                    <!-- LinkedIn link -->
-                    <div class="mt-4">
+                    <!-- LinkedIn -->
+                    <div class="flex-shrink-0">
                         <a 
                             href="https://www.linkedin.com/in/lanz-corpuz-73719b2a6/"
                             target="_blank"
                             rel="noopener noreferrer"
-                            class="inline-flex items-center text-blue-400 hover:text-blue-300 transition-colors text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded-md px-2 py-1"
+                            class="inline-flex items-center gap-2 bg-orange-500/10 hover:bg-orange-500/20 border border-orange-500/30 hover:border-orange-500/50 text-orange-400 hover:text-orange-300 px-4 py-2.5 rounded-xl transition-all text-sm font-medium"
                             aria-label="View Lanz Corpuz's LinkedIn profile - Opens in new tab"
                             itemprop="sameAs"
                         >
-                            <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                                 <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
                             </svg>
-                            LinkedIn Profile
+                            <span>LinkedIn</span>
                         </a>
                     </div>
                 </div>

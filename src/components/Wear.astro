@@ -12,14 +12,17 @@
     <!-- Content -->
     <div class="relative z-10 flex flex-col items-center justify-center min-h-screen text-center text-white px-6">
         <!-- Heading with enhanced SEO structure -->
-        <header class="mb-8">
+        <header class="mb-8 animate-fade-up">
+            <div class="inline-block mb-4">
+                <span class="text-blue-400 font-semibold text-sm uppercase tracking-wider">Coming Soon</span>
+            </div>
             <h2 
                 id="wear-heading" 
-                class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight font-inter"
+                class="text-5xl md:text-6xl lg:text-7xl font-black leading-tight font-inter mb-4"
                 itemprop="name"
             >
-                <span class="block">Pacebeats Companion</span>
-                <span class="block">for Wear OS</span>
+                <span class="block bg-gradient-to-r from-white via-blue-200 to-cyan-200 bg-clip-text text-transparent">Pacebeats Companion</span>
+                <span class="block bg-gradient-to-r from-cyan-200 via-blue-200 to-white bg-clip-text text-transparent">for Wear OS</span>
             </h2>
             <p class="sr-only">
                 Discover the upcoming Pacebeats Wear OS companion app featuring real-time pace feedback, adaptive music control, and recovery insights directly on your smartwatch.
@@ -27,43 +30,51 @@
         </header>
    
         <!-- Description text with semantic markup -->
-        <div class="mb-8 max-w-xl" role="region" aria-label="Wear OS features description">
+        <div class="mb-8 max-w-2xl animate-fade-up" style="animation-delay: 0.2s;" role="region" aria-label="Wear OS features description">
             <p 
-                class="text-gray-200 text-lg leading-relaxed"
+                class="text-gray-300 text-lg md:text-xl leading-relaxed mb-4"
                 itemprop="description"
             >
                 The future of running is on your wrist. Soon, Pacebeats will sync seamlessly with Wear OS smartwatches, giving you real-time pace feedback, adaptive music control, and recovery insights — without reaching for your phone.
             </p>
-            <p class="text-gray-400 text-sm mt-3" role="status" aria-live="polite">
-                <span aria-label="Development status">Wear OS integration is coming soon. Stay tuned.</span>
-            </p>
+            <div class="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/30 rounded-full px-4 py-2" role="status" aria-live="polite">
+                <svg class="w-4 h-4 text-blue-400 animate-pulse" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
+                </svg>
+                <span class="text-blue-400 text-sm font-medium" aria-label="Development status">Wear OS integration coming soon</span>
+            </div>
         </div>
         
         <!-- Action buttons with enhanced accessibility -->
-        <div class="flex flex-wrap justify-center gap-4" role="group" aria-label="Wear OS actions">
+        <div class="flex flex-wrap justify-center gap-4 animate-fade-up" style="animation-delay: 0.4s;" role="group" aria-label="Wear OS actions">
             <button 
-                class="bg-transparent border border-gray-400 text-white px-6 py-3 rounded-full font-medium hover:bg-white hover:text-black transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50"
+                class="group relative bg-white/10 backdrop-blur-sm border-2 border-white/30 hover:border-white/50 text-white px-6 py-3 rounded-xl font-semibold hover:bg-white/20 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50 hover:scale-105"
                 type="button"
                 aria-label="Learn about companion features"
                 onclick="showWearFeatures()"
             >
-                <span aria-hidden="true">⌚</span> Companion Features
+                <span class="relative z-10">Companion Features</span>
             </button>
             <button 
-                class="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-full font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-opacity-50"
+                class="relative bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50 opacity-90 cursor-not-allowed"
                 type="button"
                 disabled
                 aria-label="Wear OS integration coming soon"
             >
-                <span aria-hidden="true">🔜</span> Coming Soon
+                <span class="relative z-10 flex items-center gap-2">
+                    <svg class="w-4 h-4 animate-pulse" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
+                    </svg>
+                    Coming Soon
+                </span>
             </button>
             <button 
-                class="bg-transparent border border-gray-400 text-white px-6 py-3 rounded-full font-medium hover:bg-white hover:text-black transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50"
+                class="group relative bg-white/10 backdrop-blur-sm border-2 border-white/30 hover:border-white/50 text-white px-6 py-3 rounded-xl font-semibold hover:bg-white/20 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50 hover:scale-105"
                 type="button"
                 aria-label="Learn more about Wear OS integration"
                 onclick="scrollToFeatures()"
             >
-                <span aria-hidden="true">📖</span> Learn More
+                <span class="relative z-10">Learn More</span>
             </button>
         </div>
 
@@ -86,21 +97,27 @@
     </div>
 
     <!-- Floating feature indicators -->
-    <div class="absolute bottom-8 left-8 hidden lg:block animate-fade-in" style="animation-delay: 1s;">
-        <div class="bg-black/60 backdrop-blur-sm px-3 py-2 rounded-lg border border-white/20">
-            <span class="text-white text-sm font-medium">Real-time Sync</span>
+    <div class="absolute bottom-12 left-12 hidden lg:block animate-float" style="animation-delay: 0.5s;">
+        <div class="group relative bg-gradient-to-br from-blue-500/20 to-cyan-500/20 backdrop-blur-xl px-4 py-3 rounded-xl border-2 border-blue-500/30 hover:border-blue-500/50 transition-all duration-300 hover:scale-110">
+            <div class="absolute inset-0 bg-blue-500/10 rounded-xl blur-lg animate-pulse-slow"></div>
+            <span class="relative text-white text-sm font-semibold flex items-center gap-2">
+                <svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+                </svg>
+                Real-time Sync
+            </span>
         </div>
     </div>
     
-    <div class="absolute top-20 right-8 hidden lg:block animate-fade-in" style="animation-delay: 1.5s;">
-        <div class="bg-black/60 backdrop-blur-sm px-3 py-2 rounded-lg border border-white/20">
-            <span class="text-white text-sm font-medium">Voice Control</span>
-        </div>
-    </div>
-    
-    <div class="absolute bottom-20 right-12 hidden lg:block animate-fade-in" style="animation-delay: 2s;">
-        <div class="bg-black/60 backdrop-blur-sm px-3 py-2 rounded-lg border border-white/20">
-            <span class="text-white text-sm font-medium">Heart Rate Monitoring</span>
+    <div class="absolute bottom-24 right-16 hidden lg:block animate-float" style="animation-delay: 1s;">
+        <div class="group relative bg-gradient-to-br from-blue-500/20 to-cyan-500/20 backdrop-blur-xl px-4 py-3 rounded-xl border-2 border-cyan-500/30 hover:border-cyan-500/50 transition-all duration-300 hover:scale-110">
+            <div class="absolute inset-0 bg-cyan-500/10 rounded-xl blur-lg animate-pulse-slow"></div>
+            <span class="relative text-white text-sm font-semibold flex items-center gap-2">
+                <svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                </svg>
+                Heart Rate Monitor
+            </span>
         </div>
     </div>
 </section>
@@ -163,39 +180,51 @@ h2.font-inter {
     border: 0;
 }
 
-/* Button enhancements */
-button {
-    position: relative;
-    overflow: hidden;
+/* Fade up animation */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-button::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    transition: left 0.5s;
+.animate-fade-up {
+    animation: fadeUp 0.8s ease-out forwards;
+    opacity: 0;
 }
 
-button:hover::before {
-    left: 100%;
+/* Floating animation */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
 }
 
-button:disabled {
-    opacity: 0.7;
-    cursor: not-allowed;
+.animate-float {
+    animation: float 3s ease-in-out infinite;
+    opacity: 0;
+    animation: fadeIn 0.6s ease-out forwards, float 3s ease-in-out 0.6s infinite;
 }
 
-button:disabled:hover {
-    background-color: #dc2626;
-    color: white;
+/* Pulse slow animation */
+@keyframes pulseSlow {
+    0%, 100% {
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 0.8;
+    }
 }
 
-button:disabled::before {
-    display: none;
+.animate-pulse-slow {
+    animation: pulseSlow 3s ease-in-out infinite;
 }
 
 /* Floating indicators animation */
@@ -210,11 +239,6 @@ button:disabled::before {
     }
 }
 
-.animate-fade-in {
-    animation: fadeIn 0.6s ease-out forwards;
-    opacity: 0;
-}
-
 /* High contrast mode support */
 @media (prefers-contrast: high) {
     h2.font-inter {
@@ -222,7 +246,7 @@ button:disabled::before {
         color: #ffffff;
     }
     
-    .text-gray-200,
+    .text-gray-300,
     .text-gray-400 {
         color: #ffffff;
     }
@@ -238,14 +262,16 @@ button:disabled::before {
 
 /* Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
-    .animate-fade-in {
+    .animate-fade-up,
+    .animate-float {
         animation: none;
         opacity: 1;
         transform: none;
     }
     
-    button::before {
-        display: none;
+    .animate-pulse,
+    .animate-pulse-slow {
+        animation: none;
     }
     
     button:hover {
@@ -257,7 +283,6 @@ button:disabled::before {
 button:focus-visible {
     outline: 3px solid rgba(255, 255, 255, 0.8);
     outline-offset: 2px;
-    transform: scale(1.02);
 }
 
 /* Responsive enhancements */

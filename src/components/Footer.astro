@@ -4,135 +4,205 @@ import PrivacyModal from './PrivacyModal.astro';
 ---
 
 <footer 
-    class="w-full bg-black text-white pb-16 px-0" 
+    class="w-full bg-gradient-to-b from-black via-gray-950 to-black text-white pb-16 px-0 border-t border-white/10" 
     role="contentinfo" 
     aria-label="Site footer"
     itemscope 
     itemtype="https://schema.org/WPFooter"
 >
-    <div class="w-full max-w-7xl mx-auto px-6">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+    <div class="w-full max-w-7xl mx-auto px-6 pt-16">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
             <!-- Left - Logo and Description -->
-            <div class="col-span-2 md:col-span-1" 
+            <div class="col-span-1 md:col-span-2 lg:col-span-1 footer-section" 
                  itemscope 
                  itemtype="https://schema.org/Organization">
-                <div class="flex justify-center mb-4">
-                    <img 
-                        src="/favicon.png" 
-                        alt="Pacebeats Logo" 
-                        class="w-8 h-8 mr-3"
-                        itemprop="logo"
-                        width="32"
-                        height="32"
-                        loading="lazy"
-                        decoding="async"
-                    />
-                    <h3 class="text-xl font-bold" itemprop="name">Pacebeats</h3>
+                <div class="flex items-center justify-center md:justify-start mb-6 group">
+                    <div class="relative">
+                        <div class="absolute inset-0 bg-blue-500/20 blur-xl rounded-full animate-pulse-slow"></div>
+                        <img 
+                            src="/favicon.png" 
+                            alt="Pacebeats Logo" 
+                            class="w-10 h-10 mr-3 relative z-10 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12"
+                            itemprop="logo"
+                            width="40"
+                            height="40"
+                            loading="lazy"
+                            decoding="async"
+                        />
+                    </div>
+                    <h3 class="text-2xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent" itemprop="name">
+                        Pacebeats
+                    </h3>
                 </div>
-                <p class="text-gray-400 text-sm leading-relaxed mb-6" itemprop="description">
-                    Pacebeats is your running companion, syncing every stride with the perfect beat. Train smarter, push further, and let music power your journey, one step at a time.
+                <p class="text-gray-400 text-sm leading-relaxed mb-8 text-center md:text-left" itemprop="description">
+                    Your running companion, syncing every stride with the perfect beat. Train smarter, push further.
                 </p>
                 
                 <!-- Buy Me a Coffee Section -->
-                <div class="mt-4" role="region" aria-label="Support section">
-                    <p class="text-gray-400 text-sm mb-3">Support our development:</p>
+                <div class="mt-6" role="region" aria-label="Support section">
+                    <p class="text-gray-500 text-xs mb-3 uppercase tracking-wider font-semibold text-center md:text-left">Support Development</p>
                     <a 
                         href="https://buymeacoffee.com/Loki123" 
                         target="_blank" 
                         rel="noopener noreferrer nofollow"
-                        class="inline-flex items-center bg-yellow-500 hover:bg-yellow-600 text-black px-4 py-2 rounded-lg transition-colors text-sm font-medium focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-opacity-50"
+                        class="footer-cta inline-flex items-center gap-2 bg-gradient-to-r from-yellow-500 to-amber-500 hover:from-yellow-600 hover:to-amber-600 text-black px-5 py-2.5 rounded-xl transition-all text-sm font-semibold shadow-lg hover:shadow-xl hover:scale-105 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2 focus:ring-offset-black group"
                         aria-label="Support Pacebeats development on Buy Me a Coffee - Opens in new tab"
                         itemprop="url"
                     >
-                        <span aria-hidden="true">☕</span> Buy me a coffee
+                        <svg class="w-5 h-5 transition-transform group-hover:scale-110" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M20.216 6.415l-.132-.666c-.119-.598-.388-1.163-1.001-1.379-.197-.069-.42-.098-.57-.241-.152-.143-.196-.366-.231-.572-.065-.378-.125-.756-.192-1.133-.057-.325-.102-.69-.25-.987-.195-.4-.597-.634-.996-.788a5.723 5.723 0 00-.626-.194c-1-.263-2.05-.36-3.077-.416a25.834 25.834 0 00-3.7.062c-.915.083-1.88.184-2.75.5-.318.116-.646.256-.888.501-.297.302-.393.77-.177 1.146.154.267.415.456.692.58.36.162.737.284 1.123.366 1.075.238 2.189.331 3.287.37 1.218.05 2.437.01 3.65-.118.299-.033.598-.073.896-.119.352-.054.578-.513.474-.834-.124-.383-.457-.531-.834-.473-.466.074-.96.108-1.382.146-1.177.08-2.358.082-3.536.006a22.228 22.228 0 01-1.157-.107c-.086-.01-.18-.025-.258-.036-.243-.036-.484-.08-.724-.13-.111-.027-.111-.185 0-.212h.005c.277-.06.557-.108.838-.147h.002c.131-.009.263-.032.394-.048a25.076 25.076 0 013.426-.12c.674.019 1.347.067 2.017.144l.228.031c.267.04.533.088.798.145.392.085.895.113 1.07.542.055.137.08.288.111.431l.319 1.484a.237.237 0 01-.199.284h-.003c-.037.006-.075.01-.112.015a36.704 36.704 0 01-4.743.295 37.059 37.059 0 01-4.699-.304c-.14-.017-.293-.042-.417-.06-.326-.048-.649-.108-.973-.161-.393-.065-.768-.032-1.123.161-.29.16-.527.404-.675.701-.154.316-.199.66-.267 1-.069.34-.176.707-.135 1.056.087.753.613 1.365 1.37 1.502a39.69 39.69 0 0011.343.376.483.483 0 01.535.53l-.071.697-1.018 9.907c-.041.41-.047.832-.125 1.237-.122.637-.553 1.028-1.182 1.171-.577.131-1.165.2-1.756.205-.656.004-1.31-.025-1.966-.022-.699.004-1.556-.06-2.095-.58-.475-.458-.54-1.174-.605-1.793l-.731-7.013-.322-3.094c-.037-.351-.286-.695-.678-.678-.336.015-.718.3-.678.679l.228 2.185.949 9.112c.147 1.344 1.174 2.068 2.446 2.272.742.12 1.503.144 2.257.156.966.016 1.942.053 2.892-.122 1.408-.258 2.465-1.198 2.616-2.657.34-3.332.683-6.663 1.024-9.995l.215-2.087a.484.484 0 01.39-.426c.402-.078.787-.212 1.074-.518.455-.488.546-1.124.385-1.766zm-1.478.772c-.145.137-.363.201-.578.233-2.416.359-4.866.54-7.308.46-1.748-.06-3.477-.254-5.207-.498-.17-.024-.353-.055-.47-.18-.22-.236-.111-.71-.054-.995.052-.26.152-.609.463-.646.484-.057 1.046.148 1.526.22.577.088 1.156.159 1.737.212 2.48.226 5.002.19 7.472-.14.45-.06.899-.13 1.345-.21.399-.072.84-.206 1.08.206.166.281.188.657.162.974a.544.544 0 01-.169.364zm-6.159 3.9c-.862.37-1.84.788-3.109.788a5.884 5.884 0 01-1.569-.217l.877 9.004c.065.78.717 1.38 1.5 1.38 0 0 1.243.065 1.658.065.447 0 1.786-.065 1.786-.065.783 0 1.434-.6 1.499-1.38l.94-9.95a3.996 3.996 0 00-1.322-.238c-.826 0-1.491.284-2.26.613z"/>
+                        </svg>
+                        <span>Buy me a coffee</span>
                     </a>
                 </div>
             </div>
             
             <!-- Center - Menu -->
-            <nav class="col-span-1 md:col-span-1" 
+            <nav class="col-span-1 footer-section" 
                  role="navigation" 
                  aria-label="Footer navigation"
                  itemscope 
                  itemtype="https://schema.org/SiteNavigationElement">
-                <h4 class="text-white font-semibold mb-4">Menu</h4>
+                <h4 class="text-white font-bold mb-6 text-lg flex items-center gap-2 justify-center md:justify-start">
+                    <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                    Menu
+                </h4>
                 <ul class="space-y-3" role="list">
-                    <li><a href="#features" 
-                           class="text-gray-400 text-sm hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50 rounded-md px-1 py-0.5"
+                    <li>
+                        <a href="#features" 
+                           class="footer-link group flex items-center gap-2 text-gray-400 text-sm hover:text-white transition-all duration-300 justify-center md:justify-start"
                            aria-label="Navigate to features section"
-                           itemprop="url">Features</a></li>
-                    <li><a href="#how-it-works" 
-                           class="text-gray-400 text-sm hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50 rounded-md px-1 py-0.5"
+                           itemprop="url">
+                            <svg class="w-4 h-4 text-blue-400 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                            </svg>
+                            <span>Features</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#how-it-works" 
+                           class="footer-link group flex items-center gap-2 text-gray-400 text-sm hover:text-white transition-all duration-300 justify-center md:justify-start"
                            aria-label="Navigate to how it works section"
-                           itemprop="url">How It Works</a></li>
-                    <li><a href="#tech-stack" 
-                           class="text-gray-400 text-sm hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50 rounded-md px-1 py-0.5"
+                           itemprop="url">
+                            <svg class="w-4 h-4 text-blue-400 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                            </svg>
+                            <span>How It Works</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#tech-stack" 
+                           class="footer-link group flex items-center gap-2 text-gray-400 text-sm hover:text-white transition-all duration-300 justify-center md:justify-start"
                            aria-label="Navigate to tech stack section"
-                           itemprop="url">Tech Stack</a></li>
-                    <li><a href="#support" 
-                           class="text-gray-400 text-sm hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50 rounded-md px-1 py-0.5"
+                           itemprop="url">
+                            <svg class="w-4 h-4 text-blue-400 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                            </svg>
+                            <span>Tech Stack</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#support" 
+                           class="footer-link group flex items-center gap-2 text-gray-400 text-sm hover:text-white transition-all duration-300 justify-center md:justify-start"
                            aria-label="Navigate to support section"
-                           itemprop="url">Support</a></li>
-                    <li><a href="#team" 
-                           class="text-gray-400 text-sm hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50 rounded-md px-1 py-0.5"
+                           itemprop="url">
+                            <svg class="w-4 h-4 text-blue-400 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                            </svg>
+                            <span>Support</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#team" 
+                           class="footer-link group flex items-center gap-2 text-gray-400 text-sm hover:text-white transition-all duration-300 justify-center md:justify-start"
                            aria-label="Navigate to team section"
-                           itemprop="url">Team</a></li>
+                           itemprop="url">
+                            <svg class="w-4 h-4 text-blue-400 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                            </svg>
+                            <span>Team</span>
+                        </a>
+                    </li>
                 </ul>
             </nav>
             
             <!-- Center Right - Social Media and Legal -->
-            <div class="col-span-1 md:col-span-1">
+            <div class="col-span-1 footer-section">
                 <!-- Social Media Section -->
-                <section role="region" aria-label="Social media links">
-                    <h4 class="text-white font-semibold mb-4">Our Social Media</h4>
+                <section role="region" aria-label="Social media links" class="mb-8">
+                    <h4 class="text-white font-bold mb-6 text-lg flex items-center gap-2 justify-center md:justify-start">
+                        <svg class="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"/>
+                        </svg>
+                        Connect With Us
+                    </h4>
                     <ul class="space-y-3" role="list">
                         <li>
                             <a href="https://www.linkedin.com/company/108121220/" 
                                target="_blank"
                                rel="noopener noreferrer nofollow"
-                               class="text-gray-400 text-sm hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50 rounded-md px-1 py-0.5"
+                               class="footer-link group flex items-center gap-3 text-gray-400 text-sm hover:text-white transition-all duration-300 justify-center md:justify-start p-2 rounded-lg hover:bg-white/5"
                                aria-label="Follow Pacebeats on LinkedIn - Opens in new tab">
-                                <span aria-hidden="true">💼</span> LinkedIn
+                                <svg class="w-5 h-5 text-blue-400 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                                </svg>
+                                <span>LinkedIn</span>
                             </a>
                         </li>
                         <li>
                             <a href="https://www.facebook.com/profile.php?id=61579093551639" 
                                target="_blank"
                                rel="noopener noreferrer nofollow"
-                               class="text-gray-400 text-sm hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50 rounded-md px-1 py-0.5"
+                               class="footer-link group flex items-center gap-3 text-gray-400 text-sm hover:text-white transition-all duration-300 justify-center md:justify-start p-2 rounded-lg hover:bg-white/5"
                                aria-label="Follow Pacebeats on Facebook - Opens in new tab">
-                                <span aria-hidden="true">📘</span> Facebook
+                                <svg class="w-5 h-5 text-blue-500 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                                </svg>
+                                <span>Facebook</span>
                             </a>
                         </li>
                     </ul>
                 </section>
 
                 <!-- Legal Section -->
-                <section role="region" aria-label="Legal information" class="mt-6">
-                    <h4 class="text-white font-semibold mb-4">Legal</h4>
+                <section role="region" aria-label="Legal information">
+                    <h4 class="text-white font-bold mb-6 text-lg flex items-center gap-2 justify-center md:justify-start">
+                        <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                        </svg>
+                        Legal
+                    </h4>
                     <ul class="space-y-3" role="list">
                         <li>
                             <button 
                                 id="termsBtn" 
-                                class="text-gray-400 text-sm hover:text-white transition-colors text-left focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50 rounded-md px-1 py-0.5"
+                                class="footer-link group flex items-center gap-3 text-gray-400 text-sm hover:text-white transition-all duration-300 text-left justify-center md:justify-start p-2 rounded-lg hover:bg-white/5 w-full"
                                 type="button"
                                 aria-label="View terms and conditions"
                                 aria-expanded="false"
                                 aria-controls="termsModal"
                             >
-                                <span aria-hidden="true">📋</span> Terms and Conditions
+                                <svg class="w-5 h-5 text-green-400 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                                </svg>
+                                <span>Terms & Conditions</span>
                             </button>
                         </li>
                         <li>
                             <button 
                                 id="privacyBtn" 
-                                class="text-gray-400 text-sm hover:text-white transition-colors text-left focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50 rounded-md px-1 py-0.5"
+                                class="footer-link group flex items-center gap-3 text-gray-400 text-sm hover:text-white transition-all duration-300 text-left justify-center md:justify-start p-2 rounded-lg hover:bg-white/5 w-full"
                                 type="button"
                                 aria-label="View privacy policy"
                                 aria-expanded="false"
                                 aria-controls="privacyModal"
                             >
-                                <span aria-hidden="true">🔒</span> Privacy Policy
+                                <svg class="w-5 h-5 text-green-400 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                                </svg>
+                                <span>Privacy Policy</span>
                             </button>
                         </li>
                     </ul>
@@ -140,27 +210,46 @@ import PrivacyModal from './PrivacyModal.astro';
             </div>
             
             <!-- Right - App Download -->
-            <section class="col-span-2 md:col-span-1" 
+            <section class="col-span-1 md:col-span-2 lg:col-span-1 footer-section" 
                      role="region" 
                      aria-label="App download information">
-                <h4 class="text-white font-semibold text-center md:text-left mb-4">Get the app</h4>
+                <h4 class="text-white font-bold text-center md:text-left mb-6 text-lg flex items-center gap-2 justify-center md:justify-start">
+                    <svg class="w-5 h-5 text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+                    </svg>
+                    Get the App
+                </h4>
                 <p class="text-gray-400 text-sm text-center md:text-left mb-6 leading-relaxed">
-                    Download now to start tracking with precision, and 
-                    join challenges with your crew.
+                    Download now to start tracking with precision and join challenges with your crew.
                 </p>
-                <button 
-                    class="flex items-center bg-white text-black px-4 py-2 rounded-lg hover:bg-gray-200 transition-colors w-full justify-center focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50"
-                    type="button"
-                    disabled
-                    aria-label="App download coming soon - Currently in development"
-                >
-                    <span aria-hidden="true">🚧</span> In Progress
-                </button> 
+                <div class="flex flex-col gap-3 mb-8">
+                    <button 
+                        class="footer-cta group flex items-center justify-center gap-3 bg-gradient-to-r from-gray-800 to-gray-900 text-white px-6 py-3 rounded-xl transition-all text-sm font-semibold border border-white/10 hover:border-white/30 shadow-lg cursor-not-allowed"
+                        type="button"
+                        disabled
+                        aria-label="App download coming soon - Currently in development"
+                    >
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        <span>Coming Soon</span>
+                        <div class="flex gap-1">
+                            <span class="w-1 h-1 bg-white rounded-full animate-bounce" style="animation-delay: 0ms;"></span>
+                            <span class="w-1 h-1 bg-white rounded-full animate-bounce" style="animation-delay: 150ms;"></span>
+                            <span class="w-1 h-1 bg-white rounded-full animate-bounce" style="animation-delay: 300ms;"></span>
+                        </div>
+                    </button>
+                </div>
                 
                 <!-- Copyright -->
-                <p class="text-gray-400 text-center md:text-left text-sm my-6 leading-relaxed">
-                    <span aria-hidden="true">©</span> 2025 Pacebeats. All rights reserved.
-                </p>
+                <div class="text-center md:text-left pt-6 border-t border-white/10">
+                    <p class="text-gray-500 text-sm flex items-center gap-2 justify-center md:justify-start">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.31-8.86c-1.77-.45-2.34-.94-2.34-1.67 0-.84.79-1.43 2.1-1.43 1.38 0 1.9.66 1.94 1.64h1.71c-.05-1.34-.87-2.57-2.49-2.97V5H10.9v1.69c-1.51.32-2.72 1.3-2.72 2.81 0 1.79 1.49 2.69 3.66 3.21 1.95.46 2.34 1.15 2.34 1.87 0 .53-.39 1.39-2.1 1.39-1.6 0-2.23-.72-2.32-1.64H8.04c.1 1.7 1.36 2.66 2.86 2.97V19h2.34v-1.67c1.52-.29 2.72-1.16 2.73-2.77-.01-2.2-1.9-2.96-3.66-3.42z"/>
+                        </svg>
+                        <span>© 2025 Pacebeats. All rights reserved.</span>
+                    </p>
+                </div>
             </section>
         </div>
     </div>
@@ -293,6 +382,102 @@ import PrivacyModal from './PrivacyModal.astro';
         border: 0;
     }
     
+    /* Footer animations */
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    @keyframes pulse-slow {
+        0%, 100% {
+            opacity: 0.3;
+        }
+        50% {
+            opacity: 0.6;
+        }
+    }
+    
+    .animate-pulse-slow {
+        animation: pulse-slow 3s ease-in-out infinite;
+    }
+    
+    .footer-section {
+        animation: fadeInUp 0.6s ease-out backwards;
+    }
+    
+    .footer-section:nth-child(1) {
+        animation-delay: 0.1s;
+    }
+    
+    .footer-section:nth-child(2) {
+        animation-delay: 0.2s;
+    }
+    
+    .footer-section:nth-child(3) {
+        animation-delay: 0.3s;
+    }
+    
+    .footer-section:nth-child(4) {
+        animation-delay: 0.4s;
+    }
+    
+    /* Footer link animations */
+    .footer-link {
+        position: relative;
+        padding: 0.25rem 0;
+    }
+    
+    .footer-link::before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(to right, #3b82f6, #8b5cf6);
+        transition: width 0.3s ease;
+    }
+    
+    .footer-link:hover::before {
+        width: 100%;
+    }
+    
+    /* CTA button animations */
+    .footer-cta {
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .footer-cta::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.2);
+        transform: translate(-50%, -50%);
+        transition: width 0.6s, height 0.6s;
+    }
+    
+    .footer-cta:hover::before {
+        width: 300px;
+        height: 300px;
+    }
+    
+    .footer-cta span,
+    .footer-cta svg {
+        position: relative;
+        z-index: 1;
+    }
+    
     /* Footer full width fixes */
     footer {
         width: 100% !important;
@@ -315,25 +500,11 @@ import PrivacyModal from './PrivacyModal.astro';
         }
         
         footer .px-6 {
-            padding-left: 1rem;
-            padding-right: 1rem;
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
         }
         
-        footer .grid {
-            gap: 1.5rem;
-        }
-        
-        /* Stack columns on mobile */
-        footer .grid-cols-2 {
-            grid-template-columns: 1fr;
-        }
-        
-        /* Center content on mobile */
-        footer .col-span-2 {
-            text-align: center;
-        }
-        
-        footer .col-span-1 {
+        .footer-section {
             text-align: center;
         }
     }
@@ -341,41 +512,38 @@ import PrivacyModal from './PrivacyModal.astro';
     /* Tablet adjustments */
     @media (min-width: 769px) and (max-width: 1023px) {
         footer .grid {
-            gap: 2rem;
+            gap: 3rem;
         }
     }
     
-    /* Enhanced footer link hover effects */
-    footer a:hover,
-    footer button:hover {
-        transform: translateX(2px);
-        transition: all 0.3s ease;
-    }
-    
-    /* Button hover effects */
-    footer button:hover:not(:disabled) {
-        transform: translateY(-1px);
-        box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
-    }
-    
-    /* Disabled button styles */
-    footer button:disabled {
-        opacity: 0.6;
-        cursor: not-allowed;
-    }
-    
-    footer button:disabled:hover {
-        transform: none;
-        box-shadow: none;
+    /* Reduced motion support */
+    @media (prefers-reduced-motion: reduce) {
+        .footer-section,
+        .footer-link,
+        .footer-cta,
+        .animate-pulse-slow {
+            animation: none;
+        }
+        
+        .footer-link::before,
+        .footer-cta::before {
+            transition: none;
+        }
+        
+        footer a:hover,
+        footer button:hover {
+            transform: none;
+        }
     }
     
     /* High contrast mode support */
     @media (prefers-contrast: high) {
         footer {
-            border-top: 2px solid #ffffff;
+            border-top: 3px solid #ffffff;
         }
         
-        .text-gray-400 {
+        .text-gray-400,
+        .text-gray-500 {
             color: #ffffff;
         }
         
@@ -387,28 +555,37 @@ import PrivacyModal from './PrivacyModal.astro';
         footer a:focus,
         footer button:focus {
             border-color: #ffffff;
-            background-color: rgba(255, 255, 255, 0.1);
-        }
-    }
-    
-    /* Reduced motion support */
-    @media (prefers-reduced-motion: reduce) {
-        footer a,
-        footer button {
-            transition: none;
-        }
-        
-        footer a:hover,
-        footer button:hover {
-            transform: none;
+            background-color: rgba(255, 255, 255, 0.15);
         }
     }
     
     /* Focus indicators for better accessibility */
     footer a:focus-visible,
     footer button:focus-visible {
-        outline: 2px solid #ffffff;
-        outline-offset: 2px;
-        border-radius: 2px;
+        outline: 3px solid #60a5fa;
+        outline-offset: 3px;
+        border-radius: 0.5rem;
+    }
+    
+    /* Smooth icon transitions */
+    footer svg {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    /* Hover effects for interactive elements */
+    footer a:not(:disabled):hover,
+    footer button:not(:disabled):hover {
+        transform: translateY(-2px);
+        transition: transform 0.3s ease;
+    }
+    
+    /* Disabled state styling */
+    footer button:disabled {
+        opacity: 0.7;
+        cursor: not-allowed;
+    }
+    
+    footer button:disabled:hover {
+        transform: none;
     }
 </style>

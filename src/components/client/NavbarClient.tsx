@@ -271,11 +271,12 @@ export default function NavbarClient() {
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="bg-white text-black px-4 py-2 rounded-full text-xs font-medium hover:bg-gray-200 transition-colors shadow-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50"
+          className="bg-white text-black px-4 py-2 rounded-full text-xs font-medium hover:bg-gray-200 transition-colors shadow-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 flex items-center"
           type="button"
           aria-label="Currently in development mode"
         >
-          <span aria-hidden="true">🚧</span> Development Mode
+          <Code className="w-4 h-4 mr-2" />
+          Development Mode
         </motion.button>
       </div>
     </>

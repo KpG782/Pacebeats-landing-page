@@ -6,14 +6,19 @@ import HeroClient from './client/HeroClient';
 <main id="main-content" role="main">
     <section 
         id="hero" 
-        class="relative min-h-screen bg-cover bg-center bg-no-repeat pt-16" 
-        style="background-image: url('/hero-section.jpg');"
+        class="relative min-h-screen bg-cover bg-center bg-no-repeat md:bg-fixed pt-16" 
+        style="background-image: url('/hero-section2.jpg');"
         aria-labelledby="hero-heading"
         itemscope 
         itemtype="https://schema.org/SoftwareApplication"
     >
         <!-- Enhanced dark overlay with gradient -->
         <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/80" aria-hidden="true"></div>
+        
+        <!-- Image Attribution -->
+        <div class="absolute bottom-2 right-2 z-20 text-xs text-white/60 hover:text-white/90 transition-colors">
+            <span>Photo by <a href="https://unsplash.com/@slelham?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" target="_blank" rel="noopener noreferrer" class="underline hover:text-blue-400">Steven Lelham</a> on <a href="https://unsplash.com/photos/group-of-people-running-on-stadium-atSaEOeE8Nk?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" target="_blank" rel="noopener noreferrer" class="underline hover:text-blue-400">Unsplash</a></span>
+        </div>
         
         <!-- Hero content -->
         <div class="relative z-10 flex items-center justify-center min-h-screen text-center text-white px-4 sm:px-6 lg:px-8">
@@ -90,7 +95,7 @@ import HeroClient from './client/HeroClient';
         "Performance insights and trends"
     ],
     "screenshot": [
-        "https://www.pacebeats.top/hero-section-1.svg",
+        "https://www.pacebeats.top/hero-screen-1.svg",
         "https://www.pacebeats.top/app-screenshot-2.jpg",
         "https://www.pacebeats.top/app-screenshot-3.jpg"
     ],
@@ -496,32 +501,14 @@ import HeroClient from './client/HeroClient';
         }
     }
     
-    // Optimized parallax effect with reduced motion support
-    let ticking = false;
-    function updateParallax() {
-        if (window.innerWidth > 768 && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-            const scrolled = window.pageYOffset;
-            const heroSection = document.querySelector('#hero') as HTMLElement;
-            if (heroSection && scrolled < window.innerHeight) {
-                heroSection.style.transform = `translateY(${scrolled * 0.3}px)`;
-            }
-        }
-        ticking = false;
-    }
-    
-    window.addEventListener('scroll', () => {
-        if (!ticking) {
-            requestAnimationFrame(updateParallax);
-            ticking = true;
-        }
-    }, { passive: true });
+    // Parallax effect removed to fix scrolling background issue
     
     // Preload critical resources for performance
     if ('requestIdleCallback' in window) {
         requestIdleCallback(() => {
             // Preload hero image
             const heroImg = new Image();
-            heroImg.src = '/hero-section-1.svg';
+            heroImg.src = '/hero-screen-1.svg';
             
             // Preload next section images
             const preloadImages = ['/features-preview.jpg', '/app-interface.jpg'];
