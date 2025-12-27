@@ -6,9 +6,9 @@ Welcome to the **Pacebeats Landing Page**, a modern, responsive website built wi
 
 ---
 
-## 🚀 What Is PaceBeats
+## 🚀 What Is Pacebeats
 
-PaceBeats is a smart heart rate monitoring Android application built with **Kotlin** and **Jetpack Compose** that provides real-time heart rate monitoring and pace tracking for runners. Seamlessly integrated with **Samsung Health SDK**, PaceBeats transforms your Galaxy Watch into a powerful fitness companion.
+Pacebeats is a smart heart rate monitoring Android application built with **Kotlin** and **Jetpack Compose** that provides real-time heart rate monitoring and pace tracking for runners. Seamlessly integrated with **Samsung Health SDK**, Pacebeats transforms your Galaxy Watch into a powerful fitness companion.
 
 ### This Landing Page Features:
 
@@ -205,7 +205,7 @@ npm run build
 
 ## 🔗 Related Projects
 
-- 📱 **PaceBeats Android App** - [Main repository](https://github.com/YourUsername/Pacebeats-Kotlin)
+- 📱 **Pacebeats Android App** - [Main repository](https://github.com/YourUsername/Pacebeats-Kotlin)
 - 🎨 **Design System** - Figma design files
 - 📚 **Documentation** - Technical documentation
 
@@ -225,7 +225,7 @@ npm run build
 ```
 MIT License
 
-Copyright (c) 2023 PaceBeats Team
+Copyright (c) 2023 Pacebeats Team
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
