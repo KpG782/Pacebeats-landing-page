@@ -1,5 +1,5 @@
 ---
-// No imports needed - using direct page links now
+import { APK_RELEASE } from '../config/apkRelease';
 ---
 
 <footer 
@@ -103,14 +103,14 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#support" 
+                        <a href="#download" 
                            class="footer-link group flex items-center gap-2 text-gray-400 text-sm hover:text-white transition-all duration-300 justify-center md:justify-start"
-                           aria-label="Navigate to support section"
+                           aria-label="Navigate to APK download section"
                            itemprop="url">
                             <svg class="w-4 h-4 text-blue-400 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
                             </svg>
-                            <span>Support</span>
+                            <span>Download APK</span>
                         </a>
                     </li>
                     <li>
@@ -203,7 +203,7 @@
             </div>
             
             <!-- Right - App Download -->
-            <section class="col-span-1 md:col-span-2 lg:col-span-1 footer-section" 
+              <section id="download" class="col-span-1 md:col-span-2 lg:col-span-1 footer-section" 
                      role="region" 
                      aria-label="App download information">
                 <h4 class="text-white font-bold text-center md:text-left mb-6 text-lg flex items-center gap-2 justify-center md:justify-start">
@@ -215,23 +215,37 @@
                 <p class="text-gray-400 text-sm text-center md:text-left mb-6 leading-relaxed">
                     Download now to start tracking with precision and join challenges with your crew.
                 </p>
-                <div class="flex flex-col gap-3 mb-8">
-                    <button 
-                        class="footer-cta group flex items-center justify-center gap-3 bg-gradient-to-r from-gray-800 to-gray-900 text-white px-6 py-3 rounded-xl transition-all text-sm font-semibold border border-white/10 hover:border-white/30 shadow-lg cursor-not-allowed"
-                        type="button"
-                        disabled
-                        aria-label="App download coming soon - Currently in development"
+                <div class="flex flex-col gap-3 mb-4">
+                    <a
+                        href={APK_RELEASE.downloadUrl}
+                        target="_blank"
+                        rel="noopener noreferrer nofollow"
+                        class="footer-cta group flex items-center justify-center gap-3 bg-gradient-to-r from-blue-600 to-cyan-500 text-white px-6 py-3 rounded-xl transition-all text-sm font-semibold shadow-lg hover:shadow-xl hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-black"
+                        aria-label={`Download Pacebeats Android APK version ${APK_RELEASE.version} - Opens in new tab`}
                     >
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v12m0 0l4-4m-4 4l-4-4m-4 8h16"/>
                         </svg>
-                        <span>Coming Soon</span>
-                        <div class="flex gap-1">
-                            <span class="w-1 h-1 bg-white rounded-full animate-bounce" style="animation-delay: 0ms;"></span>
-                            <span class="w-1 h-1 bg-white rounded-full animate-bounce" style="animation-delay: 150ms;"></span>
-                            <span class="w-1 h-1 bg-white rounded-full animate-bounce" style="animation-delay: 300ms;"></span>
-                        </div>
-                    </button>
+                        <span>Download Android APK</span>
+                    </a>
+                </div>
+
+                <div class="mb-8 rounded-xl border border-white/10 bg-white/5 p-4 text-xs text-gray-300 space-y-2">
+                    <p><span class="font-semibold text-white">Version:</span> {APK_RELEASE.version}</p>
+                    <p><span class="font-semibold text-white">Updated:</span> {APK_RELEASE.updatedAt}</p>
+                    <p><span class="font-semibold text-white">File Size:</span> {APK_RELEASE.fileSize}</p>
+                    <p>
+                        <span class="font-semibold text-white">SHA-256:</span>
+                        <a
+                            href={APK_RELEASE.checksumUrl}
+                            target="_blank"
+                            rel="noopener noreferrer nofollow"
+                            class="ml-1 text-blue-300 underline hover:text-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-300 rounded"
+                            aria-label="Download SHA-256 checksum file for APK verification - Opens in new tab"
+                        >
+                            {APK_RELEASE.checksumLabel}
+                        </a>
+                    </p>
                 </div>
                 
                 <!-- Copyright -->

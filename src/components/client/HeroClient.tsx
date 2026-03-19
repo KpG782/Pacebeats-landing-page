@@ -1,5 +1,6 @@
 import { motion } from 'motion/react';
-import { Rocket, ChevronDown } from 'lucide-react';
+import { Rocket, ChevronDown, Download } from 'lucide-react';
+import { APK_RELEASE } from '../../config/apkRelease';
 
 export default function HeroClient() {
   const scrollToSection = (sectionId: string) => {
@@ -57,17 +58,17 @@ export default function HeroClient() {
           Feel the music adapt to your stride, push past your limits, and turn every workout into a rhythm-powered journey.
         </motion.p>
         
-        {/* CTA Button */}
+        {/* CTA Buttons */}
         <motion.div 
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5, delay: 0.9 }}
-          className="mb-8 sm:mb-12 md:mb-16 px-4 flex justify-center"
+          className="mb-8 sm:mb-12 md:mb-16 px-4 flex flex-col sm:flex-row items-center justify-center gap-3"
         >
           <motion.button 
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="bg-blue-600 hover:bg-blue-700 text-white px-6 sm:px-10 py-3 sm:py-4 rounded-full font-bold text-base sm:text-lg transition-all duration-300 shadow-xl hover:shadow-2xl max-w-xs flex items-center justify-center gap-2"
+            className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white px-6 sm:px-10 py-3 sm:py-4 rounded-full font-bold text-base sm:text-lg transition-all duration-300 shadow-xl hover:shadow-2xl flex items-center justify-center gap-2"
             type="button"
             onClick={() => scrollToSection('features')}
             aria-label="Get started with Pacebeats - Scroll to features section"
@@ -75,7 +76,29 @@ export default function HeroClient() {
             <Rocket className="w-5 h-5" strokeWidth={2.5} />
             Let's Get Moving
           </motion.button>
+
+          <motion.a
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            href={APK_RELEASE.downloadUrl}
+            target="_blank"
+            rel="noopener noreferrer nofollow"
+            className="w-full sm:w-auto bg-white/10 hover:bg-white/20 border border-white/40 text-white px-6 sm:px-10 py-3 sm:py-4 rounded-full font-bold text-base sm:text-lg transition-all duration-300 shadow-xl hover:shadow-2xl flex items-center justify-center gap-2"
+            aria-label={`Download Pacebeats Android APK version ${APK_RELEASE.version} - Opens in new tab`}
+          >
+            <Download className="w-5 h-5" strokeWidth={2.5} />
+            Download APK
+          </motion.a>
         </motion.div>
+
+        <motion.p
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 1.0 }}
+          className="-mt-6 sm:-mt-8 md:-mt-12 mb-8 text-xs sm:text-sm text-gray-200"
+        >
+          Latest Android build: {APK_RELEASE.version} | Updated {APK_RELEASE.updatedAt}
+        </motion.p>
 
         {/* App Screenshot */}
         <motion.figure 

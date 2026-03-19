@@ -13,6 +13,7 @@ import {
   FileText,
   Shield,
   Github,
+  Download,
 } from "lucide-react";
 
 export default function MobileMenuClient() {
@@ -171,6 +172,18 @@ export default function MobileMenuClient() {
             >
               <Code className="w-4 h-4" />
               <span>Tech Stack</span>
+            </motion.a>
+            <motion.a
+              initial={{ x: -20, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ delay: 0.28 }}
+              href="#download"
+              className="text-sm text-white hover:text-gray-300 transition-colors flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1"
+              role="menuitem"
+              aria-label="Go to APK download section"
+            >
+              <Download className="w-4 h-4" />
+              <span>Download APK</span>
             </motion.a>
             <motion.a
               initial={{ x: -20, opacity: 0 }}

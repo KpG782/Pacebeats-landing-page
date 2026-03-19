@@ -10,13 +10,14 @@ import {
   Music,
   Watch,
   BookOpen,
-  Code,
   Heart,
   Users,
   FileText,
   Shield,
   Github,
+  Download,
 } from "lucide-react";
+import { APK_RELEASE } from "../../config/apkRelease";
 
 export default function NavbarClient() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -265,19 +266,22 @@ export default function NavbarClient() {
           <Github className="w-4 h-4 mr-1" />
           <span>Docs</span>
         </motion.a>
-        <motion.button
+        <motion.a
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="bg-white text-black px-4 py-2 rounded-full text-xs font-medium hover:bg-gray-200 transition-colors shadow-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 flex items-center"
-          type="button"
-          aria-label="Currently in development mode"
+          href={APK_RELEASE.downloadUrl}
+          target="_blank"
+          rel="noopener noreferrer nofollow"
+          className="bg-white text-black px-4 py-2 rounded-full text-xs font-semibold hover:bg-gray-200 transition-colors shadow-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 flex items-center whitespace-nowrap"
+          aria-label={`Download Pacebeats Android APK version ${APK_RELEASE.version} - Opens in new tab`}
         >
-          <Code className="w-4 h-4 mr-2" />
-          Development Mode
-        </motion.button>
+          <Download className="w-4 h-4 mr-2" />
+          <span className="hidden xl:inline">Download APK {APK_RELEASE.version}</span>
+          <span className="xl:hidden">APK {APK_RELEASE.version}</span>
+        </motion.a>
       </div>
     </>
   );
