@@ -258,15 +258,15 @@ export default function MobileMenuClient() {
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.5 }}
-              href="https://github.com/KpG782/"
+              href="https://github.com/KpG782/pacebeats-release-files"
               target="_blank"
               rel="noopener noreferrer nofollow"
               className="flex items-center justify-center text-sm text-white hover:text-gray-300 transition-colors gap-2 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1"
               role="menuitem"
-              aria-label="View Pacebeats documentation on GitHub - Opens in new tab"
+              aria-label="View Pacebeats APK releases on GitHub - Opens in new tab"
             >
               <Github className="w-4 h-4" />
-              <span>Documentation</span>
+              <span>Releases</span>
             </motion.a>
           </div>
         </motion.div>

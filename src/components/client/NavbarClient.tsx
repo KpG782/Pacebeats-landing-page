@@ -254,17 +254,17 @@ export default function NavbarClient() {
           <span>Team</span>
         </motion.a>
         <motion.a
-          href="https://github.com/KpG782"
+          href="https://github.com/KpG782/pacebeats-release-files"
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
           target="_blank"
           rel="noopener noreferrer nofollow"
           className="flex items-center text-sm hover:text-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1"
-          aria-label="View Pacebeats documentation on GitHub - Opens in new tab"
+          aria-label="View Pacebeats APK releases on GitHub - Opens in new tab"
         >
           <Github className="w-4 h-4 mr-1" />
-          <span>Docs</span>
+          <span>Releases</span>
         </motion.a>
         <motion.a
           whileHover={{ scale: 1.05 }}
