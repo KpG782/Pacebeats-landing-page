@@ -83,6 +83,17 @@ All commands are run from the root of the project:
 
 ---
 
+## ⌚ Wear OS Companion Download and Setup
+
+- Wear OS APK (direct download):
+  - https://github.com/KpG782/pacebeats-release-files/releases/latest/download/wear-release.apk
+- Wear OS APK checksum:
+  - https://github.com/KpG782/pacebeats-release-files/releases/latest/download/wear-release.apk.sha256
+- Full installation and connection guide:
+  - docs/GALAXY_WATCH_INSTALLATION.md
+
+---
+
 ## 📂 Project Structure
 
 ```text

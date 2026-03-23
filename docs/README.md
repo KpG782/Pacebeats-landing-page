@@ -2,6 +2,10 @@
 
 This directory contains React/TSX client components that use Framer Motion and Lucide icons.
 
+## Additional Docs
+
+- `GALAXY_WATCH_INSTALLATION.md` - Wear OS/Galaxy Watch install and pairing instructions for Pacebeats Companion.
+
 ## Components
 
 ### HeroClient.tsx

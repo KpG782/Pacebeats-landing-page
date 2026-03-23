@@ -3,10 +3,27 @@ import { Rocket, ChevronDown, Download } from 'lucide-react';
 import { APK_RELEASE } from '../../config/apkRelease';
 
 export default function HeroClient() {
+  const getNavbarOffset = () => {
+    const nav = document.querySelector("header nav");
+    if (!(nav instanceof HTMLElement)) {
+      return 88;
+    }
+    return nav.offsetHeight + 12;
+  };
+
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      const top =
+        window.scrollY + element.getBoundingClientRect().top - getNavbarOffset();
+      const prefersReducedMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)",
+      ).matches;
+
+      window.scrollTo({
+        top: Math.max(top, 0),
+        behavior: prefersReducedMotion ? "auto" : "smooth",
+      });
     }
   };
 
@@ -17,114 +34,122 @@ export default function HeroClient() {
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="w-full max-w-4xl mx-auto"
+        className="w-full max-w-7xl mx-auto"
       >
-        {/* Main headline */}
-        <motion.header
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-        >
-          <h1 
-            className="hero-title text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-4 sm:mb-6 md:mb-8 mt-4 sm:mt-8 md:mt-16 leading-tight tracking-tight text-glow"
-          >
-            <motion.span 
-              className="block"
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
+        <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12 xl:gap-16">
+          <div className="w-full lg:w-[56%] lg:-mt-6">
+            {/* Main headline */}
+            <motion.header
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="text-center lg:text-left"
             >
-              Run to the Rhythm.
-            </motion.span>
-            <motion.span 
-              className="block"
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.5 }}
+              <h1 
+                className="hero-title text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-4 sm:mb-6 md:mb-8 mt-0 leading-tight tracking-tight text-glow"
+              >
+                <motion.span 
+                  className="block"
+                  initial={{ opacity: 0, x: -30 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6, delay: 0.3 }}
+                >
+                  Run to the Rhythm.
+                </motion.span>
+                <motion.span 
+                  className="block"
+                  initial={{ opacity: 0, x: -30 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6, delay: 0.5 }}
+                >
+                  Achieve your Pace.
+                </motion.span>
+              </h1>
+            </motion.header>
+
+            {/* Subtitle */}
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.7 }}
+              className="text-base sm:text-lg md:text-xl lg:text-2xl mb-6 sm:mb-8 md:mb-10 text-gray-100 max-w-2xl mx-auto lg:mx-0 font-medium leading-relaxed px-2 lg:px-0 text-center lg:text-left"
             >
-              Achieve your Pace.
-            </motion.span>
-          </h1>
-        </motion.header>
-        
-        {/* Subtitle */}
-        <motion.p 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.7 }}
-          className="text-base sm:text-lg md:text-xl lg:text-2xl mb-6 sm:mb-8 md:mb-12 text-gray-100 max-w-2xl mx-auto font-medium leading-relaxed px-2"
-        >
-          Pacebeats transforms every run by syncing your steps with the perfect song.
-          Feel the music adapt to your stride, push past your limits, and turn every workout into a rhythm-powered journey.
-        </motion.p>
-        
-        {/* CTA Buttons */}
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5, delay: 0.9 }}
-          className="mb-8 sm:mb-12 md:mb-16 px-4 flex flex-col sm:flex-row items-center justify-center gap-3"
-        >
-          <motion.button 
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white px-6 sm:px-10 py-3 sm:py-4 rounded-full font-bold text-base sm:text-lg transition-all duration-300 shadow-xl hover:shadow-2xl flex items-center justify-center gap-2"
-            type="button"
-            onClick={() => scrollToSection('features')}
-            aria-label="Get started with Pacebeats - Scroll to features section"
+              Pacebeats transforms every run by syncing your steps with the perfect song.
+              Feel the music adapt to your stride, push past your limits, and turn every workout into a rhythm-powered journey.
+            </motion.p>
+
+            {/* CTA Buttons */}
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: 0.9 }}
+              className="mb-8 sm:mb-10 md:mb-12 px-4 lg:px-0 flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-3"
+            >
+              <motion.button 
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white px-6 sm:px-10 py-3 sm:py-4 rounded-full font-bold text-base sm:text-lg transition-all duration-300 shadow-xl hover:shadow-2xl flex items-center justify-center gap-2"
+                type="button"
+                onClick={() => scrollToSection('features')}
+                aria-label="Get started with Pacebeats - Scroll to features section"
+              >
+                <Rocket className="w-5 h-5" strokeWidth={2.5} />
+                Let's Get Moving
+              </motion.button>
+
+              <motion.a
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                href={APK_RELEASE.downloadUrl}
+                target="_blank"
+                rel="noopener noreferrer nofollow"
+                className="w-full sm:w-auto bg-white/10 hover:bg-white/20 border border-white/40 text-white px-6 sm:px-10 py-3 sm:py-4 rounded-full font-bold text-base sm:text-lg transition-all duration-300 shadow-xl hover:shadow-2xl flex items-center justify-center gap-2"
+                aria-label={`Download Pacebeats Android APK version ${APK_RELEASE.version} - Opens in new tab`}
+              >
+                <Download className="w-5 h-5" strokeWidth={2.5} />
+                Download APK
+              </motion.a>
+            </motion.div>
+
+            <motion.p
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 1.0 }}
+              className="mb-6 lg:mb-0 text-xs sm:text-sm text-gray-200 text-center lg:text-left"
+            >
+              Latest Android build: {APK_RELEASE.version} | Updated {APK_RELEASE.updatedAt}
+            </motion.p>
+          </div>
+
+          {/* App Screenshot */}
+          <motion.figure 
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 1.1 }}
+            className="relative flex justify-center lg:justify-end px-4 w-full lg:w-[44%]"
+            role="img"
+            aria-label="Pacebeats mobile app interface preview"
           >
-            <Rocket className="w-5 h-5" strokeWidth={2.5} />
-            Let's Get Moving
-          </motion.button>
-
-          <motion.a
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            href={APK_RELEASE.downloadUrl}
-            target="_blank"
-            rel="noopener noreferrer nofollow"
-            className="w-full sm:w-auto bg-white/10 hover:bg-white/20 border border-white/40 text-white px-6 sm:px-10 py-3 sm:py-4 rounded-full font-bold text-base sm:text-lg transition-all duration-300 shadow-xl hover:shadow-2xl flex items-center justify-center gap-2"
-            aria-label={`Download Pacebeats Android APK version ${APK_RELEASE.version} - Opens in new tab`}
-          >
-            <Download className="w-5 h-5" strokeWidth={2.5} />
-            Download APK
-          </motion.a>
-        </motion.div>
-
-        <motion.p
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 1.0 }}
-          className="-mt-6 sm:-mt-8 md:-mt-12 mb-8 text-xs sm:text-sm text-gray-200"
-        >
-          Latest Android build: {APK_RELEASE.version} | Updated {APK_RELEASE.updatedAt}
-        </motion.p>
-
-        {/* App Screenshot */}
-        <motion.figure 
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.1 }}
-          className="relative flex justify-center px-4"
-          role="img"
-          aria-label="Pacebeats mobile app interface preview"
-        >
-          <motion.img 
-            whileHover={{ scale: 1.05, rotate: 2 }}
-            transition={{ duration: 0.3 }}
-            src="/hero-screen-1.svg" 
-            alt="Pacebeats mobile app interface showing real-time pace tracking, music synchronization, and running analytics dashboard"
-            className="rounded-2xl shadow-2xl w-32 sm:w-40 md:w-48 lg:w-80 max-w-full h-auto"
-            loading="eager"
-            width="320"
-            height="640"
-          />
-          <div className="absolute inset-0 bg-blue-600/20 blur-3xl rounded-full scale-150 -z-10 pointer-events-none" aria-hidden="true"></div>
-        </motion.figure>
+            <motion.img 
+              whileHover={{ scale: 1.05, rotate: 2 }}
+              transition={{ duration: 0.3 }}
+              src="/hero-screen-1.svg" 
+              alt="Pacebeats mobile app interface showing real-time pace tracking, music synchronization, and running analytics dashboard"
+              className="rounded-2xl shadow-2xl w-36 sm:w-44 md:w-56 lg:w-72 xl:w-80 max-w-full h-auto"
+              loading="eager"
+              width="320"
+              height="640"
+            />
+            <div
+              className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-44 h-44 sm:w-56 sm:h-56 md:w-72 md:h-72 bg-cyan-400/10 blur-2xl rounded-full -z-10 pointer-events-none"
+              aria-hidden="true"
+            ></div>
+          </motion.figure>
+        </div>
       </motion.div>
       
       {/* Scroll indicator */}
-      <motion.div 
+      <motion.button
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ 
@@ -134,7 +159,7 @@ export default function HeroClient() {
           repeatType: "reverse",
           repeatDelay: 1
         }}
-        className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2 cursor-pointer"
+        className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2 cursor-pointer p-2 rounded-full touch-manipulation focus:outline-none focus:ring-2 focus:ring-white/80"
         onClick={() => scrollToSection('features')}
         onKeyDown={(e) => {
           if (e.key === 'Enter' || e.key === ' ') {
@@ -142,8 +167,7 @@ export default function HeroClient() {
             scrollToSection('features');
           }
         }}
-        role="button"
-        tabIndex={0}
+        type="button"
         aria-label="Scroll down to see more content"
       >
         <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center items-center">
@@ -154,7 +178,7 @@ export default function HeroClient() {
             <ChevronDown className="w-4 h-4 text-white/60" strokeWidth={2} />
           </motion.div>
         </div>
-      </motion.div>
+      </motion.button>
     </>
   );
 }

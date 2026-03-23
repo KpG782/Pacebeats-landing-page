@@ -1,7 +1,11 @@
+---
+import { WEAR_RELEASE } from "../config/apkRelease";
+---
+
 <section 
     class="relative min-h-screen bg-cover bg-center bg-no-repeat" 
     style="background-image: url('/wear1.jpg');"
-    id="wear-os"
+    id="watch-integration"
     aria-labelledby="wear-heading"
     itemscope 
     itemtype="https://schema.org/SoftwareApplication"
@@ -14,7 +18,7 @@
         <!-- Heading with enhanced SEO structure -->
         <header class="mb-8 animate-fade-up">
             <div class="inline-block mb-4">
-                <span class="text-blue-400 font-semibold text-sm uppercase tracking-wider">Coming Soon</span>
+                <span class="text-emerald-300 font-semibold text-sm uppercase tracking-wider">Available Now</span>
             </div>
             <h2 
                 id="wear-heading" 
@@ -35,13 +39,23 @@
                 class="text-gray-300 text-lg md:text-xl leading-relaxed mb-4"
                 itemprop="description"
             >
-                The future of running is on your wrist. Soon, Pacebeats will sync seamlessly with Wear OS smartwatches, giving you real-time pace feedback, adaptive music control, and recovery insights — without reaching for your phone.
+                Pacebeats Companion for Wear OS is live. Download the watch APK directly, install it on your Galaxy Watch, and connect it with the Pacebeats mobile app for real-time pace feedback, adaptive music control, and recovery insights on your wrist.
             </p>
             <div class="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/30 rounded-full px-4 py-2" role="status" aria-live="polite">
                 <svg class="w-4 h-4 text-blue-400 animate-pulse" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                     <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
                 </svg>
-                <span class="text-blue-400 text-sm font-medium" aria-label="Development status">Wear OS integration coming soon</span>
+                <span class="text-blue-400 text-sm font-medium" aria-label="Release status">Wear OS APK ready to install</span>
+            </div>
+
+            <div class="mt-4 mx-auto max-w-2xl text-left bg-black/30 border border-white/10 rounded-xl p-4" aria-label="Wear OS connection steps">
+                <p class="text-white/90 text-sm md:text-base font-semibold mb-2">How to connect it properly</p>
+                <ol class="text-gray-200 text-sm md:text-base list-decimal list-inside space-y-1">
+                    <li>Install the latest Pacebeats mobile APK on your Android phone.</li>
+                    <li>Enable ADB debugging and Wi-Fi debugging on your Galaxy Watch.</li>
+                    <li>Connect and install the companion app: <code class="text-cyan-300">adb -s WATCH_IP:PORT install -r wear-release.apk</code></li>
+                    <li>Open Pacebeats on both devices and complete the in-app pairing flow.</li>
+                </ol>
             </div>
         </div>
         
@@ -55,19 +69,20 @@
             >
                 <span class="relative z-10">Companion Features</span>
             </button>
-            <button 
-                class="relative bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50 opacity-90 cursor-not-allowed"
-                type="button"
-                disabled
-                aria-label="Wear OS integration coming soon"
+            <a
+                href={WEAR_RELEASE.downloadUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="relative bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50 hover:from-blue-400 hover:to-cyan-400 hover:scale-105"
+                aria-label={`Download Pacebeats Wear OS APK version ${WEAR_RELEASE.version} in a new tab`}
             >
                 <span class="relative z-10 flex items-center gap-2">
                     <svg class="w-4 h-4 animate-pulse" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                         <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
                     </svg>
-                    Coming Soon
+                    Download Wear APK
                 </span>
-            </button>
+            </a>
             <button 
                 class="group relative bg-white/10 backdrop-blur-sm border-2 border-white/30 hover:border-white/50 text-white px-6 py-3 rounded-xl font-semibold hover:bg-white/20 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50 hover:scale-105"
                 type="button"
@@ -92,7 +107,7 @@
             
             <div itemprop="operatingSystem">Wear OS</div>
             <div itemprop="applicationSubCategory">Smartwatch Companion App</div>
-            <div itemprop="releaseNotes">Wear OS integration coming soon</div>
+            <div itemprop="releaseNotes">Wear OS companion app released as APK download</div>
         </div>
     </div>
 
@@ -128,7 +143,7 @@
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     "name": "Pacebeats Wear OS Companion",
-    "description": "Upcoming smartwatch companion app for Pacebeats featuring real-time pace feedback, adaptive music control, and recovery insights on Wear OS devices",
+    "description": "Wear OS smartwatch companion app for Pacebeats featuring real-time pace feedback, adaptive music control, and recovery insights",
     "operatingSystem": "Wear OS",
     "applicationSubCategory": "Smartwatch Companion App",
     "featureList": [
@@ -139,7 +154,9 @@
         "Hands-free running experience",
         "Voice commands and notifications"
     ],
-    "releaseNotes": "Wear OS integration coming soon",
+    "downloadUrl": "https://github.com/KpG782/pacebeats-release-files/releases/latest/download/wear-release.apk",
+    "softwareVersion": "v1.0.0",
+    "releaseNotes": "Wear OS companion app available for direct APK download",
     "isPartOf": {
         "@type": "SoftwareApplication",
         "name": "Pacebeats",
@@ -149,7 +166,7 @@
         "@type": "Audience", 
         "audienceType": "Smartwatch users and running enthusiasts"
     },
-    "developmentStatus": "In Development"
+    "developmentStatus": "Production"
 }
 </script>
 
@@ -285,6 +302,11 @@ button:focus-visible {
     outline-offset: 2px;
 }
 
+a:focus-visible {
+    outline: 3px solid rgba(255, 255, 255, 0.8);
+    outline-offset: 2px;
+}
+
 /* Responsive enhancements */
 @media (max-width: 768px) {
     h2.font-inter {
@@ -297,7 +319,8 @@ button:focus-visible {
         align-items: center;
     }
     
-    button {
+    button,
+    a {
         width: 100%;
         max-width: 280px;
     }
@@ -317,7 +340,7 @@ button:focus-visible {
         const announcement = document.createElement('div');
         announcement.setAttribute('aria-live', 'assertive');
         announcement.className = 'sr-only';
-        announcement.textContent = 'Companion features information: Real-time pace feedback, adaptive music control, and recovery insights will be available on Wear OS devices';
+        announcement.textContent = 'Companion features information: Real-time pace feedback, adaptive music control, and recovery insights are available on Wear OS devices';
         document.body.appendChild(announcement);
         
         // Analytics tracking
@@ -400,7 +423,7 @@ button:focus-visible {
             rootMargin: '50px'
         });
         
-        const wearSection = document.getElementById('wear-os');
+        const wearSection = document.getElementById('watch-integration');
         if (wearSection) {
             wearObserver.observe(wearSection);
         }

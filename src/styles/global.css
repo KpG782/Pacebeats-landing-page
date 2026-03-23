@@ -8,6 +8,14 @@
 html {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
+}
+
+section[id],
+main[id],
+footer[id] {
+  scroll-margin-top: 6rem;
 }
 
 /* Reset and base styles */
@@ -46,6 +54,16 @@ button {
 
 /* Mobile-specific fixes */
 @media (max-width: 768px) {
+  html {
+    scroll-padding-top: 5rem;
+  }
+
+  section[id],
+  main[id],
+  footer[id] {
+    scroll-margin-top: 5rem;
+  }
+
   /* Adjust hero title for mobile */
   .hero-title {
     font-size: 2.5rem !important;

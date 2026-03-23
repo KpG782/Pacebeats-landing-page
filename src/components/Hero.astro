@@ -6,14 +6,14 @@ import HeroClient from './client/HeroClient';
 <main id="main-content" role="main">
     <section 
         id="hero" 
-        class="relative min-h-screen bg-cover bg-center bg-no-repeat md:bg-fixed pt-16" 
+        class="relative min-h-screen bg-cover bg-center bg-no-repeat pt-16" 
         style="background-image: url('/hero-section2.jpg');"
         aria-labelledby="hero-heading"
         itemscope 
         itemtype="https://schema.org/SoftwareApplication"
     >
         <!-- Enhanced dark overlay with gradient -->
-        <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/80" aria-hidden="true"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-black/72 via-black/52 to-black/68" aria-hidden="true"></div>
         
         <!-- Image Attribution -->
         <div class="absolute bottom-2 right-2 z-20 text-xs text-white/60 hover:text-white/90 transition-colors">
@@ -151,26 +151,23 @@ import HeroClient from './client/HeroClient';
     .text-glow {
         color: #ffffff;
         text-shadow: 
-            0 0 10px rgba(59, 130, 246, 0.5),
-            0 0 20px rgba(59, 130, 246, 0.3),
-            0 0 40px rgba(59, 130, 246, 0.2),
+            0 0 8px rgba(255, 255, 255, 0.2),
+            0 0 18px rgba(255, 255, 255, 0.1),
             2px 2px 4px rgba(0, 0, 0, 0.8);
-        animation: textGlow 3s ease-in-out infinite alternate;
+        animation: none;
     }
     
     @keyframes textGlow {
         from {
             text-shadow: 
-                0 0 10px rgba(59, 130, 246, 0.5),
-                0 0 20px rgba(59, 130, 246, 0.3),
-                0 0 40px rgba(59, 130, 246, 0.2),
+                0 0 8px rgba(255, 255, 255, 0.2),
+                0 0 18px rgba(255, 255, 255, 0.1),
                 2px 2px 4px rgba(0, 0, 0, 0.8);
         }
         to {
             text-shadow: 
-                0 0 15px rgba(59, 130, 246, 0.8),
-                0 0 30px rgba(59, 130, 246, 0.5),
-                0 0 50px rgba(59, 130, 246, 0.3),
+                0 0 10px rgba(255, 255, 255, 0.25),
+                0 0 22px rgba(255, 255, 255, 0.12),
                 2px 2px 4px rgba(0, 0, 0, 0.8);
         }
     }
