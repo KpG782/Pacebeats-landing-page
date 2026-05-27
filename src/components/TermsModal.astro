@@ -1,209 +1,314 @@
 ---
 ---
 
-<div id="termsModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden items-center justify-center p-4">
-    <div class="bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-hidden shadow-2xl">
-        <!-- Header -->
-        <div class="flex items-center justify-between p-6 border-b border-gray-200 bg-gray-50">
-            <h2 class="text-2xl font-bold text-gray-900">Terms of Service</h2>
-            <button id="closeTermsModal" class="text-gray-500 hover:text-gray-700 text-2xl font-bold">
-                ✕
-            </button>
-        </div>
-        
-        <!-- Content -->
-        <div class="p-6 overflow-y-auto max-h-[75vh] text-gray-700">
-            <p class="text-gray-600 mb-6">Please review our terms of service carefully.</p>
-            <p class="text-sm text-gray-500 mb-8">Last Updated: January 15, 2025</p>
-            
-            <!-- Terms Content -->
-            <div class="space-y-6">
-                <section>
-                    <h3 class="text-lg font-semibold text-gray-900 mb-3">AGREEMENT TO TERMS</h3>
-                    <p class="text-sm leading-relaxed mb-4">
-                        These Terms of Service ("Terms") are a legally binding agreement between you ("you" or "user"), 
-                        whether personally or on behalf of an organization, and Pacebeats ("Company," "we," "our," or "us"), 
-                        governing your access to and use of the Pacebeats mobile application and any related platforms, 
-                        services, or tools (collectively, the "Service").
-                    </p>
-                    <p class="text-sm leading-relaxed mb-4">
-                        By downloading, accessing, or using our Service, you agree to be bound by these Terms. 
-                        If you do not agree, you must immediately stop using the Service and uninstall the application.
-                    </p>
-                    <p class="text-sm leading-relaxed">
-                        We may update these Terms at any time, and the updated version will be indicated by a "Last Updated" date. 
-                        Your continued use of the Service after changes are posted constitutes acceptance of those changes.
-                    </p>
-                </section>
-
-                <section>
-                    <h3 class="text-lg font-semibold text-gray-900 mb-3">1. Acceptance of Terms</h3>
-                    <p class="text-sm leading-relaxed">
-                        By accessing and using Pacebeats, you accept and agree to be bound by the terms and provisions 
-                        of this agreement. This includes all policies, guidelines, and rules referenced herein. 
-                        Your continued use of the service constitutes acceptance of any modifications to these terms. 
-                        If you do not agree to these terms, please do not use our service.
-                    </p>
-                </section>
-
-                <section>
-                    <h3 class="text-lg font-semibold text-gray-900 mb-3">2. Use License and Restrictions</h3>
-                    <p class="text-sm leading-relaxed">
-                        Permission is granted to use Pacebeats for personal, non-commercial fitness and running purposes only. 
-                        This license does not include modifying or copying our materials, using the materials for commercial purposes, 
-                        attempting to reverse engineer any software contained in Pacebeats, removing any copyright or proprietary notations, 
-                        or transferring the materials to another person or mirroring the materials on any other server. 
-                        This license shall automatically terminate if you violate any of these restrictions.
-                    </p>
-                </section>
-
-                <section>
-                    <h3 class="text-lg font-semibold text-gray-900 mb-3">3. User Account Responsibilities</h3>
-                    <p class="text-sm leading-relaxed">
-                        You are responsible for maintaining the confidentiality of your account credentials and for all activities 
-                        that occur under your account. This includes creating a strong password and keeping it secure, 
-                        not sharing your account credentials with others, promptly notifying us of any unauthorized access 
-                        or security breaches, ensuring your account information remains accurate and up-to-date, 
-                        and understanding that you are responsible for any content posted or actions taken through your account.
-                    </p>
-                </section>
-
-                <section>
-                    <h3 class="text-lg font-semibold text-gray-900 mb-3">4. Data Privacy and Protection</h3>
-                    <p class="text-sm leading-relaxed mb-4">
-                        Pacebeats is committed to protecting your personal information while providing the best possible 
-                        fitness tracking experience. Our data protection practices include:
-                    </p>
-                    <ul class="text-sm space-y-2 ml-4 list-disc">
-                        <li>Secure encryption of all personal data and fitness metrics</li>
-                        <li>Limited data collection only for app functionality improvement</li>
-                        <li>No sharing of personal information with third parties without consent</li>
-                        <li>User control over data sharing and deletion</li>
-                        <li>Compliance with applicable data protection regulations</li>
-                    </ul>
-                </section>
-
-                <section>
-                    <h3 class="text-lg font-semibold text-gray-900 mb-3">5. Health and Safety Disclaimer</h3>
-                    <p class="text-sm leading-relaxed mb-4">
-                        <strong>IMPORTANT:</strong> Pacebeats is a fitness tracking application and should not be used as a substitute 
-                        for professional medical advice, diagnosis, or treatment. By using this app:
-                    </p>
-                    <ul class="text-sm space-y-2 ml-4 list-disc">
-                        <li>You acknowledge that you are physically capable of participating in running activities</li>
-                        <li>You understand the risks associated with physical exercise and running</li>
-                        <li>You agree to consult with a healthcare professional before beginning any new fitness routine</li>
-                        <li>You will not hold Pacebeats liable for any injuries or health issues that may occur</li>
-                        <li>You will use the app responsibly and within your physical limitations</li>
-                    </ul>
-                </section>
-
-                <section>
-                    <h3 class="text-lg font-semibold text-gray-900 mb-3">6. Music and Content Usage</h3>
-                    <p class="text-sm leading-relaxed">
-                        Pacebeats integrates with music streaming services to provide tempo-matched playlists. 
-                        Users are responsible for having valid subscriptions to any third-party music services. 
-                        We do not store or distribute copyrighted music content. All music is streamed through 
-                        legitimate platforms in accordance with their respective terms of service.
-                    </p>
-                </section>
-
-                <section>
-                    <h3 class="text-lg font-semibold text-gray-900 mb-3">7. Limitation of Liability</h3>
-                    <p class="text-sm leading-relaxed">
-                        Pacebeats is provided "as is" and "as available." We make no warranties about the accuracy 
-                        of fitness data, continuous service availability, or results from using the app. 
-                        We are not liable for any damages resulting from your use of the app, including but not limited to 
-                        lost data, fitness injuries, or any other direct or indirect damages.
-                    </p>
-                </section>
-
-                <section>
-                    <h3 class="text-lg font-semibold text-gray-900 mb-3">8. Termination</h3>
-                    <p class="text-sm leading-relaxed">
-                        We reserve the right to suspend or terminate your access to Pacebeats at any time, 
-                        without notice, for conduct that violates these Terms or is otherwise harmful to our service or other users. 
-                        You may also terminate your account at any time by deleting the application and contacting us to remove your data.
-                    </p>
-                </section>
-
-                <section>
-                    <h3 class="text-lg font-semibold text-gray-900 mb-3">9. Governing Law</h3>
-                    <p class="text-sm leading-relaxed">
-                        These Terms are governed by applicable local and international laws. Any disputes will be resolved 
-                        through appropriate legal channels in accordance with the jurisdiction where Pacebeats operates.
-                    </p>
-                </section>
-
-                <section>
-                    <h3 class="text-lg font-semibold text-gray-900 mb-3">10. Contact Information</h3>
-                    <p class="text-sm leading-relaxed mb-4">
-                        For questions or concerns regarding these Terms, please contact us:
-                    </p>
-                    <div class="text-sm space-y-2 ml-4">
-                        <p>📧 pacebeatsspacebeats213@gmail.com</p>
-                        <p>🌐 www.pacebeats.top</p>
-                        <p>📱 Through the Pacebeats mobile application support section</p>
-                    </div>
-                </section>
-            </div>
-        </div>
-        
-  
+<div
+  id="termsModal"
+  class="fixed inset-0 z-[100] hidden bg-ink/85 backdrop-blur-sm"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="termsModalTitle"
+>
+  <div
+    class="mx-auto my-[7.5vh] w-[min(90vw,48rem)] max-w-3xl max-h-[85vh] flex flex-col overflow-hidden bg-ink-2 border border-ink-3 rounded-xl transition-[opacity,transform] duration-300 ease-out-quart"
+  >
+    <!-- Header -->
+    <div class="flex items-center justify-between px-8 py-6 border-b border-ink-3">
+      <h2 id="termsModalTitle" class="font-display font-bold text-paper text-xl tracking-[-0.01em]">
+        Terms of Service
+      </h2>
+      <button
+        id="closeTermsModal"
+        type="button"
+        aria-label="Close"
+        class="inline-flex items-center justify-center w-11 h-11 text-paper-2 hover:text-cobalt-3 transition-colors duration-200"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
     </div>
+
+    <!-- Body -->
+    <div class="flex-1 overflow-y-auto px-8 py-6 modal-legal">
+      <p class="font-body text-paper-2 leading-[1.7] mb-4">Please review our terms of service carefully.</p>
+      <p class="font-mono text-xs tracking-[0.18em] uppercase text-paper-2 mb-8">
+        LAST UPDATED &middot; JANUARY 15, 2025
+      </p>
+
+      <section>
+        <h3>AGREEMENT TO TERMS</h3>
+        <p>
+          These Terms of Service ("Terms") are a legally binding agreement between you ("you" or "user"),
+          whether personally or on behalf of an organization, and Pacebeats ("Company," "we," "our," or "us"),
+          governing your access to and use of the Pacebeats mobile application and any related platforms,
+          services, or tools (collectively, the "Service").
+        </p>
+        <p>
+          By downloading, accessing, or using our Service, you agree to be bound by these Terms.
+          If you do not agree, you must immediately stop using the Service and uninstall the application.
+        </p>
+        <p>
+          We may update these Terms at any time, and the updated version will be indicated by a "Last Updated" date.
+          Your continued use of the Service after changes are posted constitutes acceptance of those changes.
+        </p>
+      </section>
+
+      <section>
+        <h3>1. Acceptance of Terms</h3>
+        <p>
+          By accessing and using Pacebeats, you accept and agree to be bound by the terms and provisions
+          of this agreement. This includes all policies, guidelines, and rules referenced herein.
+          Your continued use of the service constitutes acceptance of any modifications to these terms.
+          If you do not agree to these terms, please do not use our service.
+        </p>
+      </section>
+
+      <section>
+        <h3>2. Use License and Restrictions</h3>
+        <p>
+          Permission is granted to use Pacebeats for personal, non-commercial fitness and running purposes only.
+          This license does not include modifying or copying our materials, using the materials for commercial purposes,
+          attempting to reverse engineer any software contained in Pacebeats, removing any copyright or proprietary notations,
+          or transferring the materials to another person or mirroring the materials on any other server.
+          This license shall automatically terminate if you violate any of these restrictions.
+        </p>
+      </section>
+
+      <section>
+        <h3>3. User Account Responsibilities</h3>
+        <p>
+          You are responsible for maintaining the confidentiality of your account credentials and for all activities
+          that occur under your account. This includes creating a strong password and keeping it secure,
+          not sharing your account credentials with others, promptly notifying us of any unauthorized access
+          or security breaches, ensuring your account information remains accurate and up-to-date,
+          and understanding that you are responsible for any content posted or actions taken through your account.
+        </p>
+      </section>
+
+      <section>
+        <h3>4. Data Privacy and Protection</h3>
+        <p>
+          Pacebeats is committed to protecting your personal information while providing the best possible
+          fitness tracking experience. Our data protection practices include:
+        </p>
+        <ul>
+          <li>Secure encryption of all personal data and fitness metrics</li>
+          <li>Limited data collection only for app functionality improvement</li>
+          <li>No sharing of personal information with third parties without consent</li>
+          <li>User control over data sharing and deletion</li>
+          <li>Compliance with applicable data protection regulations</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>5. Health and Safety Disclaimer</h3>
+        <p>
+          <strong>IMPORTANT:</strong> Pacebeats is a fitness tracking application and should not be used as a substitute
+          for professional medical advice, diagnosis, or treatment. By using this app:
+        </p>
+        <ul>
+          <li>You acknowledge that you are physically capable of participating in running activities</li>
+          <li>You understand the risks associated with physical exercise and running</li>
+          <li>You agree to consult with a healthcare professional before beginning any new fitness routine</li>
+          <li>You will not hold Pacebeats liable for any injuries or health issues that may occur</li>
+          <li>You will use the app responsibly and within your physical limitations</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>6. Music and Content Usage</h3>
+        <p>
+          Pacebeats integrates with music streaming services to provide tempo-matched playlists.
+          Users are responsible for having valid subscriptions to any third-party music services.
+          We do not store or distribute copyrighted music content. All music is streamed through
+          legitimate platforms in accordance with their respective terms of service.
+        </p>
+      </section>
+
+      <section>
+        <h3>7. Limitation of Liability</h3>
+        <p>
+          Pacebeats is provided "as is" and "as available." We make no warranties about the accuracy
+          of fitness data, continuous service availability, or results from using the app.
+          We are not liable for any damages resulting from your use of the app, including but not limited to
+          lost data, fitness injuries, or any other direct or indirect damages.
+        </p>
+      </section>
+
+      <section>
+        <h3>8. Termination</h3>
+        <p>
+          We reserve the right to suspend or terminate your access to Pacebeats at any time,
+          without notice, for conduct that violates these Terms or is otherwise harmful to our service or other users.
+          You may also terminate your account at any time by deleting the application and contacting us to remove your data.
+        </p>
+      </section>
+
+      <section>
+        <h3>9. Governing Law</h3>
+        <p>
+          These Terms are governed by applicable local and international laws. Any disputes will be resolved
+          through appropriate legal channels in accordance with the jurisdiction where Pacebeats operates.
+        </p>
+      </section>
+
+      <section>
+        <h3>10. Contact Information</h3>
+        <p>For questions or concerns regarding these Terms, please contact us:</p>
+        <ul class="contact-list">
+          <li><strong>Email:</strong> pacebeatsspacebeats213@gmail.com</li>
+          <li><strong>Website:</strong> www.pacebeats.top</li>
+          <li><strong>Mobile App:</strong> Through the Pacebeats mobile application support section</li>
+        </ul>
+      </section>
+    </div>
+
+    <!-- Footer -->
+    <div class="px-8 py-6 border-t border-ink-3 flex justify-end">
+      <button id="closeTermsModalFooter" type="button" class="btn-cta btn-cta--secondary">
+        CLOSE
+      </button>
+    </div>
+  </div>
 </div>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const modal = document.getElementById('termsModal');
-        const closeBtn = document.getElementById('closeTermsModal');
-        const acceptBtn = document.getElementById('acceptTerms');
-        
-        function closeModal() {
-            modal?.classList.add('hidden');
-            modal?.classList.remove('flex');
-        }
-        
-        closeBtn?.addEventListener('click', closeModal);
-        acceptBtn?.addEventListener('click', closeModal);
-        
-        // Close modal when clicking outside
-        modal?.addEventListener('click', function(e) {
-            if (e.target === modal) {
-                closeModal();
-            }
-        });
-        
-        // Close with Escape key
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && modal && !modal.classList.contains('hidden')) {
-                closeModal();
-            }
-        });
+  document.addEventListener('DOMContentLoaded', function () {
+    const modal = document.getElementById('termsModal');
+    const closeBtn = document.getElementById('closeTermsModal');
+    const closeBtnFooter = document.getElementById('closeTermsModalFooter');
+    const acceptBtn = document.getElementById('acceptTerms');
+    let lastFocused: HTMLElement | null = null;
+
+    function getFocusables(root: HTMLElement): HTMLElement[] {
+      return Array.from(
+        root.querySelectorAll<HTMLElement>(
+          'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])'
+        )
+      );
+    }
+
+    function openModal() {
+      if (!modal) return;
+      lastFocused = document.activeElement as HTMLElement | null;
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+      requestAnimationFrame(() => closeBtn?.focus());
+    }
+
+    function closeModal() {
+      if (!modal) return;
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      document.body.style.overflow = '';
+      lastFocused?.focus?.();
+    }
+
+    closeBtn?.addEventListener('click', closeModal);
+    closeBtnFooter?.addEventListener('click', closeModal);
+    acceptBtn?.addEventListener('click', closeModal);
+
+    // Close when clicking the overlay (outside the panel)
+    modal?.addEventListener('click', function (e) {
+      if (e.target === modal) closeModal();
     });
+
+    document.addEventListener('keydown', function (e) {
+      if (!modal || modal.classList.contains('hidden')) return;
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        closeModal();
+        return;
+      }
+      if (e.key === 'Tab') {
+        const focusables = getFocusables(modal);
+        if (focusables.length === 0) return;
+        const first = focusables[0];
+        const last = focusables[focusables.length - 1];
+        const active = document.activeElement as HTMLElement | null;
+        if (e.shiftKey && active === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && active === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
+    });
+
+    (window as any).showTermsModal = openModal;
+  });
 </script>
 
 <style>
-    /* Smooth scrolling for modal content */
-    #termsModal .overflow-y-auto {
-        scrollbar-width: thin;
-        scrollbar-color: #cbd5e0 #f7fafc;
-    }
-    
-    #termsModal .overflow-y-auto::-webkit-scrollbar {
-        width: 6px;
-    }
-    
-    #termsModal .overflow-y-auto::-webkit-scrollbar-track {
-        background: #f7fafc;
-    }
-    
-    #termsModal .overflow-y-auto::-webkit-scrollbar-thumb {
-        background-color: #cbd5e0;
-        border-radius: 3px;
-    }
-    
-    #termsModal .overflow-y-auto::-webkit-scrollbar-thumb:hover {
-        background-color: #a0aec0;
-    }
+  .modal-legal section + section { margin-top: 2rem; }
+  .modal-legal h3 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--color-paper);
+    margin: 2.5rem 0 1rem;
+    font-size: 1.25rem;
+    letter-spacing: -0.005em;
+    line-height: 1.15;
+  }
+  .modal-legal h4 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--color-paper);
+    margin: 1.5rem 0 0.75rem;
+    font-size: 1rem;
+    letter-spacing: 0;
+  }
+  .modal-legal p {
+    color: var(--color-paper-2);
+    margin: 0 0 1rem;
+    line-height: 1.7;
+  }
+  .modal-legal strong {
+    color: var(--color-paper);
+    font-weight: 700;
+  }
+  .modal-legal ul,
+  .modal-legal ol {
+    list-style: disc outside;
+    margin: 0 0 1.25rem 1.5rem;
+    padding: 0;
+    color: var(--color-paper-2);
+  }
+  .modal-legal ol { list-style: decimal outside; }
+  .modal-legal li { margin: 0 0 0.5rem; line-height: 1.7; }
+  .modal-legal ul.contact-list { list-style: none; margin-left: 0; }
+  .modal-legal ul.contact-list li { margin-bottom: 0.5rem; }
+
+  #termsModal .overflow-y-auto {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-ink-3) transparent;
+  }
+  #termsModal .overflow-y-auto::-webkit-scrollbar { width: 6px; }
+  #termsModal .overflow-y-auto::-webkit-scrollbar-track { background: transparent; }
+  #termsModal .overflow-y-auto::-webkit-scrollbar-thumb {
+    background-color: var(--color-ink-3);
+    border-radius: 3px;
+  }
+  #termsModal .overflow-y-auto::-webkit-scrollbar-thumb:hover {
+    background-color: var(--color-cobalt);
+  }
+
+  #termsModal.hidden { display: none !important; }
+  #termsModal:not(.hidden) { display: block; }
 </style>

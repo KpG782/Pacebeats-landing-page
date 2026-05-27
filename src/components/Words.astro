@@ -1,424 +1,130 @@
 ---
+// Editorial Athletic — Words
+// Full-bleed typographic block. "OWN THE PACE" is the protagonist (lime, filled).
+// Surrounding words are static, outlined paper or muted solid, scattered across a 12-col grid.
+// No bubble UI, no hover effects, no photo, no gradient.
+
+type Word = {
+    text: string;
+    /** grid placement: col-start / col-span (mobile + md) */
+    col: string;
+    row: string;
+    /** Tailwind size class chain */
+    size: string;
+    /** outline | solid */
+    style: "outline" | "solid";
+    /** optional small rotation, in degrees */
+    rotate?: number;
+};
+
+const WORDS: Word[] = [
+    { text: "STRIDE",         col: "col-start-1 col-span-4",          row: "row-start-1", size: "text-3xl md:text-5xl",         style: "outline" },
+    { text: "CADENCE",        col: "col-start-8 col-span-5",          row: "row-start-1", size: "text-2xl md:text-4xl",         style: "solid"   },
+    { text: "BPM",            col: "col-start-2 col-span-3",          row: "row-start-2", size: "text-5xl md:text-7xl",         style: "outline" },
+    { text: "TEMPO",          col: "col-start-9 col-span-4",          row: "row-start-2", size: "text-4xl md:text-6xl",         style: "outline" },
+    { text: "MILE 5",         col: "col-start-1 col-span-4",          row: "row-start-3", size: "text-2xl md:text-3xl",         style: "solid"   },
+    { text: "HEART",          col: "col-start-10 col-span-3",         row: "row-start-3", size: "text-3xl md:text-5xl",         style: "outline" },
+    { text: "BREATH",         col: "col-start-2 col-span-4",          row: "row-start-7", size: "text-2xl md:text-4xl",         style: "outline" },
+    { text: "FLOW",           col: "col-start-9 col-span-4",          row: "row-start-7", size: "text-4xl md:text-6xl",         style: "outline" },
+    { text: "NEGATIVE SPLIT", col: "col-start-1 col-span-6",          row: "row-start-8", size: "text-xl md:text-2xl",          style: "solid"   },
+    { text: "RUNNER",         col: "col-start-9 col-span-4",          row: "row-start-8", size: "text-3xl md:text-5xl",         style: "outline" },
+    { text: "PACE ZONE",      col: "col-start-2 col-span-4",          row: "row-start-9", size: "text-2xl md:text-3xl",         style: "outline" },
+    { text: "RHYTHM",         col: "col-start-8 col-span-5",          row: "row-start-9", size: "text-4xl md:text-6xl",         style: "outline" },
+    { text: "KICK",           col: "col-start-1 col-span-3",          row: "row-start-10",size: "text-3xl md:text-5xl",         style: "solid"   },
+    { text: "RECOVERY",       col: "col-start-9 col-span-4",          row: "row-start-10",size: "text-2xl md:text-4xl",         style: "outline" },
+    { text: "MILE",           col: "col-start-6 col-span-2",          row: "row-start-1", size: "text-xl md:text-2xl",          style: "solid"   },
+];
 ---
 
-<section 
-    id="word-cloud" 
-    class="bg-black px-6 py-16 text-white relative overflow-hidden"
-    aria-labelledby="word-cloud-heading"
-    role="region"
-    itemscope 
+<section
+    id="words"
+    class="bg-ink text-paper py-40 md:py-56 overflow-hidden"
+    aria-labelledby="words-heading"
+    itemscope
     itemtype="https://schema.org/CreativeWork"
 >
-    <!-- Hidden heading for screen readers -->
-    <h2 id="word-cloud-heading" class="sr-only">Running terminology and features word cloud</h2>
-    
-    <div class="flex flex-col justify-center items-center w-full gap-0" role="presentation">
-        <!-- Row 1 - Speed & Tracking (Blue spectrum) -->
-        <div class="flex max-h-full m-0 p-0 justify-center text-center items-center w-full gap-0" role="list" aria-label="Speed and tracking terms">
-            <span class="word-tag w-full bg-gradient-to-r from-blue-600 to-blue-700 px-6 py-3 flex items-center justify-center rounded-full text-sm text-blue-100 border border-blue-500 hover-speed" role="listitem" tabindex="0" data-category="speed" aria-label="Track - Speed and tracking feature">Track</span>
-            <span class="word-tag w-full bg-gradient-to-r from-indigo-600 to-indigo-700 px-6 py-3 flex items-center justify-center rounded-full text-sm text-indigo-100 border border-indigo-500 hover-speed" role="listitem" tabindex="0" data-category="speed" aria-label="Strides - Running cadence measurement">Strides</span>
-            <span class="word-tag w-full bg-gradient-to-r from-sky-600 to-sky-700 px-6 py-3 flex items-center justify-center rounded-full text-sm text-sky-100 border border-sky-500 hover-speed" role="listitem" tabindex="0" data-category="speed" aria-label="Pace - Running speed measurement">Pace</span>
-            <span class="word-tag w-full bg-gradient-to-r from-blue-500 to-blue-600 px-6 py-3 flex items-center justify-center rounded-full text-sm text-blue-100 border border-blue-400 hover-speed" role="listitem" tabindex="0" data-category="speed" aria-label="Stride - Individual running step">Stride</span>
-            <span class="word-tag w-full bg-gradient-to-r from-indigo-500 to-indigo-600 px-6 py-3 flex items-center justify-center rounded-full text-sm text-indigo-100 border border-indigo-400 hover-speed" role="listitem" tabindex="0" data-category="speed" aria-label="Tempo - Running rhythm and pace">Tempo</span>
-            <span class="word-tag w-full bg-gradient-to-r from-pink-600 to-pink-700 px-6 py-3 flex items-center justify-center rounded-full text-sm text-pink-100 border border-pink-500 hover-social" role="listitem" tabindex="0" data-category="social" aria-label="Kudos - Social recognition and encouragement">Kudos</span>
-            <span class="word-tag w-full bg-gradient-to-r from-emerald-600 to-emerald-700 px-6 py-3 flex items-center justify-center rounded-full text-sm text-emerald-100 border border-emerald-500 hover-terrain" role="listitem" tabindex="0" data-category="terrain" aria-label="Trail - Off-road running paths">Trail</span>
-        </div>
-        
-        <!-- Row 2 - Data & Community (Mixed spectrum) -->
-        <div class="flex m-0 p-0 justify-center text-center items-center w-full gap-0" role="list" aria-label="Data and community terms">
-            <span class="word-tag w-full bg-gradient-to-r from-slate-600 to-slate-700 px-6 py-3 flex items-center justify-center rounded-full text-sm text-slate-100 border border-slate-500 hover-data" role="listitem" tabindex="0" data-category="data" aria-label="Board - Dashboard and data display">Board</span>
-            <span class="word-tag w-full bg-gradient-to-r from-amber-600 to-amber-700 px-6 py-3 flex items-center justify-center rounded-full text-sm text-amber-100 border border-amber-500 hover-nutrition" role="listitem" tabindex="0" data-category="nutrition" aria-label="Log Fuel - Nutrition and energy tracking">Log Fuel</span>
-            <span class="word-tag w-full bg-gradient-to-r from-cyan-600 to-cyan-700 px-6 py-3 flex items-center justify-center rounded-full text-sm text-cyan-100 border border-cyan-500 hover-data" role="listitem" tabindex="0" data-category="data" aria-label="Pace Variance - Running consistency measurement">Pace Variance</span>
-            <span class="word-tag w-full bg-gradient-to-r from-purple-600 to-purple-700 px-6 py-3 flex items-center justify-center rounded-full text-sm text-purple-100 border border-purple-500 hover-social" role="listitem" tabindex="0" data-category="social" aria-label="Leaderboard - Competitive rankings">Leaderboard</span>
-            <span class="word-tag w-full bg-gradient-to-r from-rose-600 to-rose-700 px-6 py-3 flex items-center justify-center rounded-full text-sm text-rose-100 border border-rose-500 hover-social" role="listitem" tabindex="0" data-category="social" aria-label="Create Challenge - Community competitions">Create Challenge</span>
-        </div>
-        
-        <!-- Row 3 - Training Methods (Green & Teal spectrum) -->
-        <div class="flex m-0 p-0 justify-center text-center items-center w-full gap-0" role="list" aria-label="Training methods">
-            <span class="word-tag w-full bg-gradient-to-r from-teal-600 to-teal-700 px-6 py-3 flex items-center justify-center rounded-full text-sm text-teal-100 border border-teal-500 hover-training" role="listitem" tabindex="0" data-category="training" aria-label="Interval - High-intensity training segments">Interval</span>
-            <span class="word-tag w-full bg-gradient-to-r from-emerald-600 to-emerald-700 px-6 py-3 flex items-center justify-center rounded-full text-sm text-emerald-100 border border-emerald-500 hover-training" role="listitem" tabindex="0" data-category="training" aria-label="Cadence - Steps per minute measurement">Cadence</span>
-            <span class="word-tag w-full bg-gradient-to-r from-orange-600 to-orange-700 px-6 py-3 flex items-center justify-center rounded-full text-sm text-orange-100 border border-orange-500 hover-performance" role="listitem" tabindex="0" data-category="performance" aria-label="Breadcrumbs - Route tracking markers">Breadcrumbs</span>
-            <span class="word-tag w-full bg-gradient-to-r from-violet-600 to-violet-700 px-6 py-3 flex items-center justify-center rounded-full text-sm text-violet-100 border border-violet-500 hover-data" role="listitem" tabindex="0" data-category="data" aria-label="Paceboard - Pace tracking dashboard">Paceboard</span>
-            <span class="word-tag w-full bg-gradient-to-r from-gray-600 to-gray-700 px-6 py-3 flex items-center justify-center rounded-full text-sm text-gray-100 border border-gray-500 hover-data" role="listitem" tabindex="0" data-category="data" aria-label="Runfile - Running activity data">Runfile</span>
-        </div>
-        
-        <!-- Row 4 - Competition Center (Red spectrum with focal point) -->
-        <div class="flex m-0 p-0 justify-center text-center items-center w-full gap-0" role="list" aria-label="Competition and performance terms">
-            <span class="word-tag w-full bg-gradient-to-r from-red-600 to-red-700 px-6 py-3 flex items-center justify-center rounded-full text-sm text-red-100 border border-red-500 hover-performance" role="listitem" tabindex="0" data-category="performance" aria-label="Race Run - Competitive running event">Race Run</span>
-            <span class="word-tag w-full bg-gradient-to-r from-orange-600 to-orange-700 px-6 py-3 flex items-center justify-center rounded-full text-sm text-orange-100 border border-orange-500 hover-performance" role="listitem" tabindex="0" data-category="performance" aria-label="Best Pace - Personal record pace">Best Pace</span>
-            <span class="word-tag w-full bg-gradient-to-r from-red-500 to-red-600 px-12 py-4 flex items-center justify-center rounded-full text-lg font-bold text-white shadow-lg heartbeat-pulse border border-red-400" role="listitem" tabindex="0" data-category="featured" aria-label="Own the Pace - Master your running rhythm - Featured concept" itemprop="headline">Own the Pace</span>
-            <span class="word-tag w-full bg-gradient-to-r from-red-500 to-red-600 px-6 py-3 flex items-center justify-center rounded-full text-sm text-red-100 border border-red-400 hover-performance" role="listitem" tabindex="0" data-category="performance" aria-label="Race Day - Competition event day">Race Day</span>
-            <span class="word-tag w-full bg-gradient-to-r from-orange-500 to-orange-600 px-6 py-3 flex items-center justify-center rounded-full text-sm text-orange-100 border border-orange-400 hover-training" role="listitem" tabindex="0" data-category="training" aria-label="Brick Set - Multi-sport training combination">Brick Set</span>
-        </div>
-        
-        <!-- Row 5 - Endurance & Recovery (Cool spectrum) -->
-        <div class="flex m-0 p-0 justify-center text-center items-center w-full gap-0" role="list" aria-label="Endurance and recovery terms">
-            <span class="word-tag w-full bg-gradient-to-r from-cyan-600 to-cyan-700 px-6 py-3 flex items-center justify-center rounded-full text-sm text-cyan-100 border border-cyan-500 hover-endurance" role="listitem" tabindex="0" data-category="endurance" aria-label="Long Run - Extended distance training">Long Run</span>
-            <span class="word-tag w-full bg-gradient-to-r from-gray-600 to-gray-700 px-6 py-3 flex items-center justify-center rounded-full text-sm text-gray-100 border border-gray-500 hover-data" role="listitem" tabindex="0" data-category="data" aria-label="Resume - Continue paused activity">Resume</span>
-            <span class="word-tag w-full bg-gradient-to-r from-yellow-600 to-yellow-700 px-6 py-3 flex items-center justify-center rounded-full text-sm text-yellow-100 border border-yellow-500 hover-performance" role="listitem" tabindex="0" data-category="performance" aria-label="Threshold Run - Lactate threshold training">Threshold Run</span>
-            <span class="word-tag w-full bg-gradient-to-r from-blue-600 to-blue-700 px-6 py-3 flex items-center justify-center rounded-full text-sm text-blue-100 border border-blue-500 hover-data" role="listitem" tabindex="0" data-category="data" aria-label="Duration - Time-based measurement">Duration</span>
-            <span class="word-tag w-full bg-gradient-to-r from-green-600 to-green-700 px-6 py-3 flex items-center justify-center rounded-full text-sm text-green-100 border border-green-500 hover-recovery" role="listitem" tabindex="0" data-category="recovery" aria-label="Easy Run - Low-intensity recovery run">Easy Run</span>
-        </div>
-        
-        <!-- Row 6 - Analytics & Goals (Purple & Blue spectrum) -->
-        <div class="flex m-0 p-0 justify-center text-center items-center w-full gap-0" role="list" aria-label="Analytics and goals">
-            <span class="word-tag w-full bg-gradient-to-r from-purple-600 to-purple-700 px-6 py-3 flex items-center justify-center rounded-full text-sm text-purple-100 border border-purple-500 hover-recovery" role="listitem" tabindex="0" data-category="recovery" aria-label="Recovery Run - Active recovery training">Recovery Run</span>
-            <span class="word-tag w-full bg-gradient-to-r from-indigo-600 to-indigo-700 px-6 py-3 flex items-center justify-center rounded-full text-sm text-indigo-100 border border-indigo-500 hover-data" role="listitem" tabindex="0" data-category="data" aria-label="Goal Progress - Achievement tracking">Goal Progress</span>
-            <span class="word-tag w-full bg-gradient-to-r from-teal-600 to-teal-700 px-6 py-3 flex items-center justify-center rounded-full text-sm text-teal-100 border border-teal-500 hover-endurance" role="listitem" tabindex="0" data-category="endurance" aria-label="Monthly Mileage - Distance goal tracking">Monthly Mileage</span>
-            <span class="word-tag w-full bg-gradient-to-r from-sky-600 to-sky-700 px-6 py-3 flex items-center justify-center rounded-full text-sm text-sky-100 border border-sky-500 hover-data" role="listitem" tabindex="0" data-category="data" aria-label="Avg Pace - Average pace calculation">Avg Pace</span>
-        </div>
-        
-        <!-- Row 7 - Core Metrics (Mixed athletic spectrum) -->
-        <div class="flex justify-center text-center items-center w-full gap-0" role="list" aria-label="Core running metrics">
-            <span class="word-tag w-full bg-gradient-to-r from-blue-600 to-blue-700 px-6 py-3 flex items-center justify-center rounded-full text-sm text-blue-100 border border-blue-500 hover-speed" role="listitem" tabindex="0" data-category="speed" aria-label="Stride - Running step measurement">Stride</span>
-            <span class="word-tag w-full bg-gradient-to-r from-indigo-600 to-indigo-700 px-6 py-3 flex items-center justify-center rounded-full text-sm text-indigo-100 border border-indigo-500 hover-speed" role="listitem" tabindex="0" data-category="speed" aria-label="Pace - Speed and timing measurement">Pace</span>
-            <span class="word-tag w-full bg-gradient-to-r from-cyan-600 to-cyan-700 px-6 py-3 flex items-center justify-center rounded-full text-sm text-cyan-100 border border-cyan-500 hover-data" role="listitem" tabindex="0" data-category="data" aria-label="Splits - Segmented time analysis">Splits</span>
-            <span class="word-tag w-full bg-gradient-to-r from-emerald-600 to-emerald-700 px-6 py-3 flex items-center justify-center rounded-full text-sm text-emerald-100 border border-emerald-500 hover-terrain" role="listitem" tabindex="0" data-category="terrain" aria-label="Trail - Natural running environment">Trail</span>
-            <span class="word-tag w-full bg-gradient-to-r from-pink-600 to-pink-700 px-6 py-3 flex items-center justify-center rounded-full text-sm text-pink-100 border border-pink-500 hover-social" role="listitem" tabindex="0" data-category="social" aria-label="Kudos - Community appreciation">Kudos</span>
-            <span class="word-tag w-full bg-gradient-to-r from-blue-700 to-blue-800 px-6 py-3 flex items-center justify-center rounded-full text-sm text-blue-100 border border-blue-600 hover-speed" role="listitem" tabindex="0" data-category="speed" aria-label="Track - Performance monitoring">Track</span>
-            <span class="word-tag w-full bg-gradient-to-r from-indigo-700 to-indigo-800 px-6 py-3 flex items-center justify-center rounded-full text-sm text-indigo-100 border border-indigo-600 hover-speed" role="listitem" tabindex="0" data-category="speed" aria-label="Tempo - Rhythm and pace control">Tempo</span>
-        </div>
-    </div>
+    <div class="max-w-[1400px] mx-auto px-6">
+        <!-- Decorative typography grid — hidden from screen readers
+             (the headline + sr-only description below convey the content). -->
+        <div
+            class="relative grid grid-cols-12 gap-x-4 md:gap-x-6"
+            style="grid-auto-rows: minmax(2.5rem, auto);"
+            aria-hidden="true"
+        >
+            {
+                WORDS.map((w) => (
+                    <span
+                        class={`${w.col} ${w.row} ${w.size} font-display font-bold tracking-[-0.02em] leading-[0.95] self-center select-none ${w.style === "outline" ? "text-outline" : "text-paper-2"}`}
+                    >
+                        {w.text}
+                    </span>
+                ))
+            }
 
-    <!-- Hidden content for SEO -->
-    <div class="sr-only">
-        <h3>Running and Fitness Terminology</h3>
-        <p itemprop="description">Comprehensive collection of running terminology, metrics, and features including pace tracking, training methods, social features, and performance analytics used in the Pacebeats application.</p>
-        <ul>
-            <li>Speed and Tracking: Track, Strides, Pace, Stride, Tempo</li>
-            <li>Social Features: Kudos, Leaderboard, Create Challenge</li>
-            <li>Training Methods: Interval, Cadence, Brick Set</li>
-            <li>Performance Metrics: Race Run, Best Pace, Race Day, Threshold Run</li>
-            <li>Recovery and Endurance: Long Run, Easy Run, Recovery Run, Monthly Mileage</li>
-            <li>Data Analytics: Board, Pace Variance, Paceboard, Runfile, Goal Progress, Avg Pace, Splits, Duration</li>
-            <li>Terrain and Environment: Trail, Breadcrumbs</li>
-            <li>Nutrition: Log Fuel</li>
-        </ul>
+            <!-- Protagonist: Own the pace — the real visible heading -->
+            <h2
+                id="words-heading"
+                class="reveal-words col-start-1 col-span-12 row-start-4 row-span-3 self-center text-center font-display font-extrabold text-cobalt"
+                style="font-size: clamp(5rem, 12vw, 14rem); line-height: 0.85; letter-spacing: -0.045em;"
+                itemprop="headline"
+            >
+                <span class="word">Own</span>
+                {" "}
+                <span class="word">the</span>
+                {" "}
+                <span class="word">pace.</span>
+            </h2>
+        </div>
+
+        <!-- SR-only description so screen readers get the running vocabulary
+             once, semantically, instead of word-by-word from the scattered spans. -->
+        <p class="sr-only" itemprop="description">
+            Own the pace. Pacebeats is built around the language runners use:
+            stride, cadence, BPM, tempo, mile, heart, breath, flow, negative
+            split, pace zone, rhythm, kick, recovery.
+        </p>
     </div>
 </section>
 
-<!-- JSON-LD Structured Data for Word Cloud -->
+<!-- JSON-LD Structured Data -->
 <script type="application/ld+json">
 {
     "@context": "https://schema.org",
     "@type": "CreativeWork",
-    "name": "Pacebeats Running Terminology Word Cloud",
-    "description": "Interactive word cloud showcasing running terminology, metrics, and features available in the Pacebeats application",
-    "keywords": ["running", "pace tracking", "fitness", "training", "social features", "performance analytics", "running metrics"],
+    "name": "Own the Pace — Pacebeats Running Vocabulary",
+    "description": "Typographic editorial block built from the language runners actually use: stride, cadence, BPM, tempo, mile, heart, breath, flow, negative split, pace zone, rhythm, kick, recovery.",
+    "keywords": [
+        "running", "pace", "cadence", "stride", "tempo", "BPM", "rhythm",
+        "negative split", "recovery", "flow", "kick", "pace zone"
+    ],
     "about": {
         "@type": "SoftwareApplication",
         "name": "Pacebeats",
         "applicationCategory": "HealthApplication"
-    },
-    "contentTags": [
-        "Speed Tracking", "Pace Analysis", "Social Features", "Training Methods", 
-        "Performance Metrics", "Recovery Tools", "Data Analytics", "Running Terminology"
-    ]
+    }
 }
 </script>
 
-<style>
-    /* Heartbeat animation for center focal point */
-    @keyframes heartbeat {
-        0% {
-            transform: scale(1);
-            box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4);
-        }
-        14% {
-            transform: scale(1.05);
-            box-shadow: 0 6px 20px rgba(239, 68, 68, 0.5);
-        }
-        28% {
-            transform: scale(1);
-            box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4);
-        }
-        42% {
-            transform: scale(1.05);
-            box-shadow: 0 6px 20px rgba(239, 68, 68, 0.5);
-        }
-        56% {
-            transform: scale(1);
-            box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4);
-        }
-        100% {
-            transform: scale(1);
-            box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4);
-        }
-    }
-    
-    .heartbeat-pulse {
-        animation: heartbeat 2.5s ease-in-out infinite;
-    }
-
-    /* Speed/Pace themed interactions - Dynamic blue energy */
-    .hover-speed:hover {
-        transform: scale(1.08) rotate(2deg);
-        box-shadow: 0 12px 30px rgba(59, 130, 246, 0.5);
-        filter: brightness(1.3);
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    /* Social/Community interactions - Warm connection */
-    .hover-social:hover {
-        transform: scale(1.06) rotate(-2deg);
-        box-shadow: 0 10px 25px rgba(236, 72, 153, 0.5);
-        filter: brightness(1.25);
-        transition: all 0.3s ease;
-    }
-
-    /* Terrain themed interactions - Natural movement */
-    .hover-terrain:hover {
-        transform: scale(1.07) rotate(3deg);
-        box-shadow: 0 12px 28px rgba(34, 197, 94, 0.5);
-        filter: brightness(1.3) saturate(1.2);
-        transition: all 0.35s ease;
-    }
-
-    /* Data/Analytics interactions - Precise and clean */
-    .hover-data:hover {
-        transform: scale(1.05);
-        box-shadow: 0 8px 22px rgba(6, 182, 212, 0.4);
-        filter: brightness(1.2);
-        transition: all 0.3s ease;
-    }
-
-    /* Nutrition/Fuel interactions - Energetic warmth */
-    .hover-nutrition:hover {
-        transform: scale(1.08) rotate(-3deg);
-        box-shadow: 0 10px 25px rgba(245, 158, 11, 0.5);
-        filter: brightness(1.25) saturate(1.1);
-        transition: all 0.35s ease;
-    }
-
-    /* Training interactions - Steady growth */
-    .hover-training:hover {
-        transform: scale(1.06) rotate(1deg);
-        box-shadow: 0 10px 25px rgba(16, 185, 129, 0.45);
-        filter: brightness(1.2);
-        transition: all 0.3s ease;
-    }
-
-    /* Performance/Race interactions - Maximum intensity */
-    .hover-performance:hover {
-        transform: scale(1.12) rotate(-2deg);
-        box-shadow: 0 15px 35px rgba(249, 115, 22, 0.6);
-        filter: brightness(1.4) saturate(1.2);
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    /* Recovery interactions - Gentle and calming */
-    .hover-recovery:hover {
-        transform: scale(1.03);
-        box-shadow: 0 6px 18px rgba(139, 92, 246, 0.4);
-        filter: brightness(1.15);
-        transition: all 0.4s ease;
-    }
-
-    /* Endurance interactions - Sustained power */
-    .hover-endurance:hover {
-        transform: scale(1.08) rotate(2deg);
-        box-shadow: 0 12px 28px rgba(6, 182, 212, 0.5);
-        filter: brightness(1.3);
-        transition: all 0.4s ease;
-    }
-    
-    /* Center heartbeat hover override */
-    .heartbeat-pulse:hover {
-        animation-play-state: paused;
-        transform: scale(1.05);
-        box-shadow: 0 8px 25px rgba(239, 68, 68, 0.6);
-        transition: all 0.3s ease;
-    }
-    
-    /* Global gradient animation enhancement */
-    [class*="bg-gradient-to-r"]:hover {
-        background-size: 200% 200%;
-        animation: gradientFlow 3s ease infinite;
-    }
-
-    @keyframes gradientFlow {
-        0% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-        100% { background-position: 0% 50%; }
-    }
-
-    /* Subtle pulse for non-hovered elements */
-    [class*="hover-"]:not(:hover) {
-        animation: subtlePulse 4s ease-in-out infinite;
-    }
-
-    @keyframes subtlePulse {
-        0%, 100% { opacity: 0.9; }
-        50% { opacity: 1; }
-    }
-    
-    /* Accessibility and performance */
-    @media (prefers-reduced-motion: reduce) {
-        .heartbeat-pulse,
-        [class*="hover-"]:not(:hover) {
-            animation: none;
-        }
-        
-        .hover-speed:hover,
-        .hover-social:hover,
-        .hover-terrain:hover,
-        .hover-data:hover,
-        .hover-nutrition:hover,
-        .hover-training:hover,
-        .hover-performance:hover,
-        .hover-recovery:hover,
-        .hover-endurance:hover,
-        .heartbeat-pulse:hover {
-            transform: scale(1.02);
-            animation: none;
-        }
-    }
-    
-    /* Focus accessibility */
-    [class*="hover-"]:focus,
-    .heartbeat-pulse:focus {
-        outline: 3px solid rgba(255, 255, 255, 0.8);
-        outline-offset: 3px;
-    }
-
-    /* Mobile optimizations */
-    @media (max-width: 768px) {
-        [class*="hover-"]:hover {
-            transform: scale(1.03);
-        }
-        
-        .hover-performance:hover {
-            transform: scale(1.06);
-        }
-
-        .heartbeat-pulse {
-            animation-duration: 3s;
-        }
-    }
-
-    /* High contrast mode support */
-    @media (prefers-contrast: high) {
-        [class*="bg-gradient-to-r"] {
-            border-width: 2px;
-            filter: contrast(1.2);
-        }
-    }
-
-    /* Enhanced accessibility styles */
-    .sr-only {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        padding: 0;
-        margin: -1px;
-        overflow: hidden;
-        clip: rect(0, 0, 0, 0);
-        white-space: nowrap;
-        border: 0;
-    }
-
-    /* Enhanced focus styles for keyboard navigation */
-    .word-tag:focus-visible {
-        outline: 3px solid rgba(255, 255, 255, 0.9);
-        outline-offset: 3px;
-        z-index: 10;
-        position: relative;
-    }
-
-    /* Enhanced keyboard interaction */
-    .word-tag {
-        cursor: pointer;
-        user-select: none;
-        will-change: transform;
-    }
-</style>
-
 <script>
-    // Enhanced keyboard navigation and interaction
-    document.querySelectorAll('.word-tag').forEach(tag => {
-        const handleInteraction = (e: KeyboardEvent | MouseEvent) => {
-            if (e.type === 'keydown' && (e as KeyboardEvent).key !== 'Enter' && (e as KeyboardEvent).key !== ' ') {
-                return;
-            }
-            
-            if (e.type === 'keydown') {
-                e.preventDefault();
-            }
-            
-            // Get word information
-            const word = tag.textContent?.trim();
-            const category = tag.getAttribute('data-category');
-            const description = tag.getAttribute('aria-label');
-            
-            // Announce to screen readers
-            const announcement = document.createElement('div');
-            announcement.setAttribute('aria-live', 'assertive');
-            announcement.className = 'sr-only';
-            announcement.textContent = `Selected: ${word} - ${description}`;
-            document.body.appendChild(announcement);
-            
-            // Analytics tracking
-            if ('gtag' in window) {
-                (window as any).gtag('event', 'word_cloud_interaction', {
-                    'event_category': 'engagement',
-                    'event_label': `${category}:${word}`,
-                    'value': 1
+    if ("IntersectionObserver" in window) {
+        const headings = document.querySelectorAll<HTMLElement>(
+            "#words .reveal-words"
+        );
+        const io = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("is-visible");
+                        io.unobserve(entry.target);
+                    }
                 });
-            }
-            
-            setTimeout(() => {
-                if (document.body.contains(announcement)) {
-                    document.body.removeChild(announcement);
-                }
-            }, 2000);
-        };
-        
-        (tag as HTMLElement).addEventListener('keydown', handleInteraction);
-        (tag as HTMLElement).addEventListener('click', handleInteraction);
-    });
-    
-    // Intersection observer for performance optimization
-    if ('IntersectionObserver' in window) {
-        const wordCloudObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    // Announce section load to screen readers
-                    const announcement = document.createElement('div');
-                    announcement.setAttribute('aria-live', 'polite');
-                    announcement.className = 'sr-only';
-                    announcement.textContent = 'Running terminology word cloud has loaded';
-                    document.body.appendChild(announcement);
-                    
-                    setTimeout(() => {
-                        if (document.body.contains(announcement)) {
-                            document.body.removeChild(announcement);
-                        }
-                    }, 2000);
-                }
-            });
-        }, {
-            threshold: 0.3,
-            rootMargin: '50px'
-        });
-        
-        const wordCloudSection = document.getElementById('word-cloud');
-        if (wordCloudSection) {
-            wordCloudObserver.observe(wordCloudSection);
-        }
-    }
-    
-    // Performance optimization: Reduce animation complexity on low-end devices
-    if ('hardwareConcurrency' in navigator && navigator.hardwareConcurrency <= 2) {
-        document.documentElement.style.setProperty('--animation-complexity', 'reduced');
-    }
-    
-    // Touch interaction optimization for mobile
-    if ('ontouchstart' in window) {
-        document.querySelectorAll('.word-tag').forEach(tag => {
-            (tag as HTMLElement).addEventListener('touchstart', () => {
-                // Prevent hover effects on touch devices
-                (tag as HTMLElement).style.pointerEvents = 'auto';
-            }, { passive: true });
-        });
+            },
+            { threshold: 0.15 }
+        );
+        headings.forEach((h) => io.observe(h));
+    } else {
+        document
+            .querySelectorAll<HTMLElement>("#words .reveal-words")
+            .forEach((el) => el.classList.add("is-visible"));
     }
 </script>

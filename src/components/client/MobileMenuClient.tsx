@@ -1,273 +1,133 @@
-import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "motion/react";
-import {
-  Home,
-  Activity,
-  Zap,
-  Music,
-  Watch,
-  BookOpen,
-  Code,
-  Heart,
-  Users,
-  FileText,
-  Shield,
-  Github,
-  Download,
-} from "lucide-react";
+import React, { useEffect, useState } from "react";
+import { motion, AnimatePresence, useReducedMotion } from "motion/react";
+import { X, Download } from "lucide-react";
+import { APK_RELEASE } from "../../config/apkRelease";
+
+type NavItem = { label: string; href: string };
+
+const NAV_ITEMS: NavItem[] = [
+  { label: "Features", href: "#features" },
+  { label: "Wear OS", href: "#wear" },
+  { label: "How", href: "#how" },
+  { label: "Team", href: "#team" },
+  { label: "Tech", href: "#techstack" },
+];
 
 export default function MobileMenuClient() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const prefersReducedMotion = useReducedMotion();
+  const [isOpen, setIsOpen] = useState(false);
 
+  // Listen for open events dispatched from NavbarClient.
   useEffect(() => {
-    // Listen for menu button clicks from NavbarClient
-    const handleMenuToggle = () => {
-      setIsMenuOpen((prev) => !prev);
+    const onToggle = (e: Event) => {
+      const detail = (e as CustomEvent<{ open?: boolean }>).detail;
+      if (detail && typeof detail.open === "boolean") {
+        setIsOpen(detail.open);
+      } else {
+        setIsOpen((prev) => !prev);
+      }
     };
-
-    const menuButton = document.getElementById("mobile-menu-button");
-    menuButton?.addEventListener("click", handleMenuToggle);
-
-    return () => {
-      menuButton?.removeEventListener("click", handleMenuToggle);
-    };
+    window.addEventListener("pb:mobile-menu", onToggle as EventListener);
+    return () =>
+      window.removeEventListener("pb:mobile-menu", onToggle as EventListener);
   }, []);
 
-  const openModal = (modalId: string) => {
-    const modal = document.getElementById(modalId);
-    if (modal) {
-      modal.classList.remove("hidden");
-      modal.classList.add("flex");
-      setIsMenuOpen(false);
+  // Body scroll lock + Escape to close.
+  useEffect(() => {
+    if (isOpen) {
+      const prev = document.body.style.overflow;
+      document.body.style.overflow = "hidden";
+      const onKey = (e: KeyboardEvent) => {
+        if (e.key === "Escape") setIsOpen(false);
+      };
+      window.addEventListener("keydown", onKey);
+      return () => {
+        document.body.style.overflow = prev;
+        window.removeEventListener("keydown", onKey);
+      };
     }
-  };
+  }, [isOpen]);
+
+  const close = () => setIsOpen(false);
+
+  const transition = prefersReducedMotion
+    ? { duration: 0 }
+    : { duration: 0.3, ease: [0.65, 0, 0.35, 1] as [number, number, number, number] };
 
   return (
     <AnimatePresence>
-      {isMenuOpen && (
+      {isOpen && (
         <motion.div
-          initial={{ opacity: 0, height: 0 }}
-          animate={{ opacity: 1, height: "auto" }}
-          exit={{ opacity: 0, height: 0 }}
-          transition={{ duration: 0.3 }}
           id="mobile-menu"
-          className="lg:hidden bg-black bg-opacity-90 backdrop-blur-sm mt-4 mx-0 py-4 px-4 shadow-lg border-t border-gray-700 w-full overflow-hidden"
-          role="menu"
-          aria-hidden={!isMenuOpen}
-          aria-labelledby="mobile-menu-button"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Site navigation"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={transition}
+          className="fixed inset-0 z-[60] md:hidden bg-sky"
         >
-          <div className="flex flex-col space-y-4">
-            <motion.a
-              initial={{ x: -20, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{ delay: 0.1 }}
-              href="#hero"
-              className="text-sm text-white hover:text-gray-300 transition-colors flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1"
-              role="menuitem"
-              aria-label="Navigate to homepage"
-            >
-              <Home className="w-4 h-4" />
-              <span>Home</span>
-            </motion.a>
-
-            {/* Mobile Features Section */}
-            <motion.div
-              initial={{ x: -20, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{ delay: 0.15 }}
-              className="border-l-2 border-red-500 pl-3"
-              role="group"
-              aria-labelledby="mobile-features-heading"
-            >
-              <h3
-                id="mobile-features-heading"
-                className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-2"
+          <div className="flex flex-col h-full max-w-7xl mx-auto px-6 md:px-10">
+            {/* Top bar: logo + close */}
+            <div className="flex items-center justify-between h-14 md:h-16 shrink-0">
+              <a
+                href="#hero"
+                onClick={close}
+                aria-label="Pacebeats — homepage"
               >
-                Features
-              </h3>
-              <div className="space-y-2" role="list">
-                <a
-                  href="#features"
-                  className="flex items-center gap-3 text-sm text-white hover:text-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1"
-                  role="menuitem"
-                  aria-label="Real-Time Pace & Analytics feature"
-                >
-                  <Activity className="w-4 h-4 text-red-400" />
-                  <div>
-                    <span className="font-medium">
-                      Real-Time Pace & Analytics
-                    </span>
-                    <p className="text-xs text-gray-400 mt-1">
-                      Live pacing insights + post-run performance trends
-                    </p>
-                  </div>
-                </a>
-                <a
-                  href="#features"
-                  className="flex items-center gap-3 text-sm text-white hover:text-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1"
-                  role="menuitem"
-                  aria-label="Smart Pace Detection feature"
-                >
-                  <Zap className="w-4 h-4 text-red-400" />
-                  <div>
-                    <span className="font-medium">Smart Pace Detection</span>
-                    <p className="text-xs text-gray-400 mt-1">
-                      AI-driven analysis that adapts to your running style
-                    </p>
-                  </div>
-                </a>
-                <a
-                  href="#features"
-                  className="flex items-center gap-3 text-sm text-white hover:text-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1"
-                  role="menuitem"
-                  aria-label="Spotify Integration feature"
-                >
-                  <Music className="w-4 h-4 text-red-400" />
-                  <div>
-                    <span className="font-medium">Spotify Integration</span>
-                    <p className="text-xs text-gray-400 mt-1">
-                      Music playback that syncs with your running pace
-                    </p>
-                  </div>
-                </a>
-                <a
-                  href="#watch-integration"
-                  className="flex items-center gap-3 text-sm text-white hover:text-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1"
-                  role="menuitem"
-                  aria-label="Pacebeats Watch Companion feature"
-                >
-                  <Watch className="w-4 h-4 text-red-400" />
-                  <div>
-                    <span className="font-medium">
-                      Pacebeats Watch Companion
-                    </span>
-                    <p className="text-xs text-gray-400 mt-1">
-                      Companion app for selected smartwatches
-                    </p>
-                  </div>
-                </a>
-              </div>
-            </motion.div>
+                <img
+                  src="/pacebeats-text.svg"
+                  alt="Pacebeats"
+                  className="h-5 w-auto"
+                  width="120"
+                  height="24"
+                />
+              </a>
+              <button
+                type="button"
+                onClick={close}
+                className="text-ink-on-sky hover:text-cobalt transition-colors duration-150 ease-out-quart p-2 -mr-2"
+                aria-label="Close navigation menu"
+              >
+                <X className="w-6 h-6" strokeWidth={2} />
+              </button>
+            </div>
 
-            <motion.a
-              initial={{ x: -20, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{ delay: 0.2 }}
-              href="#how-it-works"
-              className="text-sm text-white hover:text-gray-300 transition-colors flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1"
-              role="menuitem"
-              aria-label="Learn how Pacebeats works"
-            >
-              <BookOpen className="w-4 h-4" />
-              <span>How It Works</span>
-            </motion.a>
-            <motion.a
-              initial={{ x: -20, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{ delay: 0.25 }}
-              href="#tech-stack"
-              className="text-sm text-white hover:text-gray-300 transition-colors flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1"
-              role="menuitem"
-              aria-label="View Pacebeats technology stack"
-            >
-              <Code className="w-4 h-4" />
-              <span>Tech Stack</span>
-            </motion.a>
-            <motion.a
-              initial={{ x: -20, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{ delay: 0.28 }}
-              href="#download"
-              className="text-sm text-white hover:text-gray-300 transition-colors flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1"
-              role="menuitem"
-              aria-label="Go to APK download section"
-            >
-              <Download className="w-4 h-4" />
-              <span>Download APK</span>
-            </motion.a>
-            <motion.a
-              initial={{ x: -20, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{ delay: 0.3 }}
-              href="https://buymeacoffee.com/Loki123"
-              target="_blank"
-              rel="noopener noreferrer nofollow"
-              className="text-sm text-white hover:text-gray-300 transition-colors flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1"
-              role="menuitem"
-              aria-label="Support Pacebeats development on Buy Me a Coffee - Opens in new tab"
-            >
-              <Heart className="w-4 h-4" />
-              <span>Support</span>
-            </motion.a>
-            <motion.a
-              initial={{ x: -20, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{ delay: 0.35 }}
-              href="#team"
-              className="text-sm text-white hover:text-gray-300 transition-colors flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1"
-              role="menuitem"
-              aria-label="Meet the Pacebeats team"
-            >
-              <Users className="w-4 h-4" />
-              <span>Team</span>
-            </motion.a>
+            {/* Nav links */}
+            <nav className="flex-1 flex flex-col justify-center -mt-10">
+              <ul className="flex flex-col gap-4">
+                {NAV_ITEMS.map((item) => (
+                  <li key={item.label}>
+                    <a
+                      href={item.href}
+                      onClick={close}
+                      className="block font-display font-extrabold text-3xl tracking-[-0.02em] text-ink-on-sky hover:text-cobalt transition-colors duration-150 ease-out-quart py-2"
+                    >
+                      {item.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
 
-            <motion.hr
-              initial={{ scaleX: 0 }}
-              animate={{ scaleX: 1 }}
-              transition={{ delay: 0.4 }}
-              className="border-gray-300"
-              role="separator"
-            />
-
-            {/* Legal Section - Centered */}
-            <motion.div
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.45 }}
-              className="text-center space-y-3"
-              role="group"
-              aria-label="Legal information"
-            >
-              <h4 className="text-xs font-semibold text-gray-400 uppercase tracking-wide">
-                Legal
-              </h4>
-              <div className="space-y-2">
-                <button
-                  onClick={() => openModal("termsModal")}
-                  className="text-sm text-white hover:text-gray-300 transition-colors flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1 mx-auto"
-                  type="button"
-                  aria-label="View terms and conditions"
-                >
-                  <FileText className="w-4 h-4" />
-                  Terms and Conditions
-                </button>
-                <button
-                  onClick={() => openModal("privacyModal")}
-                  className="text-sm text-white hover:text-gray-300 transition-colors flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1 mx-auto"
-                  type="button"
-                  aria-label="View privacy policy"
-                >
-                  <Shield className="w-4 h-4" />
-                  Privacy Policy
-                </button>
-              </div>
-            </motion.div>
-
-            <motion.a
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.5 }}
-              href="https://github.com/KpG782/pacebeats-release-files"
-              target="_blank"
-              rel="noopener noreferrer nofollow"
-              className="flex items-center justify-center text-sm text-white hover:text-gray-300 transition-colors gap-2 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1"
-              role="menuitem"
-              aria-label="View Pacebeats APK releases on GitHub - Opens in new tab"
-            >
-              <Github className="w-4 h-4" />
-              <span>Releases</span>
-            </motion.a>
+            {/* Bottom CTA */}
+            <div className="pb-10 pt-6 border-t border-sky-3 shrink-0">
+              <a
+                href={APK_RELEASE.downloadUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={close}
+                className="btn-cta btn-cta--primary w-full"
+                aria-label={`Download Pacebeats Android APK ${APK_RELEASE.version} — opens in new tab`}
+              >
+                <Download className="w-5 h-5" strokeWidth={2} />
+                <span>Download APK</span>
+              </a>
+              <p className="mt-4 font-mono text-[0.65rem] uppercase tracking-[0.18em] text-slate text-center">
+                {APK_RELEASE.version} · Updated {APK_RELEASE.updatedAt}
+              </p>
+            </div>
           </div>
         </motion.div>
       )}

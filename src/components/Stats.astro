@@ -1,0 +1,82 @@
+---
+import { execSync } from "node:child_process";
+import StatsClient from "./client/StatsClient.tsx";
+import { APK_RELEASE, WEAR_RELEASE } from "../config/apkRelease";
+
+// ──────────────────────────────────────────────────────────────
+// Real numbers — pulled from git + apkRelease at build time.
+// No placeholders. If the build is dirty, fall back gracefully.
+// ──────────────────────────────────────────────────────────────
+function safeGit(cmd: string, fallback: string): string {
+  try {
+    return execSync(cmd, { encoding: "utf-8", stdio: ["ignore", "pipe", "ignore"] }).trim();
+  } catch {
+    return fallback;
+  }
+}
+
+const commitCount = parseInt(safeGit("git rev-list --count HEAD", "0"), 10);
+const lastCommitHash = safeGit("git rev-parse --short HEAD", "—");
+const lastCommitDate = safeGit("git log -1 --format=%cs", "");
+
+// Pull file sizes from the release config so they stay in lockstep with downloads.
+const apkMb = Math.round(parseFloat(APK_RELEASE.fileSize.replace(/[^0-9.]/g, "")) || 0);
+const wearMb = Math.round(parseFloat(WEAR_RELEASE.fileSize.replace(/[^0-9.]/g, "")) || 0);
+
+const stats = [
+  { value: commitCount, suffix: "", label: "Commits shipped" },
+  { value: 4, suffix: "", label: "Builders on the team" },
+  { value: apkMb, suffix: " MB", label: `Android APK ${APK_RELEASE.version}` },
+  { value: wearMb, suffix: " MB", label: `Wear OS ${WEAR_RELEASE.version}` },
+];
+
+const caption = lastCommitDate
+  ? `Live from the repo · ${lastCommitHash} · ${lastCommitDate}`
+  : `Live from the repo · ${APK_RELEASE.version}`;
+---
+
+<section
+  id="stats"
+  aria-labelledby="stats-heading"
+  class="relative bg-ink text-paper py-32 md:py-40 border-y border-ink-3"
+>
+  <div class="mx-auto max-w-7xl px-6 md:px-10">
+    <div class="flex items-end justify-between gap-8 mb-16 md:mb-24">
+      <div>
+        <p class="font-mono text-paper-2 text-xs tracking-[0.18em] uppercase mb-4">
+          / 05
+        </p>
+        <h2
+          id="stats-heading"
+          class="font-display font-bold text-paper"
+          style="font-size: clamp(2.25rem, 5vw, 4.5rem); line-height: 1.02; letter-spacing: -0.025em;"
+        >
+          By the <span class="text-cobalt">numbers</span>.
+        </h2>
+      </div>
+      <p
+        class="hidden md:block font-mono text-paper-2 text-xs uppercase tracking-[0.18em] max-w-[22ch] text-right"
+      >
+        {caption}
+      </p>
+    </div>
+
+    <StatsClient client:load stats={stats} />
+
+    <!-- SEO / a11y content -->
+    <ul class="sr-only">
+      {stats.map((s) => <li>{s.value.toLocaleString()}{s.suffix} — {s.label}</li>)}
+    </ul>
+  </div>
+</section>
+
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Pacebeats — by the numbers",
+  "itemListElement": stats.map((s, i) => ({
+    "@type": "ListItem",
+    "position": i + 1,
+    "name": `${s.value.toLocaleString()}${s.suffix} ${s.label}`,
+  })),
+})} />

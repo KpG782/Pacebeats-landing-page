@@ -1,61 +1,89 @@
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500;1,700&family=JetBrains+Mono:wght@400;500&display=swap");
 @import "tailwindcss";
-/* Hide scrollbar for Chrome, Safari and Opera */
-::-webkit-scrollbar {
-  display: none;
+
+/* ============================================================
+   DESIGN TOKENS — Editorial Case-Study (Cobalt / Navy / Sky)
+   Two surface contexts:
+     DARK  → bg-ink (deep navy) + text-paper (white) + text-paper-2 (light slate)
+     LIGHT → bg-sky (icy blue) + text-ink-on-sky (deep navy) + text-slate (mid slate)
+   Accent (single, shared): cobalt #2347E0.
+   ============================================================ */
+@theme {
+  /* Dark surfaces (navy stack) */
+  --color-ink: #091233;        /* primary dark surface — deep midnight navy */
+  --color-ink-2: #0f1b40;      /* raised dark surface */
+  --color-ink-3: #1f2d5c;      /* hairline border on dark */
+
+  /* Light surfaces (sky stack) */
+  --color-sky: #e5eef8;        /* primary light surface */
+  --color-sky-2: #f2f7fe;      /* card highlight on sky */
+  --color-sky-3: #cbdaec;      /* hairline border on light */
+
+  /* Text */
+  --color-paper: #ffffff;      /* primary text on dark; also card surface on light */
+  --color-paper-2: #a8b4c9;    /* muted text on dark */
+  --color-ink-on-sky: #0b1426; /* primary text on light */
+  --color-slate: #5c6b85;      /* muted text on light */
+
+  /* Accent (single — replaces lime) */
+  --color-cobalt: #2347e0;     /* THE accent */
+  --color-cobalt-2: #1a3dc4;   /* darker — links on light, deep states */
+  --color-cobalt-3: #3d6beb;   /* lighter — hover on dark */
+
+  /* One typeface, two weight ranges. Jakarta is wider than Barlow Condensed,
+     so headings get a little more line-height and slightly less aggressive
+     tracking than the previous stack. */
+  --font-display: "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-body: "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-cubic: cubic-bezier(0.65, 0, 0.35, 1);
 }
 
-/* Hide scrollbar for IE, Edge and Firefox */
-html {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-  scroll-behavior: smooth;
-  scroll-padding-top: 6rem;
+/* Motion tokens — referenced directly via var() in components. */
+:root {
+  --dur-fast: 150ms;
+  --dur-base: 300ms;
+  --dur-reveal: 600ms;
+  --dur-display: 1200ms;
+  --dur-marquee: 40s;
 }
 
-section[id],
-main[id],
-footer[id] {
-  scroll-margin-top: 6rem;
-}
+/* ============================================================
+   RESET + BASE
+   ============================================================ */
+@layer base {
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+  }
 
-/* Reset and base styles */
-* {
-  box-sizing: border-box;
-}
-
-html,
-body {
-  margin: 0;
-  padding: 0;
-}
-
-/* Ensure images don't cause overflow */
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* Button responsive fixes */
-button {
-  max-width: 100%;
-  word-wrap: break-word;
-}
-
-/* Text container limits */
-.hero-title,
-.text-lg,
-.text-xl,
-.text-2xl {
-  max-width: 100%;
-  word-wrap: break-word;
-  hyphens: auto;
-}
-
-/* Mobile-specific fixes */
-@media (max-width: 768px) {
   html {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
     scroll-padding-top: 5rem;
+    background: var(--color-ink);
+  }
+
+  @media (max-width: 768px) {
+    html {
+      scroll-padding-top: 4rem;
+    }
+  }
+
+  body {
+    background: var(--color-ink);
+    color: var(--color-paper);
+    font-family: var(--font-body);
+    font-weight: 400;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
 
   section[id],
@@ -63,66 +91,455 @@ button {
   footer[id] {
     scroll-margin-top: 5rem;
   }
-
-  /* Adjust hero title for mobile */
-  .hero-title {
-    font-size: 2.5rem !important;
-    line-height: 1.1;
-    margin-bottom: 1.5rem;
+  @media (max-width: 768px) {
+    section[id],
+    main[id],
+    footer[id] {
+      scroll-margin-top: 4rem;
+    }
   }
 
-  /* Adjust subtitle for mobile */
-  .text-lg {
-    font-size: 1rem;
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    line-height: 1.05;
+    color: inherit;
+    margin: 0;
   }
 
-  /* Ensure phone mockup doesn't overflow */
-  .w-40,
-  .w-48,
-  .w-80 {
-    max-width: 80vw;
-    width: auto;
-  }
-}
-
-/* Tablet specific fixes */
-@media (min-width: 769px) and (max-width: 1024px) {
-  .hero-title {
-    font-size: 4rem;
-    line-height: 1;
+  p {
+    margin: 0;
   }
 }
 
-/* Very small screens */
-@media (max-width: 480px) {
-  .hero-title {
-    font-size: 2rem !important;
-    margin-bottom: 1rem;
-  }
+::-webkit-scrollbar {
+  display: none;
+}
 
-  .text-lg {
-    font-size: 0.9rem;
-    margin-bottom: 2rem;
-  }
+::selection {
+  background: var(--color-cobalt);
+  color: var(--color-paper);
+}
 
-  button {
-    padding: 0.75rem 1.5rem;
-    font-size: 0.9rem;
+/* ============================================================
+   FOCUS — cobalt ring for keyboard
+   ============================================================ */
+:focus {
+  outline: none;
+}
+:focus-visible {
+  outline: 2px solid var(--color-cobalt);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ============================================================
+   REVEAL PRIMITIVES (the only four allowed)
+   ============================================================ */
+.reveal-fade-rise {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity var(--dur-reveal) var(--ease-out-quart),
+    transform var(--dur-reveal) var(--ease-out-quart);
+  will-change: opacity, transform;
+}
+.reveal-fade-rise.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-words .word {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(0.5em);
+  transition:
+    opacity var(--dur-reveal) var(--ease-out-expo),
+    transform var(--dur-reveal) var(--ease-out-expo);
+  will-change: opacity, transform;
+}
+.reveal-words.is-visible .word {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-line {
+  display: block;
+  height: 1px;
+  width: 100%;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 400ms var(--ease-out-quart);
+}
+.reveal-line.is-visible {
+  transform: scaleX(1);
+}
+
+/* Stagger delay helpers used by reveal-words and grouped fade-rise */
+.stagger > * {
+  transition-delay: 0ms;
+}
+.stagger.is-visible > *:nth-child(1) { transition-delay: 0ms; }
+.stagger.is-visible > *:nth-child(2) { transition-delay: 80ms; }
+.stagger.is-visible > *:nth-child(3) { transition-delay: 160ms; }
+.stagger.is-visible > *:nth-child(4) { transition-delay: 240ms; }
+.stagger.is-visible > *:nth-child(5) { transition-delay: 320ms; }
+
+.reveal-words.is-visible .word:nth-child(1) { transition-delay: 0ms; }
+.reveal-words.is-visible .word:nth-child(2) { transition-delay: 80ms; }
+.reveal-words.is-visible .word:nth-child(3) { transition-delay: 160ms; }
+.reveal-words.is-visible .word:nth-child(4) { transition-delay: 240ms; }
+.reveal-words.is-visible .word:nth-child(5) { transition-delay: 320ms; }
+.reveal-words.is-visible .word:nth-child(6) { transition-delay: 400ms; }
+.reveal-words.is-visible .word:nth-child(7) { transition-delay: 480ms; }
+.reveal-words.is-visible .word:nth-child(8) { transition-delay: 560ms; }
+
+/* ============================================================
+   CTA — signature cobalt sweep
+   Primary: solid cobalt + white text on every surface.
+   Secondary: outline using currentColor so it adapts to the
+   surrounding section text color (white on dark, navy on light).
+   ============================================================ */
+.btn-cta {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 0.95rem;
+  padding: 1rem 1.75rem;
+  min-height: 48px;
+  border-radius: 4px;
+  cursor: pointer;
+  isolation: isolate;
+  overflow: hidden;
+  text-decoration: none;
+  border: 1px solid transparent;
+  transition: color var(--dur-base) var(--ease-out-quart),
+              border-color var(--dur-base) var(--ease-out-quart);
+}
+.btn-cta::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-101%);
+  transition: transform var(--dur-base) var(--ease-out-quart);
+  z-index: -1;
+}
+
+/* Primary — solid cobalt, white text. Hover slides a darker cobalt. */
+.btn-cta--primary {
+  background: var(--color-cobalt);
+  color: var(--color-paper);
+}
+.btn-cta--primary::before { background: var(--color-cobalt-2); }
+.btn-cta--primary:hover::before,
+.btn-cta--primary:focus-visible::before { transform: translateX(0); }
+
+/* Secondary — outline in currentColor (white on dark, navy on light).
+   Hover slides cobalt fill, text becomes white. */
+.btn-cta--secondary {
+  background: transparent;
+  color: currentColor;
+  border-color: currentColor;
+}
+.btn-cta--secondary::before { background: var(--color-cobalt); }
+.btn-cta--secondary:hover,
+.btn-cta--secondary:focus-visible {
+  color: var(--color-paper);
+  border-color: var(--color-cobalt);
+}
+.btn-cta--secondary:hover::before,
+.btn-cta--secondary:focus-visible::before { transform: translateX(0); }
+
+/* ============================================================
+   LINK UNDERLINE — grows from left, cobalt
+   ============================================================ */
+.link-underline {
+  position: relative;
+  display: inline-block;
+  color: inherit;
+  text-decoration: none;
+}
+.link-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  height: 1px;
+  width: 100%;
+  background: var(--color-cobalt);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform var(--dur-fast) var(--ease-out-quart);
+}
+.link-underline:hover::after,
+.link-underline:focus-visible::after { transform: scaleX(1); }
+
+/* ============================================================
+   OUTLINED DISPLAY TYPE
+   `color: transparent` zeroes out currentColor, so we cannot
+   rely on currentColor for the stroke — use explicit tokens.
+   Three variants for three surface contexts.
+   ============================================================ */
+.text-outline {
+  /* Default — white outline on dark surfaces (Words, Footer) */
+  color: transparent;
+  -webkit-text-stroke: 1px var(--color-paper);
+  text-stroke: 1px var(--color-paper);
+}
+.text-outline-ink {
+  /* Navy outline on light surfaces */
+  color: transparent;
+  -webkit-text-stroke: 1px var(--color-ink-on-sky);
+  text-stroke: 1px var(--color-ink-on-sky);
+}
+.text-outline-cobalt {
+  /* Cobalt outline — accent */
+  color: transparent;
+  -webkit-text-stroke: 1px var(--color-cobalt);
+  text-stroke: 1px var(--color-cobalt);
+}
+
+/* ============================================================
+   HAIRLINE CARDS — two variants
+   .card-hairline       → dark surface (navy card, navy border)
+   .card-hairline-light → light surface (white card, sky border)
+   Both turn cobalt on hover.
+   ============================================================ */
+.card-hairline {
+  background: var(--color-ink-2);
+  border: 1px solid var(--color-ink-3);
+  border-radius: 12px;
+  transition: border-color var(--dur-base) var(--ease-out-quart);
+}
+.card-hairline:hover {
+  border-color: var(--color-cobalt);
+}
+
+.card-hairline-light {
+  background: var(--color-paper);
+  border: 1px solid var(--color-sky-3);
+  border-radius: 12px;
+  transition: border-color var(--dur-base) var(--ease-out-quart),
+              box-shadow var(--dur-base) var(--ease-out-quart);
+  box-shadow: 0 1px 2px rgba(11, 20, 38, 0.04);
+}
+.card-hairline-light:hover {
+  border-color: var(--color-cobalt);
+  box-shadow: 0 8px 24px rgba(35, 71, 224, 0.10);
+}
+
+/* ============================================================
+   CHIPS — two variants
+   ============================================================ */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-paper-2);
+  padding: 0.375rem 0.75rem;
+  border: 1px solid var(--color-ink-3);
+  border-radius: 4px;
+}
+.chip-light {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-slate);
+  padding: 0.375rem 0.75rem;
+  border: 1px solid var(--color-sky-3);
+  border-radius: 4px;
+  background: var(--color-paper);
+}
+
+/* ============================================================
+   MARQUEE
+   ============================================================ */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.marquee {
+  overflow: hidden;
+  width: 100%;
+  mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+}
+.marquee-track {
+  display: flex;
+  gap: 4rem;
+  width: max-content;
+  animation: marquee var(--dur-marquee) linear infinite;
+}
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+/* ============================================================
+   GRID HAIRLINE DIVIDERS (Stats) — uses currentColor for dual-theme
+   ============================================================ */
+.divide-hairline > * + * {
+  position: relative;
+}
+.divide-hairline > * + *::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 1rem;
+  bottom: 1rem;
+  width: 1px;
+  background: var(--color-ink-3);
+}
+.divide-hairline-light > * + * {
+  position: relative;
+}
+.divide-hairline-light > * + *::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 1rem;
+  bottom: 1rem;
+  width: 1px;
+  background: var(--color-sky-3);
+}
+@media (max-width: 768px) {
+  .divide-hairline > * + *::before,
+  .divide-hairline-light > * + *::before {
+    display: none;
   }
 }
 
-/* Fix for landscape mobile */
-@media (max-height: 600px) and (orientation: landscape) {
-  .hero-title {
-    font-size: 2rem !important;
-    margin-bottom: 1rem;
-  }
+/* ============================================================
+   THEMATIC MOTION — running + music vocabulary
+   1. .eq-bars   — bouncing equalizer bars (Maps / Spotify)
+   2. .pulse-dot — heart-rate pulse (Wear)
+   3. .route-draw — SVG route path drawing itself (Hero)
+   4. Phone perspective enhancements (Hero)
+   ============================================================ */
 
-  .mb-12 {
-    margin-bottom: 1rem;
-  }
+/* 1 — Equalizer bars ──────────────────────────────────────── */
+.eq-bars {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 22px;
+}
+.eq-bar {
+  display: block;
+  width: 3px;
+  height: 100%;
+  border-radius: 2px;
+  background: var(--color-cobalt);
+  transform-origin: bottom;
+  animation: eq-bounce 1s ease-in-out infinite;
+}
+.eq-bar:nth-child(1) { animation-duration: 0.85s; animation-delay: -0.40s; }
+.eq-bar:nth-child(2) { animation-duration: 1.10s; animation-delay: -0.15s; }
+.eq-bar:nth-child(3) { animation-duration: 0.95s; animation-delay: -0.65s; }
+.eq-bar:nth-child(4) { animation-duration: 1.00s; animation-delay: -0.05s; }
+.eq-bar:nth-child(5) { animation-duration: 0.80s; animation-delay: -0.35s; }
+.eq-bar:nth-child(6) { animation-duration: 1.20s; animation-delay: -0.55s; }
+.eq-bar:nth-child(7) { animation-duration: 0.90s; animation-delay: -0.70s; }
+@keyframes eq-bounce {
+  0%, 100% { transform: scaleY(0.25); }
+  50%      { transform: scaleY(1.00); }
+}
 
-  .mb-16 {
-    margin-bottom: 1.5rem;
+/* 2 — Pulse dot (heart-rate) ──────────────────────────────── */
+.pulse-dot {
+  position: relative;
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  flex-shrink: 0;
+}
+.pulse-dot::before,
+.pulse-dot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--color-cobalt);
+}
+.pulse-dot::before {
+  animation: pulse-ring 1.4s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+  opacity: 0.6;
+}
+.pulse-dot::after {
+  transform: scale(0.55);
+}
+@keyframes pulse-ring {
+  0%   { transform: scale(0.55); opacity: 0.7; }
+  100% { transform: scale(2.6);  opacity: 0; }
+}
+
+/* 3 — Route path draw ─────────────────────────────────────── */
+.route-draw {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: route-draw 5s cubic-bezier(0.25, 1, 0.5, 1) forwards 0.4s;
+}
+@keyframes route-draw {
+  to { stroke-dashoffset: 0; }
+}
+
+/* 4 — Phone perspective enhancements (used by Hero) ──────── */
+.phone-3d {
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .eq-bar       { animation: none !important; transform: scaleY(0.55); }
+  .pulse-dot::before { animation: none !important; transform: scale(1); opacity: 0.4; }
+  .route-draw   { animation: none !important; stroke-dashoffset: 0; }
+}
+
+/* ============================================================
+   REDUCED MOTION CONTRACT
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal-fade-rise {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .reveal-words .word {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .reveal-line {
+    transform: scaleX(1) !important;
+  }
+  .marquee-track {
+    animation: none !important;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
   }
 }

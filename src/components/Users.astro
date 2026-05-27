@@ -1,394 +1,304 @@
 ---
-import UsersClient from './client/UsersClient';
+// Inside Pacebeats — two-group honest showcase of what's actually in `public/`.
+//   GROUP A (users-1, 2, 3) — three onboarding carousel slides
+//   GROUP B (users-4, 5)    — two real app screens: Home dashboard + Tips library
+// Pure Astro: global reveal observer in Layout.astro handles .reveal-* triggers.
+
+type Onboarding = { src: string; alt: string };
+type AppScreen = {
+    src: string;
+    label: string;
+    title: string;
+    body: string;
+    bullets: string[];
+    alt: string;
+};
+
+const ONBOARDING: Onboarding[] = [
+    {
+        src: "/users-1.png",
+        alt: "Pacebeats onboarding slide 1 — runners on a track with the headline Turn every step into progress",
+    },
+    {
+        src: "/users-2.png",
+        alt: "Pacebeats onboarding slide 2 — runner inside vertical music-bar shapes with the headline Music that moves with you",
+    },
+    {
+        src: "/users-3.png",
+        alt: "Pacebeats onboarding slide 3 — runners in circular crops with the headline Feel better, run farther",
+    },
+];
+
+const APP_SCREENS: AppScreen[] = [
+    {
+        src: "/users-4.png",
+        label: "Home",
+        title: "Your daily check-in",
+        body: "First thing you see when you open the app on a run day. Currently playing, live heart rate, today's progress, and a single running tip — all above the fold.",
+        bullets: [
+            "Currently Playing card — track, tempo (BPM), and inline transport controls",
+            "Live Heart Rate streaming from Samsung Galaxy Watch when paired",
+            "Today's Summary — distance, duration, average pace",
+            "Bottom nav: Home · Record · Tips · Profile",
+        ],
+        alt: "Pacebeats home screen — greeting card, Currently Playing at 160 BPM, Live Heart Rate at 72 BPM, a Running Tip, and Today's Summary showing 5.2 km / 42:15 / 8:07 min/km",
+    },
+    {
+        src: "/users-5.png",
+        label: "Tips",
+        title: "Run smarter, not just harder",
+        body: "A searchable library of breathing, form, and pace techniques. Filter by category, save what works for you, return to it on the next long run.",
+        bullets: [
+            "Search bar with category tabs: All Tips · Breathing · Form · Pace",
+            "Card per technique with a 2-minute read estimate",
+            "Save-to-favorites and inline Read action",
+            "Same bottom nav, persistent across surfaces",
+        ],
+        alt: "Pacebeats Tips screen — search bar, category filter tabs, and two breathing-technique cards each with a Read action",
+    },
+];
 ---
 
-<section 
-    class="bg-black text-white py-20 px-6 overflow-hidden relative"
+<section
     id="users"
+    class="bg-sky text-ink-on-sky py-32 md:py-40 relative overflow-hidden"
     aria-labelledby="users-heading"
-    itemscope 
-    itemtype="https://schema.org/SoftwareApplication"
+    itemscope
+    itemtype="https://schema.org/ImageGallery"
 >
-    <!-- Geometric background pattern -->
-    <div class="absolute inset-0 opacity-10" aria-hidden="true">
-        <div class="absolute inset-0" style="background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.03) 10px, rgba(255,255,255,0.03) 11px), repeating-linear-gradient(-45deg, transparent, transparent 10px, rgba(255,255,255,0.03) 10px, rgba(255,255,255,0.03) 11px);"></div>
-    </div>
-    
-    <div class="max-w-7xl mx-auto text-center relative z-10">
-        <!-- Main heading with enhanced SEO structure -->
-        <header class="mb-20 md:mb-24">
-            <h2 
-                id="users-heading" 
-                class="text-4xl md:text-5xl lg:text-6xl font-black text-white font-inter leading-tight"
-                itemprop="name"
-            >
-                <span class="block">Run Smarter. Track Progress.</span>
-                <span class="block">Grow Together.</span>
-            </h2>
-            <p class="sr-only">
-                Discover how Pacebeats helps runners track progress, set goals, and connect with a community of like-minded athletes through innovative features and social challenges.
-            </p>
-        </header>
-        
-        <!-- Phone mockups arrangement with enhanced accessibility -->
-        <UsersClient client:load />
-        
-        <!-- Descriptive content with semantic markup -->
-        <div class="max-w-4xl mx-auto mt-12 md:mt-16" role="region" aria-label="Application benefits">
-            <p 
-                class="text-gray-300 text-lg md:text-xl leading-relaxed font-inter"
+    <div class="max-w-7xl mx-auto px-6 md:px-10">
+        <!-- Section header -->
+        <header class="mb-16 md:mb-24 grid grid-cols-1 md:grid-cols-12 gap-8 md:items-end">
+            <div class="md:col-span-7">
+                <p
+                    class="font-mono text-slate text-xs tracking-[0.18em] uppercase mb-6"
+                >
+                    / 04 — Inside the app
+                </p>
+                <h2
+                    id="users-heading"
+                    class="font-display font-bold text-ink-on-sky reveal-words"
+                    style="font-size: clamp(2.5rem, 5vw, 5rem); line-height: 1.0; letter-spacing: -0.025em;"
+                    itemprop="name"
+                >
+                    <span class="word">Inside</span>
+                    <span class="word text-cobalt">Pacebeats.</span>
+                </h2>
+            </div>
+            <p
+                class="md:col-span-5 font-body text-slate text-base md:text-lg leading-relaxed max-w-[44ch]"
                 itemprop="description"
             >
-                Pacebeats isn't just about running, it's about evolving.
-                Track your real-time stats, set personal milestones, and unlock achievements as you go.
-                Join challenges, climb leaderboards, and connect with a crew that pushes you further.
-                Every step, every beat, every victory—shared and celebrated.
+                A look at what runners actually see — from the first three
+                seconds of onboarding through to the daily home and the
+                tips library that sits behind it.
             </p>
-            
-            <!-- Hidden content for SEO -->
-            <div class="sr-only">
-                <h3>Key User Benefits</h3>
-                <ul itemprop="featureList">
-                    <li>Real-time running statistics and performance tracking</li>
-                    <li>Social community features and runner profiles</li>
-                    <li>Competitive challenges and leaderboards</li>
-                    <li>Personalized training goals and progress monitoring</li>
-                    <li>Achievement system and milestone celebrations</li>
-                    <li>Group runs and team-based competitions</li>
-                </ul>
-                
-                <div itemprop="applicationSubCategory">Community Running App</div>
-                <div itemprop="interactionType">Social Fitness Tracking</div>
+        </header>
+
+        <!-- ════════════════════════════════════════════════════════════════
+             GROUP A — Onboarding triptych (3 slides shown together)
+             ════════════════════════════════════════════════════════════════ -->
+        <article
+            class="mb-28 md:mb-36 reveal-fade-rise"
+            aria-labelledby="onboarding-heading"
+        >
+            <header class="flex items-end justify-between gap-6 mb-10 md:mb-12">
+                <div>
+                    <p class="font-mono text-cobalt-2 text-xs tracking-[0.18em] uppercase mb-3">
+                        Group A — Welcome flow
+                    </p>
+                    <h3
+                        id="onboarding-heading"
+                        class="font-display font-bold text-ink-on-sky text-2xl md:text-4xl tracking-[-0.02em]"
+                    >
+                        The first three seconds.
+                    </h3>
+                </div>
+                <p class="hidden md:block font-mono text-slate text-xs tracking-[0.18em] uppercase max-w-[16ch] text-right">
+                    3 slides · sign-up gate
+                </p>
+            </header>
+
+            <!-- 3-up triptych. Stays a 3-column row even on mobile so the
+                 carousel reads as a unit. Phones shrink, gap shrinks. -->
+            <div
+                class="grid grid-cols-3 gap-3 md:gap-6 max-w-[900px]"
+                role="list"
+                aria-label="Onboarding carousel slides"
+            >
+                {
+                    ONBOARDING.map((slide, idx) => (
+                        <figure
+                            class="group flex flex-col"
+                            role="listitem"
+                            itemprop="image"
+                            itemscope
+                            itemtype="https://schema.org/ImageObject"
+                        >
+                            <div class="relative overflow-hidden rounded-[14px] md:rounded-[22px] border border-sky-3 bg-paper p-1 md:p-2 shadow-[0_10px_28px_-12px_rgba(11,20,38,0.18)]">
+                                <img
+                                    src={slide.src}
+                                    alt={slide.alt}
+                                    loading="lazy"
+                                    decoding="async"
+                                    class="block w-full h-auto rounded-[10px] md:rounded-[16px]"
+                                    itemprop="contentUrl"
+                                />
+                            </div>
+                            <figcaption class="mt-3 md:mt-4 font-mono text-slate text-[0.6rem] md:text-[0.7rem] tracking-[0.18em] uppercase text-center">
+                                <span class="text-cobalt-2">{String(idx + 1).padStart(2, "0")}</span>
+                                {" "}
+                                / of 3
+                            </figcaption>
+                        </figure>
+                    ))
+                }
             </div>
-        </div>
+
+            <!-- Shared explanation under the triptych. -->
+            <div class="mt-10 md:mt-12 grid grid-cols-1 md:grid-cols-12 gap-6">
+                <p class="md:col-span-7 md:col-start-1 font-body text-slate text-base md:text-lg leading-relaxed max-w-[60ch]">
+                    Three slides. One promise:
+                    <span class="text-ink-on-sky font-semibold">turn every step into progress</span>,
+                    <span class="text-ink-on-sky font-semibold">music that moves with you</span>,
+                    and
+                    <span class="text-ink-on-sky font-semibold">feel better, run farther</span>.
+                    Each is swipeable; the sign-up CTA stays pinned to the bottom so the user can sign up from any slide without finishing the carousel.
+                </p>
+            </div>
+        </article>
+
+        <!-- Group divider — hairline rule -->
+        <div class="reveal-line h-px w-full bg-sky-3 mb-20 md:mb-28" aria-hidden="true"></div>
+
+        <!-- ════════════════════════════════════════════════════════════════
+             GROUP B — Real app screens (Home + Tips)
+             ════════════════════════════════════════════════════════════════ -->
+        <article aria-labelledby="appscreens-heading">
+            <header class="flex items-end justify-between gap-6 mb-10 md:mb-12">
+                <div>
+                    <p class="font-mono text-cobalt-2 text-xs tracking-[0.18em] uppercase mb-3">
+                        Group B — In the app
+                    </p>
+                    <h3
+                        id="appscreens-heading"
+                        class="font-display font-bold text-ink-on-sky text-2xl md:text-4xl tracking-[-0.02em]"
+                    >
+                        Where you'll spend your time.
+                    </h3>
+                </div>
+                <p class="hidden md:block font-mono text-slate text-xs tracking-[0.18em] uppercase max-w-[16ch] text-right">
+                    2 screens · live in the build
+                </p>
+            </header>
+
+            <!-- Two screens side by side on md+, stacked on mobile. -->
+            <div
+                class="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-12"
+                role="list"
+                aria-label="Pacebeats main app screens"
+            >
+                {
+                    APP_SCREENS.map((s, idx) => (
+                        <figure
+                            class="group reveal-fade-rise flex flex-col md:flex-row gap-8 md:gap-10 items-start"
+                            role="listitem"
+                            itemprop="image"
+                            itemscope
+                            itemtype="https://schema.org/ImageObject"
+                        >
+                            {/* Phone */}
+                            <div class="shrink-0 w-full max-w-[240px] md:max-w-[260px] mx-auto md:mx-0">
+                                <div class="relative overflow-hidden rounded-[28px] border border-sky-3 bg-paper p-2 shadow-[0_18px_44px_-18px_rgba(11,20,38,0.22)]">
+                                    <img
+                                        src={s.src}
+                                        alt={s.alt}
+                                        loading="lazy"
+                                        decoding="async"
+                                        class="block w-full h-auto rounded-[20px]"
+                                        itemprop="contentUrl"
+                                    />
+                                </div>
+                            </div>
+
+                            {/* Copy */}
+                            <figcaption class="flex-1 flex flex-col gap-4">
+                                <div class="flex items-center gap-3">
+                                    <span class="font-mono text-cobalt-2 text-xs tracking-[0.18em] uppercase">
+                                        {String(idx + 1).padStart(2, "0")} / Screen
+                                    </span>
+                                    <span class="inline-flex items-center font-mono text-[0.65rem] uppercase tracking-[0.12em] text-cobalt-2 border border-sky-3 bg-paper px-2 py-1 rounded-full">
+                                        {s.label}
+                                    </span>
+                                </div>
+
+                                <h4
+                                    class="font-display font-bold text-ink-on-sky text-2xl md:text-[1.65rem] tracking-[-0.02em] leading-tight"
+                                    itemprop="name"
+                                >
+                                    {s.title}
+                                </h4>
+
+                                <p
+                                    class="font-body text-slate text-[0.95rem] leading-relaxed max-w-[42ch]"
+                                    itemprop="caption"
+                                >
+                                    {s.body}
+                                </p>
+
+                                <ul class="mt-2 space-y-2.5">
+                                    {s.bullets.map((b) => (
+                                        <li class="flex gap-3 font-body text-slate text-sm leading-snug">
+                                            <span
+                                                class="mt-1.5 inline-block w-1.5 h-1.5 rounded-full bg-cobalt shrink-0"
+                                                aria-hidden="true"
+                                            />
+                                            <span>{b}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </figcaption>
+                        </figure>
+                    ))
+                }
+            </div>
+        </article>
     </div>
 </section>
 
-<!-- JSON-LD Structured Data for User Features -->
+<!-- JSON-LD Structured Data for the screen gallery -->
 <script type="application/ld+json">
-{
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Pacebeats Community Features",
-    "description": "Social running app featuring community challenges, progress tracking, and user profiles for runners",
-    "applicationSubCategory": "Community Running App",
-    "featureList": [
-        "Real-time running statistics and performance tracking",
-        "Social community features and runner profiles", 
-        "Competitive challenges and leaderboards",
-        "Personalized training goals and progress monitoring",
-        "Achievement system and milestone celebrations",
-        "Group runs and team-based competitions"
-    ],
-    "screenshot": [
-        {
-            "@type": "ImageObject",
-            "url": "https://www.pacebeats.top/users-1.png",
-            "description": "Main community dashboard featuring active runners and challenges"
-        },
-        {
-            "@type": "ImageObject", 
-            "url": "https://www.pacebeats.top/users-2.png",
-            "description": "Community runner profile with statistics and achievements"
-        },
-        {
-            "@type": "ImageObject",
-            "url": "https://www.pacebeats.top/users-3.png", 
-            "description": "Community challenges and competitive leaderboard"
-        },
-        {
-            "@type": "ImageObject",
-            "url": "https://www.pacebeats.top/users-4.png",
-            "description": "Training progress and personalized goals interface"
-        },
-        {
-            "@type": "ImageObject",
-            "url": "https://www.pacebeats.top/users-5.png",
-            "description": "Detailed running analytics and performance metrics"
-        }
-    ],
-    "audience": {
-        "@type": "Audience",
-        "audienceType": "Running enthusiasts and fitness community members"
-    }
-}
-</script>
-
-<style>
-    /* Inter font family for consistency */
-    .font-inter {
-        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
-        letter-spacing: -0.025em;
-    }
-    
-    /* Enhanced heading styling */
-    h2.font-inter {
-        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
-        font-weight: 900;
-    }
-    
-    /* Phone hover effects */
-    .relative img,
-    .absolute img {
-        transition: all 0.3s ease;
-        border-radius: 24px;
-    }
-    
-    .relative img:hover,
-    .absolute img:hover {
-        transform: scale(1.05) rotate(0deg) !important;
-        opacity: 1 !important;
-        z-index: 30;
-    }
-    
-    /* Responsive adjustments */
-    @media (max-width: 1024px) {
-        .absolute.left-0,
-        .absolute.right-0 {
-            display: none;
-        }
-    }
-    
-    @media (max-width: 768px) {
-        .absolute.left-1\/4,
-        .absolute.right-1\/4 {
-            display: none;
-        }
-        
-        .relative.z-20 img {
-            width: 20rem;
-        }
-    }
-    
-    @media (max-width: 640px) {
-        .relative.z-20 img {
-            width: 18rem;
-        }
-        
-        h2.font-inter {
-            font-size: 2.5rem;
-            line-height: 1.1;
-        }
-    }
-    
-    /* Floating dots animation */
-    .animate-pulse {
-        animation-duration: 2s;
-    }
-    
-    /* Background pattern enhancement */
-    .absolute.inset-0.opacity-10::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
-                    radial-gradient(circle at 80% 20%, rgba(239, 68, 68, 0.05) 0%, transparent 50%);
-    }
-    
-    /* Accessibility improvements */
-    @media (prefers-reduced-motion: reduce) {
-        .relative img,
-        .absolute img {
-            transition: none;
-        }
-        
-        .animate-pulse {
-            animation: none;
-        }
-        
-        .relative img:hover,
-        .absolute img:hover {
-            transform: none !important;
-        }
-    }
-    
-    /* Focus styles for keyboard navigation */
-    img:focus {
-        outline: 3px solid rgba(59, 130, 246, 0.5);
-        outline-offset: 4px;
-    }
-    
-    /* Enhanced staggered animation for phone mockups */
-    .phone-mockup {
-        opacity: 0;
-        transform: translateY(30px) scale(0.9);
-        transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        will-change: transform, opacity;
-    }
-
-    .phone-mockup.animate-in {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
-
-    /* Progressive delays for staggered effect */
-    .phone-mockup[data-delay="0"] {
-        transition-delay: 0ms;
-    }
-
-    .phone-mockup[data-delay="200"] {
-        transition-delay: 200ms;
-    }
-
-    .phone-mockup[data-delay="400"] {
-        transition-delay: 400ms;
-    }
-
-    .phone-mockup[data-delay="600"] {
-        transition-delay: 600ms;
-    }
-
-    .phone-mockup[data-delay="800"] {
-        transition-delay: 800ms;
-    }
-
-    /* Enhanced accessibility styles */
-    .sr-only {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        padding: 0;
-        margin: -1px;
-        overflow: hidden;
-        clip: rect(0, 0, 0, 0);
-        white-space: nowrap;
-        border: 0;
-    }
-
-    /* Enhanced focus styles for keyboard navigation */
-    img:focus {
-        outline: 3px solid rgba(59, 130, 246, 0.8);
-        outline-offset: 4px;
-        transform: scale(1.05) !important;
-        z-index: 40;
-    }
-
-    /* High contrast mode support */
-    @media (prefers-contrast: high) {
-        h2.font-inter {
-            text-shadow: 3px 3px 0px #000000;
-            color: #ffffff;
-        }
-        
-        .text-gray-300 {
-            color: #ffffff;
-        }
-        
-        img:focus {
-            outline: 3px solid #ffffff;
-            outline-offset: 4px;
-        }
-    }
-
-    /* Reduced motion support */
-    @media (prefers-reduced-motion: reduce) {
-        .phone-mockup {
-            transition: none;
-            opacity: 1;
-            transform: none;
-        }
-        
-        .relative img,
-        .absolute img {
-            transition: none;
-        }
-        
-        .animate-pulse {
-            animation: none;
-        }
-        
-        .relative img:hover,
-        .absolute img:hover {
-            transform: none !important;
-        }
-    }
-</style>
-
-<script>
-    // Enhanced intersection observer for staggered phone animations
-    if ('IntersectionObserver' in window) {
-        const usersObserver = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    const delay = parseInt(entry.target.getAttribute('data-delay') || '0');
-                    
-                    setTimeout(() => {
-                        entry.target.classList.add('animate-in');
-                        
-                        // Announce to screen readers for the main phone
-                        if (delay === 400) {
-                            const announcement = document.createElement('div');
-                            announcement.setAttribute('aria-live', 'polite');
-                            announcement.className = 'sr-only';
-                            announcement.textContent = 'Pacebeats community features section has loaded';
-                            document.body.appendChild(announcement);
-                            
-                            setTimeout(() => {
-                                if (document.body.contains(announcement)) {
-                                    document.body.removeChild(announcement);
-                                }
-                            }, 2000);
-                        }
-                    }, delay);
-                }
-            });
-        }, {
-            threshold: 0.2,
-            rootMargin: '50px'
-        });
-        
-        // Observe all phone mockups
-        document.querySelectorAll('.phone-mockup').forEach(phone => {
-            usersObserver.observe(phone);
-        });
-    }
-    
-    // Enhanced keyboard navigation for phone images
-    document.querySelectorAll('img[tabindex="0"]').forEach(img => {
-        const handleKeydown = (e: KeyboardEvent) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                
-                // Announce image details to screen readers
-                const altText = (img as HTMLImageElement).getAttribute('alt');
-                const announcement = document.createElement('div');
-                announcement.setAttribute('aria-live', 'assertive');
-                announcement.className = 'sr-only';
-                announcement.textContent = `Viewing: ${altText}`;
-                document.body.appendChild(announcement);
-                
-                // Focus the image
-                (img as HTMLElement).focus();
-                
-                setTimeout(() => {
-                    if (document.body.contains(announcement)) {
-                        document.body.removeChild(announcement);
-                    }
-                }, 2000);
+    {
+        "@context": "https://schema.org",
+        "@type": "ImageGallery",
+        "name": "Inside Pacebeats — onboarding and app screens",
+        "description": "Three onboarding carousel slides (Turn every step into progress, Music that moves with you, Feel better and run farther) plus two main app screens (Home dashboard and Tips library).",
+        "image": [
+            {
+                "@type": "ImageObject",
+                "url": "https://www.pacebeats.top/users-1.png",
+                "caption": "Onboarding 1 of 3 — Turn every step into progress"
+            },
+            {
+                "@type": "ImageObject",
+                "url": "https://www.pacebeats.top/users-2.png",
+                "caption": "Onboarding 2 of 3 — Music that moves with you"
+            },
+            {
+                "@type": "ImageObject",
+                "url": "https://www.pacebeats.top/users-3.png",
+                "caption": "Onboarding 3 of 3 — Feel better, run farther"
+            },
+            {
+                "@type": "ImageObject",
+                "url": "https://www.pacebeats.top/users-4.png",
+                "caption": "Home screen — Currently Playing, Live Heart Rate, Running Tip, Today's Summary"
+            },
+            {
+                "@type": "ImageObject",
+                "url": "https://www.pacebeats.top/users-5.png",
+                "caption": "Tips screen — searchable library of breathing, form, and pace techniques"
             }
-        };
-        
-        (img as HTMLElement).addEventListener('keydown', handleKeydown);
-    });
-    
-    // Performance optimization: Preload images
-    if ('requestIdleCallback' in window) {
-        requestIdleCallback(() => {
-            const imageUrls = ['/users-1.png', '/users-2.png', '/users-3.png', '/users-4.png', '/users-5.png'];
-            imageUrls.forEach(url => {
-                const img = new Image();
-                img.src = url;
-            });
-        });
+        ]
     }
-    
-    // Enhanced error handling for images
-    document.querySelectorAll('img').forEach(img => {
-        img.addEventListener('error', () => {
-            console.warn('Image failed to load:', img.src);
-            // Provide fallback or hide broken image
-            img.style.display = 'none';
-        });
-    });
 </script>

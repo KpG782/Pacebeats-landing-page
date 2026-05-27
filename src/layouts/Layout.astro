@@ -1,29 +1,120 @@
 ---
-
 import "../styles/global.css";
----
 
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Pacebeats — Run to the rhythm. Achieve your pace.",
+  description = "Pacebeats syncs your music to your stride. An Android + Wear OS running companion that adapts your playlist to your pace in real time.",
+} = Astro.props;
+---
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Pacebeats | Music That Moves With You</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="#0A0A0A" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="description" content={description} />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/favicon.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <title>{title}</title>
+  </head>
+  <body>
+    <slot />
+
+    <script is:inline>
+      // Global reveal observer — toggles .is-visible on every reveal primitive
+      // when it enters the viewport. Fires once per element. Re-runs on load
+      // to catch elements rendered by hydrated React islands.
+      (function () {
+        var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        var SEL = '.reveal-words, .reveal-fade-rise, .reveal-line, .stagger';
+        var seen = new WeakSet();
+        var io = null;
+
+        function reveal(el) { el.classList.add('is-visible'); }
+
+        function ensureIO() {
+          if (io || reduce || !('IntersectionObserver' in window)) return io;
+          io = new IntersectionObserver(function (entries) {
+            for (var i = 0; i < entries.length; i++) {
+              if (entries[i].isIntersecting) {
+                reveal(entries[i].target);
+                io.unobserve(entries[i].target);
+              }
+            }
+          }, { threshold: 0.1, rootMargin: '0px 0px -2% 0px' });
+          return io;
+        }
+
+        function scan() {
+          var targets = document.querySelectorAll(SEL);
+          if (reduce || !('IntersectionObserver' in window)) {
+            for (var i = 0; i < targets.length; i++) reveal(targets[i]);
+            return;
+          }
+          ensureIO();
+          for (var j = 0; j < targets.length; j++) {
+            var el = targets[j];
+            if (seen.has(el)) continue;
+            seen.add(el);
+            var rect = el.getBoundingClientRect();
+            if (rect.top < window.innerHeight * 0.95 && rect.bottom > 0) {
+              reveal(el);
+            } else {
+              io.observe(el);
+            }
+          }
+        }
+
+        function boot() {
+          scan();
+          // React islands may swap subtrees on hydration — rescan a few times.
+          setTimeout(scan, 300);
+          setTimeout(scan, 1200);
+          setTimeout(scan, 2400);
+        }
+
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', boot, { once: true });
+        } else {
+          boot();
+        }
+      })();
+    </script>
+  </body>
 </html>
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-		background-color: black;
-	}
+<style is:global>
+  /* ===== Grain overlay — atmospheric depth, declared once.
+     soft-light blend so the same texture reads on both
+     dark navy AND light sky surfaces without being heavy. ===== */
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.55;
+    mix-blend-mode: soft-light;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch' seed='3'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+    background-size: 180px 180px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    body::after {
+      opacity: 0.35;
+    }
+  }
 </style>

@@ -1,631 +1,83 @@
 ---
-import FeaturesClient from './client/FeaturesClient';
-
+// Features — Editorial Athletic bento grid.
+// Astro shell owns the section frame, SEO/JSON-LD, sr-only.
+// The React island (FeaturesClient) owns the card grid + on-scroll reveal.
+import FeaturesClient from "./client/FeaturesClient";
 ---
 
-<section 
-    id="features" 
-    class="bg-black text-white py-20 px-6"
+<section
+    id="features"
+    class="bg-sky text-ink-on-sky py-32 md:py-40"
     aria-labelledby="features-heading"
-    itemscope 
+    itemscope
     itemtype="https://schema.org/ItemList"
 >
-    <div class="max-w-7xl mx-auto">
-        <!-- Section Header for SEO and Accessibility -->
-        <header class="text-center mb-16">
-            <h2 id="features-heading" class="text-4xl md:text-5xl lg:text-6xl font-black mb-6 font-inter text-white">
-                Powerful Features
+    <div class="max-w-7xl mx-auto px-6 md:px-10">
+        <!-- Section header -->
+        <header class="mb-16 md:mb-20">
+            <p
+                class="font-mono text-slate text-xs tracking-[0.18em] uppercase mb-6"
+            >
+                / 03 — Capabilities
+            </p>
+            <h2
+                id="features-heading"
+                class="font-display font-bold text-ink-on-sky max-w-5xl"
+                style="font-size: clamp(2.5rem, 5vw, 5rem); line-height: 0.95; letter-spacing: -0.02em;"
+                itemprop="name"
+            >
+                <span class="block">
+                    Built for the way <span class="text-cobalt">you run</span>.
+                </span>
             </h2>
-            <p class="text-gray-300 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed" itemprop="description">
-                Discover the comprehensive toolkit that makes Pacebeats the ultimate running companion for music enthusiasts.
+            <p class="sr-only" itemprop="description">
+                Four core capabilities — smart pace detection, night-run-ready
+                visuals, offline reliability, and the Wear OS companion.
             </p>
         </header>
 
-        <!-- Feature cards grid with staggered animation -->
-            <!-- Feature cards grid (client-rendered for animations and icons) -->
-            <FeaturesClient client:load />
-
-        <!-- Intro Text -->
-        <div class="text-center my-16" role="region" aria-label="Features introduction">
-            <p class="text-gray-300 text-lg max-w-3xl mx-auto leading-relaxed">
-              Your runs + your music + your squad = unstoppable energy. Track your progress, sync your beats, and connect with runners who actually understand the grind.
-            </p>
-        </div>
+        <!-- Bento grid lives in the React island -->
+        <FeaturesClient client:visible />
     </div>
-
-    <!-- Hero Image Section - Full width on mobile -->
-    <figure 
-        class="relative overflow-hidden h-[400px] sm:min-h-[500px] md:min-h-[600px] lg:min-h-[700px] w-full mx-0 md:mx-auto md:max-w-7xl md:rounded-3xl"
-        role="img"
-        aria-labelledby="hero-image-caption"
-        itemscope 
-        itemtype="https://schema.org/ImageObject"
-    >
-        <img 
-            src="/users.jpg" 
-            alt="Group of diverse athletes running together in urban environment, showcasing the community aspect of Pacebeats running app"
-            class="w-full h-full object-cover block mx-auto"
-            loading="lazy"
-            decoding="async"
-            width="1200"
-            height="700"
-            itemprop="contentUrl"
-        />
-        
-        <!-- Dynamic overlay with gradient -->
-        <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/60" aria-hidden="true"></div>
-
-        <!-- Center text - Responsive typography -->
-        <div class="absolute inset-0 flex items-center justify-center z-20 px-4 sm:px-6 md:px-8">
-            <h2 
-                id="hero-image-caption" 
-                class="text-2xl sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white text-center font-inter leading-tight max-w-6xl"
-                itemprop="caption"
-            >
-                Built for Every Music Enthusiast
-            </h2>
-        </div>
-        
-        <!-- Floating feature labels with enhanced accessibility -->
-        <div class="feature-label absolute top-4 left-4 sm:top-6 sm:left-6 md:top-8 md:left-8 bg-black/70 backdrop-blur-sm px-2 py-1 rounded-md border border-white/30 z-10" 
-             role="button" 
-             tabindex="0" 
-             aria-label="Pace Tracking feature">
-            <span class="text-white text-xs font-medium">Pace Tracking</span>
-        </div>
-        
-        <div class="feature-label absolute top-4 right-4 sm:top-6 sm:right-6 md:top-8 md:right-8 bg-black/70 backdrop-blur-sm px-2 py-1 rounded-md border border-white/30 z-10" 
-             role="button" 
-             tabindex="0" 
-             aria-label="Night Run Ready feature">
-            <span class="text-white text-xs font-medium">Night Run Ready</span>
-        </div>
-        
-        <div class="feature-label absolute top-1/3 left-4 sm:left-6 md:left-8 bg-black/70 backdrop-blur-sm px-2 py-1 rounded-md border border-white/30 z-10" 
-             role="button" 
-             tabindex="0" 
-             aria-label="Break Your Pace feature">
-            <span class="text-white text-xs font-medium">Break Your Pace</span>
-        </div>
-        
-        <div class="feature-label absolute bottom-1/3 left-4 sm:left-6 md:left-8 bg-black/70 backdrop-blur-sm px-2 py-1 rounded-md border border-white/30 z-10" 
-             role="button" 
-             tabindex="0" 
-             aria-label="Urban Routes feature">
-            <span class="text-white text-xs font-medium">Urban Routes</span>
-        </div>
-        
-        <div class="feature-label absolute top-1/3 right-4 sm:right-6 md:right-8 bg-black/70 backdrop-blur-sm px-2 py-1 rounded-md border border-white/30 z-10" 
-             role="button" 
-             tabindex="0" 
-             aria-label="Split Analysis feature">
-            <span class="text-white text-xs font-medium">Split Analysis</span>
-        </div>
-        
-        <div class="feature-label absolute bottom-1/3 right-4 sm:right-6 md:right-8 bg-black/70 backdrop-blur-sm px-2 py-1 rounded-md border border-white/30 z-10" 
-             role="button" 
-             tabindex="0" 
-             aria-label="Distance Analysis feature">
-            <span class="text-white text-xs font-medium">Distance Analysis</span>
-        </div>
-        
-        <div class="feature-label absolute bottom-4 left-8 sm:left-1/4 sm:bottom-6 md:bottom-8 md:left-1/4 bg-black/70 backdrop-blur-sm px-2 py-1 rounded-md border border-white/30 z-10" 
-             role="button" 
-             tabindex="0" 
-             aria-label="Run Wild feature">
-            <span class="text-white text-xs font-medium">Run Wild</span>
-        </div>
-        
-        <div class="feature-label absolute bottom-4 right-8 sm:right-1/4 sm:bottom-6 md:bottom-8 md:right-1/4 bg-black/70 backdrop-blur-sm px-2 py-1 rounded-md border border-white/30 z-10" 
-             role="button" 
-             tabindex="0" 
-             aria-label="Interval Boost feature">
-            <span class="text-white text-xs font-medium">Interval Boost</span>
-        </div>
-    </figure>
 </section>
 
 <!-- JSON-LD Structured Data for Features -->
 <script type="application/ld+json">
-{
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    "name": "Pacebeats App Features",
-    "description": "Comprehensive list of features available in the Pacebeats running application",
-    "numberOfItems": 4,
-    "itemListElement": [
-        {
-            "@type": "SoftwareFeature",
-            "position": 1,
-            "name": "Real-Time Pace & Advanced Analytics",
-            "description": "Live GPS-based pacing with detailed post-run analytics including pace trends, splits, distance, and performance improvements over time",
-            "featureType": "Analytics"
-        },
-        {
-            "@type": "SoftwareFeature", 
-            "position": 2,
-            "name": "Smart Pace Detection",
-            "description": "AI-powered pace analysis that evolves with your running style, helping optimize effort and prevent overexertion",
-            "featureType": "AI Analysis"
-        },
-        {
-            "@type": "SoftwareFeature",
-            "position": 3, 
-            "name": "Spotify Integration",
-            "description": "Seamless music playback with personalized playlists that adapt to your running pace in real time",
-            "featureType": "Music Integration"
-        },
-        {
-            "@type": "SoftwareFeature",
-            "position": 4,
-            "name": "Pacebeats Watch Companion",
-            "description": "Sync with supported smartwatches for hands-free pace monitoring and live updates on your wrist while running",
-            "featureType": "Wearable Integration"
-        }
-    ]
-}
-</script>
-
-<style>
-/* Inter font family for clean, athletic typography */
-.font-inter {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
-    letter-spacing: -0.02em;
-    font-weight: 700;
-}
-
-/* Enhanced feature card styling to match the image */
-.bg-gray-900 {
-    background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
-}
-
-.bg-gradient-to-br {
-    background: linear-gradient(135deg, #991b1b 0%, #7f1d1d 100%);
-}
-
-/* Card hover effects */
-.bg-gray-900:hover {
-    transform: translateY(-2px);
-    transition: all 0.3s ease;
-    border-color: #4B5563;
-}
-
-/* Featured card styling */
-.bg-gradient-to-br.from-red-800.to-red-900 {
-    box-shadow: 0 4px 20px rgba(220, 38, 38, 0.2);
-}
-
-.absolute.bg-black\/70 {
-    animation: subtleFloat 4s ease-in-out infinite alternate;
-    transition: all 0.2s ease;
-}
-
-.absolute.bg-black\/70:nth-child(odd) {
-    animation-delay: 0.5s;
-}
-
-.absolute.bg-black\/70:nth-child(even) {
-    animation-delay: 1.5s;
-}
-
-@keyframes subtleFloat {
-    from {
-        transform: translateY(0px);
-        opacity: 0.85;
-    }
-    to {
-        transform: translateY(-3px);
-        opacity: 1;
-    }
-}
-
-/* Compact hover effects */
-.absolute.bg-black\/70:hover {
-    background: rgba(0, 0, 0, 0.85);
-    transform: scale(1.02) translateY(-1px);
-    border-color: rgba(255, 255, 255, 0.5);
-}
-
-/* Remove old floating label styles */
-.absolute.bg-white\/10 {
-    display: none;
-}
-
-/* Responsive adjustments for compact labels */
-@media (max-width: 768px) {
-    .absolute.bg-black\/70 {
-        padding: 0.2rem 0.4rem;
-    }
-    
-    .absolute.bg-black\/70 span {
-        font-size: 0.7rem;
-    }
-}
-
-/* Hover effects for labels */
-.absolute.bg-white\/10:hover {
-    background: rgba(255, 255, 255, 0.2);
-    transform: scale(1.05) translateY(-2px);
-    border-color: rgba(255, 255, 255, 0.4);
-}
-
-/* Enhanced center text styling */
-h2.font-inter, h3.font-inter {
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
-    font-weight: 900;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .absolute.bg-white\/10 {
-        padding: 0.25rem 0.5rem;
-    }
-    
-    .absolute.bg-white\/10 span {
-        font-size: 0.6rem;
-    }
-    
-    /* Adjust positions on mobile */
-    .absolute.top-6.left-6 { top: 1rem; left: 1rem; }
-    .absolute.top-8.right-8 { top: 1rem; right: 1rem; }
-    .absolute.bottom-6.left-1\/4 { bottom: 1rem; left: 1rem; }
-    .absolute.bottom-8.right-1\/4 { bottom: 1rem; right: 1rem; }
-}
-
-/* Accessibility improvements */
-@media (prefers-reduced-motion: reduce) {
-    .absolute.bg-white\/10 {
-        animation: none;
-    }
-    
-    .absolute.bg-white\/10:hover {
-        transform: scale(1.02);
-    }
-}
-
-/* Focus styles for keyboard navigation */
-.absolute.bg-white\/10:focus {
-    outline: 2px solid rgba(255, 255, 255, 0.8);
-    outline-offset: 2px;
-}
-
-/* Enhanced mobile positioning */
-@media (max-width: 640px) {
-    .absolute.bg-black\/70 {
-        padding: 0.15rem 0.3rem;
-    }
-    
-    .absolute.bg-black\/70 span {
-        font-size: 0.65rem;
-    }
-    
-    /* Specific mobile positioning to prevent overlap */
-    .absolute.bottom-4.left-8 {
-        bottom: 0.75rem;
-        left: 0.5rem;
-    }
-    
-    .absolute.bottom-4.right-8 {
-        bottom: 0.75rem;
-        right: 0.5rem;
-    }
-    
-    /* Adjust other bottom labels */
-    .absolute.bottom-1\/3 {
-        bottom: 35%;
-    }
-}
-
-/* Tablet adjustments */
-@media (min-width: 641px) and (max-width: 768px) {
-    .absolute.bg-black\/70 {
-        padding: 0.2rem 0.4rem;
-    }
-    
-    .absolute.bg-black\/70 span {
-        font-size: 0.7rem;
-    }
-}
-
-/* Enhanced hover effects for feature cards */
-.bg-gray-900:hover {
-        transform: translateY(-2px);
-        transition: all 0.3s ease;
-    }
-    
-    /* Featured card subtle animation */
-    .bg-blue-900 {
-        box-shadow: 0 0 20px rgba(59, 130, 246, 0.1);
-        animation: subtlePulse 4s ease-in-out infinite alternate;
-    }
-    
-    @keyframes subtlePulse {
-        from {
-            box-shadow: 0 0 20px rgba(59, 130, 246, 0.1);
-        }
-        to {
-            box-shadow: 0 0 25px rgba(59, 130, 246, 0.15);
-        }
-    }
-    
-    /* Improved floating labels */
-    .absolute.bg-black\/80 {
-        transition: all 0.3s ease;
-    }
-    
-    .absolute.bg-black\/80:hover {
-        background: rgba(59, 130, 246, 0.9);
-        transform: scale(1.05);
-    }
-    
-    /* Accessibility and performance */
-    @media (prefers-reduced-motion: reduce) {
-        .bg-blue-900 {
-            animation: none;
-        }
-        
-        .bg-gray-900:hover {
-            transform: none;
-        }
-        
-        .absolute.bg-black\/80:hover {
-            transform: none;
-        }
-    }
-    
-    /* Focus styles for keyboard navigation */
-    .bg-gray-900:focus-within,
-    .bg-blue-900:focus-within {
-        outline: 2px solid rgba(59, 130, 246, 0.5);
-        outline-offset: 2px;
-    }
-
-/* Enhanced staggered animation system */
-.feature-card {
-    opacity: 0;
-    transform: translateY(50px) scale(0.95);
-    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-    will-change: transform, opacity;
-}
-
-.feature-card.animate-in {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-}
-
-/* Progressive delay system for staggered effect */
-.feature-card[data-animation-delay="0"] {
-    transition-delay: 0ms;
-}
-
-.feature-card[data-animation-delay="200"] {
-    transition-delay: 200ms;
-}
-
-.feature-card[data-animation-delay="400"] {
-    transition-delay: 400ms;
-}
-
-.feature-card[data-animation-delay="600"] {
-    transition-delay: 600ms;
-}
-
-/* Enhanced hover effects */
-.feature-card:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-}
-
-.feature-card:focus {
-    outline: 3px solid rgba(59, 130, 246, 0.6);
-    outline-offset: 4px;
-    transform: translateY(-4px) scale(1.01);
-}
-
-/* Feature labels animation */
-.feature-label {
-    opacity: 0;
-    transform: translateY(20px);
-    animation: labelSlideIn 0.6s ease-out forwards;
-}
-
-.feature-label:nth-child(odd) {
-    animation-delay: 1s;
-}
-
-.feature-label:nth-child(even) {
-    animation-delay: 1.2s;
-}
-
-@keyframes labelSlideIn {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Enhanced accessibility styles */
-.sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
-}
-
-/* High contrast mode support */
-@media (prefers-contrast: high) {
-    .feature-card {
-        border: 2px solid #ffffff;
-    }
-    
-    .text-gray-300,
-    .text-gray-400 {
-        color: #ffffff;
-    }
-    
-    .feature-label {
-        border: 2px solid #ffffff;
-        background: rgba(0, 0, 0, 0.9);
-    }
-}
-
-/* Reduced motion support */
-@media (prefers-reduced-motion: reduce) {
-    .feature-card {
-        transition: none;
-        opacity: 1;
-        transform: none;
-    }
-    
-    .feature-card:hover {
-        transform: none;
-    }
-    
-    .feature-label {
-        animation: none;
-        opacity: 1;
-        transform: none;
-    }
-    
-    @keyframes subtleFloat,
-    @keyframes labelSlideIn {
-        from, to {
-            transform: none;
-            opacity: 1;
-        }
-    }
-}
-
-/* Focus management for keyboard navigation */
-.feature-card:focus-visible,
-.feature-label:focus-visible {
-    outline: 3px solid rgba(59, 130, 246, 0.8);
-    outline-offset: 2px;
-}
-
-/* Enhanced mobile responsiveness */
-@media (max-width: 640px) {
-    .feature-card {
-        height: auto;
-        min-height: 280px;
-    }
-    
-    .feature-label {
-        padding: 0.15rem 0.3rem;
-        font-size: 0.65rem;
-    }
-}
-
-/* Mobile full-width adjustments */
-@media (max-width: 768px) {
-    figure {
-        margin-left: -1.5rem !important;
-        margin-right: -1.5rem !important;
-        width: calc(100vw) !important;
-        border-radius: 0 !important;
-    }
-    
-    figure img {
-        width: 100% !important;
-        margin: 0 auto !important;
-        display: block !important;
-    }
-    
-    /* Adjust feature labels positioning on mobile */
-    .feature-label {
-        padding: 0.15rem 0.3rem;
-    }
-    
-    .feature-label span {
-        font-size: 0.65rem;
-    }
-}
-
-/* Very small screens */
-@media (max-width: 640px) {
-    figure {
-        margin-left: -1rem !important;
-        margin-right: -1rem !important;
-    }
-}
-</style>
-
-<script>
-    // Enhanced intersection observer for staggered animations
-    if ('IntersectionObserver' in window) {
-        const featuresObserver = new IntersectionObserver((entries) => {
-            entries.forEach((entry, index) => {
-                if (entry.isIntersecting) {
-                    // Add animation class with progressive delay
-                    setTimeout(() => {
-                        entry.target.classList.add('animate-in');
-                        
-                        // Announce to screen readers
-                        if (index === 0) {
-                            const announcement = document.createElement('div');
-                            announcement.setAttribute('aria-live', 'polite');
-                            announcement.className = 'sr-only';
-                            announcement.textContent = 'Features section has loaded';
-                            document.body.appendChild(announcement);
-                            
-                            setTimeout(() => {
-                                if (document.body.contains(announcement)) {
-                                    document.body.removeChild(announcement);
-                                }
-                            }, 2000);
-                        }
-                    }, index * 150); // Staggered delay
-                }
-            });
-        }, {
-            threshold: 0.1,
-            rootMargin: '50px'
-        });
-        
-        // Observe all feature cards
-        document.querySelectorAll('.feature-card').forEach(card => {
-            featuresObserver.observe(card);
-        });
-    }
-    
-    // Enhanced keyboard navigation for feature labels
-    document.querySelectorAll('.feature-label').forEach(label => {
-        const handleKeydown = (e: KeyboardEvent) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                // Announce feature to screen readers
-                const featureName = label.getAttribute('aria-label');
-                const announcement = document.createElement('div');
-                announcement.setAttribute('aria-live', 'assertive');
-                announcement.className = 'sr-only';
-                announcement.textContent = `${featureName} feature selected`;
-                document.body.appendChild(announcement);
-                
-                setTimeout(() => {
-                    if (document.body.contains(announcement)) {
-                        document.body.removeChild(announcement);
-                    }
-                }, 1500);
+    {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": "Pacebeats App Features",
+        "description": "Core capabilities of the Pacebeats running application",
+        "numberOfItems": 4,
+        "itemListElement": [
+            {
+                "@type": "SoftwareFeature",
+                "position": 1,
+                "name": "Smart Pace Detection",
+                "description": "Cadence-aware playback that shifts music in real time to match your stride.",
+                "featureType": "Pace Intelligence"
+            },
+            {
+                "@type": "SoftwareFeature",
+                "position": 2,
+                "name": "Night-Run Ready",
+                "description": "High-contrast layouts and single-tap controls tuned for low-light visibility.",
+                "featureType": "Accessibility"
+            },
+            {
+                "@type": "SoftwareFeature",
+                "position": 3,
+                "name": "Offline-Friendly",
+                "description": "Routes and pace cues cached locally for runs beyond signal.",
+                "featureType": "Reliability"
+            },
+            {
+                "@type": "SoftwareFeature",
+                "position": 4,
+                "name": "Wear OS Companion",
+                "description": "Glance pace, BPM, and route from your Galaxy Watch.",
+                "featureType": "Wearable Integration"
             }
-        };
-        
-        (label as HTMLElement).addEventListener('keydown', handleKeydown);
-    });
-    
-    // Performance optimization: Preload next section images
-    if ('requestIdleCallback' in window) {
-        requestIdleCallback(() => {
-            const preloadImages = ['/how-it-works-preview.jpg'];
-            preloadImages.forEach(src => {
-                const img = new Image();
-                img.src = src;
-            });
-        });
+        ]
     }
 </script>

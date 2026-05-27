@@ -96,6 +96,168 @@ Hard rules:
 - Stroke width: standardize at `2`. Size scale: `w-4 h-4` (inline), `w-5 h-5` (button), `w-6 h-6` (feature icon).
 - No emoji icons anywhere. The README and inline comments use emoji — those stay in docs/comments only, not in shipped UI.
 
+### 3.6 Motion Language
+
+Four principles, in order: **enter quietly, animate one thing at a time, ease like a runner, respect the user.** This is the choreography vocabulary every section pulls from — no section invents its own.
+
+#### 3.6.1 Easing tokens
+
+Declared once in `global.css` as custom properties, exposed to Tailwind via `@theme`. Components reference tokens; raw cubic-beziers in component CSS are a code-review reject.
+
+| Token | Curve | Use for |
+|---|---|---|
+| `--ease-out-quart` | `cubic-bezier(0.25, 1, 0.5, 1)` | Default reveals, fades, micro-interactions |
+| `--ease-out-expo` | `cubic-bezier(0.16, 1, 0.3, 1)` | Count-ups, large slides, headline reveals |
+| `--ease-in-out-cubic` | `cubic-bezier(0.65, 0, 0.35, 1)` | Bidirectional state (modals, mobile menu, dropdown) |
+| `--ease-linear` | `linear` | Marquees + grain only — never UI |
+
+No spring physics. No `bounce`. No `elastic`. The aesthetic is precision, not toy-ish playfulness.
+
+#### 3.6.2 Duration scale
+
+| Token | Value | Use for |
+|---|---|---|
+| `--dur-fast` | `150ms` | Hover color/opacity swaps |
+| `--dur-base` | `300ms` | Default UI transitions, CTA fills |
+| `--dur-reveal` | `600ms` | On-scroll fade+rise reveals |
+| `--dur-display` | `1200ms` | Hero entrance, stat count-up, headline word reveal |
+| `--dur-marquee` | `40s` | Logo wall horizontal ticker |
+
+#### 3.6.3 Choreography rules
+
+- **One protagonist per viewport.** When a section enters, at most one element gets the long display animation — the heading OR the visual, never both. Everything else is a 600ms fade+rise.
+- **Stagger budget.** On-scroll staggers fire 80ms apart, max 5 children in any stagger group. If a section has more than 5 reveal targets, collapse the rest into a single block reveal.
+- **No motion on the same element twice.** Once revealed, an element does not also pulse, float, or wiggle. Hover is a separate concern.
+- **Scroll-driven, not scroll-jacked.** Use `IntersectionObserver` to trigger (fire once, `threshold: 0.15`). Never `scroll-snap` on the page, never transform-on-scroll that fights the user's scroll velocity. The single exception: Users section's local horizontal scroll-snap.
+
+#### 3.6.4 Reveal patterns (the only four allowed)
+
+1. **`reveal-fade-rise`** — opacity 0→1, translateY 16px→0, 600ms, `--ease-out-quart`. Default for paragraphs, captions, cards, images.
+2. **`reveal-words`** — headline split into word `<span>`s, server-rendered (no JS layout shift). Each word fades+rises on an 80ms stagger, 600ms each, `--ease-out-expo`. Hero H1, every section H2, Words.
+3. **`reveal-count`** — number counts 0→target over 1200ms, `--ease-out-expo`. Stats section only.
+4. **`reveal-line`** — a hairline expands from `scaleX(0)` to `scaleX(1)` over 400ms, `--ease-out-quart`, transform-origin left. Underline beneath section H2s; "lime underline on the verb" treatment.
+
+That's the entire vocabulary. If a section asks for something else, it doesn't get it.
+
+#### 3.6.5 Hover behavior
+
+- Color / opacity / border-color only. **No `scale`, no `rotate`, no `translateY` on hover anywhere on the site.** The hero phone, feature cards, team portraits, logo wall currently break this — kill it.
+- Standard lime treatments on hover:
+  - Text links: lime underline grows from left, 200ms `--ease-out-quart`.
+  - Card borders: `--ink-3` → `--lime`, 200ms.
+  - Logo wall logos: `--paper-2` fill → `--paper`, with a lime hairline appearing beneath, 200ms.
+- **Signature interaction** — primary CTAs get a **lime ink-fill sweep**: a `::before` pseudo-element with `background: var(--lime); transform: translateX(-100%);` slides to `translateX(0)` on hover over 300ms `--ease-out-quart`. Text color crossfades from `--paper`/`--lime-ink` accordingly. This is the one motion someone will remember — every primary CTA uses it identically.
+
+#### 3.6.6 Cursor behavior
+
+- Default OS cursor. **No custom cursor image, no magnetic cursor, no cursor follower.** Custom cursors fail accessibility, fight devtools and screenshot capture, and read as portfolio-site fashion.
+- `cursor-pointer` on every clickable surface, including entire cards when the whole card is the target.
+
+#### 3.6.7 Marquee (Techstack only)
+
+- One continuous horizontal marquee on the Techstack logo wall: 40s, `--ease-linear`, pauses on hover (`animation-play-state: paused`).
+- Implemented as a duplicated row inside an `overflow-hidden` track, animated via pure CSS `@keyframes marquee { to { transform: translateX(-50%); } }`. **Not JS-driven.**
+- Under `prefers-reduced-motion: reduce`, marquee becomes a static `flex-wrap` row.
+
+#### 3.6.8 Reduced motion contract
+
+A single global block in `global.css`:
+
+```css
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+```
+
+And every React island that uses `motion/react` calls `useReducedMotion()` and renders to its final state immediately when true. No "reduced alternate" animation — just *none*. Reveal-on-scroll components must render to their final state when reduced.
+
+### 3.7 Depth & Dimensionality
+
+We do NOT ship Three.js, WebGL, Spline embeds, or any 3D library. Editorial athletic doesn't mean flat — it means depth via **typography weight, hairlines, parallax photography, and a single grain texture**. Five techniques, used sparingly.
+
+#### 3.7.1 Hero parallax (the only scroll-parallax on the site)
+
+Three depth planes on the hero only:
+
+| Element | Scroll multiplier |
+|---|---|
+| Background photo (`/hero-section2.jpg`) | `0.3×` |
+| Phone mockup (`/hero-screen-1.svg`) | `0.7×` |
+| Headline + CTAs | `1.0×` (default scroll) |
+
+Implementation: a single `requestAnimationFrame` loop in `Hero.astro`'s `<script>` writes one CSS custom property (`--scroll-y`) on the hero root; the two parallax elements consume it via `transform: translate3d(0, calc(var(--scroll-y) * -0.7px), 0)`. **No GSAP, no Lenis, no scroll-snap.** ~30 lines vanilla JS, gated on `prefers-reduced-motion: no-preference`. If reduced-motion is on, the rAF loop never starts and elements sit at `transform: none`.
+
+#### 3.7.2 CSS perspective tilt (hero phone only)
+
+- Parent gets `perspective: 1200px`; phone gets a static `transform: rotateY(-6deg) rotateX(2deg)`. **Static** — not animated, not on hover, not on scroll (its translateY on scroll comes from §3.7.1).
+- This delivers the "contact sheet at a slight angle" feel from §4.2 with zero JS and zero layout shift.
+- The hairline border framing the phone is on the SAME tilted element so it tilts with it — reads as a physical frame, not a 2D outline.
+
+#### 3.7.3 Grain overlay (atmospheric — the most important "not vibe coded" detail)
+
+A single inline SVG noise pattern (`<feTurbulence>`, ~400 bytes) fixed-positioned as a pseudo-element on `<body>`:
+
+```css
+body::after {
+  content: "";
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg ...feTurbulence baseFrequency='0.9'.../>");
+  opacity: 0.04;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  z-index: 9999;
+}
+```
+
+Solid dark backgrounds read as template SaaS. This grain immediately reads as editorial print. Declared **once** in `Layout.astro`'s `<style>` — no section recreates it.
+
+#### 3.7.4 Hairline depth (replaces shadow)
+
+Cards do not cast shadows. Depth comes from three things only:
+
+1. 1px hairline border in `--ink-3`
+2. Card background `--ink-2` against page `--ink` (one stop lighter)
+3. On hover, border transitions to `--lime`
+
+**No** `box-shadow` on cards anywhere. **No** `backdrop-filter: blur()` on cards (navbar only). **No** inset highlights, ring offsets, or border-image gradients.
+
+#### 3.7.5 Typographic depth (Words + Footer wordmark)
+
+The "PACEBEATS" Footer wordmark and the secondary words in the Words section use:
+
+```css
+-webkit-text-stroke: 1px var(--paper);
+color: transparent;
+```
+
+Outlined display type. The protagonist word ("OWN THE PACE" in Words, primary "PACEBEATS" in Footer) stays filled. This builds visible layered hierarchy without any actual layering, gradient, or shadow.
+
+### 3.8 Deliberate rejects
+
+Short list — when in doubt, if something here is tempting, the answer is no.
+
+- ❌ Three.js / WebGL / Spline / any 3D model embed
+- ❌ Lottie (file size + aesthetic mismatch)
+- ❌ Custom cursors / magnetic cursors / cursor followers
+- ❌ Mouse-tracking spotlights, "aurora" backgrounds
+- ❌ Animated gradient backgrounds, animated mesh gradients
+- ❌ Glassmorphism `backdrop-blur` on cards (navbar only)
+- ❌ Bento grids made of gradient cards
+- ❌ Page-level scroll-jacking (Locomotive, fullpage.js)
+- ❌ Spring physics
+- ❌ Auto-playing video backgrounds
+- ❌ Confetti, particles, floating dots, animated SVG decorations
+- ❌ "Card pops out on hover" / scale-on-hover anywhere
+- ❌ Text gradient (`bg-clip-text` rainbow)
+- ❌ Emojis in shipped UI
+
+If a 2024–2026 designer-portfolio site does it, we probably don't.
+
 ## 4. Section-by-section redesign
 
 Sections are listed in `index.astro` order. Each entry covers: **intent** (what the section says), **layout** (the new shape), **specifics** (concrete changes), **kill list** (what's removed).

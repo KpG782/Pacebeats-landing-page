@@ -1,288 +1,254 @@
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import React, { useEffect, useRef, useState } from "react";
+import { motion, AnimatePresence, useReducedMotion } from "motion/react";
 import {
-  Menu,
-  X,
   ChevronDown,
-  Home,
-  Zap,
+  Menu,
   Activity,
+  Zap,
   Music,
   Watch,
-  BookOpen,
-  Heart,
-  Users,
-  FileText,
-  Shield,
-  Github,
   Download,
+  ArrowUpRight,
 } from "lucide-react";
 import { APK_RELEASE } from "../../config/apkRelease";
 
-export default function NavbarClient() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isFeaturesOpen, setIsFeaturesOpen] = useState(false);
+type NavItem = { label: string; href: string };
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
+const NAV_ITEMS: NavItem[] = [
+  { label: "Features", href: "#features" },
+  { label: "Wear OS", href: "#wear" },
+  { label: "How", href: "#how" },
+  { label: "Team", href: "#team" },
+  { label: "Tech", href: "#techstack" },
+];
+
+const FEATURE_LINKS = [
+  {
+    icon: Activity,
+    title: "Real-time pace",
+    desc: "Live pacing insights and post-run trends, surfaced as you go.",
+    href: "#features",
+  },
+  {
+    icon: Zap,
+    title: "Cadence detection",
+    desc: "Stride analysis that adapts your music tempo in real time.",
+    href: "#features",
+  },
+  {
+    icon: Music,
+    title: "Spotify sync",
+    desc: "Your playlist locks to your stride. No skipping tracks mid-run.",
+    href: "#features",
+  },
+  {
+    icon: Watch,
+    title: "Wear OS companion",
+    desc: "Galaxy Watch pairing for phone-free runs.",
+    href: "#wear",
+  },
+];
+
+export default function NavbarClient() {
+  const prefersReducedMotion = useReducedMotion();
+  const [isFeaturesOpen, setIsFeaturesOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+  const closeTimer = useRef<number | null>(null);
+
+  // Close dropdown on outside click + Escape.
+  useEffect(() => {
+    const onClickAway = (e: MouseEvent) => {
+      if (!dropdownRef.current) return;
+      if (!dropdownRef.current.contains(e.target as Node)) {
+        setIsFeaturesOpen(false);
+      }
+    };
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setIsFeaturesOpen(false);
+    };
+    document.addEventListener("click", onClickAway);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("click", onClickAway);
+      document.removeEventListener("keydown", onKey);
+    };
+  }, []);
+
+  const openDropdown = () => {
+    if (closeTimer.current) {
+      window.clearTimeout(closeTimer.current);
+      closeTimer.current = null;
+    }
+    setIsFeaturesOpen(true);
+  };
+  const scheduleClose = () => {
+    if (closeTimer.current) window.clearTimeout(closeTimer.current);
+    closeTimer.current = window.setTimeout(() => setIsFeaturesOpen(false), 140);
   };
 
+  const openMobileMenu = () => {
+    window.dispatchEvent(new CustomEvent("pb:mobile-menu", { detail: { open: true } }));
+  };
+
+  const transition = prefersReducedMotion
+    ? { duration: 0 }
+    : { duration: 0.28, ease: [0.25, 1, 0.5, 1] as [number, number, number, number] };
+
   return (
-    <>
-      {/* Left Navigation - Hidden on mobile/tablet */}
-      <div className="hidden lg:flex items-center space-x-6 absolute left-4 top-1/2 transform -translate-y-1/2">
-        <motion.a
-          href="#hero"
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-sm hover:text-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1"
-          aria-label="Navigate to homepage hero section"
-        >
-          <span>Home</span>
-        </motion.a>
+    <div className="flex items-center justify-between w-full gap-4 md:gap-6">
+      {/* Logo */}
+      <a
+        href="#hero"
+        className="flex items-center shrink-0"
+        aria-label="Pacebeats — homepage"
+      >
+        <img
+          src="/pacebeats-text.svg"
+          alt="Pacebeats"
+          className="h-5 md:h-6 w-auto"
+          width="120"
+          height="24"
+          loading="eager"
+          decoding="async"
+        />
+      </a>
 
-        {/* Features Dropdown */}
-        <div className="relative group" role="menubar">
-          <motion.button
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="flex items-center text-sm hover:text-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1"
-            aria-expanded="false"
-            aria-haspopup="true"
-            aria-label="Features menu - Press enter or space to open"
-            id="features-menu-button"
-            role="menuitem"
-            tabIndex={0}
-          >
-            <span>Features</span>
-            <motion.div
-              animate={{ rotate: isFeaturesOpen ? 180 : 0 }}
-              transition={{ duration: 0.2 }}
+      {/* Inline nav — tablet (md+) shows it so tablets don't drop to hamburger. */}
+      <ul className="hidden md:flex items-center gap-5 lg:gap-7 ml-auto">
+        {NAV_ITEMS.map((item) =>
+          item.label === "Features" ? (
+            <li
+              key={item.label}
+              className="relative"
+              ref={dropdownRef}
+              onMouseEnter={openDropdown}
+              onMouseLeave={scheduleClose}
             >
-              <ChevronDown className="w-4 h-4 ml-1" />
-            </motion.div>
-          </motion.button>
-
-          {/* Features Dropdown Menu */}
-          <AnimatePresence>
-            <motion.div
-              initial={{ opacity: 0, y: -10 }}
-              whileHover={{ opacity: 1, y: 0 }}
-              className="absolute top-full left-0 mt-2 w-64 bg-white bg-opacity-95 backdrop-blur-sm rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 border border-gray-200"
-              role="menu"
-              aria-labelledby="features-menu-button"
-              aria-hidden="true"
-            >
-              <div className="py-2">
-                <a
-                  href="#features"
-                  className="flex items-center gap-3 px-4 py-2 text-sm text-gray-800 hover:bg-gray-100 transition-colors focus:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-inset"
-                  role="menuitem"
-                  tabIndex={-1}
-                  aria-describedby="feature-1-desc"
-                >
-                  <Activity className="w-4 h-4 text-red-500" />
-                  <div>
-                    <span className="font-medium">
-                      Real-Time Pace & Analytics
-                    </span>
-                    <p id="feature-1-desc" className="text-xs text-gray-600">
-                      Live pacing insights + post-run performance trends
-                    </p>
-                  </div>
-                </a>
-                <a
-                  href="#features"
-                  className="flex items-center gap-3 px-4 py-2 text-sm text-gray-800 hover:bg-gray-100 transition-colors focus:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-inset"
-                  role="menuitem"
-                  tabIndex={-1}
-                  aria-describedby="feature-2-desc"
-                >
-                  <Zap className="w-4 h-4 text-red-500" />
-                  <div>
-                    <span className="font-medium">Smart Pace Detection</span>
-                    <p id="feature-2-desc" className="text-xs text-gray-600">
-                      AI-driven analysis that adapts to your running style
-                    </p>
-                  </div>
-                </a>
-                <a
-                  href="#features"
-                  className="flex items-center gap-3 px-4 py-2 text-sm text-gray-800 hover:bg-gray-100 transition-colors focus:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-inset"
-                  role="menuitem"
-                  tabIndex={-1}
-                  aria-describedby="feature-3-desc"
-                >
-                  <Music className="w-4 h-4 text-red-500" />
-                  <div>
-                    <span className="font-medium">Spotify Integration</span>
-                    <p id="feature-3-desc" className="text-xs text-gray-600">
-                      Music playback that syncs with your running pace
-                    </p>
-                  </div>
-                </a>
-                <a
-                  href="#watch-integration"
-                  className="flex items-center gap-3 px-4 py-2 text-sm text-gray-800 hover:bg-gray-100 transition-colors focus:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-inset"
-                  role="menuitem"
-                  tabIndex={-1}
-                  aria-describedby="feature-4-desc"
-                >
-                  <Watch className="w-4 h-4 text-red-500" />
-                  <div>
-                    <span className="font-medium">
-                      Pacebeats Watch Companion
-                    </span>
-                    <p id="feature-4-desc" className="text-xs text-gray-600">
-                      Companion app for selected smartwatches
-                    </p>
-                  </div>
-                </a>
-              </div>
-            </motion.div>
-          </AnimatePresence>
-        </div>
-
-        <motion.a
-          href="#how-it-works"
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-sm hover:text-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1"
-          aria-label="Learn how Pacebeats works"
-        >
-          <span>How It Works</span>
-        </motion.a>
-        <motion.a
-          href="#tech-stack"
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="text-sm hover:text-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1"
-          aria-label="View Pacebeats technology stack"
-        >
-          <span>Tech Stack</span>
-        </motion.a>
-      </div>
-
-      {/* Mobile menu button - Visible on mobile and tablet */}
-      <div className="lg:hidden absolute left-4 top-1/2 transform -translate-y-1/2">
-        <motion.button
-          whileTap={{ scale: 0.95 }}
-          onClick={toggleMenu}
-          id="mobile-menu-button"
-          className="text-white hover:text-gray-300 transition-colors p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50"
-          aria-expanded={isMenuOpen}
-          aria-controls="mobile-menu"
-          aria-label={
-            isMenuOpen ? "Close navigation menu" : "Open navigation menu"
-          }
-          type="button"
-        >
-          <AnimatePresence mode="wait">
-            {isMenuOpen ? (
-              <motion.div
-                key="close"
-                initial={{ rotate: -90, opacity: 0 }}
-                animate={{ rotate: 0, opacity: 1 }}
-                exit={{ rotate: 90, opacity: 0 }}
-                transition={{ duration: 0.2 }}
+              <button
+                type="button"
+                className="flex items-center gap-1 font-body font-semibold text-sm text-slate hover:text-ink-on-sky transition-colors duration-150 ease-out-quart"
+                aria-expanded={isFeaturesOpen}
+                aria-haspopup="true"
+                aria-controls="features-dropdown"
+                onClick={() => setIsFeaturesOpen((v) => !v)}
+                onFocus={openDropdown}
               >
-                <X className="w-6 h-6" />
-              </motion.div>
-            ) : (
-              <motion.div
-                key="menu"
-                initial={{ rotate: 90, opacity: 0 }}
-                animate={{ rotate: 0, opacity: 1 }}
-                exit={{ rotate: -90, opacity: 0 }}
-                transition={{ duration: 0.2 }}
+                <span>{item.label}</span>
+                <ChevronDown
+                  className={`w-3.5 h-3.5 transition-transform duration-200 ease-out-quart ${
+                    isFeaturesOpen ? "rotate-180" : ""
+                  }`}
+                  strokeWidth={2.25}
+                />
+              </button>
+
+              <AnimatePresence>
+                {isFeaturesOpen && (
+                  <motion.div
+                    id="features-dropdown"
+                    role="menu"
+                    aria-label="Features menu"
+                    initial={{ opacity: 0, y: -4 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -4 }}
+                    transition={transition}
+                    className="absolute right-0 top-full mt-3 w-[min(92vw,28rem)] overflow-hidden bg-paper border border-sky-3 rounded-xl shadow-[0_20px_50px_-12px_rgba(11,20,38,0.22)]"
+                  >
+                    {/* Eyebrow header */}
+                    <div className="flex items-center justify-between px-5 pt-4 pb-3 border-b border-sky-3">
+                      <p className="font-mono text-[0.65rem] tracking-[0.18em] uppercase text-slate">
+                        Features
+                      </p>
+                      <p className="font-mono text-[0.65rem] tracking-[0.18em] uppercase text-slate">
+                        04
+                      </p>
+                    </div>
+
+                    {/* Items */}
+                    <ul role="none" className="py-2">
+                      {FEATURE_LINKS.map(({ icon: Icon, title, desc, href }, i) => (
+                        <li key={title} role="none" className={i > 0 ? "border-t border-sky-3/60" : ""}>
+                          <a
+                            href={href}
+                            role="menuitem"
+                            className="group flex items-start gap-4 px-5 py-3.5 hover:bg-sky transition-colors duration-150 ease-out-quart"
+                            onClick={() => setIsFeaturesOpen(false)}
+                          >
+                            {/* Framed icon — small square hairline tile */}
+                            <span className="shrink-0 inline-flex items-center justify-center w-10 h-10 rounded-md border border-sky-3 bg-sky-2 text-cobalt group-hover:border-cobalt group-hover:bg-paper transition-colors duration-200 ease-out-quart">
+                              <Icon className="w-[18px] h-[18px]" strokeWidth={2} />
+                            </span>
+                            <span className="flex-1 flex flex-col gap-1 min-w-0">
+                              <span className="font-display font-bold text-[0.95rem] tracking-[-0.01em] text-ink-on-sky">
+                                {title}
+                              </span>
+                              <span className="font-body text-[0.8rem] text-slate leading-snug">
+                                {desc}
+                              </span>
+                            </span>
+                            <ArrowUpRight
+                              className="w-4 h-4 text-slate group-hover:text-cobalt mt-1 shrink-0 transition-colors duration-150 ease-out-quart"
+                              strokeWidth={2}
+                            />
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+
+                    {/* Bottom CTA strip */}
+                    <a
+                      href="#features"
+                      className="group flex items-center justify-between px-5 py-3.5 border-t border-sky-3 bg-sky-2 hover:bg-sky transition-colors duration-150 ease-out-quart"
+                      onClick={() => setIsFeaturesOpen(false)}
+                    >
+                      <span className="font-display font-bold text-sm text-cobalt">
+                        See all features
+                      </span>
+                      <ArrowUpRight
+                        className="w-4 h-4 text-cobalt group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-150 ease-out-quart"
+                        strokeWidth={2.25}
+                      />
+                    </a>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </li>
+          ) : (
+            <li key={item.label}>
+              <a
+                href={item.href}
+                className="font-body font-semibold text-sm text-slate hover:text-ink-on-sky transition-colors duration-150 ease-out-quart"
               >
-                <Menu className="w-6 h-6" />
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </motion.button>
-      </div>
+                {item.label}
+              </a>
+            </li>
+          ),
+        )}
+      </ul>
 
-      {/* Center Logo - Always centered on ALL screen sizes */}
-      <div className="flex items-center justify-center">
-        <motion.a
-          href="#hero"
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, type: "spring" }}
-          className="focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md"
-          aria-label="Pacebeats - Navigate to homepage"
-        >
-          <img
-            src="/pacebeats-text-white.svg"
-            alt="Pacebeats - Running companion app that syncs every stride with the perfect beat"
-            className="h-6"
-            width="120"
-            height="28"
-            loading="eager"
-            decoding="async"
-          />
-        </motion.a>
-      </div>
-
-      {/* Right Navigation - Hidden on mobile and tablet */}
-      <div className="hidden lg:flex items-center space-x-6 absolute right-4 top-1/2 transform -translate-y-1/2">
-        <motion.a
-          href="https://buymeacoffee.com/Loki123"
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5 }}
-          target="_blank"
-          rel="noopener noreferrer nofollow"
-          className="text-sm hover:text-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1"
-          aria-label="Support Pacebeats development on Buy Me a Coffee - Opens in new tab"
-        >
-          <span>Support</span>
-        </motion.a>
-        <motion.a
-          href="#team"
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="text-sm hover:text-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1"
-          aria-label="Meet the Pacebeats team"
-        >
-          <span>Team</span>
-        </motion.a>
-        <motion.a
-          href="https://github.com/KpG782/pacebeats-release-files"
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          target="_blank"
-          rel="noopener noreferrer nofollow"
-          className="flex items-center text-sm hover:text-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md px-2 py-1"
-          aria-label="View Pacebeats APK releases on GitHub - Opens in new tab"
-        >
-          <Github className="w-4 h-4 mr-1" />
-          <span>Releases</span>
-        </motion.a>
-        <motion.a
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
+      {/* Right side: Download CTA + mobile menu button */}
+      <div className="flex items-center gap-3 ml-auto md:ml-0">
+        <a
           href={APK_RELEASE.downloadUrl}
           target="_blank"
-          rel="noopener noreferrer nofollow"
-          className="bg-white text-black px-4 py-2 rounded-full text-xs font-semibold hover:bg-gray-200 transition-colors shadow-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 flex items-center whitespace-nowrap"
-          aria-label={`Download Pacebeats Android APK version ${APK_RELEASE.version} - Opens in new tab`}
+          rel="noopener noreferrer"
+          className="btn-cta btn-cta--primary hidden sm:inline-flex !min-h-0 !py-2.5 !px-4 !text-[0.78rem] !tracking-[0.08em] !rounded-full"
+          aria-label={`Download Pacebeats Android APK ${APK_RELEASE.version} — opens in new tab`}
         >
-          <Download className="w-4 h-4 mr-2" />
-          <span className="hidden xl:inline">Download APK {APK_RELEASE.version}</span>
-          <span className="xl:hidden">APK {APK_RELEASE.version}</span>
-        </motion.a>
+          <Download className="w-4 h-4" strokeWidth={2.25} />
+          <span>Download</span>
+        </a>
+
+        <button
+          type="button"
+          onClick={openMobileMenu}
+          className="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-md border border-sky-3 bg-paper text-ink-on-sky hover:border-cobalt hover:text-cobalt transition-colors duration-150 ease-out-quart"
+          aria-label="Open navigation menu"
+          aria-controls="mobile-menu"
+        >
+          <Menu className="w-5 h-5" strokeWidth={2.25} />
+        </button>
       </div>
-    </>
+    </div>
   );
 }

@@ -1,48 +1,168 @@
 ---
 import HeroClient from './client/HeroClient';
+import { APK_RELEASE } from '../config/apkRelease';
+
+// Headline words server-rendered so the client island only toggles `.is-visible`.
+const HEADLINE_LINE_1 = "Run to the rhythm.".split(" ");
+const HEADLINE_LINE_2 = "Achieve your pace.".split(" ");
+
+const releaseCaption = `${APK_RELEASE.version} · UPDATED ${APK_RELEASE.updatedAt.toUpperCase()}`;
 ---
 
-<!-- Hero Section with enhanced SEO and accessibility -->
 <main id="main-content" role="main">
-    <section 
-        id="hero" 
-        class="relative min-h-screen bg-cover bg-center bg-no-repeat pt-16" 
-        style="background-image: url('/hero-section2.jpg');"
-        aria-labelledby="hero-heading"
-        itemscope 
-        itemtype="https://schema.org/SoftwareApplication"
+  <section
+    id="hero"
+    class="relative isolate min-h-screen overflow-hidden bg-sky text-ink-on-sky"
+    aria-labelledby="hero-heading"
+    itemscope
+    itemtype="https://schema.org/SoftwareApplication"
+  >
+    {/* Parallax background photo — silhouette only, very low opacity. */}
+    <div
+      class="hero-bg absolute inset-0 -z-20 will-change-transform opacity-[0.12]"
+      aria-hidden="true"
     >
-        <!-- Enhanced dark overlay with gradient -->
-        <div class="absolute inset-0 bg-gradient-to-b from-black/72 via-black/52 to-black/68" aria-hidden="true"></div>
-        
-        <!-- Image Attribution -->
-        <div class="absolute bottom-2 right-2 z-20 text-xs text-white/60 hover:text-white/90 transition-colors">
-            <span>Photo by <a href="https://unsplash.com/@slelham?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" target="_blank" rel="noopener noreferrer" class="underline hover:text-blue-400">Steven Lelham</a> on <a href="https://unsplash.com/photos/group-of-people-running-on-stadium-atSaEOeE8Nk?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" target="_blank" rel="noopener noreferrer" class="underline hover:text-blue-400">Unsplash</a></span>
-        </div>
-        
-        <!-- Hero content -->
-        <div class="relative z-10 flex items-center justify-center min-h-screen text-center text-white px-4 sm:px-6 lg:px-8">
-            <HeroClient client:load />
+      <img
+        src="/hero-section2.jpg"
+        alt=""
+        class="w-full h-[120%] object-cover object-center"
+        loading="eager"
+        decoding="async"
+      />
+    </div>
+
+    {/* Sky tint overlay softens the photo into the surface. */}
+    <div class="absolute inset-0 -z-10 bg-sky/[0.6]" aria-hidden="true"></div>
+
+    {/* Route silhouette — a single GPS-style curve drawing itself
+        across the hero. Sits above the overlay, below the content. */}
+    <svg
+      class="hero-route absolute inset-x-0 top-[18%] w-full h-[64%] pointer-events-none"
+      viewBox="0 0 1440 480"
+      preserveAspectRatio="none"
+      aria-hidden="true"
+    >
+      <path
+        class="route-draw"
+        d="M-20,300 C160,160 320,420 520,280 S880,140 1040,300 S1280,440 1460,200"
+        fill="none"
+        stroke="var(--color-cobalt)"
+        stroke-width="1.5"
+        stroke-opacity="0.32"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        pathLength="1"
+      />
+      {/* Two small mile markers along the path for editorial detail. */}
+      <circle cx="520" cy="280" r="3" fill="var(--color-cobalt)" opacity="0.45" />
+      <circle cx="1040" cy="300" r="3" fill="var(--color-cobalt)" opacity="0.45" />
+    </svg>
+
+    {/* Content — depth plane 3 (1.0x, no parallax transform). */}
+    <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-10 pt-32 md:pt-40 pb-32 md:pb-40">
+      <div class="mb-10 md:mb-16 flex items-center justify-between">
+        <p class="font-mono text-slate text-xs tracking-[0.18em] uppercase">
+          / 01 — Mobile Application
+        </p>
+        <p class="hidden md:block font-mono text-slate text-xs tracking-[0.18em] uppercase">
+          Pacebeats Case Study
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-12 items-center">
+        {/* Text column — cols 1–7 on desktop */}
+        <div class="md:col-span-7">
+          <h1
+            id="hero-heading"
+            class="hero-headline reveal-words font-display font-extrabold text-ink-on-sky"
+            itemprop="name"
+          >
+            <span class="block">
+              {HEADLINE_LINE_1.map((word, i) => (
+                <>
+                  <span class="word">{word}</span>{i < HEADLINE_LINE_1.length - 1 ? " " : ""}
+                </>
+              ))}
+            </span>
+            <span class="block text-cobalt">
+              {HEADLINE_LINE_2.map((word, i) => (
+                <>
+                  <span class="word">{word}</span>{i < HEADLINE_LINE_2.length - 1 ? " " : ""}
+                </>
+              ))}
+            </span>
+          </h1>
+
+          <p
+            class="mt-8 font-body text-slate max-w-[55ch] hero-subtitle"
+            itemprop="description"
+          >
+            An Android + Wear OS running companion that adapts your music to your stride in real time. No more clashing tempos. No more skipping tracks mid-stride.
+          </p>
+
+          {/* Client island owns CTAs + scroll indicator + headline reveal trigger. */}
+          <HeroClient client:load />
+
+          <p class="mt-6 font-mono uppercase text-xs tracking-[0.18em] text-slate">
+            {releaseCaption}
+          </p>
         </div>
 
-        <!-- Hidden content for SEO and screen readers -->
-        <div class="sr-only">
-            <h2>Key Features of Pacebeats Running App</h2>
-            <ul>
-                <li itemprop="featureList">Real-time pace tracking and analytics</li>
-                <li itemprop="featureList">Smart music synchronization with running cadence</li>
-                <li itemprop="featureList">Spotify integration for seamless music experience</li>
-                <li itemprop="featureList">Smartwatch companion app support</li>
-                <li itemprop="featureList">Community challenges and social features</li>
-                <li itemprop="featureList">Personalized training plans and goals</li>
-            </ul>
-            
-            <div itemprop="applicationCategory">Health & Fitness</div>
-            <div itemprop="operatingSystem">iOS, Android</div>
-            <meta itemprop="offers" content="Free with premium features available">
-            <meta itemprop="url" content="https://www.pacebeats.top">
+        {/* Phone visual — cols 8–12 on desktop. Parallax depth plane 2 (0.7x).
+            Wrapper sets perspective; .hero-phone gets scroll-driven rotateY
+            via --scroll-y (preserve-3d so children render in the 3D space). */}
+        <div class="md:col-span-5 flex justify-center md:justify-end">
+          <div class="hero-phone-wrap phone-3d">
+            <div class="hero-phone phone-3d border border-sky-3 p-2 bg-paper rounded-[28px] shadow-[0_30px_60px_-20px_rgba(11,20,38,0.25)]">
+              <img
+                src="/hero-screen-1.svg"
+                alt="Pacebeats mobile app interface showing pace tracking and music sync"
+                class="block w-44 sm:w-52 md:w-60 lg:w-72 h-auto rounded-[20px] bg-cobalt"
+                loading="eager"
+                width="320"
+                height="640"
+              />
+            </div>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+
+    {/* Hidden SEO content (preserved). */}
+    <div class="sr-only">
+      <h2>Key Features of Pacebeats Running App</h2>
+      <ul>
+        <li itemprop="featureList">Real-time pace tracking and analytics</li>
+        <li itemprop="featureList">Smart music synchronization with running cadence</li>
+        <li itemprop="featureList">Spotify integration for seamless music experience</li>
+        <li itemprop="featureList">Smartwatch companion app support</li>
+        <li itemprop="featureList">Community challenges and social features</li>
+        <li itemprop="featureList">Personalized training plans and goals</li>
+      </ul>
+      <div itemprop="applicationCategory">Health & Fitness</div>
+      <div itemprop="operatingSystem">Android, Wear OS</div>
+      <meta itemprop="offers" content="Free download" />
+      <meta itemprop="url" content="https://www.pacebeats.top" />
+    </div>
+
+    {/* Image attribution — discreet hairline link. */}
+    <p class="absolute bottom-2 right-3 z-10 font-mono text-[0.6rem] uppercase tracking-[0.14em] text-slate/70">
+      Photo:{" "}
+      <a
+        href="https://unsplash.com/@slelham?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="link-underline text-slate hover:text-ink-on-sky"
+      >Steven Lelham</a>
+      {" / "}
+      <a
+        href="https://unsplash.com/photos/group-of-people-running-on-stadium-atSaEOeE8Nk?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="link-underline text-slate hover:text-ink-on-sky"
+      >Unsplash</a>
+    </p>
+  </section>
 </main>
 
 <!-- JSON-LD Structured Data for Enhanced SEO -->
@@ -52,10 +172,10 @@ import HeroClient from './client/HeroClient';
     "@type": "SoftwareApplication",
     "name": "Pacebeats",
     "alternateName": "Pacebeats Running App",
-    "description": "Transform every run by syncing your steps with the perfect song. Pacebeats adapts music to your stride, helping you push past limits and turn workouts into rhythm-powered journeys.",
+    "description": "Run to the rhythm. Achieve your pace. Pacebeats is an Android + Wear OS running companion that adapts your music to your stride in real time.",
     "url": "https://www.pacebeats.top",
     "applicationCategory": "HealthApplication",
-    "operatingSystem": ["iOS", "Android"],
+    "operatingSystem": ["Android", "Wear OS"],
     "keywords": ["running app", "fitness tracker", "music synchronization", "pace tracking", "running companion", "workout app", "spotify integration"],
     "offers": {
         "@type": "Offer",
@@ -86,7 +206,7 @@ import HeroClient from './client/HeroClient';
     },
     "featureList": [
         "Real-time pace tracking and analytics",
-        "Smart music synchronization with running cadence", 
+        "Smart music synchronization with running cadence",
         "Spotify integration for seamless music experience",
         "Smartwatch companion app support",
         "Community challenges and social features",
@@ -104,7 +224,7 @@ import HeroClient from './client/HeroClient';
     "softwareVersion": "2.1.0",
     "datePublished": "2024-01-15",
     "dateModified": "2025-01-15",
-    "softwareRequirements": "iOS 14.0+ or Android 8.0+",
+    "softwareRequirements": "Android 8.0+ or Wear OS 3.0+",
     "memoryRequirements": "100MB",
     "storageRequirements": "250MB"
 }
@@ -123,409 +243,119 @@ import HeroClient from './client/HeroClient';
             "item": "https://www.pacebeats.top/"
         },
         {
-            "@type": "ListItem", 
+            "@type": "ListItem",
             "position": 2,
             "name": "Features",
             "item": "https://www.pacebeats.top/#features"
         },
         {
             "@type": "ListItem",
-            "position": 3, 
+            "position": 3,
             "name": "How It Works",
-            "item": "https://www.pacebeats.top/#how-it-works"
+            "item": "https://www.pacebeats.top/#how"
         }
     ]
 }
 </script>
 
 <style>
-    /* Athletic typography styling */
-    .hero-title {
-        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        font-weight: 900;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-        letter-spacing: -0.02em;
+  /* Hero headline scale — Plus Jakarta Sans 800. Jakarta is wider than the
+     condensed face it replaced, so we shrink top of clamp and breathe out
+     line-height a touch. */
+  .hero-headline {
+    font-size: clamp(2.75rem, 6.5vw, 6.25rem);
+    line-height: 0.98;
+    letter-spacing: -0.035em;
+    text-transform: none;
+  }
+  .hero-subtitle {
+    font-size: clamp(1rem, 1.2vw, 1.25rem);
+    line-height: 1.5;
+  }
+
+  /* Parallax: the inline JS below writes --scroll-y on this section root.
+     Three depth planes — bg 0.3x, phone-wrap 0.7x, content 1.0x. */
+  .hero-bg {
+    transform: translate3d(0, calc(var(--scroll-y, 0) * -0.3px), 0);
+  }
+  .hero-phone-wrap {
+    perspective: 1400px;
+    transform: translate3d(0, calc(var(--scroll-y, 0) * -0.7px), 0);
+  }
+  /* Phone gains scroll-driven rotateY — from -6deg at top to ~+2deg as
+     hero scrolls out. Static rotateX keeps the top edge tilted back. */
+  .hero-phone {
+    transform:
+      rotateY(calc(-6deg + var(--scroll-y, 0) * 0.008deg))
+      rotateX(2deg);
+  }
+
+  /* Reduced motion: never translate, never tilt-on-scroll. */
+  @media (prefers-reduced-motion: reduce) {
+    .hero-bg,
+    .hero-phone-wrap {
+      transform: none !important;
     }
-    
-    /* Text glowing effect */
-    .text-glow {
-        color: #ffffff;
-        text-shadow: 
-            0 0 8px rgba(255, 255, 255, 0.2),
-            0 0 18px rgba(255, 255, 255, 0.1),
-            2px 2px 4px rgba(0, 0, 0, 0.8);
-        animation: none;
+    .hero-phone {
+      transform: rotateY(-6deg) rotateX(2deg) !important;
     }
-    
-    @keyframes textGlow {
-        from {
-            text-shadow: 
-                0 0 8px rgba(255, 255, 255, 0.2),
-                0 0 18px rgba(255, 255, 255, 0.1),
-                2px 2px 4px rgba(0, 0, 0, 0.8);
-        }
-        to {
-            text-shadow: 
-                0 0 10px rgba(255, 255, 255, 0.25),
-                0 0 22px rgba(255, 255, 255, 0.12),
-                2px 2px 4px rgba(0, 0, 0, 0.8);
-        }
-    }
-    
-    /* Responsive typography scaling */
-    @media (max-width: 768px) {
-        .hero-title {
-            font-size: 3rem;
-            line-height: 0.85;
-        }
-    }
-    
-    @media (max-width: 480px) {
-        .hero-title {
-            font-size: 2.5rem;
-            line-height: 0.9;
-        }
-    }
-    
-    /* Additional responsive fixes for the hero section */
-    #hero {
-        max-width: 100vw;
-        overflow-x: hidden;
-    }
-    
-    /* Ensure proper spacing with fixed navbar */
-    @media (min-width: 768px) {
-        #hero {
-            padding-top: 4rem; /* Account for fixed navbar */
-        }
-    }
-    
-    /* Mobile adjustments */
-    @media (max-width: 767px) {
-        #hero {
-            padding-top: 4rem; /* Account for mobile navbar */
-        }
-        
-        .hero-title {
-            font-size: 2.25rem !important;
-            line-height: 1.1;
-            margin-bottom: 1rem !important; /* Reduced spacing */
-        }
-        
-        .text-base {
-            font-size: 0.95rem;
-        }
-    }
-    
-    /* Very small screens */
-    @media (max-width: 480px) {
-        .hero-title {
-            font-size: 1.875rem !important;
-            margin-bottom: 0.75rem !important; /* Further reduced spacing */
-        }
-        
-        .text-base {
-            font-size: 0.875rem;
-            margin-bottom: 1.5rem !important; /* Reduced spacing */
-        }
-    }
-    
-    /* Landscape mobile fix */
-    @media (max-height: 600px) and (orientation: landscape) {
-        #hero {
-            min-height: 100vh;
-            padding-top: 3rem;
-        }
-        
-        .hero-title {
-            font-size: 1.75rem !important;
-            margin-bottom: 1rem;
-        }
-        
-        .mb-8, .mb-12 {
-            margin-bottom: 1rem;
-        }
-        
-        .mb-12.sm\:mb-16, .mb-16 {
-            margin-bottom: 1.5rem;
-        }
-    }
-    
-    /* Enhanced hover effects */
-    button {
-        position: relative;
-        overflow: hidden;
-    }
-    
-    button::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-        transition: left 0.5s;
-    }
-    
-    button:hover::before {
-        left: 100%;
-    }
-    
-    /* Smooth scrolling enhancement */
-    html {
-        scroll-behavior: smooth;
-    }
-    
-    /* Loading animation for hero */
-    .hero-title span {
-        display: inline-block;
-        animation: fadeInUp 1s ease-out forwards;
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    
-    .hero-title span:first-child {
-        animation-delay: 0.2s;
-    }
-    
-    .hero-title span:last-child {
-        animation-delay: 0.4s;
-    }
-    
-    @keyframes fadeInUp {
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-    
-    /* Performance optimizations */
-    .hero-title,
-    button {
-        will-change: transform;
-    }
-    
-    /* Accessibility improvements */
-    @media (prefers-reduced-motion: reduce) {
-        .hero-title span {
-            animation: none;
-            opacity: 1;
-            transform: none;
-        }
-        
-        .text-glow {
-            animation: none;
-        }
-        
-        .animate-bounce,
-        .animate-pulse {
-            animation: none;
-        }
-        
-        * {
-            transition-duration: 0.01ms !important;
-        }
-    }
-    
-    /* High contrast mode support */
-    @media (prefers-contrast: high) {
-        .hero-title {
-            text-shadow: 3px 3px 0px #000000;
-        }
-        
-        .text-glow {
-            text-shadow: 3px 3px 0px #000000;
-            animation: none;
-        }
-        
-        .text-gray-100 {
-            color: #ffffff;
-        }
-    }
-    
-    /* Focus styles for accessibility */
-    button:focus-visible {
-        outline: 3px solid #ffffff;
-        outline-offset: 2px;
-    }
-    
-    /* Enhanced accessibility styles */
-    .sr-only {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        padding: 0;
-        margin: -1px;
-        overflow: hidden;
-        clip: rect(0, 0, 0, 0);
-        white-space: nowrap;
-        border: 0;
-    }
-    
-    /* Focus indicators for keyboard navigation */
-    button:focus-visible,
-    [role="button"]:focus-visible {
-        outline: 3px solid #ffffff;
-        outline-offset: 2px;
-        box-shadow: 0 0 0 6px rgba(59, 130, 246, 0.5);
-    }
-    
-    /* Enhanced contrast for text readability */
-    @media (prefers-contrast: high) {
-        .hero-title {
-            text-shadow: 3px 3px 0px #000000, -1px -1px 0px #000000;
-            color: #ffffff;
-        }
-        
-        .text-glow {
-            text-shadow: 3px 3px 0px #000000, -1px -1px 0px #000000;
-            animation: none;
-            color: #ffffff;
-        }
-        
-        .text-gray-100 {
-            color: #ffffff;
-            text-shadow: 1px 1px 0px #000000;
-        }
-        
-        button {
-            border: 2px solid #ffffff;
-        }
-    }
-    
-    /* Improved keyboard navigation styles */
-    [role="button"]:hover {
-        transform: scale(1.1);
-        transition: transform 0.2s ease;
-    }
-    
-    /* Loading states for better UX */
-    .hero-content-loading {
-        opacity: 0;
-        transform: translateY(20px);
-        transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-    
-    .hero-content-loaded {
-        opacity: 1;
-        transform: translateY(0);
-    }
-    
-    /* Responsive image optimization */
-    img {
-        object-fit: contain;
-        object-position: center;
-    }
+  }
 </style>
 
 <script>
-    // Enhanced accessibility and performance functions
-    function scrollToSection(sectionId: string) {
-        const element = document.getElementById(sectionId);
-        if (element) {
-            // Announce navigation to screen readers
-            const announcement = document.createElement('div');
-            announcement.setAttribute('aria-live', 'polite');
-            announcement.setAttribute('aria-atomic', 'true');
-            announcement.className = 'sr-only';
-            announcement.textContent = `Navigating to ${sectionId} section`;
-            document.body.appendChild(announcement);
-            
-            // Smooth scroll with focus management
-            element.scrollIntoView({ 
-                behavior: 'smooth', 
-                block: 'start' 
-            });
-            
-            // Set focus to the section for screen readers
-            setTimeout(() => {
-                element.setAttribute('tabindex', '-1');
-                element.focus();
-                document.body.removeChild(announcement);
-            }, 1000);
-            
-            // Analytics tracking
-            if ('gtag' in window) {
-                (window as any).gtag('event', 'scroll_to_section', {
-                    'event_category': 'engagement',
-                    'event_label': sectionId,
-                    'value': 1
-                });
-            }
-        }
-    }
-    
-    // Enhanced keyboard navigation for scroll indicator
-    function handleScrollIndicatorKeydown(event: KeyboardEvent) {
-        if (event.key === 'Enter' || event.key === ' ') {
-            event.preventDefault();
-            scrollToSection('features');
-        }
-    }
-    
-    // Enhanced performance with intersection observer
+  // ─────────────────────────────────────────────────────────────
+  // Hero parallax — single rAF loop, writes --scroll-y on the
+  // hero section. Two children consume it via CSS transforms.
+  // Gated on prefers-reduced-motion + only runs when hero is in view.
+  // ─────────────────────────────────────────────────────────────
+  (() => {
+    const hero = document.getElementById('hero');
+    if (!hero) return;
+
+    const prefersReduced = window.matchMedia(
+      '(prefers-reduced-motion: reduce)',
+    ).matches;
+    if (prefersReduced) return;
+
+    let rafId: number | null = null;
+    let inView = false;
+
+    const tick = () => {
+      hero.style.setProperty('--scroll-y', String(window.scrollY));
+      if (inView) {
+        rafId = window.requestAnimationFrame(tick);
+      } else {
+        rafId = null;
+      }
+    };
+
+    const start = () => {
+      if (rafId !== null) return;
+      rafId = window.requestAnimationFrame(tick);
+    };
+    const stop = () => {
+      if (rafId !== null) {
+        window.cancelAnimationFrame(rafId);
+        rafId = null;
+      }
+    };
+
     if ('IntersectionObserver' in window) {
-        const heroObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('hero-content-loaded');
-                    entry.target.classList.remove('hero-content-loading');
-                    
-                    // Announce content load to screen readers
-                    const announcement = document.createElement('div');
-                    announcement.setAttribute('aria-live', 'polite');
-                    announcement.className = 'sr-only';
-                    announcement.textContent = 'Pacebeats homepage content has loaded';
-                    document.body.appendChild(announcement);
-                    
-                    setTimeout(() => {
-                        if (document.body.contains(announcement)) {
-                            document.body.removeChild(announcement);
-                        }
-                    }, 2000);
-                }
-            });
-        }, {
-            threshold: 0.1,
-            rootMargin: '50px'
-        });
-        
-        const heroSection = document.querySelector('#hero');
-        if (heroSection) {
-            heroSection.classList.add('hero-content-loading');
-            heroObserver.observe(heroSection);
-        }
+      const io = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            inView = entry.isIntersecting;
+            if (inView) start();
+            else stop();
+          }
+        },
+        { threshold: 0 },
+      );
+      io.observe(hero);
+    } else {
+      // Fallback — always-on rAF.
+      inView = true;
+      start();
     }
-    
-    // Parallax effect removed to fix scrolling background issue
-    
-    // Preload critical resources for performance
-    if ('requestIdleCallback' in window) {
-        requestIdleCallback(() => {
-            // Preload hero image
-            const heroImg = new Image();
-            heroImg.src = '/hero-screen-1.svg';
-            
-            // Preload next section images
-            const preloadImages = ['/features-preview.jpg', '/app-interface.jpg'];
-            preloadImages.forEach(src => {
-                const img = new Image();
-                img.src = src;
-            });
-        });
-    }
-    
-    // Enhanced error handling and fallbacks
-    window.addEventListener('error', (e) => {
-        if (e.target instanceof HTMLImageElement) {
-            // Fallback for failed image loads
-            e.target.style.display = 'none';
-            console.warn('Image failed to load:', e.target.src);
-        }
-    });
-    
-    // Expose functions globally for onclick handlers
-    (window as any).scrollToSection = scrollToSection;
-    (window as any).handleScrollIndicatorKeydown = handleScrollIndicatorKeydown;
+  })();
 </script>

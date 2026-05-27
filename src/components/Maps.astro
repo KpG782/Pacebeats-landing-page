@@ -1,186 +1,139 @@
 ---
+// Maps / Spotify integration section — Editorial Athletic restyle.
+// Pure Astro: reveal animations driven by a small IntersectionObserver
+// in the inline JS block below. No React island needed here.
 ---
 
-<section class="bg-black text-white py-16 px-6 relative z-10">
-    <div class="max-w-6xl min-h-screen mx-auto space-y-14">
-        <!-- Responsive content layout: image left, text right -->
-        <div class="flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-16 text-center lg:text-left">
-            <!-- Phone mockup with enhanced presentation -->
-            <div class="relative w-full lg:w-[45%] flex justify-center lg:justify-start">
-                <img 
-                    src="/spotify.jpg" 
-                    alt="Pacebeats app with Spotify integration for music syncing" 
-                    class="spotify-mockup w-72 md:w-80 h-auto rounded-xl transform hover:scale-102 transition-transform duration-300" 
-                />
-                <!-- Subtle blue glow effect behind phone -->
-                <div class="absolute inset-0 bg-blue-600/8 blur-2xl rounded-full scale-110 -z-10"></div>
+<section
+    id="maps"
+    class="bg-ink text-paper py-32 md:py-40 relative z-10"
+    aria-labelledby="maps-heading"
+    itemscope
+    itemtype="https://schema.org/SoftwareApplication"
+>
+    <div class="max-w-7xl mx-auto px-6 md:px-10">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-12 items-center">
+            <!-- Visual: cols 1–5 on md+. First in DOM so it stacks first on mobile. -->
+            <div class="md:col-span-5 reveal-fade-rise" data-reveal>
+                <figure class="border border-ink-3 p-2">
+                    <img
+                        src="/spotify.jpg"
+                        alt="Pacebeats app screen showing a Spotify-powered playlist synced to a runner's cadence"
+                        class="block w-full h-auto"
+                        loading="lazy"
+                        decoding="async"
+                        width="800"
+                        height="1000"
+                        itemprop="screenshot"
+                    />
+                </figure>
             </div>
-            
-            <!-- Descriptive text with better typography -->
-            <div class="w-full lg:w-[55%] max-w-2xl lg:max-w-none pb-2 lg:pb-8">
-                <h2 class="story-title text-4xl md:text-5xl lg:text-6xl font-black leading-[0.95] tracking-tight text-glow-blue-subtle mb-6 max-w-5xl mx-auto lg:mx-0">
-                    Seamless Spotify Integration <br>
-                    for your ultimate running experience.
-                </h2>
-                <p class="text-gray-200 text-lg md:text-xl leading-relaxed font-normal mx-auto lg:mx-0">
-                    Connect your Spotify account directly within Pacebeats and enjoy personalized playlists that adapt to your running pace in real time. 
-                    Every beat is in sync with your stride, turning every run into a rhythm-powered journey.
+
+            <!-- Text: cols 7–12 on md+ (one-column gap between visual and text). -->
+            <div class="md:col-span-6 md:col-start-7">
+                <p
+                    class="font-mono text-paper-2 text-xs tracking-[0.18em] uppercase mb-6 reveal-fade-rise"
+                    data-reveal
+                >
+                    / 02 — Integration
                 </p>
-                <div class="mt-6 p-4 bg-blue-500/10 border border-blue-400/30 rounded-lg mx-auto lg:mx-0">
-                    <p class="text-sm text-blue-200">
-                        <span class="font-semibold">Note:</span> Currently available to Spotify developer accounts. Please contact us to be registered as a developer on our platform.
-                    </p>
+
+                <h2
+                    id="maps-heading"
+                    class="font-display font-bold text-paper reveal-words"
+                    style="font-size: clamp(2.5rem, 5vw, 5rem); line-height: 0.95; letter-spacing: -0.02em;"
+                    data-reveal
+                    itemprop="name"
+                >
+                    <span class="block">
+                        <span class="word">Your</span>
+                        <span class="word">playlist.</span>
+                    </span>
+                    <span class="block">
+                        <span class="word">Your</span>
+                        <span class="word">pace.</span>
+                    </span>
+                    <span class="block">
+                        <span class="word">In</span>
+                        <span class="word">sync</span>
+                        <span class="word">with</span>
+                        <span class="word text-cobalt">Spotify.</span>
+                    </span>
+                </h2>
+
+                <span
+                    class="reveal-line text-cobalt mt-6 mb-8 block"
+                    style="width: 64px; height: 2px;"
+                    data-reveal
+                    aria-hidden="true"
+                ></span>
+
+                <p
+                    class="font-body text-paper-2 text-lg leading-relaxed max-w-[55ch] reveal-fade-rise"
+                    data-reveal
+                    itemprop="description"
+                >
+                    Pacebeats reads your tempo and surfaces tracks from your library
+                    that match. Your music doesn't just play during your run — it
+                    runs with you.
+                </p>
+
+                <div class="mt-8 reveal-fade-rise flex flex-wrap items-center gap-4" data-reveal>
+                    <span class="chip">
+                        Note · Currently available to Spotify developer accounts
+                    </span>
+                    <!-- Tempo-locked equalizer — visual proof of music-to-stride sync -->
+                    <span
+                        class="eq-bars"
+                        role="img"
+                        aria-label="Music tempo visualisation — equalizer bars in motion"
+                    >
+                        <span class="eq-bar" aria-hidden="true"></span>
+                        <span class="eq-bar" aria-hidden="true"></span>
+                        <span class="eq-bar" aria-hidden="true"></span>
+                        <span class="eq-bar" aria-hidden="true"></span>
+                        <span class="eq-bar" aria-hidden="true"></span>
+                        <span class="eq-bar" aria-hidden="true"></span>
+                        <span class="eq-bar" aria-hidden="true"></span>
+                    </span>
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- SEO: keep semantic relationship explicit -->
+    <div class="sr-only">
+        <h3>Spotify integration details</h3>
+        <p itemprop="featureList">
+            Real-time pace-aware Spotify playback. Tracks are surfaced to match
+            your stride and current cadence. Available to Spotify developer
+            accounts during beta.
+        </p>
+    </div>
 </section>
-<style>
-    /* Story section typography matching hero style */
-    .story-title {
-        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        font-weight: 900;
-        letter-spacing: -0.02em;
-    }
-    
-    /* Blue text glowing effect - Much more subtle */
-    .text-glow-blue-subtle {
-        color: #ffffff;
-        text-shadow: 
-            0 0 5px rgba(59, 130, 246, 0.2),
-            0 0 10px rgba(59, 130, 246, 0.1),
-            1px 1px 2px rgba(0, 0, 0, 0.6);
-        animation: subtleBlueGlow 6s ease-in-out infinite alternate;
-    }
-    
-    @keyframes subtleBlueGlow {
-        from {
-            text-shadow: 
-                0 0 5px rgba(59, 130, 246, 0.2),
-                0 0 10px rgba(59, 130, 246, 0.1),
-                1px 1px 2px rgba(0, 0, 0, 0.6);
-        }
-        to {
-            text-shadow: 
-                0 0 8px rgba(59, 130, 246, 0.3),
-                0 0 15px rgba(59, 130, 246, 0.15),
-                1px 1px 2px rgba(0, 0, 0, 0.6);
-        }
-    }
-    
-    /* Responsive typography for story section */
-    @media (max-width: 1024px) {
-        .story-title {
-            font-size: 3rem;
-        }
-    }
-    
-    @media (max-width: 768px) {
-        .story-title {
-            font-size: 2.5rem;
-            line-height: 0.9;
-        }
-    }
-    
-    @media (max-width: 480px) {
-        .story-title {
-            font-size: 2rem;
-            line-height: 0.95;
-        }
-    }
-    
-    /* Simplified phone mockup styling */
-    .spotify-mockup {
-        filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.3));
-    }
-    
-    /* Subtle hover effect */
-    .hover\\:scale-102:hover {
-        transform: scale(1.02);
-    }
-    
-    /* Scroll-triggered animation */
-    @keyframes fadeInScale {
-        from {
-            opacity: 0;
-            transform: translateY(30px) scale(0.95);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-        }
-    }
-    
-    .story-section-animate {
-        animation: fadeInScale 1s ease-out forwards;
-    }
-    
-    /* Performance optimizations */
-    .story-title {
-        will-change: transform;
-        transform: translateZ(0);
-    }
-    
-    /* Accessibility improvements */
-    @media (prefers-reduced-motion: reduce) {
-        .text-glow-blue-subtle {
-            animation: none;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
-        }
-        
-        img {
-            transform: none !important;
-            transition: none !important;
-        }
-        
-        .story-section-animate {
-            animation: none;
-        }
-    }
-    
-    /* High contrast mode support */
-    @media (prefers-contrast: high) {
-        .text-glow-blue-subtle {
-            text-shadow: 2px 2px 0px #000000;
-            animation: none;
-        }
-        
-        .text-gray-200 {
-            color: #ffffff;
-        }
-    }
-    
-    /* Focus styles */
-    img:focus {
-        outline: 3px solid rgba(59, 130, 246, 0.5);
-        outline-offset: 4px;
-    }
-</style>
 
 <script>
-    // Intersection Observer for scroll animations
-    if ('IntersectionObserver' in window) {
-        const storyObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('story-section-animate');
-                }
-            });
-        }, {
-            threshold: 0.2,
-            rootMargin: '0px 0px -50px 0px'
-        });
-        
-        // Observe the story section elements
-        document.addEventListener('DOMContentLoaded', () => {
-            const storyElements = document.querySelectorAll('.story-title, .spotify-mockup, .max-w-2xl p');
-            storyElements.forEach(el => {
-                if (el) storyObserver.observe(el);
-            });
-        });
+    // Reveal-on-scroll using the global reveal primitives in global.css.
+    // Fire once, threshold 0.15, gated on reduced-motion via the global rule.
+    if ("IntersectionObserver" in window) {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("is-visible");
+                        observer.unobserve(entry.target);
+                    }
+                });
+            },
+            { threshold: 0.15, rootMargin: "0px 0px -10% 0px" },
+        );
+
+        document
+            .querySelectorAll("#maps [data-reveal]")
+            .forEach((el) => observer.observe(el));
+    } else {
+        document
+            .querySelectorAll("#maps [data-reveal]")
+            .forEach((el) => el.classList.add("is-visible"));
     }
-    
-    // Preload the story section image
-    const storyImage = new Image();
-    storyImage.src = '/hero-section-1.svg';
 </script>

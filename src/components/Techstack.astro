@@ -1,325 +1,197 @@
 ---
+import {
+    Smartphone,
+    Code2,
+    Music2,
+    Watch,
+    Rocket,
+    Atom,
+    FileCode2,
+    Palette,
+    Database,
+    Activity,
+} from "@lucide/astro";
+
+// Editorial Athletic — Techstack
+// Logo wall (marquee) + spec sheet of the actual stack powering Pacebeats.
+// All items render as `icon + uppercase wordmark` for consistency. No brand-color SVGs.
+
+type TechItem = {
+    name: string;
+    Icon: typeof Smartphone;
+    desc: string;
+};
+
+const TECH: TechItem[] = [
+    {
+        name: "Android",
+        Icon: Smartphone,
+        desc: "Native runtime — built for the device in your pocket.",
+    },
+    {
+        name: "Kotlin",
+        Icon: Code2,
+        desc: "100% Kotlin codebase. Null-safe, coroutine-driven.",
+    },
+    {
+        name: "Spotify",
+        Icon: Music2,
+        desc: "Web API + playback SDK powering pace-synced music.",
+    },
+    {
+        name: "Samsung Galaxy Watch",
+        Icon: Watch,
+        desc: "Wear OS companion app — pulse, pace, and music on your wrist.",
+    },
+    {
+        name: "Samsung Health",
+        Icon: Activity,
+        desc: "Cadence, heart-rate, and Inter-Beat Interval analysis from the watch.",
+    },
+    {
+        name: "Astro",
+        Icon: Rocket,
+        desc: "Ships the marketing site as static HTML with islands.",
+    },
+    {
+        name: "React",
+        Icon: Atom,
+        desc: "Hydrated islands for the interactive surfaces only.",
+    },
+    {
+        name: "TypeScript",
+        Icon: FileCode2,
+        desc: "End-to-end type safety across web and mobile.",
+    },
+    {
+        name: "Tailwind CSS",
+        Icon: Palette,
+        desc: "Design tokens compiled in — no runtime CSS-in-JS.",
+    },
+    {
+        name: "Firebase",
+        Icon: Database,
+        desc: "Auth, telemetry, and crash reporting for the mobile app.",
+    },
+];
+
+// Duplicate the row inside the track so the marquee loops seamlessly.
+const MARQUEE_ROW = [...TECH, ...TECH];
 ---
 
-<section 
-    id="tech-stack" 
-    class="bg-black text-white py-20 px-6"
-    aria-labelledby="tech-heading"
-    itemscope 
+<section
+    id="techstack"
+    class="bg-ink text-paper py-32 md:py-40"
+    aria-labelledby="techstack-heading"
+    itemscope
     itemtype="https://schema.org/SoftwareApplication"
 >
-    <div class="max-w-7xl mx-auto">
-        <!-- Section Header with enhanced SEO -->
-        <header class="text-center mb-16">
-            <h2 
-                id="tech-heading" 
-                class="text-4xl md:text-5xl lg:text-6xl font-black text-white font-inter leading-tight mb-4"
+    <div class="max-w-7xl mx-auto px-6 md:px-10">
+        <!-- Eyebrow + heading -->
+        <header class="mb-16 md:mb-24">
+            <div class="flex items-baseline gap-4 mb-6">
+                <span
+                    class="font-mono text-paper-2 text-xs uppercase tracking-[0.18em]"
+                    aria-hidden="true"
+                >/ 09 — UNDER THE HOOD</span>
+            </div>
+            <h2
+                id="techstack-heading"
+                class="reveal-words font-display font-extrabold text-paper leading-[0.95] tracking-[-0.02em]"
+                style="font-size: clamp(2.5rem, 5vw, 5rem);"
                 itemprop="name"
             >
-                Built with Modern Tech
+                <span class="word">Built</span>
+                {" "}
+                <span class="word"><span class="text-cobalt">on</span>.</span>
             </h2>
-            <p 
-                class="text-gray-300 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed"
-                itemprop="description"
-            >
-                Pacebeats leverages cutting-edge technologies and proven architectural patterns to deliver a robust, scalable fitness tracking experience.
+            <p class="sr-only" itemprop="description">
+                The technology stack powering Pacebeats: Android, Kotlin, Spotify,
+                Samsung Galaxy Watch, Samsung Health, Astro, React, TypeScript,
+                Tailwind CSS, and Firebase.
             </p>
-            <div class="sr-only">
-                <p>Comprehensive overview of Pacebeats technical architecture including frontend, backend, development tools, and architectural patterns</p>
-            </div>
         </header>
 
-        <!-- Tech Categories Grid with enhanced accessibility -->
-        <div class="grid grid-cols-1 lg:grid-cols-4 gap-8 mb-16" role="region" aria-label="Technology categories">
-            <!-- Frontend Technologies -->
-            <article 
-                class="bg-gray-900 p-8 rounded-2xl border border-gray-800 tech-card"
-                tabindex="0"
-                role="article"
-                aria-labelledby="frontend-title"
-                aria-describedby="frontend-desc"
-                data-category="frontend"
-                itemprop="technology"
-                itemscope 
-                itemtype="https://schema.org/SoftwareSourceCode"
-            >
-                <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg flex items-center justify-center mb-6" aria-hidden="true">
-                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" focusable="false">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-                    </svg>
-                </div>
-                <h3 
-                    id="frontend-title" 
-                    class="text-xl font-bold text-white mb-4 font-inter"
-                    itemprop="name"
-                >
-                    Frontend
-                </h3>
-                <div class="space-y-3" role="list" aria-label="Frontend technologies">
-                    <div class="flex items-center" role="listitem">
-                        <div class="w-3 h-3 bg-blue-500 rounded-full mr-3" aria-hidden="true"></div>
-                        <span class="text-gray-300 text-sm">Jetpack Compose</span>
-                    </div>
-                    <div class="flex items-center" role="listitem">
-                        <div class="w-3 h-3 bg-blue-400 rounded-full mr-3" aria-hidden="true"></div>
-                        <span class="text-gray-300 text-sm">Material Design 3</span>
-                    </div>
-                    <div class="flex items-center" role="listitem">
-                        <div class="w-3 h-3 bg-blue-300 rounded-full mr-3" aria-hidden="true"></div>
-                        <span class="text-gray-300 text-sm">Navigation Compose</span>
-                    </div>
-                </div>
-                <p id="frontend-desc" class="sr-only">Modern Android UI framework using Jetpack Compose with Material Design 3 components and declarative navigation</p>
-            </article>
-
-            <!-- Backend & Data -->
-            <article 
-                class="bg-gray-900 p-8 rounded-2xl border border-gray-800 tech-card"
-                tabindex="0"
-                role="article"
-                aria-labelledby="backend-title"
-                aria-describedby="backend-desc"
-                data-category="backend"
-                itemprop="technology"
-                itemscope 
-                itemtype="https://schema.org/SoftwareSourceCode"
-            >
-                <div class="w-12 h-12 bg-gradient-to-r from-green-500 to-green-600 rounded-lg flex items-center justify-center mb-6" aria-hidden="true">
-                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" focusable="false">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path>
-                    </svg>
-                </div>
-                <h3 
-                    id="backend-title" 
-                    class="text-xl font-bold text-white mb-4 font-inter"
-                    itemprop="name"
-                >
-                    Backend & Data
-                </h3>
-                <div class="space-y-3" role="list" aria-label="Backend technologies">
-                    <div class="flex items-center" role="listitem">
-                        <div class="w-3 h-3 bg-green-500 rounded-full mr-3" aria-hidden="true"></div>
-                        <span class="text-gray-300 text-sm">Samsung Health SDK</span>
-                    </div>
-                    <div class="flex items-center" role="listitem">
-                        <div class="w-3 h-3 bg-green-400 rounded-full mr-3" aria-hidden="true"></div>
-                        <span class="text-gray-300 text-sm">Kotlin Coroutines</span>
-                    </div>
-                    <div class="flex items-center" role="listitem">
-                        <div class="w-3 h-3 bg-green-300 rounded-full mr-3" aria-hidden="true"></div>
-                        <span class="text-gray-300 text-sm">Dagger Hilt</span>
-                    </div>
-                </div>
-                <p id="backend-desc" class="sr-only">Backend infrastructure using Samsung Health SDK for health data, Kotlin Coroutines for asynchronous processing, and Dagger Hilt for dependency injection</p>
-            </article>
-
-            <!-- Architecture -->
-            <article 
-                class="bg-gray-900 p-8 rounded-2xl border border-gray-800 tech-card"
-                tabindex="0"
-                role="article"
-                aria-labelledby="architecture-title"
-                aria-describedby="architecture-desc"
-                data-category="architecture"
-                itemprop="technology"
-                itemscope 
-                itemtype="https://schema.org/SoftwareSourceCode"
-            >
-                <div class="w-12 h-12 bg-gradient-to-r from-purple-500 to-purple-600 rounded-lg flex items-center justify-center mb-6" aria-hidden="true">
-                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" focusable="false">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
-                    </svg>
-                </div>
-                <h3 
-                    id="architecture-title" 
-                    class="text-xl font-bold text-white mb-4 font-inter"
-                    itemprop="name"
-                >
-                    Architecture
-                </h3>
-                <div class="space-y-3" role="list" aria-label="Architecture patterns">
-                    <div class="flex items-center" role="listitem">
-                        <div class="w-3 h-3 bg-purple-500 rounded-full mr-3" aria-hidden="true"></div>
-                        <span class="text-gray-300 text-sm">Clean Architecture</span>
-                    </div>
-                    <div class="flex items-center" role="listitem">
-                        <div class="w-3 h-3 bg-purple-400 rounded-full mr-3" aria-hidden="true"></div>
-                        <span class="text-gray-300 text-sm">MVVM Pattern</span>
-                    </div>
-                    <div class="flex items-center" role="listitem">
-                        <div class="w-3 h-3 bg-purple-300 rounded-full mr-3" aria-hidden="true"></div>
-                        <span class="text-gray-300 text-sm">Repository Pattern</span>
-                    </div>
-                </div>
-                <p id="architecture-desc" class="sr-only">Software architecture following Clean Architecture principles with MVVM pattern and Repository pattern for separation of concerns</p>
-            </article>
-
-            <!-- Development -->
-            <article 
-                class="bg-gray-900 p-8 rounded-2xl border border-gray-800 tech-card"
-                tabindex="0"
-                role="article"
-                aria-labelledby="development-title"
-                aria-describedby="development-desc"
-                data-category="development"
-                itemprop="technology"
-                itemscope 
-                itemtype="https://schema.org/SoftwareSourceCode"
-            >
-                <div class="w-12 h-12 bg-gradient-to-r from-orange-500 to-orange-600 rounded-lg flex items-center justify-center mb-6" aria-hidden="true">
-                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" focusable="false">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
-                    </svg>
-                </div>
-                <h3 
-                    id="development-title" 
-                    class="text-xl font-bold text-white mb-4 font-inter"
-                    itemprop="name"
-                >
-                    Development
-                </h3>
-                <div class="space-y-3" role="list" aria-label="Development tools">
-                    <div class="flex items-center" role="listitem">
-                        <div class="w-3 h-3 bg-orange-500 rounded-full mr-3" aria-hidden="true"></div>
-                        <span class="text-gray-300 text-sm">Kotlin 100%</span>
-                    </div>
-                    <div class="flex items-center" role="listitem">
-                        <div class="w-3 h-3 bg-orange-400 rounded-full mr-3" aria-hidden="true"></div>
-                        <span class="text-gray-300 text-sm">Android Studio</span>
-                    </div>
-                    <div class="flex items-center" role="listitem">
-                        <div class="w-3 h-3 bg-orange-300 rounded-full mr-3" aria-hidden="true"></div>
-                        <span class="text-gray-300 text-sm">Gradle Kotlin DSL</span>
-                    </div>
-                </div>
-                <p id="development-desc" class="sr-only">Development environment using 100% Kotlin programming language with Android Studio IDE and Gradle Kotlin DSL for build configuration</p>
-            </article>
+        <!-- Logo wall — pure-CSS marquee, hover-pause, masked edges -->
+        <div
+            class="marquee border-y border-ink-3 py-8"
+            role="region"
+            aria-label="Technology logo wall"
+        >
+            <div class="marquee-track">
+                {
+                    MARQUEE_ROW.map((tech) => (
+                        <div class="group flex items-center gap-3 px-6">
+                            <tech.Icon
+                                class="w-5 h-5 text-paper-2 group-hover:text-paper transition-colors duration-200"
+                                stroke-width="2"
+                                aria-hidden="true"
+                            />
+                            <span class="font-display font-semibold tracking-[0.04em] text-paper-2 group-hover:text-paper transition-colors duration-200">
+                                {tech.name}
+                            </span>
+                        </div>
+                    ))
+                }
+            </div>
         </div>
 
-        <!-- Architecture Diagram with enhanced accessibility -->
-        <section class="mb-16" role="region" aria-labelledby="architecture-diagram-title">
-            <h3 
-                id="architecture-diagram-title" 
-                class="text-3xl font-bold text-white mb-8 text-center font-inter"
-            >
-                Application Architecture
-            </h3>
-            <figure class="bg-gray-900 p-8 rounded-2xl border border-gray-800" role="img" aria-labelledby="arch-caption">
-                <figcaption id="arch-caption" class="sr-only">
-                    Three-layer application architecture diagram showing Presentation Layer with Compose UI, Domain Layer with business logic, and Data Layer with repositories
-                </figcaption>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <!-- Presentation Layer -->
-                    <article class="text-center arch-layer" data-layer="presentation">
-                        <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl mx-auto mb-4 flex items-center justify-center" aria-hidden="true">
-                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" focusable="false">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
-                            </svg>
-                        </div>
-                        <h4 class="text-lg font-semibold text-white mb-3">Presentation Layer</h4>
-                        <p class="text-gray-400 text-sm mb-4">Jetpack Compose UI components with MVVM ViewModels for reactive state management</p>
-                        <div class="space-y-2" role="list" aria-label="Presentation layer components">
-                            <div class="bg-gray-800 px-3 py-1 rounded-full text-xs text-gray-300" role="listitem">Compose UI</div>
-                            <div class="bg-gray-800 px-3 py-1 rounded-full text-xs text-gray-300" role="listitem">ViewModels</div>
-                            <div class="bg-gray-800 px-3 py-1 rounded-full text-xs text-gray-300" role="listitem">Navigation</div>
-                        </div>
-                    </article>
-
-                    <!-- Domain Layer -->
-                    <article class="text-center arch-layer" data-layer="domain">
-                        <div class="w-16 h-16 bg-gradient-to-r from-purple-500 to-purple-600 rounded-xl mx-auto mb-4 flex items-center justify-center" aria-hidden="true">
-                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" focusable="false">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-                            </svg>
-                        </div>
-                        <h4 class="text-lg font-semibold text-white mb-3">Domain Layer</h4>
-                        <p class="text-gray-400 text-sm mb-4">Business logic with use cases for authentication and health data processing</p>
-                        <div class="space-y-2" role="list" aria-label="Domain layer components">
-                            <div class="bg-gray-800 px-3 py-1 rounded-full text-xs text-gray-300" role="listitem">Use Cases</div>
-                            <div class="bg-gray-800 px-3 py-1 rounded-full text-xs text-gray-300" role="listitem">Business Logic</div>
-                            <div class="bg-gray-800 px-3 py-1 rounded-full text-xs text-gray-300" role="listitem">Models</div>
-                        </div>
-                    </article>
-
-                    <!-- Data Layer -->
-                    <article class="text-center arch-layer" data-layer="data">
-                        <div class="w-16 h-16 bg-gradient-to-r from-green-500 to-green-600 rounded-xl mx-auto mb-4 flex items-center justify-center" aria-hidden="true">
-                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" focusable="false">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s8-1.79 8-4"></path>
-                            </svg>
-                        </div>
-                        <h4 class="text-lg font-semibold text-white mb-3">Data Layer</h4>
-                        <p class="text-gray-400 text-sm mb-4">Repository pattern with Samsung Health SDK integration and local data sources</p>
-                        <div class="space-y-2" role="list" aria-label="Data layer components">
-                            <div class="bg-gray-800 px-3 py-1 rounded-full text-xs text-gray-300" role="listitem">Repositories</div>
-                            <div class="bg-gray-800 px-3 py-1 rounded-full text-xs text-gray-300" role="listitem">Samsung Health</div>
-                            <div class="bg-gray-800 px-3 py-1 rounded-full text-xs text-gray-300" role="listitem">Local Storage</div>
-                        </div>
-                    </article>
-                </div>
-            </figure>
-        </section>
-
-        <!-- Key Features with enhanced accessibility -->
-        <section role="region" aria-labelledby="key-features-title">
-            <h3 id="key-features-title" class="sr-only">Key Technical Features</h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" role="list" aria-label="Technical features">
-                <article class="bg-gray-900 p-6 rounded-xl border border-gray-800 feature-card" role="listitem" data-feature="type-safety">
-                    <h4 class="text-lg font-semibold text-white mb-3 flex items-center">
-                        <span class="w-2 h-2 bg-blue-500 rounded-full mr-3" aria-hidden="true"></span>
-                        Type Safety
-                    </h4>
-                    <p class="text-gray-400 text-sm">100% Kotlin codebase with compile-time type checking and null safety</p>
-                </article>
-
-                <article class="bg-gray-900 p-6 rounded-xl border border-gray-800 feature-card" role="listitem" data-feature="real-time">
-                    <h4 class="text-lg font-semibold text-white mb-3 flex items-center">
-                        <span class="w-2 h-2 bg-green-500 rounded-full mr-3" aria-hidden="true"></span>
-                        Real-time Data
-                    </h4>
-                    <p class="text-gray-400 text-sm">Coroutines-based asynchronous processing for smooth heart rate monitoring</p>
-                </article>
-
-                <article class="bg-gray-900 p-6 rounded-xl border border-gray-800 feature-card" role="listitem" data-feature="dependency-injection">
-                    <h4 class="text-lg font-semibold text-white mb-3 flex items-center">
-                        <span class="w-2 h-2 bg-purple-500 rounded-full mr-3" aria-hidden="true"></span>
-                        Dependency Injection
-                    </h4>
-                    <p class="text-gray-400 text-sm">Dagger Hilt for clean dependency management and testability</p>
-                </article>
-
-                <article class="bg-gray-900 p-6 rounded-xl border border-gray-800 feature-card" role="listitem" data-feature="modern-ui">
-                    <h4 class="text-lg font-semibold text-white mb-3 flex items-center">
-                        <span class="w-2 h-2 bg-orange-500 rounded-full mr-3" aria-hidden="true"></span>
-                        Modern UI
-                    </h4>
-                    <p class="text-gray-400 text-sm">Declarative UI with Jetpack Compose for responsive, native performance</p>
-                </article>
-
-                <article class="bg-gray-900 p-6 rounded-xl border border-gray-800 feature-card" role="listitem" data-feature="samsung-integration">
-                    <h4 class="text-lg font-semibold text-white mb-3 flex items-center">
-                        <span class="w-2 h-2 bg-red-500 rounded-full mr-3" aria-hidden="true"></span>
-                        Samsung Integration
-                    </h4>
-                    <p class="text-gray-400 text-sm">Native Samsung Health SDK integration for professional-grade health data</p>
-                </article>
-
-                <article class="bg-gray-900 p-6 rounded-xl border border-gray-800 feature-card" role="listitem" data-feature="clean-code">
-                    <h4 class="text-lg font-semibold text-white mb-3 flex items-center">
-                        <span class="w-2 h-2 bg-cyan-500 rounded-full mr-3" aria-hidden="true"></span>
-                        Clean Code
-                    </h4>
-                    <p class="text-gray-400 text-sm">SOLID principles with separation of concerns for maintainable codebase</p>
-                </article>
+        <!-- Spec sheet — 2-column list of the same techs with one-line descriptions -->
+        <div class="mt-24 md:mt-32" role="region" aria-label="Technology spec sheet">
+            <div class="flex items-baseline justify-between mb-8">
+                <span
+                    class="font-mono text-paper-2 text-xs uppercase tracking-[0.18em]"
+                >SPEC SHEET</span>
+                <span
+                    class="font-mono text-paper-2 text-xs uppercase tracking-[0.18em]"
+                >10 / 10</span>
             </div>
-        </section>
 
-        <!-- Hidden content for SEO -->
+            <dl class="grid grid-cols-1">
+                {
+                    TECH.map((tech, idx) => (
+                        <div
+                            class={`grid grid-cols-12 gap-4 md:gap-8 py-6 border-t border-ink-3${idx === TECH.length - 1 ? " border-b border-ink-3" : ""}`}
+                            itemprop="technology"
+                            itemscope
+                            itemtype="https://schema.org/SoftwareSourceCode"
+                        >
+                            <dt class="col-span-12 md:col-span-4 flex items-center gap-3">
+                                <span
+                                    class="font-mono text-paper-2 text-xs"
+                                    aria-hidden="true"
+                                >
+                                    {String(idx + 1).padStart(2, "0")}
+                                </span>
+                                <tech.Icon
+                                    class="w-4 h-4 text-cobalt"
+                                    stroke-width="2"
+                                    aria-hidden="true"
+                                />
+                                <span
+                                    class="font-display font-semibold tracking-[0.02em] text-paper text-lg md:text-xl"
+                                    itemprop="name"
+                                >
+                                    {tech.name}
+                                </span>
+                            </dt>
+                            <dd
+                                class="col-span-12 md:col-span-8 font-body text-paper-2 leading-relaxed"
+                                itemprop="description"
+                            >
+                                {tech.desc}
+                            </dd>
+                        </div>
+                    ))
+                }
+            </dl>
+        </div>
+
+        <!-- SEO microdata -->
         <div class="sr-only">
-            <h3>Technical Specifications</h3>
             <div itemprop="programmingLanguage">Kotlin</div>
-            <div itemprop="operatingSystem">Android</div>
-            <div itemprop="applicationFramework">Jetpack Compose</div>
+            <div itemprop="operatingSystem">Android, Wear OS</div>
+            <div itemprop="applicationFramework">Jetpack Compose, Astro, React</div>
             <div itemprop="softwareRequirements">Android 7.0+ (API level 24)</div>
             <meta itemprop="codeRepository" content="https://github.com/KpG782/pacebeats-release-files" />
             <meta itemprop="runtimePlatform" content="Android Runtime (ART)" />
@@ -333,7 +205,7 @@
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     "name": "Pacebeats Technical Architecture",
-    "description": "Modern Android application built with cutting-edge technologies including Jetpack Compose, Clean Architecture, and Samsung Health SDK integration",
+    "description": "Pacebeats is built on Android, Kotlin, Spotify, Samsung Galaxy Watch, Samsung Health, Astro, React, TypeScript, Tailwind CSS, and Firebase.",
     "programmingLanguage": "Kotlin",
     "operatingSystem": "Android",
     "applicationFramework": "Jetpack Compose",
@@ -343,301 +215,41 @@
     "softwareVersion": "1.0.0",
     "applicationCategory": "HealthApplication",
     "technology": [
-        {
-            "@type": "SoftwareSourceCode",
-            "name": "Frontend Technologies",
-            "programmingLanguage": "Kotlin",
-            "runtimePlatform": "Jetpack Compose",
-            "description": "Modern Android UI framework with Material Design 3"
-        },
-        {
-            "@type": "SoftwareSourceCode", 
-            "name": "Backend & Data",
-            "programmingLanguage": "Kotlin",
-            "runtimePlatform": "Android Runtime",
-            "description": "Samsung Health SDK integration with Kotlin Coroutines"
-        },
-        {
-            "@type": "SoftwareSourceCode",
-            "name": "Architecture",
-            "programmingLanguage": "Kotlin", 
-            "description": "Clean Architecture with MVVM and Repository patterns"
-        },
-        {
-            "@type": "SoftwareSourceCode",
-            "name": "Development Tools",
-            "programmingLanguage": "Kotlin",
-            "runtimePlatform": "Android Studio",
-            "description": "100% Kotlin with Gradle Kotlin DSL build system"
-        }
+        { "@type": "SoftwareSourceCode", "name": "Android",      "description": "Native runtime for the mobile app." },
+        { "@type": "SoftwareSourceCode", "name": "Kotlin",       "description": "Primary language. Null-safe, coroutine-driven." },
+        { "@type": "SoftwareSourceCode", "name": "Spotify",      "description": "Web API and playback SDK for pace-synced music." },
+        { "@type": "SoftwareSourceCode", "name": "Samsung Galaxy Watch", "description": "Wear OS companion app — pulse, pace, and music on your wrist." },
+        { "@type": "SoftwareSourceCode", "name": "Samsung Health",       "description": "Cadence, heart-rate, and Inter-Beat Interval analysis." },
+        { "@type": "SoftwareSourceCode", "name": "Astro",        "description": "Static-first marketing site framework." },
+        { "@type": "SoftwareSourceCode", "name": "React",        "description": "Interactive islands hydrated on demand." },
+        { "@type": "SoftwareSourceCode", "name": "TypeScript",   "description": "End-to-end type safety." },
+        { "@type": "SoftwareSourceCode", "name": "Tailwind CSS", "description": "Utility-first CSS, design tokens compiled in." },
+        { "@type": "SoftwareSourceCode", "name": "Firebase",     "description": "Auth, telemetry, and crash reporting." }
     ]
 }
 </script>
 
-<style>
-    /* Inter font consistency */
-    .font-inter {
-        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
-        letter-spacing: -0.025em;
-    }
-    
-    /* Card hover effects */
-    .bg-gray-900:hover {
-        border-color: #4B5563;
-        transform: translateY(-2px);
-        transition: all 0.3s ease;
-    }
-    
-    /* Icon hover effects */
-    .w-12.h-12:hover,
-    .w-16.h-16:hover {
-        transform: scale(1.05);
-        transition: all 0.3s ease;
-    }
-    
-    /* Tech stack dot animations */
-    .w-3.h-3 {
-        transition: all 0.3s ease;
-    }
-    
-    .w-3.h-3:hover {
-        transform: scale(1.2);
-        box-shadow: 0 0 10px currentColor;
-    }
-    
-    /* Responsive adjustments */
-    @media (max-width: 1024px) {
-        .grid-cols-1.lg\\:grid-cols-4 {
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
-    }
-    
-    @media (max-width: 768px) {
-        .text-4xl.md\\:text-5xl.lg\\:text-6xl {
-            font-size: 2.5rem;
-        }
-        
-        .grid-cols-1.lg\\:grid-cols-4 {
-            grid-template-columns: repeat(1, minmax(0, 1fr));
-        }
-    }
-    
-    /* Accessibility */
-    @media (prefers-reduced-motion: reduce) {
-        .bg-gray-900:hover,
-        .w-12.h-12:hover,
-        .w-16.h-16:hover,
-        .w-3.h-3:hover {
-            transform: none;
-        }
-    }
-    
-    /* Focus styles for keyboard navigation */
-    .bg-gray-900:focus-within {
-        outline: 2px solid #3B82F6;
-        outline-offset: 2px;
-    }
-    
-    /* Enhanced staggered animation for tech cards */
-    .tech-card {
-        opacity: 0;
-        transform: translateY(30px) scale(0.95);
-        transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-        will-change: transform, opacity;
-    }
-
-    .tech-card.animate-in {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
-
-    /* Progressive delays for tech categories */
-    .tech-card[data-category="frontend"] {
-        transition-delay: 0ms;
-    }
-
-    .tech-card[data-category="backend"] {
-        transition-delay: 150ms;
-    }
-
-    .tech-card[data-category="architecture"] {
-        transition-delay: 300ms;
-    }
-
-    .tech-card[data-category="development"] {
-        transition-delay: 450ms;
-    }
-
-    /* Architecture layer animations */
-    .arch-layer {
-        opacity: 0;
-        transform: translateY(20px);
-        transition: all 0.5s ease;
-    }
-
-    .arch-layer.animate-in {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-    .arch-layer[data-layer="presentation"] {
-        transition-delay: 600ms;
-    }
-
-    .arch-layer[data-layer="domain"] {
-        transition-delay: 750ms;
-    }
-
-    .arch-layer[data-layer="data"] {
-        transition-delay: 900ms;
-    }
-
-    /* Feature cards animation */
-    .feature-card {
-        opacity: 0;
-        transform: translateY(20px);
-        transition: all 0.4s ease;
-    }
-
-    .feature-card.animate-in {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-    /* Enhanced accessibility styles */
-    .sr-only {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        padding: 0;
-        margin: -1px;
-        overflow: hidden;
-        clip: rect(0, 0, 0, 0);
-        white-space: nowrap;
-        border: 0;
-    }
-
-    /* Enhanced focus styles */
-    .tech-card:focus-visible,
-    .feature-card:focus-visible {
-        outline: 3px solid rgba(59, 130, 246, 0.8);
-        outline-offset: 4px;
-        transform: translateY(-4px) scale(1.02);
-    }
-
-    /* High contrast mode support */
-    @media (prefers-contrast: high) {
-        .tech-card,
-        .feature-card {
-            border: 2px solid #ffffff;
-        }
-        
-        .text-gray-300,
-        .text-gray-400 {
-            color: #ffffff;
-        }
-        
-        .bg-gray-800 {
-            background-color: #000000;
-            border: 1px solid #ffffff;
-        }
-    }
-
-    /* Reduced motion support */
-    @media (prefers-reduced-motion: reduce) {
-        .tech-card,
-        .arch-layer,
-        .feature-card {
-            transition: none;
-            opacity: 1;
-            transform: none;
-        }
-        
-        .bg-gray-900:hover,
-        .w-12.h-12:hover,
-        .w-16.h-16:hover,
-        .w-3.h-3:hover {
-            transform: none;
-        }
-    }
-</style>
-
 <script>
-    // Enhanced intersection observer for staggered animations
-    if ('IntersectionObserver' in window) {
-        const techObserver = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    const category = entry.target.getAttribute('data-category');
-                    const layer = entry.target.getAttribute('data-layer');
-                    const feature = entry.target.getAttribute('data-feature');
-                    
-                    entry.target.classList.add('animate-in');
-                    
-                    // Announce to screen readers for the first tech card
-                    if (category === 'frontend') {
-                        const announcement = document.createElement('div');
-                        announcement.setAttribute('aria-live', 'polite');
-                        announcement.className = 'sr-only';
-                        announcement.textContent = 'Technology stack section has loaded with 4 categories';
-                        document.body.appendChild(announcement);
-                        
-                        setTimeout(() => {
-                            if (document.body.contains(announcement)) {
-                                document.body.removeChild(announcement);
-                            }
-                        }, 2000);
+    // Reveal H2 words once the section enters viewport.
+    if ("IntersectionObserver" in window) {
+        const headings = document.querySelectorAll<HTMLElement>(
+            "#techstack .reveal-words"
+        );
+        const io = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("is-visible");
+                        io.unobserve(entry.target);
                     }
-                }
-            });
-        }, {
-            threshold: 0.2,
-            rootMargin: '50px'
-        });
-        
-        // Observe all animated elements
-        document.querySelectorAll('.tech-card, .arch-layer, .feature-card').forEach(card => {
-            techObserver.observe(card);
-        });
-    }
-    
-    // Enhanced keyboard navigation for tech cards
-    document.querySelectorAll('[role="article"]').forEach(article => {
-        const handleKeydown = (e: KeyboardEvent) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                
-                // Get tech information
-                const title = article.querySelector('h3, h4')?.textContent;
-                const description = article.querySelector('p')?.textContent;
-                
-                // Announce tech details to screen readers
-                const announcement = document.createElement('div');
-                announcement.setAttribute('aria-live', 'assertive');
-                announcement.className = 'sr-only';
-                announcement.textContent = `Selected: ${title}. ${description}`;
-                document.body.appendChild(announcement);
-                
-                setTimeout(() => {
-                    if (document.body.contains(announcement)) {
-                        document.body.removeChild(announcement);
-                    }
-                }, 3000);
-            }
-        };
-        
-        (article as HTMLElement).addEventListener('keydown', handleKeydown);
-    });
-    
-    // Performance optimization: Preload next section
-    if ('requestIdleCallback' in window) {
-        requestIdleCallback(() => {
-            const preloadImages = ['/team-preview.jpg'];
-            preloadImages.forEach(src => {
-                const img = new Image();
-                img.src = src;
-            });
-        });
+                });
+            },
+            { threshold: 0.15 }
+        );
+        headings.forEach((h) => io.observe(h));
+    } else {
+        document
+            .querySelectorAll<HTMLElement>("#techstack .reveal-words")
+            .forEach((el) => el.classList.add("is-visible"));
     }
 </script>
