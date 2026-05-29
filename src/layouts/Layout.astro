@@ -5,12 +5,24 @@ import Analytics from "@vercel/analytics/astro";
 interface Props {
   title?: string;
   description?: string;
+  /** Path or absolute URL to the social-share image (1200×630). */
+  image?: string;
+  /** Open Graph type — "website" for landing pages, "article" for legal docs. */
+  ogType?: string;
 }
 
 const {
   title = "Pacebeats — Run to the rhythm. Achieve your pace.",
   description = "Pacebeats syncs your music to your stride. An Android + Wear OS running companion that adapts your playlist to your pace in real time.",
+  image = "/og-image.jpg",
+  ogType = "website",
 } = Astro.props;
+
+// Astro.site is configured in astro.config.mjs. Fall back to the production
+// origin so canonical/OG URLs are always absolute even in odd build contexts.
+const SITE = Astro.site ?? new URL("https://www.pacebeats.top");
+const canonicalURL = new URL(Astro.url.pathname, SITE).href;
+const socialImageURL = new URL(image, SITE).href;
 ---
 
 <!doctype html>
@@ -23,6 +35,32 @@ const {
     <meta name="color-scheme" content="dark" />
     <meta name="description" content={description} />
 
+    {/* Canonical — prevents duplicate-URL dilution (www, query strings, etc.) */}
+    <link rel="canonical" href={canonicalURL} />
+
+    {/* Crawler directives — index everything and allow large rich previews in
+        Google, Discover, and AI answer engines. */}
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+
+    {/* Open Graph — Facebook, LinkedIn, iMessage, Slack, and most AI engines */}
+    <meta property="og:type" content={ogType} />
+    <meta property="og:site_name" content="Pacebeats" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={socialImageURL} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Pacebeats — run to the rhythm, achieve your pace." />
+    <meta property="og:locale" content="en_US" />
+
+    {/* Twitter / X large-image card */}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImageURL} />
+    <meta name="twitter:image:alt" content="Pacebeats — run to the rhythm, achieve your pace." />
+
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/favicon.png" />
 
@@ -30,6 +68,30 @@ const {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
     <title>{title}</title>
+
+    {/* Sitewide WebSite entity — clarifies the brand for search + AI knowledge
+        graphs and declares the canonical name "Pacebeats". */}
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        name: "Pacebeats",
+        alternateName: "Pacebeats Running App",
+        url: "https://www.pacebeats.top",
+        description:
+          "Pacebeats is an Android + Wear OS running companion that adapts your music to your stride in real time.",
+        inLanguage: "en",
+        publisher: {
+          "@type": "Organization",
+          name: "Pacebeats",
+          logo: {
+            "@type": "ImageObject",
+            url: "https://www.pacebeats.top/favicon.png",
+          },
+        },
+      })}
+    />
   </head>
   <body>
     <slot />

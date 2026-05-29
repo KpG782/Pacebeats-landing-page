@@ -1,0 +1,134 @@
+---
+import { Plus } from "@lucide/astro";
+import { APK_RELEASE } from "../config/apkRelease";
+
+// Single source of truth for the FAQ — drives both the visible accordion and
+// the FAQPage JSON-LD below. Answers are plain text so they can be reused
+// verbatim in structured data (Google requires the schema answer to match the
+// on-page answer). Facts here mirror the rest of the site.
+const FAQS: { q: string; a: string }[] = [
+  {
+    q: "Is Pacebeats free?",
+    a: "Yes. Pacebeats is completely free to download. You can get the latest Android APK directly from our GitHub releases — there is no subscription and no in-app purchases.",
+  },
+  {
+    q: "Does Pacebeats work with Spotify?",
+    a: "Yes. Pacebeats integrates with Spotify so your existing playlists adapt to your running cadence in real time. You connect your account once during setup.",
+  },
+  {
+    q: "What devices does Pacebeats support?",
+    a: "Pacebeats runs on Android 8.0 and newer, with a companion app for Wear OS 3.0+ smartwatches, including the Samsung Galaxy Watch.",
+  },
+  {
+    q: "How does Pacebeats sync music to my pace?",
+    a: "After one short calibration run, Pacebeats detects your stride cadence and continuously matches the music tempo to your pace, so the beat keeps you on target without you skipping tracks mid-stride.",
+  },
+  {
+    q: "Do I need a smartwatch to use Pacebeats?",
+    a: "No. The phone app works on its own. The Wear OS companion is optional and adds live cadence, heart-rate, and run summaries on your wrist.",
+  },
+  {
+    q: "Is Pacebeats on the Google Play Store?",
+    a: "While in beta, Pacebeats is distributed as a direct APK download from GitHub rather than the Play Store. A SHA-256 checksum is provided so you can verify the download, and installing the Wear OS build on a Galaxy Watch is covered in our installation guide.",
+  },
+];
+---
+
+<section
+  id="faq"
+  class="bg-sky text-ink-on-sky py-32 md:py-40 scroll-mt-24"
+  aria-labelledby="faq-heading"
+>
+  <div class="max-w-4xl mx-auto px-6 md:px-10">
+    <!-- Header -->
+    <header class="flex flex-col gap-6 mb-16 md:mb-20">
+      <p class="font-mono text-slate text-xs uppercase tracking-[0.18em]">
+        / 14 — FAQ
+      </p>
+      <h2
+        id="faq-heading"
+        class="reveal-words font-display font-bold text-ink-on-sky max-w-[18ch]"
+        style="font-size: clamp(2.5rem, 6vw, 5rem); line-height: 0.92; letter-spacing: -0.02em;"
+      >
+        <span class="word">Questions,</span>{" "}
+        <span class="word text-cobalt">answered.</span>
+      </h2>
+    </header>
+
+    <!-- Accordion — native <details> so it works without JS and stays crawlable -->
+    <div class="flex flex-col gap-3">
+      {
+        FAQS.map((item) => (
+          <details class="faq-item card-hairline-light group">
+            <summary class="faq-summary flex items-center justify-between gap-6 cursor-pointer list-none px-6 py-5 md:px-8 md:py-6">
+              <h3 class="font-display font-bold text-base md:text-lg tracking-[-0.01em] text-ink-on-sky">
+                {item.q}
+              </h3>
+              <Plus
+                class="faq-icon w-5 h-5 shrink-0 text-cobalt transition-transform duration-300"
+                stroke-width="2"
+                aria-hidden="true"
+              />
+            </summary>
+            <div class="px-6 pb-6 md:px-8 md:pb-7">
+              <p class="font-body text-slate text-sm md:text-base leading-relaxed max-w-[62ch]">
+                {item.a}
+              </p>
+            </div>
+          </details>
+        ))
+      }
+    </div>
+
+    <!-- Closing line + download nudge -->
+    <p class="mt-12 font-body text-slate text-sm md:text-base">
+      Still curious? Grab the{" "}
+      <a
+        href={APK_RELEASE.downloadUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="link-underline text-cobalt font-semibold"
+      >
+        latest Android build
+      </a>{" "}
+      and run with it.
+    </p>
+  </div>
+</section>
+
+<!-- JSON-LD: FAQPage — the primary AEO/GEO signal. Answer text matches the
+     visible copy above so it stays eligible for rich results and AI citations. -->
+<script
+  type="application/ld+json"
+  set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: FAQS.map((item) => ({
+      "@type": "Question",
+      name: item.q,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.a,
+      },
+    })),
+  })}
+/>
+
+<style>
+  /* Remove the default disclosure triangle across browsers. */
+  .faq-summary::-webkit-details-marker {
+    display: none;
+  }
+  .faq-summary {
+    -webkit-tap-highlight-color: transparent;
+  }
+  /* Plus rotates into an "x"-ish open state. */
+  details[open] .faq-icon {
+    transform: rotate(135deg);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .faq-icon {
+      transition: none !important;
+    }
+  }
+</style>

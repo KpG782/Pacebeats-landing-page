@@ -7,6 +7,11 @@ const HEADLINE_LINE_1 = "Run to the rhythm.".split(" ");
 const HEADLINE_LINE_2 = "Achieve your pace.".split(" ");
 
 const releaseCaption = `${APK_RELEASE.version} · UPDATED ${APK_RELEASE.updatedAt.toUpperCase()}`;
+
+// ISO date for structured data, derived from the single source of truth.
+const appDateModified = new Date(APK_RELEASE.updatedAt)
+  .toISOString()
+  .split("T")[0];
 ---
 
 <main id="main-content" role="main">
@@ -166,8 +171,7 @@ const releaseCaption = `${APK_RELEASE.version} · UPDATED ${APK_RELEASE.updatedA
 </main>
 
 <!-- JSON-LD Structured Data for Enhanced SEO -->
-<script type="application/ld+json">
-{
+<script type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     "name": "Pacebeats",
@@ -175,7 +179,7 @@ const releaseCaption = `${APK_RELEASE.version} · UPDATED ${APK_RELEASE.updatedA
     "description": "Run to the rhythm. Achieve your pace. Pacebeats is an Android + Wear OS running companion that adapts your music to your stride in real time.",
     "url": "https://www.pacebeats.top",
     "applicationCategory": "HealthApplication",
-    "operatingSystem": ["Android", "Wear OS"],
+    "operatingSystem": "Android 8.0+, Wear OS 3.0+",
     "keywords": ["running app", "fitness tracker", "music synchronization", "pace tracking", "running companion", "workout app", "spotify integration"],
     "offers": {
         "@type": "Offer",
@@ -183,25 +187,17 @@ const releaseCaption = `${APK_RELEASE.version} · UPDATED ${APK_RELEASE.updatedA
         "priceCurrency": "USD",
         "availability": "https://schema.org/InStock"
     },
-    "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.8",
-        "ratingCount": "150",
-        "bestRating": "5",
-        "worstRating": "1"
-    },
     "author": {
         "@type": "Organization",
-        "name": "Pacebeats Team",
-        "url": "https://www.pacebeats.top",
-        "logo": "https://www.pacebeats.top/pacebeats-logo.png"
+        "name": "Pacebeats",
+        "url": "https://www.pacebeats.top"
     },
     "publisher": {
         "@type": "Organization",
         "name": "Pacebeats",
         "logo": {
             "@type": "ImageObject",
-            "url": "https://www.pacebeats.top/pacebeats-logo.png"
+            "url": "https://www.pacebeats.top/favicon.png"
         }
     },
     "featureList": [
@@ -215,20 +211,17 @@ const releaseCaption = `${APK_RELEASE.version} · UPDATED ${APK_RELEASE.updatedA
         "Performance insights and trends"
     ],
     "screenshot": [
-        "https://www.pacebeats.top/hero-screen-1.svg",
-        "https://www.pacebeats.top/app-screenshot-2.jpg",
-        "https://www.pacebeats.top/app-screenshot-3.jpg"
+        "https://www.pacebeats.top/hero-phone.png",
+        "https://www.pacebeats.top/hero-screen-1.svg"
     ],
-    "downloadUrl": "https://www.pacebeats.top/#download",
-    "installUrl": "https://www.pacebeats.top/#download",
-    "softwareVersion": "2.1.0",
-    "datePublished": "2024-01-15",
-    "dateModified": "2025-01-15",
-    "softwareRequirements": "Android 8.0+ or Wear OS 3.0+",
-    "memoryRequirements": "100MB",
-    "storageRequirements": "250MB"
-}
-</script>
+    "downloadUrl": APK_RELEASE.downloadUrl,
+    "installUrl": APK_RELEASE.downloadUrl,
+    "softwareVersion": APK_RELEASE.version,
+    "fileSize": APK_RELEASE.fileSize,
+    "dateModified": appDateModified,
+    "softwareRequirements": "Android 8.0+ or Wear OS 3.0+"
+})} />
+
 
 <!-- Breadcrumb JSON-LD for Navigation -->
 <script type="application/ld+json">
